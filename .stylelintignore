@@ -1,6 +1,5 @@
 # files
 **/*.cjs
-**/*.html
 **/*.js
 **/*.json
 **/*.lock

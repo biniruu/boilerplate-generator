@@ -4,10 +4,7 @@
  */
 
 module.exports = {
-  extends: [
-    'stylelint-config-standard',
-    // 'stylelint-config-standard-scss',
-  ],
+  extends: ['stylelint-config-standard'],
   overrides: [
     {
       /**
@@ -18,17 +15,8 @@ module.exports = {
       customSyntax: 'postcss-html',
       files: ['**/*.{html,jsx,tsx}'],
     },
-    // {
-    //   /**
-    //    * PostCSS for styled-components
-    //    *
-    //    * postcss-styled-syntax : styled-components 지원 {@link https://styled-components.com/docs/tooling#stylelint}
-    //    */
-    //   customSyntax: 'postcss-styled-syntax',
-    //   files: ['**/*.{html,jsx,tsx}'],
-    // },
   ],
-  plugins: ['stylelint-scss', 'stylelint-order'],
+  plugins: ['stylelint-order'],
   rules: {
     /**
      * Rules
@@ -146,19 +134,6 @@ module.exports = {
       },
     ],
     'value-keyword-case': 'lower',
-    /**
-     * Stylelint-scss rules
-     * {@link https://github.com/stylelint-scss/stylelint-scss#list-of-rules}
-     *
-     * Before enabling SCSS rules, you'll need to disable any conflicting CSS rules.
-     * Here's how to do it.
-     *
-     * "at-rule-no-unknown" : null,
-     * "scss/at-rule-no-unknown" : true,
-     *
-     * scss/at-rule-no-unknown : scss 기본 문법 이외에 다른 @ 문법 사용 시 에러 발생
-     */
-    'scss/at-rule-no-unknown': true,
     /**
      * Stylelint-order rules
      * {@link https://github.com/hudochenkov/stylelint-order/tree/master/rules}
