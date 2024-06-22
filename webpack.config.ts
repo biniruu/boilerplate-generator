@@ -71,6 +71,9 @@ const config: Configuration = {
     new SourceMapDevToolPlugin({}),
   ],
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
 }
