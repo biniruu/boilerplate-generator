@@ -35,7 +35,18 @@
         <h1 class="title">Boilerplate Generator</h1>
       </header>
       <aside id="sidebar" class="sidebar">
-        <button id="getEslintBtn">eslint</button>
+        <form id="eslint">
+          <fieldset>
+            <legend>environment</legend>
+            <div>
+              <input type="radio" name="browser" id="browserIsTrue" value="true" checked />
+              <label for="browserIsTrue">True</label>
+              <input type="radio" name="browser" id="browserIsFalse" value="false" />
+              <label for="browserIsFalse">False</label>
+            </div>
+          </fieldset>
+          <input type="submit" value="Create" />
+        </form>
       </aside>
       <main id="app" class="app"></main>
     </div>
