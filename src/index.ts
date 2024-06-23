@@ -1,16 +1,19 @@
+import type { Config } from '_types'
 import { stringify } from 'javascript-stringify'
 
 import env from '@/data/eslint/env.json'
 
 const mainElem = document.getElementById('app') as HTMLElement
-// const sidebarElem = document.getElementById('sidebar')
 
 const elem = document.createElement('textarea')
 elem.classList.add('code')
-// elem.textContent = stringify(jestTypescript, null, '\n') as string
-const parsedTxt = stringify(env, null, 4) as string
-elem.textContent = `module.export = {
-  env: ${parsedTxt.replace(/"/g, '')}
-}`
-// elem.textContent = JSON.stringify(jestConfig)
-mainElem.appendChild(elem)
+
+const getEslintBtn = document.getElementById('getEslintBtn') as HTMLButtonElement
+
+const getEslint = () => {
+  const config: Config = { env }
+  elem.textContent = `module.exports = ${stringify(config, null, 4)}`
+  mainElem.appendChild(elem)
+}
+
+getEslintBtn.addEventListener('click', getEslint)
