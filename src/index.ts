@@ -29,9 +29,16 @@ const handleFormSubmit = () => {
   mainElem.appendChild(elem)
 }
 
-const form = document.getElementById('eslint') as HTMLFormElement
-form.addEventListener('submit', e => {
-  e.preventDefault()
+const form = document.querySelector<HTMLFormElement>('#eslint')
+form &&
+  form.addEventListener(
+    'click',
+    e => {
+      const target = e.target as HTMLInputElement
+      target.value && void handleFormSubmit()
+    },
+    { passive: true },
+  )
 
-  void handleFormSubmit()
-})
+// Init content
+window.onload = () => handleFormSubmit()

@@ -16,19 +16,19 @@
           <form id="eslint">
             <fieldset>
               <legend>Syntax</legend>
-              <input type="radio" name="syntax" id="typescript" value="typescript" checked aria-checked="true" />
+              <input type="radio" name="syntax" id="typescript" value="typescript" checked />
               <label for="typescript">TypeScript</label>
               <input type="radio" name="syntax" id="javascript" value="javascript" />
               <label for="javascript">JavaScript</label>
             </fieldset>
             <fieldset>
               <legend>Web Development Library</legend>
-              <input type="radio" name="web-development-library" id="next" value="next" checked aria-checked="true" />
+              <input type="radio" name="web-development-library" id="nothing" value="nothing" checked />
+              <label for="nothing">Nothing</label>
+              <input type="radio" name="web-development-library" id="next" value="next" />
               <label for="next">Next.js</label>
               <input type="radio" name="web-development-library" id="react" value="react" />
               <label for="react">React.js</label>
-              <input type="radio" name="web-development-library" id="nothing" value="nothing" />
-              <label for="nothing">DON'T USE</label>
             </fieldset>
             <fieldset>
               <legend>CSS Library</legend>
@@ -44,7 +44,6 @@
               <input type="checkbox" name="tanstack-query" id="tanstack-query" value="tanstackQuery" />
               <label for="tanstack-query">Tanstack query</label>
             </fieldset>
-            <input type="submit" value="Create" />
           </form>
         </aside>
         <div id="app" class="app"></div>
