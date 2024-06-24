@@ -1,0 +1,22 @@
+body {
+  height: 90vh;
+  padding: 1rem;
+}
+
+.container {
+  display: grid;
+  grid-template: 1fr 5fr / 1fr 7fr;
+  height: 100%;
+}
+
+.header {
+  grid-column: span 2;
+}
+
+.app {
+  display: inline-flex;
+}
+
+.code {
+  flex: auto;
+}
