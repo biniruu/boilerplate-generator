@@ -1,0 +1,56 @@
+{
+  "extends": ["plugin:react/recommended", "plugin:react/jsx-runtime", "plugin:react-hooks/recommended"],
+  "plugins": ["react-refresh"],
+  "rules": {
+    "react/destructuring-assignment": "warn",
+    "react/jsx-curly-brace-presence": "warn",
+    "react/jsx-key": "error",
+    "react/jsx-no-useless-fragment": [
+      "warn",
+      {
+        "allowExpressions": true
+      }
+    ],
+    "react/jsx-pascal-case": "warn",
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "allowArrowFunctions": true,
+        "allowFunctions": true
+      }
+    ],
+    "react/jsx-uses-react": "off",
+    "react/jsx-uses-vars": "error",
+    "react/no-direct-mutation-state": "error",
+    "react/no-unescaped-entities": "error",
+    "react/no-unknown-property": [
+      "error",
+      {
+        "ignore": ["jsx"]
+      }
+    ],
+    "react/no-unused-state": "warn",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": [
+      "warn",
+      {
+        "component": true,
+        "html": false
+      }
+    ],
+    "react/static-property-placement": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-refresh/only-export-components": [
+      "warn",
+      {
+        "allowConstantExport": true
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

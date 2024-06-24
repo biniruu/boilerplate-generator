@@ -1,0 +1,16 @@
+{
+  "env": {
+    "jest/globals": true
+  },
+  "overrides": [
+    {
+      "extends": ["plugin:jest/recommended", "plugin:jest-dom/recommended", "plugin:testing-library/react"],
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"]
+    }
+  ],
+  "settings": {
+    "jest": {
+      "version": "require('jest/package.json').version"
+    }
+  }
+}

@@ -1,4 +1,0 @@
-{
-  "extends": ["plugin:@typescript-eslint/disable-type-checked"],
-  "files": ["*.js", "*.cjs", "*.config.js", "*.config.ts", "*.test.js", "*.test.ts", "*.spec.js", "*.spec.ts"]
-}

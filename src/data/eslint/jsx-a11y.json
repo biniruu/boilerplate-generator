@@ -1,0 +1,21 @@
+{
+  "extends": ["plugin:jsx-a11y/recommended"],
+  "rules": {
+    "jsx-a11y/no-noninteractive-element-interactions": [
+      "warn",
+      {
+        "handlers": ["onClick", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"]
+      }
+    ],
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": [
+      "warn",
+      {
+        "ul": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+        "ol": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+        "li": ["button", "menuitem", "option", "row", "tab", "treeitem"],
+        "table": ["grid"],
+        "td": ["gridcell"]
+      }
+    ]
+  }
+}
