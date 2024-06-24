@@ -1,5 +1,6 @@
 import generateEslintConfig from '@libs/eslintConfig'
 import generateJestConfig from '@libs/jestConfig'
+import generatePostcssConfig from '@libs/postcss'
 import generatePrettierConfig from '@libs/prettierConfig'
 import generateStylelintConfig from '@libs/stylelintConfig'
 import type { Config } from '_types'
@@ -17,8 +18,11 @@ tabElem &&
 
       const target = e.target as HTMLButtonElement
       target.classList.add('active')
-      currentTabName = target.value
-      handleFormSubmit()
+      const value = target.value
+      if (value) {
+        currentTabName = value
+        handleFormSubmit()
+      }
     },
     { passive: true },
   )
@@ -30,6 +34,7 @@ const generateConfigs = {
   prettier: generatePrettierConfig,
   stylelint: generateStylelintConfig,
   jest: generateJestConfig,
+  postcss: generatePostcssConfig,
 }
 
 const gitignoreConfig = {
@@ -88,13 +93,23 @@ export default jestConfig`
 
     return
   }
+  if (currentTabName === 'postcss') {
+    codeElem.textContent = `module.exports = ${stringify(config, null, 4)}`
+
+    return
+  }
   codeElem.textContent = `module.exports = ${stringify(config, null, 4)}`
 }
 
+const tabName = {
+  jest: '#jest-tab',
+  postcss: '#postcss-tab',
+}
+
 const handleTabs = (selectedOption: string) => {
-  if (selectedOption === 'jest') {
-    const jestTab = document.querySelectorAll<HTMLButtonElement>('#jest-tab')
-    jestTab.forEach(tab => {
+  if (Object.hasOwn(tabName, selectedOption)) {
+    const currentTab = document.querySelectorAll<HTMLButtonElement>(tabName[selectedOption as keyof typeof tabName])
+    currentTab.forEach(tab => {
       if (tab.classList.contains('hide')) {
         tab.classList.remove('hide')
       } else {
@@ -113,7 +128,7 @@ form &&
 
       const target = e.target as HTMLInputElement
       const value = target.value
-      handleTabs(value)
+      value && handleTabs(value)
     },
     { passive: true },
   )

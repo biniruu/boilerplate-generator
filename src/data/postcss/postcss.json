@@ -1,0 +1,11 @@
+{
+  "syntax": "postcss-syntax",
+  "plugins": {
+    "cssnano": { "preset": "default" },
+    "postcss-preset-env": {
+      "features": {
+        "nesting-rules": false
+      }
+    }
+  }
+}
