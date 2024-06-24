@@ -1,4 +1,4 @@
-import getEslintConfigs from '@libs/eslintConfigs'
+import generateEslintConfig from '@libs/eslintConfig'
 import getPrettierConfig from '@libs/prettierConfig'
 import type { Config } from '_types'
 import { stringify } from 'javascript-stringify'
@@ -21,21 +21,6 @@ tabElem &&
   )
 
 const codeElem = document.querySelector<HTMLTextAreaElement>('#code')
-
-const generateEslintConfig = () => {
-  const selectedCheckboxOptions = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]:checked')
-  const selectedSyntax = document.querySelector<HTMLInputElement>('input[name="syntax"]:checked')
-  const selectedWebDevLib = document.querySelector<HTMLInputElement>('input[name="web-development-library"]:checked')
-
-  const checkboxOptions = Array.from(selectedCheckboxOptions).map((checkbox: HTMLInputElement) => checkbox.value)
-  const selectedOptions = [...checkboxOptions, selectedSyntax!.value]
-  const options =
-    selectedWebDevLib!.value === 'nothing' ? selectedOptions : [...selectedOptions, selectedWebDevLib!.value]
-
-  const config = (getEslintConfigs as (selectedVal: string[]) => { [key: string]: unknown })(options)
-
-  return config
-}
 
 const generatePrettierConfig = () => {
   const selectedCssLibOption = document.querySelector<HTMLInputElement>('#tailwind')
