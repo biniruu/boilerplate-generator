@@ -46,12 +46,13 @@ const generatePrettierConfig = () => {
   return config
 }
 
+const generateConfigs = {
+  eslint: generateEslintConfig,
+  prettier: generatePrettierConfig,
+}
+
 const handleFormSubmit = () => {
-  const configs = {
-    eslint: generateEslintConfig,
-    prettier: generatePrettierConfig,
-  }
-  const config: Config = configs[currentTabName as keyof typeof configs]() || {}
+  const config: Config = generateConfigs[currentTabName as keyof typeof generateConfigs]() || {}
   if (codeElem) {
     codeElem.textContent = `module.exports = ${stringify(config, null, 4)}`
   }
