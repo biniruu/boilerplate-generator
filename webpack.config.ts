@@ -72,7 +72,8 @@ const config: Configuration = {
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@data': path.resolve(__dirname, 'src/data'),
+      '@libs': path.resolve(__dirname, 'src/libs'),
       _types: path.resolve(__dirname, 'src/types'),
     },
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
