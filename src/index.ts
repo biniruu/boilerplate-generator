@@ -46,6 +46,7 @@ const gitignoreConfig = {
 }
 
 const webpackConfig = await import('@data/webpack/webpack' /* webpackChunkName: "webpack" */)
+const viteConfig = await import('@data/vite/vite' /* viteChunkName: "vite" */)
 
 const handleFormSubmit = () => {
   if (!codeElem) {
@@ -53,6 +54,11 @@ const handleFormSubmit = () => {
   }
   if (currentTabName === 'webpack') {
     codeElem.textContent = webpackConfig.default
+
+    return
+  }
+  if (currentTabName === 'vite') {
+    codeElem.textContent = viteConfig.default
 
     return
   }
@@ -112,6 +118,7 @@ const tabName = {
   jest: '#jest-tab',
   postcss: '#postcss-tab',
   webpack: '#webpack-tab',
+  vite: '#vite-tab',
 }
 
 const handleTabs = (selectedOption: string) => {
@@ -127,6 +134,31 @@ const handleTabs = (selectedOption: string) => {
   }
 }
 
+// Toggle Vite config when Web Development Library options are changed
+const handleViteOption = () => {
+  const viteOptionWrapperElem = document.querySelector<HTMLSpanElement>('#vite-wrapper')
+  const viteOptionElem = document.querySelector<HTMLInputElement>('#vite')
+  const webDevLibOption = document.querySelector<HTMLInputElement>('input[name=web-development-library]:checked')
+  const viteTabElem = document.querySelector<HTMLButtonElement>('#vite-tab')
+
+  switch (webDevLibOption?.value) {
+    case 'react':
+      viteOptionWrapperElem?.classList.remove('hide')
+      break
+    default:
+      if (!viteTabElem?.classList.contains('hide')) {
+        if (viteOptionElem) {
+          viteOptionElem.checked = false
+        }
+        void handleTabs('vite')
+        currentTabName = 'eslint'
+        handleFormSubmit()
+      }
+      viteOptionWrapperElem?.classList.add('hide')
+      break
+  }
+}
+
 const form = document.querySelector<HTMLFormElement>('#options')
 form &&
   form.addEventListener(
@@ -134,9 +166,12 @@ form &&
     e => {
       void handleFormSubmit()
 
+      // TODO: Set another tab to active when toggle same option
       const target = e.target as HTMLInputElement
       const value = target.value
       value && handleTabs(value)
+
+      handleViteOption()
     },
     { passive: true },
   )
