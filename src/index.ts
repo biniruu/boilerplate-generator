@@ -31,14 +31,50 @@ const generateConfigs = {
   jest: generateJestConfig,
 }
 
+const gitignoreConfig = {
+  gitignore: await import('@data/gitignore/gitignore' /* webpackChunkName: "gitignore" */),
+  react: await import('@data/gitignore/react' /* webpackChunkName: "gitignore-react" */),
+  vue: await import('@data/gitignore/vue' /* webpackChunkName: "gitignore-vue" */),
+  wordpress: await import('@data/gitignore/wordpress' /* webpackChunkName: "gitignore-wordpress" */),
+  gatsby: await import('@data/gitignore/gatsby' /* webpackChunkName: "gitignore-gatsby" */),
+}
+
 const handleFormSubmit = () => {
   if (!codeElem) {
     throw new Error('Text area is not provided.')
+  }
+  if (currentTabName === 'gitignore') {
+    const selectedWebDevLibOption = document.querySelector<HTMLInputElement>(
+      'input[name=web-development-library]:checked',
+    )
+    if (!selectedWebDevLibOption) {
+      throw new Error('Something went wrong. Please reload this page.')
+    }
+    switch (selectedWebDevLibOption.value) {
+      case 'react':
+      case 'next':
+        codeElem.textContent = gitignoreConfig.react.default
+        break
+      case 'vue':
+      case 'nuxt':
+        codeElem.textContent = gitignoreConfig.vue.default
+        break
+      case 'wordpress':
+        codeElem.textContent = gitignoreConfig.wordpress.default
+        break
+      default:
+        codeElem.textContent = gitignoreConfig.gitignore.default
+    }
+
+    return
   }
   if (currentTabName === 'jest-setup') {
     codeElem.textContent = `import '@testing-library/jest-dom'`
 
     return
+  }
+  if (!Object.hasOwn(generateConfigs, currentTabName)) {
+    throw new Error('Something went wrong. Please reload this page.')
   }
 
   const config: Config = generateConfigs[currentTabName as keyof typeof generateConfigs]() || {}
