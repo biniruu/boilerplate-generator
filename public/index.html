@@ -34,42 +34,44 @@
       <header class="header">
         <h1 class="title">Boilerplate Generator</h1>
       </header>
-      <aside id="sidebar" class="sidebar">
-        <form id="eslint">
-          <fieldset>
-            <legend>Syntax</legend>
-            <input type="radio" name="syntax" id="typescript" value="typescript" checked aria-checked="true" />
-            <label for="typescript">TypeScript</label>
-            <input type="radio" name="syntax" id="javascript" value="javascript" />
-            <label for="javascript">JavaScript</label>
-          </fieldset>
-          <fieldset>
-            <legend>Web Development Library</legend>
-            <input type="radio" name="web-development-library" id="next" value="next" checked aria-checked="true" />
-            <label for="next">Next.js</label>
-            <input type="radio" name="web-development-library" id="react" value="react" />
-            <label for="react">React.js</label>
-            <input type="radio" name="web-development-library" id="nothing" value="nothing" />
-            <label for="nothing">DON'T USE</label>
-          </fieldset>
-          <fieldset>
-            <legend>CSS Library</legend>
-            <input type="checkbox" name="tailwind" id="tailwind" value="tailwind" />
-            <label for="tailwind">Tailwind CSS</label>
-          </fieldset>
-          <fieldset>
-            <legend>Utility</legend>
-            <input type="checkbox" name="jsx-a11y" id="jsx-a11y" value="jsxA11y" />
-            <label for="jsx-a11y">JSX a11y</label>
-            <input type="checkbox" name="jest" id="jest" value="jest" />
-            <label for="jest">Jest</label>
-            <input type="checkbox" name="tanstack-query" id="tanstack-query" value="tanstackQuery" />
-            <label for="tanstack-query">Tanstack query</label>
-          </fieldset>
-          <input type="submit" value="Create" />
-        </form>
-      </aside>
-      <main id="app" class="app"></main>
+      <main>
+        <aside id="sidebar" class="sidebar">
+          <form id="eslint">
+            <fieldset>
+              <legend>Syntax</legend>
+              <input type="radio" name="syntax" id="typescript" value="typescript" checked aria-checked="true" />
+              <label for="typescript">TypeScript</label>
+              <input type="radio" name="syntax" id="javascript" value="javascript" />
+              <label for="javascript">JavaScript</label>
+            </fieldset>
+            <fieldset>
+              <legend>Web Development Library</legend>
+              <input type="radio" name="web-development-library" id="next" value="next" checked aria-checked="true" />
+              <label for="next">Next.js</label>
+              <input type="radio" name="web-development-library" id="react" value="react" />
+              <label for="react">React.js</label>
+              <input type="radio" name="web-development-library" id="nothing" value="nothing" />
+              <label for="nothing">DON'T USE</label>
+            </fieldset>
+            <fieldset>
+              <legend>CSS Library</legend>
+              <input type="checkbox" name="tailwind" id="tailwind" value="tailwind" />
+              <label for="tailwind">Tailwind CSS</label>
+            </fieldset>
+            <fieldset>
+              <legend>Utility</legend>
+              <input type="checkbox" name="jsx-a11y" id="jsx-a11y" value="jsxA11y" />
+              <label for="jsx-a11y">JSX a11y</label>
+              <input type="checkbox" name="jest" id="jest" value="jest" />
+              <label for="jest">Jest</label>
+              <input type="checkbox" name="tanstack-query" id="tanstack-query" value="tanstackQuery" />
+              <label for="tanstack-query">Tanstack query</label>
+            </fieldset>
+            <input type="submit" value="Create" />
+          </form>
+        </aside>
+        <div id="app" class="app"></div>
+      </main>
     </div>
     <script src="dist/index.js"></script>
   </body>
