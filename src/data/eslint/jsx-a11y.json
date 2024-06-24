@@ -1,6 +1,15 @@
 {
   "extends": ["plugin:jsx-a11y/recommended"],
   "rules": {
+    "jsx-a11y/label-has-associated-control": [
+      "warn",
+      {
+        "labelComponents": ["label"],
+        "labelAttributes": ["htmlFor"],
+        "controlComponents": ["Input"],
+        "depth": 1
+      }
+    ],
     "jsx-a11y/no-noninteractive-element-interactions": [
       "warn",
       {
