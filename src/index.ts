@@ -45,9 +45,16 @@ const gitignoreConfig = {
   gatsby: await import('@data/gitignore/gatsby' /* webpackChunkName: "gitignore-gatsby" */),
 }
 
+const webpackConfig = await import('@data/webpack/webpack' /* webpackChunkName: "webpack" */)
+
 const handleFormSubmit = () => {
   if (!codeElem) {
     throw new Error('Text area is not provided.')
+  }
+  if (currentTabName === 'webpack') {
+    codeElem.textContent = webpackConfig.default
+
+    return
   }
   if (currentTabName === 'gitignore') {
     const selectedWebDevLibOption = document.querySelector<HTMLInputElement>(
@@ -104,6 +111,7 @@ export default jestConfig`
 const tabName = {
   jest: '#jest-tab',
   postcss: '#postcss-tab',
+  webpack: '#webpack-tab',
 }
 
 const handleTabs = (selectedOption: string) => {
