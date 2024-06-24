@@ -1,11 +1,14 @@
+html,
 body {
-  height: 90vh;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
   padding: 1rem;
 }
 
 .container {
-  display: grid;
-  grid-template: 1fr 5fr / 1fr 7fr;
   height: 100%;
 }
 
@@ -14,9 +17,21 @@ body {
 }
 
 .app {
-  display: inline-flex;
+  width: 100%;
 }
 
 .code {
-  flex: auto;
+  font-size: 1rem;
+  height: 50%;
+  width: 100%;
+}
+
+.main {
+  column-gap: 2rem;
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  min-width: fit-content;
 }
