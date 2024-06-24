@@ -1,5 +1,6 @@
 import generateEslintConfig from '@libs/eslintConfig'
 import generatePrettierConfig from '@libs/prettierConfig'
+import generateStylelintConfig from '@libs/stylelintConfig'
 import type { Config } from '_types'
 import { stringify } from 'javascript-stringify'
 
@@ -25,6 +26,7 @@ const codeElem = document.querySelector<HTMLTextAreaElement>('#code')
 const generateConfigs = {
   eslint: generateEslintConfig,
   prettier: generatePrettierConfig,
+  stylelint: generateStylelintConfig,
 }
 
 const handleFormSubmit = () => {
