@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
@@ -16,13 +22,14 @@ body {
   grid-column: span 2;
 }
 
-.app {
+.code-window {
+  display: flex;
+  height: 50%;
   width: 100%;
 }
 
 .code {
   font-size: 1rem;
-  height: 50%;
   padding: 1rem;
   width: 100%;
 }
@@ -35,4 +42,9 @@ body {
 
 .sidebar {
   min-width: fit-content;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
 }
