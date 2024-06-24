@@ -1,0 +1,8 @@
+{
+  "overrides": [
+    {
+      "customSyntax": "postcss-styled-syntax",
+      "files": ["**/*.{html,jsx,tsx}"]
+    }
+  ]
+}
