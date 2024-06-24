@@ -1,4 +1,5 @@
 import getEslintConfigs from '@libs/eslintConfigs'
+import getPrettierConfig from '@libs/prettierConfig'
 import type { Config } from '_types'
 import { stringify } from 'javascript-stringify'
 
@@ -36,9 +37,19 @@ const generateEslintConfig = () => {
   return config
 }
 
+const generatePrettierConfig = () => {
+  const selectedCssLibOption = document.querySelector<HTMLInputElement>('#tailwind')
+  const hasTailwind = selectedCssLibOption?.checked
+
+  const config = getPrettierConfig(hasTailwind)
+
+  return config
+}
+
 const handleFormSubmit = () => {
   const configs = {
     eslint: generateEslintConfig,
+    prettier: generatePrettierConfig,
   }
   const config: Config = configs[currentTabName as keyof typeof configs]() || {}
   if (codeElem) {

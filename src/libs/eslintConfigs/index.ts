@@ -9,6 +9,19 @@ const data: { [key: string]: unknown } = {
   tanstackQuery: await import('@data/eslint/tanstack-query.json'),
 }
 
+const mergeConfigs = (acc: { [key: string]: unknown }, option: string, currentData: { [key: string]: unknown }) => {
+  if (Object.hasOwn(acc, option)) {
+    if (Array.isArray(currentData[option])) {
+      acc[option] = [...(acc[option] as string[]), ...(currentData[option] as string[])]
+    } else {
+      const temp = Object.assign({}, acc[option], currentData[option])
+      acc[option] = temp
+    }
+  } else {
+    acc[option] = currentData[option]
+  }
+}
+
 const getEslintConfigs = (selectedVal: string[]) => {
   const config = selectedVal.reduce(
     (acc, curr) => {
@@ -16,16 +29,7 @@ const getEslintConfigs = (selectedVal: string[]) => {
       const currentData = item.default as { [key: string]: unknown }
 
       for (const option in currentData) {
-        if (Object.hasOwn(acc, option)) {
-          if (Array.isArray(currentData[option])) {
-            acc[option] = [...(acc[option] as string[]), ...(currentData[option] as string[])]
-          } else {
-            const temp = Object.assign({}, acc[option], currentData[option])
-            acc[option] = temp
-          }
-        } else {
-          acc[option] = currentData[option]
-        }
+        mergeConfigs(acc, option, currentData)
       }
 
       return acc
