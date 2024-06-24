@@ -14,6 +14,10 @@ const data: { [key: string]: unknown } = {
 const getEslintConfigs = (selectedVal: string[]) => {
   const config = selectedVal.reduce(
     (acc, curr) => {
+      if (!Object.hasOwn(data, curr)) {
+        return acc
+      }
+
       const item = data[curr] as { [key: string]: unknown }
       const currentData = item.default as { [key: string]: unknown }
 
