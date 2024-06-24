@@ -2,10 +2,24 @@ import getEslintConfigs from '@libs/eslintConfigs'
 import type { Config } from '_types'
 import { stringify } from 'javascript-stringify'
 
-const mainElem = document.getElementById('app') as HTMLElement
+let currentTabName = 'eslint'
+const tabElem = document.querySelector<HTMLDivElement>('#tab')
+tabElem &&
+  tabElem.addEventListener(
+    'click',
+    e => {
+      const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
+      tablinkElems.forEach(tablink => tablink.classList.remove('active'))
 
-const elem = document.createElement('textarea')
-elem.classList.add('code')
+      const target = e.target as HTMLButtonElement
+      target.classList.add('active')
+      currentTabName = target.value
+      handleFormSubmit()
+    },
+    { passive: true },
+  )
+
+const codeElem = document.querySelector<HTMLTextAreaElement>('#code')
 
 const generateEslintConfig = () => {
   const selectedCheckboxOptions = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]:checked')
@@ -23,10 +37,13 @@ const generateEslintConfig = () => {
 }
 
 const handleFormSubmit = () => {
-  const eslintConfig = generateEslintConfig()
-  const config: Config = eslintConfig || {}
-  elem.textContent = `module.exports = ${stringify(config, null, 4)}`
-  mainElem.appendChild(elem)
+  const configs = {
+    eslint: generateEslintConfig,
+  }
+  const config: Config = configs[currentTabName as keyof typeof configs]() || {}
+  if (codeElem) {
+    codeElem.textContent = `module.exports = ${stringify(config, null, 4)}`
+  }
 }
 
 const form = document.querySelector<HTMLFormElement>('#eslint')

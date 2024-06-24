@@ -46,7 +46,14 @@
             </fieldset>
           </form>
         </aside>
-        <div id="app" class="app"></div>
+        <article id="code-window" class="code-window">
+          <div id="tab" class="tab">
+            <button class="tablinks active" type="button" value="eslint">Eslint</button>
+            <button class="tablinks" type="button" value="prettier">Prettier</button>
+            <button class="tablinks" type="button" value="stylelint">Stylelint</button>
+          </div>
+          <textarea name="code" id="code" class="code"></textarea>
+        </article>
       </main>
     </div>
     <script src="dist/index.js"></script>
