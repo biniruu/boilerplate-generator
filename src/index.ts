@@ -4,6 +4,7 @@ import generatePrettierConfig from '@libs/prettierConfig'
 import generateStylelintConfig from '@libs/stylelintConfig'
 import type { Config } from '_types'
 import { stringify } from 'javascript-stringify'
+import './style.css'
 
 let currentTabName = 'eslint'
 const tabElem = document.querySelector<HTMLDivElement>('#tab')
