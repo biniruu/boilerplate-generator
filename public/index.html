@@ -37,13 +37,34 @@
       <aside id="sidebar" class="sidebar">
         <form id="eslint">
           <fieldset>
-            <legend>environment</legend>
-            <div>
-              <input type="radio" name="browser" id="browserIsTrue" value="true" checked />
-              <label for="browserIsTrue">True</label>
-              <input type="radio" name="browser" id="browserIsFalse" value="false" />
-              <label for="browserIsFalse">False</label>
-            </div>
+            <legend>Syntax</legend>
+            <input type="radio" name="syntax" id="typescript" value="typescript" checked aria-checked="true" />
+            <label for="typescript">TypeScript</label>
+            <input type="radio" name="syntax" id="javascript" value="javascript" />
+            <label for="javascript">JavaScript</label>
+          </fieldset>
+          <fieldset>
+            <legend>Web Development Library</legend>
+            <input type="radio" name="web-development-library" id="next" value="next" checked aria-checked="true" />
+            <label for="next">Next.js</label>
+            <input type="radio" name="web-development-library" id="react" value="react" />
+            <label for="react">React.js</label>
+            <input type="radio" name="web-development-library" id="nothing" value="nothing" />
+            <label for="nothing">DON'T USE</label>
+          </fieldset>
+          <fieldset>
+            <legend>CSS Library</legend>
+            <input type="checkbox" name="tailwind" id="tailwind" value="tailwind" />
+            <label for="tailwind">Tailwind CSS</label>
+          </fieldset>
+          <fieldset>
+            <legend>Utility</legend>
+            <input type="checkbox" name="jsx-a11y" id="jsx-a11y" value="jsxA11y" />
+            <label for="jsx-a11y">JSX a11y</label>
+            <input type="checkbox" name="jest" id="jest" value="jest" />
+            <label for="jest">Jest</label>
+            <input type="checkbox" name="tanstack-query" id="tanstack-query" value="tanstackQuery" />
+            <label for="tanstack-query">Tanstack query</label>
           </fieldset>
           <input type="submit" value="Create" />
         </form>

@@ -1,3 +1,4 @@
+import getEslintConfigs from '@libs/eslintConfigs'
 import type { Config } from '_types'
 import { stringify } from 'javascript-stringify'
 
@@ -6,22 +7,24 @@ const mainElem = document.getElementById('app') as HTMLElement
 const elem = document.createElement('textarea')
 elem.classList.add('code')
 
-const getEnv = async () => {
-  const { default: data } = await import('@/data/eslint/env.json', { assert: { type: 'json' } })
+const generateEslintConfig = () => {
+  const selectedCheckboxOptions = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]:checked')
+  const selectedSyntax = document.querySelector<HTMLInputElement>('input[name="syntax"]:checked')
+  const selectedWebDevLib = document.querySelector<HTMLInputElement>('input[name="web-development-library"]:checked')
 
-  return data
+  const checkboxOptions = Array.from(selectedCheckboxOptions).map((checkbox: HTMLInputElement) => checkbox.value)
+  const selectedOptions = [...checkboxOptions, selectedSyntax!.value]
+  const options =
+    selectedWebDevLib!.value === 'nothing' ? selectedOptions : [...selectedOptions, selectedWebDevLib!.value]
+
+  const config = (getEslintConfigs as (selectedVal: string[]) => { [key: string]: unknown })(options)
+
+  return config
 }
 
-const generateEnv = async () => {
-  const selectedEnv = document.querySelector('input[name="browser"]:checked') as HTMLInputElement
-  const env = selectedEnv.value === 'true' ? await getEnv() : null
-
-  return env
-}
-
-const handleFormSubmit = async () => {
-  const env = await generateEnv()
-  const config: Config = env ? { env } : {}
+const handleFormSubmit = () => {
+  const eslintConfig = generateEslintConfig()
+  const config: Config = eslintConfig || {}
   elem.textContent = `module.exports = ${stringify(config, null, 4)}`
   mainElem.appendChild(elem)
 }
