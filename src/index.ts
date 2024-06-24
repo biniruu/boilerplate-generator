@@ -1,5 +1,5 @@
 import generateEslintConfig from '@libs/eslintConfig'
-import getPrettierConfig from '@libs/prettierConfig'
+import generatePrettierConfig from '@libs/prettierConfig'
 import type { Config } from '_types'
 import { stringify } from 'javascript-stringify'
 
@@ -21,15 +21,6 @@ tabElem &&
   )
 
 const codeElem = document.querySelector<HTMLTextAreaElement>('#code')
-
-const generatePrettierConfig = () => {
-  const selectedCssLibOption = document.querySelector<HTMLInputElement>('#tailwind')
-  const hasTailwind = selectedCssLibOption?.checked
-
-  const config = getPrettierConfig(hasTailwind)
-
-  return config
-}
 
 const generateConfigs = {
   eslint: generateEslintConfig,

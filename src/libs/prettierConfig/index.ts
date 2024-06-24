@@ -1,24 +1,12 @@
-import config from '@data/prettier/prettier.json'
-import mergeConfigs from '@utils/mergeConfigs'
+import getPrettierConfig from '@libs/prettierConfig/getPrettierConfig'
 
-const data: { [key: string]: unknown } = {
-  tailwind: await import('@data/prettier/tailwind.json'),
-}
+const generatePrettierConfig = () => {
+  const selectedCssLibOption = document.querySelector<HTMLInputElement>('#tailwind')
+  const hasTailwind = selectedCssLibOption?.checked
 
-const getPrettierConfig = (hasTailwind?: boolean) => {
-  if (hasTailwind) {
-    const tailwindData = data.tailwind as { [key: string]: unknown }
-    const defaultData = tailwindData.default as { [key: string]: unknown }
-    const newConfig = { ...config }
-
-    for (const option in defaultData) {
-      mergeConfigs(newConfig, option, defaultData)
-    }
-
-    return newConfig
-  }
+  const config = getPrettierConfig(hasTailwind)
 
   return config
 }
 
-export default getPrettierConfig
+export default generatePrettierConfig
