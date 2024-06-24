@@ -1,3 +1,5 @@
+import mergeConfigs from '@utils/mergeConfigs'
+
 const data: { [key: string]: unknown } = {
   typescript: await import('@data/eslint/typescript.json'),
   jsxA11y: await import('@data/eslint/jsx-a11y.json'),
@@ -7,19 +9,6 @@ const data: { [key: string]: unknown } = {
   tailwind: await import('@data/eslint/tailwind.json'),
   jest: await import('@data/eslint/jest.json'),
   tanstackQuery: await import('@data/eslint/tanstack-query.json'),
-}
-
-const mergeConfigs = (acc: { [key: string]: unknown }, option: string, currentData: { [key: string]: unknown }) => {
-  if (Object.hasOwn(acc, option)) {
-    if (Array.isArray(currentData[option])) {
-      acc[option] = [...(acc[option] as string[]), ...(currentData[option] as string[])]
-    } else {
-      const temp = Object.assign({}, acc[option], currentData[option])
-      acc[option] = temp
-    }
-  } else {
-    acc[option] = currentData[option]
-  }
 }
 
 const getEslintConfigs = (selectedVal: string[]) => {
