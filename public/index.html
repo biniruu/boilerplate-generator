@@ -14,7 +14,7 @@
       </header>
       <main class="main">
         <aside id="sidebar" class="sidebar">
-          <form id="eslint">
+          <form id="options">
             <fieldset>
               <legend>Syntax</legend>
               <input type="radio" name="syntax" id="typescript" class="syntax" value="typescript" checked />
@@ -60,9 +60,11 @@
         </aside>
         <article id="code-window" class="code-window">
           <div id="tab" class="tab">
-            <button class="tablinks active" type="button" value="eslint">.eslintrc.js</button>
-            <button class="tablinks" type="button" value="prettier">.prettierrc.js</button>
-            <button class="tablinks" type="button" value="stylelint">.stylelintrc.js</button>
+            <button id="eslint-tab" class="tablinks active" type="button" value="eslint">.eslintrc.js</button>
+            <button id="prettier-tab" class="tablinks" type="button" value="prettier">.prettierrc.js</button>
+            <button id="stylelint-tab" class="tablinks" type="button" value="stylelint">.stylelintrc.js</button>
+            <button id="jest-tab" class="tablinks hide" type="button" value="jest">jest.config.ts</button>
+            <button id="jest-tab" class="tablinks hide" type="button" value="jest-setup">jest.setup.ts</button>
           </div>
           <textarea name="code" id="code" class="code"></textarea>
         </article>
