@@ -22,7 +22,7 @@ body {
   grid-column: span 2;
 }
 
-.code-window {
+.editor {
   display: flex;
   height: 50%;
   width: 100%;
@@ -44,11 +44,12 @@ body {
   min-width: fit-content;
 }
 
-.tab {
+.tabs {
   display: flex;
   flex-direction: column;
 }
 
-.hide {
+.hide,
+.hidden {
   display: none;
 }

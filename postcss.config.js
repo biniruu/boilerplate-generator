@@ -24,7 +24,7 @@
 module.exports = {
   syntax: 'postcss-syntax', //  automatically switch the required PostCSS syntax by file extension/source
   plugins: {
-    '@tailwindcss/nesting': {}, // this plugin has to come before 'tailwindcss'
+    // '@tailwindcss/nesting': {}, // this plugin has to come before 'tailwindcss'
     'postcss-preset-env': {
       autoprefixer: {
         // grid: 'autoplace', // adding prefixes of grid layout properties for IE 10-11
@@ -33,7 +33,7 @@ module.exports = {
         'nesting-rules': false, // ensure this value as false when using @tailwindcss/nesting
       },
     },
-    tailwindcss: {}, // for using tailwindcss
-    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}), // invoking CSS minification in production environment
+    // tailwindcss: {}, // for using tailwindcss
+    cssnano: { preset: 'default' }, // invoking CSS minification in production environment
   },
 }

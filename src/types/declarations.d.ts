@@ -22,3 +22,12 @@ declare module '@utils/mergeConfigs' {
   const mergeConfigs: MergeConfigs
   export default mergeConfigs
 }
+
+declare module '@utils/typeGuards' {
+  type IsHtmlInputElement = (element: unknown) => element is HTMLInputElement
+  type IsHtmlButtonElement = (element: unknown) => element is HTMLButtonElement
+
+  const isHtmlInputElement: IsHtmlInputElement
+  const isHtmlButtonElement: IsHtmlButtonElement
+  export { isHtmlButtonElement, isHtmlInputElement }
+}

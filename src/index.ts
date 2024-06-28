@@ -1,3 +1,4 @@
+import controlElements from '@libs/controlElements'
 import generateEslintConfig from '@libs/eslintConfig'
 import generateJestConfig from '@libs/jestConfig'
 import generatePostcssConfig from '@libs/postcss'
@@ -137,24 +138,22 @@ const handleTabs = (selectedOption: string) => {
 // Toggle Vite config when Web Development Library options are changed
 const handleViteOption = () => {
   const viteOptionWrapperElem = document.querySelector<HTMLSpanElement>('#vite-wrapper')
-  const viteOptionElem = document.querySelector<HTMLInputElement>('#vite')
   const webDevLibOption = document.querySelector<HTMLInputElement>('input[name=web-development-library]:checked')
-  const viteTabElem = document.querySelector<HTMLButtonElement>('#vite-tab')
 
   switch (webDevLibOption?.value) {
     case 'react':
-      viteOptionWrapperElem?.classList.remove('hide')
+      controlElements({ target: 'viteWrapper', action: 'show' })
       break
     default:
-      if (!viteTabElem?.classList.contains('hide')) {
-        if (viteOptionElem) {
-          viteOptionElem.checked = false
-        }
+      if (!controlElements({ target: 'viteTab', action: 'getState', state: 'show' })) {
+        controlElements({ target: 'vite', action: 'uncheck' })
+
         void handleTabs('vite')
         currentTabName = 'eslint'
         handleFormSubmit()
       }
       viteOptionWrapperElem?.classList.add('hide')
+      controlElements({ target: 'viteWrapper', action: 'hide' })
       break
   }
 }

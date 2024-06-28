@@ -5,8 +5,10 @@
 
 import path from 'path'
 
+import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import TerserPlugin from 'terser-webpack-plugin'
 import type { Configuration as WebpackConfiguration } from 'webpack'
 import { SourceMapDevToolPlugin } from 'webpack'
 import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
@@ -18,6 +20,7 @@ interface Configuration extends WebpackConfiguration {
 
 const isProduction = process.env.NODE_ENV === 'production'
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
+const sourceMap = isProduction ? '' : new SourceMapDevToolPlugin({})
 
 const config: Configuration = {
   devServer: {
@@ -57,6 +60,17 @@ const config: Configuration = {
       },
     ],
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new HtmlMinimizerPlugin({
+        minify: HtmlMinimizerPlugin.swcMinify,
+        minimizerOptions: {},
+      }),
+      new TerserPlugin(),
+    ],
+    mergeDuplicateChunks: true,
+  },
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
@@ -68,7 +82,7 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
-    new SourceMapDevToolPlugin({}),
+    sourceMap,
   ],
   resolve: {
     alias: {
