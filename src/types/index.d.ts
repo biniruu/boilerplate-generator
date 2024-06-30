@@ -13,6 +13,9 @@ export interface SelectOptions {
   jest: boolean
   react: boolean
   next: boolean
+  postcss: boolean
+  scss: boolean
+  styledComponents: boolean
   tailwind: boolean
   typescript: boolean
   tanstackQuery: boolean
