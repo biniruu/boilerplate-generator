@@ -1,10 +1,11 @@
 import controlElements from '@libs/controlElements'
 import eslintConfig from '@libs/eslintConfig'
 // import generateEslintConfig from '@libs/generators/eslint'
-import generateStylelintConfig from '@libs/generators/stylelint'
+// import generateStylelintConfig from '@libs/generators/stylelint'
+import generatePrettierConfig from '@libs/generators/prettier'
 import generateJestConfig from '@libs/jestConfig'
 import generatePostcssConfig from '@libs/postcss'
-import generatePrettierConfig from '@libs/prettierConfig'
+import prettierConfig from '@libs/prettierConfig'
 import stylelintConfig from '@libs/stylelintConfig'
 import type { Config } from '_types'
 import { stringify } from 'javascript-stringify'
@@ -34,7 +35,7 @@ const codeElem = document.querySelector<HTMLTextAreaElement>('#code')
 
 const generateConfigs = {
   eslint: eslintConfig,
-  prettier: generatePrettierConfig,
+  prettier: prettierConfig,
   stylelint: stylelintConfig,
   jest: generateJestConfig,
   postcss: generatePostcssConfig,
@@ -181,18 +182,7 @@ form &&
 // window.onload = () => handleFormSubmit()
 
 const result = () => {
-  // const result = generateEslintConfig({
-  //   jest: true,
-  //   react: true,
-  //   next: true,
-  //   postcss: true,
-  //   scss: true,
-  //   styledComponents: true,
-  //   tailwind: true,
-  //   typescript: true,
-  //   tanstackQuery: true,
-  // })
-  const result = generateStylelintConfig({
+  const config = {
     jest: true,
     react: true,
     next: true,
@@ -202,7 +192,11 @@ const result = () => {
     tailwind: true,
     typescript: true,
     tanstackQuery: true,
-  })
+    vue: true,
+  }
+  // const result = generateEslintConfig(config)
+  // const result = generateStylelintConfig(config)
+  const result = generatePrettierConfig(config)
 
   return result
 }

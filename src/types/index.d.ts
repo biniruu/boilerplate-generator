@@ -19,4 +19,5 @@ export interface SelectOptions {
   tailwind: boolean
   typescript: boolean
   tanstackQuery: boolean
+  vue: boolean
 }
