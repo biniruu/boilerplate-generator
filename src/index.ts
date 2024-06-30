@@ -1,5 +1,6 @@
 import controlElements from '@libs/controlElements'
-import generateEslintConfig from '@libs/eslintConfig'
+import eslintConfig from '@libs/eslintConfig'
+import generateEslintConfig from '@libs/generators/eslint'
 import generateJestConfig from '@libs/jestConfig'
 import generatePostcssConfig from '@libs/postcss'
 import generatePrettierConfig from '@libs/prettierConfig'
@@ -31,7 +32,7 @@ tabElem &&
 const codeElem = document.querySelector<HTMLTextAreaElement>('#code')
 
 const generateConfigs = {
-  eslint: generateEslintConfig,
+  eslint: eslintConfig,
   prettier: generatePrettierConfig,
   stylelint: generateStylelintConfig,
   jest: generateJestConfig,
@@ -176,4 +177,30 @@ form &&
   )
 
 // Init content
-window.onload = () => handleFormSubmit()
+// window.onload = () => handleFormSubmit()
+
+const result = () => {
+  const eslintConfig = generateEslintConfig({
+    jest: true,
+    react: true,
+    next: true,
+    tailwind: true,
+    typescript: true,
+    tanstackQuery: true,
+  })
+
+  const code = `export.default = ${stringify(eslintConfig, null, 2)}`
+  const result = code
+    .replace(`'replace jestVersion'`, `require('jest/package.json').version`)
+    .replace(`'replace tsconfigRootDir'`, '__dirname')
+
+  return result
+}
+
+const newStart = () => {
+  if (codeElem) {
+    codeElem.textContent = result()
+  }
+}
+
+window.onload = newStart
