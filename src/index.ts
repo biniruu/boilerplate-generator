@@ -3,7 +3,7 @@ import eslintConfig from '@libs/eslintConfig'
 // import generateEslintConfig from '@libs/generators/eslint'
 // import generateStylelintConfig from '@libs/generators/stylelint'
 // import generatePrettierConfig from '@libs/generators/prettier'
-import tailwindConfig from '@data/tailwind'
+import generateNextConfig from '@libs/generators/next'
 import generateJestConfig from '@libs/jestConfig'
 import generatePostcssConfig from '@libs/postcss'
 import prettierConfig from '@libs/prettierConfig'
@@ -183,22 +183,23 @@ form &&
 // window.onload = () => handleFormSubmit()
 
 const result = () => {
-  // const config = {
-  //   jest: true,
-  //   react: true,
-  //   next: true,
-  //   postcss: true,
-  //   scss: true,
-  //   styledComponents: false,
-  //   tailwind: true,
-  //   typescript: true,
-  //   tanstackQuery: true,
-  //   vue: true,
-  // }
+  const config = {
+    jest: true,
+    react: true,
+    next: true,
+    postcss: true,
+    scss: true,
+    styledComponents: false,
+    tailwind: true,
+    typescript: true,
+    tanstackQuery: true,
+    vue: true,
+  }
   // const result = generateEslintConfig(config)
   // const result = generateStylelintConfig(config)
   // const result = generatePrettierConfig(config)
-  const result = tailwindConfig
+  // const result = tailwindConfig
+  const result = generateNextConfig(config)
 
   return result
 }
