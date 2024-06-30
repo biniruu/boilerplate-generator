@@ -42,6 +42,7 @@
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.12",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^20.11.30",
     "@types/webpack": "^5.28.5",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
@@ -84,6 +85,8 @@
     "workbox-webpack-plugin": "^7.0.0"
   },
   "dependencies": {
-    "javascript-stringify": "^2.1.0"
+    "javascript-stringify": "^2.1.0",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21"
   }
 }
