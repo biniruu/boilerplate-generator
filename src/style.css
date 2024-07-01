@@ -43,6 +43,16 @@ body {
   display: inline-flex;
 }
 
+.bash {
+  height: 30%;
+  white-space: pre-wrap;
+  width: 30vw;
+}
+
+.bash::-webkit-scrollbar {
+  display: block;
+}
+
 .main {
   column-gap: 2rem;
   display: flex;
