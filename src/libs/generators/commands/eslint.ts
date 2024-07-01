@@ -1,4 +1,4 @@
-import { SelectOptions } from '_types'
+import type { SelectOptions } from '_types'
 
 const getEslintCommands = (configOptions: SelectOptions) => {
   const hasGatsby = configOptions.gatsby
