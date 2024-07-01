@@ -216,18 +216,6 @@ const result = () => {
   return result
 }
 
-const parseCommands = (commands: string[]) => {
-  const parsedCommands = commands.join(', ')
-
-  return parsedCommands
-}
-
-const result2 = () => {
-  const { devDependencies } = generateCommands(config)
-
-  return `yarn add -D ${stringify(devDependencies, parseCommands, 2)}`
-}
-
 const bashElem = document.querySelector<HTMLElement>('#bash')
 
 const newStart = () => {
@@ -235,7 +223,7 @@ const newStart = () => {
     codeElem.textContent = result()
   }
   if (bashElem) {
-    bashElem.textContent = result2()
+    bashElem.textContent = generateCommands(config)
   }
 }
 
