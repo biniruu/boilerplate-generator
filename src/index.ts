@@ -3,6 +3,7 @@ import eslintConfig from '@libs/eslintConfig'
 // import generateEslintConfig from '@libs/generators/eslint'
 // import generateStylelintConfig from '@libs/generators/stylelint'
 // import generatePrettierConfig from '@libs/generators/prettier'
+import generateCommands from '@libs/generators/commands'
 import generateNextConfig from '@libs/generators/next'
 import generateJestConfig from '@libs/jestConfig'
 import generatePostcssConfig from '@libs/postcss'
@@ -32,7 +33,7 @@ tabElem &&
     { passive: true },
   )
 
-const codeElem = document.querySelector<HTMLTextAreaElement>('#code')
+const codeElem = document.querySelector<HTMLElement>('#code')
 
 const generateConfigs = {
   eslint: eslintConfig,
@@ -182,19 +183,30 @@ form &&
 // Init content
 // window.onload = () => handleFormSubmit()
 
+const config = {
+  gatsby: true,
+  graphql: true,
+  jest: true,
+  react: true,
+  next: true,
+  nuxt: true,
+  postcss: true,
+  pug: true,
+  scss: true,
+  storybook: true,
+  styledComponents: false,
+  tailwind: true,
+  three: true,
+  typescript: true,
+  tanstackQuery: true,
+  vite: true,
+  // Not yet installed
+  vue: false,
+  webpack: true,
+  wordpress: true,
+}
+
 const result = () => {
-  const config = {
-    jest: true,
-    react: true,
-    next: true,
-    postcss: true,
-    scss: true,
-    styledComponents: false,
-    tailwind: true,
-    typescript: true,
-    tanstackQuery: true,
-    vue: true,
-  }
   // const result = generateEslintConfig(config)
   // const result = generateStylelintConfig(config)
   // const result = generatePrettierConfig(config)
@@ -204,9 +216,26 @@ const result = () => {
   return result
 }
 
+const parseCommands = (commands: string[]) => {
+  const parsedCommands = commands.join(', ')
+
+  return parsedCommands
+}
+
+const result2 = () => {
+  const { devDependencies } = generateCommands(config)
+
+  return `yarn add -D ${stringify(devDependencies, parseCommands, 2)}`
+}
+
+const bashElem = document.querySelector<HTMLElement>('#bash')
+
 const newStart = () => {
   if (codeElem) {
     codeElem.textContent = result()
+  }
+  if (bashElem) {
+    bashElem.textContent = result2()
   }
 }
 

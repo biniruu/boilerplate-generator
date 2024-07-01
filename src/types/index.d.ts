@@ -10,14 +10,23 @@ export interface Config {
 }
 
 export interface SelectOptions {
+  gatsby: boolean
+  graphql: boolean
   jest: boolean
   react: boolean
   next: boolean
+  nuxt: boolean
   postcss: boolean
+  pug: boolean
   scss: boolean
+  storybook: boolean
   styledComponents: boolean
   tailwind: boolean
+  three: boolean
   typescript: boolean
   tanstackQuery: boolean
+  vite: boolean
   vue: boolean
+  webpack: boolean
+  wordpress: boolean
 }
