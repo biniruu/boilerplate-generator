@@ -10,17 +10,37 @@ export interface Config {
 }
 
 export interface SelectOptions {
+  axios: boolean
+  babel: boolean
+  bcrypt: boolean
+  dotenv: boolean
+  ejs: boolean
+  express: boolean
   gatsby: boolean
   graphql: boolean
+  immer: boolean
   jest: boolean
-  react: boolean
+  joi: boolean
+  koa: boolean
+  lodash: boolean
+  markdown: boolean
+  mongoose: boolean
   next: boolean
+  nextAuth: boolean
+  nodemon: boolean
   nuxt: boolean
   postcss: boolean
   pug: boolean
+  react: boolean
+  reactHookForm: boolean
+  reactInfiniteScroller: boolean
+  recoil: boolean
+  redis: boolean
   scss: boolean
+  socket: boolean
   storybook: boolean
   styledComponents: boolean
+  swr: boolean
   tailwind: boolean
   three: boolean
   typescript: boolean

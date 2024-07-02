@@ -44,7 +44,8 @@ body {
 }
 
 .bash {
-  height: 30%;
+  height: 30vh;
+  overflow: scroll;
   white-space: pre-wrap;
   width: 30vw;
 }
