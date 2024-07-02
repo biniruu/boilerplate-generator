@@ -20,7 +20,6 @@ interface Configuration extends WebpackConfiguration {
 
 const isProduction = process.env.NODE_ENV === 'production'
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
-const sourceMap = isProduction ? '' : new SourceMapDevToolPlugin({})
 
 const config: Configuration = {
   devServer: {
@@ -82,7 +81,6 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
-    sourceMap,
   ],
   resolve: {
     alias: {
@@ -97,9 +95,14 @@ const config: Configuration = {
 }
 
 const result = () => {
+  if (!config.plugins) {
+    throw new Error('config.plugins is not defined.')
+  }
   if (isProduction) {
-    config.plugins?.push(new MiniCssExtractPlugin())
-    config.plugins?.push(new WorkboxWebpackPlugin.GenerateSW())
+    config.plugins.push(new MiniCssExtractPlugin(), new WorkboxWebpackPlugin.GenerateSW())
+  }
+  if (!isProduction) {
+    config.plugins.push(new SourceMapDevToolPlugin({}))
   }
 
   return config
