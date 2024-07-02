@@ -1,7 +1,7 @@
-import getExtends from '@libs/generators/stylelint/extends'
-import getOverrides from '@libs/generators/stylelint/overrides'
-import getPlugins from '@libs/generators/stylelint/plugins'
-import getRules from '@libs/generators/stylelint/rules'
+import getExtends from '@generators/stylelint/extends'
+import getOverrides from '@generators/stylelint/overrides'
+import getPlugins from '@generators/stylelint/plugins'
+import getRules from '@generators/stylelint/rules'
 import type { SelectOptions } from '_types'
 import { stringify } from 'javascript-stringify'
 

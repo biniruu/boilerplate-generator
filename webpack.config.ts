@@ -87,6 +87,7 @@ const config: Configuration = {
   resolve: {
     alias: {
       '@data': path.resolve(__dirname, 'src/data'),
+      '@generators': path.resolve(__dirname, 'src/generators'),
       '@libs': path.resolve(__dirname, 'src/libs'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       _types: path.resolve(__dirname, 'src/types'),
