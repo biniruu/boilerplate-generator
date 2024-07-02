@@ -1,18 +1,24 @@
-import { SelectOptions } from '_types'
+import type { SelectOptions } from '_types'
 
 const getValidationCommands = (configOptions: SelectOptions) => {
   const hasJoi = configOptions.joi
-  const hasNext = configOptions.next
-  const hasReact = configOptions.react
   const hasReactHookForm = configOptions.reactHookForm
 
   const validationDependencies: string[] = []
   const validationDevDependencies: string[] = []
 
+  /**
+   * joi
+   * {@link https://joi.dev}
+   */
   if (hasJoi) {
     validationDependencies.push('joi')
   }
-  if (hasReactHookForm && (hasReact || hasNext)) {
+  /**
+   * react-hook-form
+   * {@link https://www.react-hook-form.com}
+   */
+  if (hasReactHookForm) {
     validationDependencies.push('react-hook-form')
   }
 

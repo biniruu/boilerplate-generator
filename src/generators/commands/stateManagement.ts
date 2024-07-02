@@ -1,10 +1,14 @@
-import { SelectOptions } from '_types'
+import type { SelectOptions } from '_types'
 
 const getStateManagementCommands = (configOptions: SelectOptions) => {
   const hasRecoil = configOptions.recoil
 
   const stateManagementDependencies: string[] = []
 
+  /**
+   * recoil
+   * {@link https://recoiljs.org}
+   */
   if (hasRecoil) {
     stateManagementDependencies.push('recoil')
   }

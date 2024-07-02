@@ -14,12 +14,26 @@ const getTestCommands = (configOptions: SelectOptions) => {
   const testDevDependencies: string[] = []
 
   if (hasJest) {
+    /**
+     * identity-obj-proxy
+     * {@link https://github.com/keyz/identity-obj-proxy#readme}
+     */
     if (hasCssModule) {
       if (hasTypescript) {
         testDevDependencies.push('@types/identity-obj-proxy')
       }
       testDevDependencies.push('identity-obj-proxy')
     }
+    /**
+     * @testing-library/react (React Testing Library
+     * {@link https://testing-library.com/docs/react-testing-library/intro/})
+     *
+     * @testing-library/react-hooks (react-hooks-testing-library)
+     * {@link https://github.com/testing-library/react-hooks-testing-library#readme}
+     *
+     * react-test-renderer
+     * {@link https://legacy.reactjs.org/docs/test-renderer.html}
+     */
     if (hasReact || hasNext) {
       testDevDependencies.push(
         '@testing-library/react',
@@ -28,14 +42,51 @@ const getTestCommands = (configOptions: SelectOptions) => {
         'react-test-renderer',
       )
     }
+    /**
+     * ts-jest
+     * {@link https://kulshekhar.github.io/ts-jest/}
+     */
     if (hasTypescript) {
       testDevDependencies.push('ts-jest')
     }
+    /**
+     * @testing-library/vue (Vue Testing Library)
+     * {@link https://testing-library.com/docs/vue-testing-library/intro/}
+     *
+     * @vue/vue3-jest
+     * {@link https://github.com/vuejs/vue-jest#readme}
+     */
     if (hasNuxt || hasVue) {
       testDevDependencies.push('@testing-library/vue', '@vue/vue3-jest')
     }
-    // If you have added 'jest', you don't need to add these packages: jest-resolve and jest-resolve-dependencies.
-    // I recommend adding @types/jest even if it is not a TypeScript project because of its IntelliSense.
+    /**
+     * @testing-library/dom (DOM Testing Library)
+     * {@link https://testing-library.com/docs/dom-testing-library/intro/}
+     *
+     * @testing-library/jest-dom (jest-dom)
+     * {@link https://github.com/testing-library/jest-dom#readme}
+     *
+     * @testing-library/user-event (user-event)
+     * {@link https://github.com/testing-library/user-event#readme}
+     *
+     * jest
+     * {@link https://jestjs.io}
+     *
+     * jest-environment-jsdom
+     * {@link https://github.com/jestjs/jest#readme}
+     *
+     * jest-watch-typeahead
+     * {@link https://github.com/jest-community/jest-watch-typeahead?tab=readme-ov-file#jest-watch-typeahead}
+     *
+     * jsdom
+     * {@link https://github.com/jsdom/jsdom#readme}
+     *
+     * msw (Mock Service Worker)
+     * {@link https://mswjs.io}
+     *
+     * If you have added 'jest', you don't need to add these packages: jest-resolve and jest-resolve-dependencies.
+     * I recommend adding @types/jest even if it is not a TypeScript project because of its IntelliSense.
+     */
     testDevDependencies.push(
       '@testing-library/dom',
       '@testing-library/jest-dom',

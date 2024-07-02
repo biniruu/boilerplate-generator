@@ -19,6 +19,73 @@ const getEslintCommands = (configOptions: SelectOptions) => {
 
   const eslintDevDependencies: string[] = []
 
+  /**
+   * @babel/eslint-parser
+   * {@link https://www.npmjs.com/package/@babel/eslint-parser}
+   *
+   * @graphql-eslint/eslint-plugin (GraphQL-ESLint)
+   * {@link https://the-guild.dev/graphql/eslint/docs}
+   *
+   * @nuxtjs/eslint-config-typescript
+   * {@link https://eslint.nuxt.com}
+   *
+   * @tanstack/eslint-plugin-query (Tanstack Query)
+   * {@link https://tanstack.com/query/latest}
+   *
+   * @typescript-eslint/eslint-plugin
+   * {@link https://typescript-eslint.io/packages/eslint-plugin/}
+   *
+   * @typescript-eslint/parser
+   * {@link https://typescript-eslint.io/packages/parser/}
+   *
+   * eslint (ESLint)
+   * {@link https://eslint.org}
+   *
+   * eslint-import-resolver-typescript
+   * {@link https://github.com/import-js/eslint-import-resolver-typescript#readme}
+   *
+   * eslint-plugin-import
+   * {@link https://github.com/import-js/eslint-plugin-import?tab=readme-ov-file#eslint-plugin-import}
+   *
+   * eslint-plugin-react-refresh
+   * {@link https://github.com/ArnaudBarre/eslint-plugin-react-refresh#readme}
+   *
+   * eslint-plugin-testing-library
+   * {@link https://github.com/testing-library/eslint-plugin-testing-library?tab=readme-ov-file#eslint-plugin-testing-library}
+   *
+   * eslint-plugin-jest
+   * {@link https://github.com/jest-community/eslint-plugin-jest#readme}
+   *
+   * eslint-plugin-jsx-a11y
+   * {@link https://github.com/jsx-eslint/eslint-plugin-jsx-a11y#readme}
+   *
+   * eslint-plugin-nuxt
+   * {@link https://github.com/nuxt/eslint-plugin-nuxt#readme}
+   *
+   * vue-eslint-parser
+   * {@link https://github.com/vuejs/vue-eslint-parser#readme}
+   *
+   * eslint-plugin-react
+   * {@link https://github.com/jsx-eslint/eslint-plugin-react?tab=readme-ov-file#eslint-plugin-react-}
+   *
+   * eslint-plugin-jest-dom
+   * {@link https://github.com/testing-library/eslint-plugin-jest-dom#readme}
+   *
+   * eslint-plugin-pug
+   * {@link https://github.com/valpackett/eslint-plugin-pug#readme}
+   *
+   * eslint-plugin-storybook
+   * {@link https://github.com/storybookjs/eslint-plugin-storybook#readme}
+   *
+   * eslint-plugin-tailwindcss
+   * {@link https://github.com/francoismassart/eslint-plugin-tailwindcss?tab=readme-ov-file#eslint-plugin-tailwindcss}
+   *
+   * eslint-webpack-plugin
+   * {@link https://github.com/webpack-contrib/eslint-webpack-plugin?tab=readme-ov-file#eslint-webpack-plugin}
+   *
+   * jest-resolve
+   * {@link https://github.com/jestjs/jest#readme}
+   */
   if (hasCore) {
     if (hasGatsby) {
       // For TypeScript only
@@ -64,16 +131,7 @@ const getEslintCommands = (configOptions: SelectOptions) => {
         'jest-resolve',
       )
     }
-    if (hasThree) {
-      eslintDevDependencies.push(
-        '@typescript-eslint/eslint-plugin',
-        '@typescript-eslint/parser',
-        'eslint',
-        'eslint-import-resolver-typescript',
-        'eslint-plugin-import',
-      )
-    }
-    if (hasTypescript) {
+    if (hasThree || hasTypescript) {
       eslintDevDependencies.push(
         '@typescript-eslint/eslint-plugin',
         '@typescript-eslint/parser',

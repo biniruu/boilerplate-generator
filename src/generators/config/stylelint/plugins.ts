@@ -1,4 +1,4 @@
-import { SelectOptions } from '_types'
+import type { SelectOptions } from '_types'
 
 // plugins: [
 //   'stylelint-scss',

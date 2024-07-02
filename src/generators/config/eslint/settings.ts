@@ -1,4 +1,4 @@
-import { SelectOptions } from '_types'
+import type { SelectOptions } from '_types'
 
 interface Settings {
   'import/resolver': { node: { extensions: string[] } }
