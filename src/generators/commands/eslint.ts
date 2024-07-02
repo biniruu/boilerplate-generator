@@ -10,7 +10,7 @@ const getEslintCommands = (configOptions: SelectOptions) => {
   const hasReact = configOptions.react
   const hasStorybook = configOptions.storybook
   const hasTailwind = configOptions.tailwind
-  const hasTanstackQeury = configOptions.tanstackQuery
+  const hasTanstackQuery = configOptions.tanstackQuery
   const hasThree = configOptions.three
   const hasTypescript = configOptions.typescript
   const hasWebpack = configOptions.webpack
@@ -162,7 +162,7 @@ const getEslintCommands = (configOptions: SelectOptions) => {
   if (hasStorybook) {
     eslintDevDependencies.push('eslint-plugin-storybook')
   }
-  if (hasTanstackQeury) {
+  if (hasTanstackQuery) {
     eslintDevDependencies.push('@tanstack/eslint-plugin-query')
   }
   if (hasTailwind) {

@@ -10,7 +10,7 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
   const hasRedis = configOptions.redis
   const hasSocket = configOptions.socket
   const hasSwr = configOptions.swr
-  const hasTanstackQeury = configOptions.tanstackQuery
+  const hasTanstackQuery = configOptions.tanstackQuery
   const hasTypescript = configOptions.typescript
 
   const dataManagementDependencies: string[] = []
@@ -108,7 +108,7 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
    * @tanstack/react-query-devtools
    * {@link https://tanstack.com/query/latest}
    */
-  if (hasTanstackQeury) {
+  if (hasTanstackQuery) {
     if (hasReact || hasNext) {
       dataManagementDependencies.push('@tanstack/query-core', '@tanstack/react-query')
       dataManagementDevDependencies.push('@tanstack/react-query-devtools')
