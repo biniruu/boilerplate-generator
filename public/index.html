@@ -16,53 +16,163 @@
           <form id="options">
             <fieldset>
               <legend>Syntax</legend>
-              <input type="radio" name="syntax" id="typescript" class="syntax" value="typescript" checked />
+              <input type="radio" name="syntax" id="typescript" class="typescript" value="typescript" checked />
               <label for="typescript">TypeScript</label>
-              <input type="radio" name="syntax" id="javascript" class="syntax" value="javascript" />
+              <input type="radio" name="syntax" id="javascript" class="javascript" value="javascript" />
               <label for="javascript">JavaScript</label>
             </fieldset>
             <fieldset>
-              <legend>Web Development Library</legend>
-              <input
-                type="radio"
-                name="web-development-library"
-                id="nothing"
-                class="web-dev-lib"
-                value="nothing"
-                checked
-              />
+              <legend>JavaScript library</legend>
+              <input type="radio" name="nothing" id="nothing" class="nothing" value="nothing" checked />
               <label for="nothing">Nothing</label>
-              <input type="radio" name="web-development-library" id="next" class="web-dev-lib" value="next" />
+              <input type="radio" name="gatsby" id="gatsby" class="gatsby" value="gatsby" />
+              <label for="gatsby">Gatsby</label>
+              <input type="radio" name="next" id="next" class="next" value="next" />
               <label for="next">Next.js</label>
-              <input type="radio" name="web-development-library" id="react" class="web-dev-lib" value="react" />
+              <input type="radio" name="nuxt" id="nuxt" class="nuxt" value="nuxt" />
+              <label for="nuxt">Nuxt.js</label>
+              <input type="radio" name="react" id="react" class="react" value="react" />
               <label for="react">React.js</label>
+              <input type="radio" name="vue" id="vue" class="vue" value="vue" />
+              <label for="vue">Vue.js</label>
             </fieldset>
             <fieldset>
-              <legend>CSS Library</legend>
-              <input type="checkbox" name="postcss" id="postcss" class="css-lib" value="postcss" />
+              <legend>Module bundler</legend>
+              <input type="checkbox" name="webpack" id="webpack" class="webpack" value="webpack" />
+              <label for="webpack">Webpack</label>
+              <input type="checkbox" name="vite" id="vite" class="vite" value="vite" />
+              <label for="vite">Vite</label>
+            </fieldset>
+            <fieldset>
+              <legend>Web framework</legend>
+              <input type="checkbox" name="express" id="express" class="express" value="express" />
+              <label for="express">Express</label>
+              <input type="checkbox" name="three" id="three" class="three" value="three" />
+              <label for="three">three.js</label>
+            </fieldset>
+            <fieldset>
+              <legend>CSS framework</legend>
+              <input type="checkbox" name="postcss" id="postcss" class="postcss" value="postcss" />
               <label for="postcss">PostCSS</label>
-              <input type="checkbox" name="scss" id="scss" class="css-lib" value="scss" />
+              <input type="checkbox" name="scss" id="scss" class="scss" value="scss" />
               <label for="scss">SCSS</label>
-              <input type="checkbox" name="tailwind" id="tailwind" class="css-lib" value="tailwind" />
+              <input
+                type="checkbox"
+                name="styled-components"
+                id="styled-components"
+                class="styled-components"
+                value="styledComponents"
+              />
+              <label for="styled-components">SCSS</label>
+              <input type="checkbox" name="tailwind" id="tailwind" class="tailwind" value="tailwind" />
               <label for="tailwind">Tailwind CSS</label>
             </fieldset>
             <fieldset>
-              <legend>Utility</legend>
-              <input type="checkbox" name="jsx-a11y" id="jsx-a11y" class="utility" value="jsxA11y" />
-              <label for="jsx-a11y">JSX a11y</label>
-              <input type="checkbox" name="jest" id="jest" class="utility" value="jest" />
+              <legend>Testing library</legend>
+              <input type="checkbox" name="jest" id="jest" class="jest" value="jest" />
               <label for="jest">Jest</label>
-              <input type="checkbox" name="tanstack-query" id="tanstack-query" class="utility" value="tanstackQuery" />
+            </fieldset>
+            <fieldset>
+              <legend>Data management</legend>
+              <input type="checkbox" name="axios" id="axios" class="axios" value="axios" />
+              <label for="axios">Axios</label>
+              <input type="checkbox" name="graphql" id="graphql" class="graphql" value="graphql" />
+              <label for="graphql">GraphQL</label>
+              <input type="checkbox" name="koa" id="koa" class="koa" value="koa" />
+              <label for="koa">Koa</label>
+              <input type="checkbox" name="mongoose" id="mongoose" class="mongoose" value="mongoose" />
+              <label for="mongoose">Mongoose</label>
+              <input type="checkbox" name="redis" id="redis" class="redis" value="redis" />
+              <label for="redis">Redis</label>
+              <input type="checkbox" name="socket" id="socket" class="socket" value="socket" />
+              <label for="socket">Socket.io (+client)</label>
+              <input
+                type="checkbox"
+                name="tanstack-query"
+                id="tanstack-query"
+                class="tanstack-query"
+                value="tanstackQuery"
+              />
               <label for="tanstack-query">Tanstack query</label>
             </fieldset>
             <fieldset>
-              <legend>Module Bundler</legend>
-              <input type="checkbox" name="webpack" id="webpack" class="module-buldler" value="webpack" />
-              <label for="webpack">Webpack</label>
-              <span id="vite-wrapper" class="hide">
-                <input type="checkbox" name="vite" id="vite" class="module-buldler" value="vite" />
-                <label for="vite">Vite</label>
-              </span>
+              <legend>State management</legend>
+              <input type="checkbox" name="recoil" id="recoil" class="recoil" value="recoil" />
+              <label for="recoil">Recoil</label>
+            </fieldset>
+            <fieldset>
+              <legend>Authentication</legend>
+              <input type="checkbox" name="bcrypt" id="bcrypt" class="bcrypt" value="bcrypt" />
+              <label for="bcrypt">Bcrypt</label>
+              <input type="checkbox" name="next-auth" id="next-auth" class="next-auth" value="nextAuth" />
+              <label for="next-auth">NextAuth.js</label>
+            </fieldset>
+            <fieldset>
+              <legend>Validation</legend>
+              <input type="checkbox" name="joi" id="joi" class="joi" value="joi" />
+              <label for="joi">Joi</label>
+              <input
+                type="checkbox"
+                name="react-hook-form"
+                id="react-hook-form"
+                class="react-hook-form"
+                value="reactHookForm"
+              />
+              <label for="react-hook-form">React Hook Form</label>
+            </fieldset>
+            <fieldset>
+              <legend>Utility</legend>
+              <input type="checkbox" name="dayjs" id="dayjs" class="dayjs" value="dayjs" />
+              <label for="dayjs">Day.js</label>
+              <input type="checkbox" name="dotenv" id="dotenv" class="dotenv" value="dotenv" />
+              <label for="dotenv">Dotenv</label>
+              <input type="checkbox" name="immer" id="immer" class="immer" value="immer" />
+              <label for="immer">Immer</label>
+              <input type="checkbox" name="husky" id="husky" class="husky" value="husky" />
+              <label for="husky">Husky</label>
+              <input
+                type="checkbox"
+                name="javascript-stringify"
+                id="javascript-stringify"
+                class="javascript-stringify"
+                value="javascriptStringify"
+              />
+              <label for="javascript-stringify">JavaScript Stringify</label>
+              <input type="checkbox" name="jsdiff" id="jsdiff" class="jsdiff" value="jsdiff" />
+              <label for="jsdiff">jsdiff</label>
+              <input type="checkbox" name="jszip" id="jszip" class="jszip" value="jszip" />
+              <label for="jszip">JSZip</label>
+              <input type="checkbox" name="lodash" id="lodash" class="lodash" value="lodash" />
+              <label for="lodash">Lodash</label>
+              <input type="checkbox" name="markdown" id="markdown" class="markdown" value="markdown" />
+              <label for="markdown">Markdown Lint</label>
+              <input type="checkbox" name="nodemon" id="nodemon" class="nodemon" value="nodemon" />
+              <label for="nodemon">Nodemon</label>
+              <input type="checkbox" name="prism" id="prism" class="prism" value="prism" />
+              <label for="prism">Prism</label>
+              <input
+                type="checkbox"
+                name="react-infinite-scroller"
+                id="react-infinite-scroller"
+                class="react-infinite-scroller"
+                value="reactInfiniteScroller"
+              />
+              <label for="react-infinite-scroller">React Infinite Scroller</label>
+              <input
+                type="checkbox"
+                name="react-joyride"
+                id="react-joyride"
+                class="react-joyride"
+                value="reactJoyride"
+              />
+              <label for="react-joyride">React Joyride</label>
+            </fieldset>
+            <fieldset>
+              <legend>HTML template library</legend>
+              <input type="checkbox" name="ejs" id="ejs" class="ejs" value="ejs" />
+              <label for="ejs">EJS</label>
+              <input type="checkbox" name="pug" id="pug" class="pug" value="pug" />
+              <label for="pug">Pug</label>
             </fieldset>
           </form>
         </aside>
