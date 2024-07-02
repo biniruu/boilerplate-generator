@@ -6,7 +6,7 @@ const getStateManagementCommands = (configOptions: SelectOptions) => {
   const stateManagementDependencies: string[] = []
 
   /**
-   * recoil
+   * recoil (Recoil)
    * {@link https://recoiljs.org}
    */
   if (hasRecoil) {

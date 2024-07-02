@@ -278,7 +278,7 @@ import type { SelectOptions } from '_types'
 //   'react-hooks/rules-of-hooks': 'error',
 //   /**
 //    * Eslint-plugin-react-refresh rules
-//    * {@link https://github.com/ArnaudBarre/eslint-plugin-react-refresh?tab=readme-ov-file#options}
+//    * {@link https://github.com/ArnaudBarre/eslint-plugin-react-refresh#options}
 //    *
 //    * react-refresh/only-export-components : Don't warn when a constant (string, number, boolean, templateLiteral) is exported aside one or more components
 //    */

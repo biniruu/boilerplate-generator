@@ -4,7 +4,7 @@ const getStylelintCommands = (configOptions: SelectOptions) => {
   const hasScss = configOptions.scss
 
   /**
-   * stylelint
+   * stylelint (Stylelint)
    * {@link https://stylelint.io}
    *
    * stylelint-config-standard

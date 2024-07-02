@@ -13,7 +13,7 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
   const bundlerDevDependencies: string[] = []
 
   /**
-   * vite
+   * vite (Vite)
    * {@link https://vitejs.dev}
    *
    * vite-plugin-dts
@@ -33,33 +33,33 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
   }
   /**
    * source-map-loader
-   * {@link https://github.com/webpack-contrib/source-map-loader?tab=readme-ov-file#source-map-loader}
+   * {@link https://github.com/webpack-contrib/source-map-loader#source-map-loader}
    */
   if (hasWebpack) {
     if (!hasNext) {
       /**
        * ts-loader (TypeScript loader for webpack)
-       * {@link https://github.com/TypeStrong/ts-loader?tab=readme-ov-file#typescript-loader-for-webpack}
+       * {@link https://github.com/TypeStrong/ts-loader#typescript-loader-for-webpack}
        */
       if (hasTypescript) {
         bundlerDevDependencies.push('@types/webpack', 'ts-loader')
       }
       /**
        * html-webpack-plugin
-       * {@link https://github.com/jantimon/html-webpack-plugin?tab=readme-ov-file#html-webpack-plugin}
+       * {@link https://github.com/jantimon/html-webpack-plugin#html-webpack-plugin}
        *
        * mini-css-extract-plugin
-       * {@link https://github.com/webpack-contrib/mini-css-extract-plugin?tab=readme-ov-file#mini-css-extract-plugin}
+       * {@link https://github.com/webpack-contrib/mini-css-extract-plugin#mini-css-extract-plugin}
        *
        * workbox-webpack-plugin
-       * {@link https://github.com/GoogleChrome/workbox?tab=readme-ov-file#welcome-to-workbox}
+       * {@link https://github.com/GoogleChrome/workbox#welcome-to-workbox}
        */
       if (!hasThree) {
         bundlerDevDependencies.push('html-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin')
       }
       /**
        * sass-loader
-       * {@link https://github.com/webpack-contrib/sass-loader?tab=readme-ov-file#sass-loader}
+       * {@link https://github.com/webpack-contrib/sass-loader#sass-loader}
        */
       if (hasScss) {
         bundlerDevDependencies.push('sass-loader')
@@ -69,7 +69,7 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
        * {@link https://swc.rs}
        *
        * style-loader
-       * {@link https://github.com/webpack-contrib/style-loader?tab=readme-ov-file#style-loader}
+       * {@link https://github.com/webpack-contrib/style-loader#style-loader}
        *
        * webpack
        * {@link https://webpack.js.org}
@@ -79,11 +79,11 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
        * {@link https://webpack.js.org/api/cli/}
        *
        * webpack-dev-server
-       * {@link https://github.com/webpack/webpack-dev-server?tab=readme-ov-file#webpack-dev-server}
+       * {@link https://github.com/webpack/webpack-dev-server#webpack-dev-server}
        * {@link https://webpack.js.org/configuration/dev-server/}
        *
        * webpack-merge - Merge designed for Webpack
-       * {@link https://github.com/survivejs/webpack-merge?tab=readme-ov-file#webpack-merge---merge-designed-for-webpack}
+       * {@link https://github.com/survivejs/webpack-merge#webpack-merge---merge-designed-for-webpack}
        */
       bundlerDevDependencies.push(
         '@swc/html',

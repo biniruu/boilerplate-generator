@@ -15,7 +15,7 @@ const getValidationCommands = (configOptions: SelectOptions) => {
     validationDependencies.push('joi')
   }
   /**
-   * react-hook-form
+   * react-hook-form (React Hook Form)
    * {@link https://www.react-hook-form.com}
    */
   if (hasReactHookForm) {

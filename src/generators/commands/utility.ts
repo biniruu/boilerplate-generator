@@ -60,14 +60,14 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
     utilityDependencies.push('file-saver')
   }
   /**
-   * husky
+   * husky (Husky)
    * {@link https://typicode.github.io/husky/}
    */
   if (hasHusky) {
     utilityDevDependencies.push('husky')
   }
   /**
-   * immer
+   * immer (Immer)
    * {@link https://immerjs.github.io/immer/}
    *
    * use-immer
@@ -81,14 +81,14 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
   }
   /**
    * javascript-stringify (JavaScript Stringify)
-   * {@link https://github.com/blakeembrey/javascript-stringify?tab=readme-ov-file#javascript-stringify}
+   * {@link https://github.com/blakeembrey/javascript-stringify#javascript-stringify}
    */
   if (hasJavascriptStringify) {
     utilityDependencies.push('javascript-stringify')
   }
   /**
    * jsdiff
-   * {@link https://github.com/Stuk/jszip#readme}
+   * {@link https://github.com/nathan7/jsdiff#jsdiff}
    */
   if (hasJsdiff) {
     utilityDependencies.push('jsdiff')
@@ -101,7 +101,7 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
     utilityDependencies.push('jszip')
   }
   /**
-   * lodash
+   * lodash (Lodash)
    * {@link https://lodash.com}
    */
   if (hasLodash) {
@@ -113,7 +113,7 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
   }
   /**
    * markdownlint
-   * {@link https://github.com/DavidAnson/markdownlint}
+   * {@link https://github.com/DavidAnson/markdownlint#markdownlint}
    */
   if (hasMarkdown) {
     utilityDevDependencies.push('markdownlint')

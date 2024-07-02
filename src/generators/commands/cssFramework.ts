@@ -42,7 +42,7 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/ota-meshi/postcss-html#readme}
    *
    * postcss-loader
-   * {@link https://github.com/webpack-contrib/postcss-loader?tab=readme-ov-file#postcss-loader}
+   * {@link https://github.com/webpack-contrib/postcss-loader#postcss-loader}
    *
    * postcss-normalize (PostCSS Normalize)
    * {@link https://github.com/csstools/postcss-normalize#readme}
@@ -92,14 +92,14 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
     }
   }
   /**
-   * sass
+   * sass (Sass)
    * {@link https://sass-lang.com}
    */
   if (hasScss) {
     cssFrameworkDevDependencies.push('sass')
   }
   /**
-   * tailwindcss
+   * tailwindcss (Tailwind CSS)
    * {@link https://tailwindcss.com}
    */
   if (hasTailwind) {

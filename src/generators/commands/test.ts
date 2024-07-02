@@ -25,13 +25,13 @@ const getTestCommands = (configOptions: SelectOptions) => {
       testDevDependencies.push('identity-obj-proxy')
     }
     /**
-     * @testing-library/react (React Testing Library
+     * @testing-library/react (React Testing Library)
      * {@link https://testing-library.com/docs/react-testing-library/intro/})
      *
      * @testing-library/react-hooks (react-hooks-testing-library)
      * {@link https://github.com/testing-library/react-hooks-testing-library#readme}
      *
-     * react-test-renderer
+     * react-test-renderer (Test Renderer)
      * {@link https://legacy.reactjs.org/docs/test-renderer.html}
      */
     if (hasReact || hasNext) {
@@ -69,14 +69,14 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * @testing-library/user-event (user-event)
      * {@link https://github.com/testing-library/user-event#readme}
      *
-     * jest
+     * jest (Jest)
      * {@link https://jestjs.io}
      *
      * jest-environment-jsdom
      * {@link https://github.com/jestjs/jest#readme}
      *
      * jest-watch-typeahead
-     * {@link https://github.com/jest-community/jest-watch-typeahead?tab=readme-ov-file#jest-watch-typeahead}
+     * {@link https://github.com/jest-community/jest-watch-typeahead#jest-watch-typeahead}
      *
      * jsdom
      * {@link https://github.com/jsdom/jsdom#readme}

@@ -8,6 +8,8 @@ const getCompilerCommands = (configOptions: SelectOptions) => {
   const compilerDevDependencies: string[] = []
 
   /**
+   * Babel
+   *
    * @babel/core
    * {@link https://babel.dev/docs/babel-core}
    *

@@ -19,7 +19,7 @@ const getWebFrameworkCommands = (configOptions: SelectOptions) => {
    * cors
    * {@link https://github.com/expressjs/cors#readme}
    *
-   * express
+   * express (Express)
    * {@link https://expressjs.com}
    */
   if (hasExpress) {
@@ -30,16 +30,17 @@ const getWebFrameworkCommands = (configOptions: SelectOptions) => {
   }
   /**
    * react-refresh
-   * {@link https://react.dev}
+   * {@link https://www.npmjs.com/package/react-refresh}
    */
   if (hasNext || hasReact) {
     webFrameworkDependencies.push('react-refresh')
   }
   /**
    * volar-service-vetur
-   * {@link https://github.com/volarjs/services/tree/master/packages/vetur}
+   * {@link https://github.com/volarjs/services/tree/master/packages/vetur#volar-service-vetur}
    *
    * vue-tsc
+   * {@link https://github.com/vuejs/language-tools/tree/master/packages/tsc#vue-tsc}
    * {@link https://github.com/vuejs/language-tools#readme}
    */
   if (hasNuxt || hasVue) {

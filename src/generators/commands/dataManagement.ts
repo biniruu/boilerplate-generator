@@ -17,32 +17,32 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
   const dataManagementDevDependencies: string[] = []
 
   /**
-   * AXIOS
+   * axios (AXIOS)
    * {@link https://axios-http.com}
    */
   if (hasAxios) {
     dataManagementDependencies.push('axios')
   }
   /**
-   * Apollo Client
+   * @apollo/client (Apollo Client)
    * {@link https://www.apollographql.com/docs/react/}
    *
-   * DataLoader
-   * {@link https://github.com/graphql/dataloader?tab=readme-ov-file#dataloader}
+   * dataloader (DataLoader)
+   * {@link https://github.com/graphql/dataloader#dataloader}
    *
-   * GraphQL.js
+   * graphql (GraphQL.js)
    * {@link https://graphql.org}
    *
-   * GraphQL Scalars
+   * graphql-scalars (GraphQL Scalars)
    * {@link https://the-guild.dev/graphql/scalars}
    *
-   * Metadata Reflection API
+   * reflect-metadata (Metadata Reflection API)
    * {@link https://rbuckton.github.io/reflect-metadata/}
    *
-   * TypeGraphQL
+   * type-graphql (TypeGraphQL)
    * {@link https://typegraphql.com}
    *
-   * GraphQL Code Generator
+   * @graphql-codegen/cli (GraphQL Code Generator)
    * {@link https://the-guild.dev/graphql/codegen}
    */
   if (hasGraphql) {
@@ -57,11 +57,11 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
     dataManagementDevDependencies.push('@graphql-codegen/cli')
   }
   /**
-   * koa
+   * koa (Koa)
    * {@link https://github.com/koajs/koa#readme}
    *
    * @koa/router
-   * {@link https://github.com/koajs/router?tab=readme-ov-file#koarouter}
+   * {@link https://github.com/koajs/router#koarouter}
    */
   if (hasKoa) {
     if (hasTypescript) {
@@ -70,7 +70,7 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
     dataManagementDependencies.push('koa', '@koa/router')
   }
   /**
-   * Mongoose
+   * mongoose (Mongoose)
    * {@link https://mongoosejs.com}
    */
   if (hasMongoose) {
@@ -94,7 +94,7 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
     dataManagementDependencies.push('socket.io', 'socket.io-client')
   }
   /**
-   * SWR
+   * swr (SWR)
    * {@link https://swr.vercel.app}
    */
   if (hasSwr) {

@@ -9,7 +9,7 @@ const getHtmlTemplateCommands = (configOptions: SelectOptions) => {
   const htmlTemplateDevDependencies: string[] = []
 
   /**
-   * ejs (Embedded JavaScript templates)
+   * ejs (EJS)
    * {@link https://ejs.co}
    */
   if (hasEjs) {
@@ -19,11 +19,11 @@ const getHtmlTemplateCommands = (configOptions: SelectOptions) => {
     htmlTemplateDependencies.push('ejs')
   }
   /**
-   * pug
+   * pug (Pug)
    * {@link https://pugjs.org/api/getting-started.html}
    *
    * pug-lint
-   * {@link https://github.com/pugjs/pug-lint?tab=readme-ov-file#pug-lint}
+   * {@link https://github.com/pugjs/pug-lint#pug-lint}
    */
   if (hasPug) {
     htmlTemplateDependencies.push('pug')

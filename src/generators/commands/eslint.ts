@@ -45,13 +45,13 @@ const getEslintCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/import-js/eslint-import-resolver-typescript#readme}
    *
    * eslint-plugin-import
-   * {@link https://github.com/import-js/eslint-plugin-import?tab=readme-ov-file#eslint-plugin-import}
+   * {@link https://github.com/import-js/eslint-plugin-import#eslint-plugin-import}
    *
    * eslint-plugin-react-refresh
    * {@link https://github.com/ArnaudBarre/eslint-plugin-react-refresh#readme}
    *
    * eslint-plugin-testing-library
-   * {@link https://github.com/testing-library/eslint-plugin-testing-library?tab=readme-ov-file#eslint-plugin-testing-library}
+   * {@link https://github.com/testing-library/eslint-plugin-testing-library#eslint-plugin-testing-library}
    *
    * eslint-plugin-jest
    * {@link https://github.com/jest-community/eslint-plugin-jest#readme}
@@ -66,7 +66,7 @@ const getEslintCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/vuejs/vue-eslint-parser#readme}
    *
    * eslint-plugin-react
-   * {@link https://github.com/jsx-eslint/eslint-plugin-react?tab=readme-ov-file#eslint-plugin-react-}
+   * {@link https://github.com/jsx-eslint/eslint-plugin-react#eslint-plugin-react-}
    *
    * eslint-plugin-jest-dom
    * {@link https://github.com/testing-library/eslint-plugin-jest-dom#readme}
@@ -78,10 +78,10 @@ const getEslintCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/storybookjs/eslint-plugin-storybook#readme}
    *
    * eslint-plugin-tailwindcss
-   * {@link https://github.com/francoismassart/eslint-plugin-tailwindcss?tab=readme-ov-file#eslint-plugin-tailwindcss}
+   * {@link https://github.com/francoismassart/eslint-plugin-tailwindcss#eslint-plugin-tailwindcss}
    *
    * eslint-webpack-plugin
-   * {@link https://github.com/webpack-contrib/eslint-webpack-plugin?tab=readme-ov-file#eslint-webpack-plugin}
+   * {@link https://github.com/webpack-contrib/eslint-webpack-plugin#eslint-webpack-plugin}
    *
    * jest-resolve
    * {@link https://github.com/jestjs/jest#readme}
