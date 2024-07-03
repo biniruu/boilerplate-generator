@@ -65,9 +65,12 @@ const generateCommands = (configOptions: SelectOptions) => {
     ...webFrameworkDevDependencies,
   ]
 
-  return `yarn add ${stringify(dependencies, parseCommands, 2)}
+  if (dependencies.length) {
+    return `yarn add ${stringify(dependencies, parseCommands, 2)}
   
 yarn add -D ${stringify(devDependencies, parseCommands, 2)}`
+  }
+  return `yarn add -D ${stringify(devDependencies, parseCommands, 2)}`
 }
 
 export default generateCommands
