@@ -1,4 +1,3 @@
-import controlElements from '@libs/controlElements'
 import eslintConfig from '@libs/eslintConfig'
 // import generateEslintConfig from '@generators/config/eslint'
 // import generateStylelintConfig from '@generators/config/stylelint'
@@ -120,118 +119,98 @@ export default jestConfig`
   codeElem.textContent = `module.exports = ${stringify(config, null, 4)}`
 }
 
-const tabName = {
-  jest: '#jest-tab',
-  postcss: '#postcss-tab',
-  webpack: '#webpack-tab',
-  vite: '#vite-tab',
-}
+// const tabName = {
+//   jest: '#jest-tab',
+//   postcss: '#postcss-tab',
+//   webpack: '#webpack-tab',
+//   vite: '#vite-tab',
+// }
 
-const handleTabs = (selectedOption: string) => {
-  if (Object.hasOwn(tabName, selectedOption)) {
-    const currentTab = document.querySelectorAll<HTMLButtonElement>(tabName[selectedOption as keyof typeof tabName])
-    currentTab.forEach(tab => {
-      if (tab.classList.contains('hide')) {
-        tab.classList.remove('hide')
-      } else {
-        tab?.classList.add('hide')
-      }
-    })
-  }
-}
+// const handleTabs = (selectedOption: string) => {
+//   if (Object.hasOwn(tabName, selectedOption)) {
+//     const currentTab = document.querySelectorAll<HTMLButtonElement>(tabName[selectedOption as keyof typeof tabName])
+//     currentTab.forEach(tab => {
+//       if (tab.classList.contains('hide')) {
+//         tab.classList.remove('hide')
+//       } else {
+//         tab?.classList.add('hide')
+//       }
+//     })
+//   }
+// }
 
-// Toggle Vite config when Web Development Library options are changed
-const handleViteOption = () => {
-  const viteOptionWrapperElem = document.querySelector<HTMLSpanElement>('#vite-wrapper')
-  const webDevLibOption = document.querySelector<HTMLInputElement>('input[name=web-development-library]:checked')
+// // Toggle Vite config when Web Development Library options are changed
+// const handleViteOption = () => {
+//   const viteOptionWrapperElem = document.querySelector<HTMLSpanElement>('#vite-wrapper')
+//   const webDevLibOption = document.querySelector<HTMLInputElement>('input[name=web-development-library]:checked')
 
-  switch (webDevLibOption?.value) {
-    case 'react':
-      controlElements({ target: 'viteWrapper', action: 'show' })
-      break
-    default:
-      if (!controlElements({ target: 'viteTab', action: 'getState', state: 'show' })) {
-        controlElements({ target: 'vite', action: 'uncheck' })
+//   switch (webDevLibOption?.value) {
+//     case 'react':
+//       controlElements({ target: 'viteWrapper', action: 'show' })
+//       break
+//     default:
+//       if (!controlElements({ target: 'viteTab', action: 'getState', state: 'show' })) {
+//         controlElements({ target: 'vite', action: 'uncheck' })
 
-        void handleTabs('vite')
-        currentTabName = 'eslint'
-        handleFormSubmit()
-      }
-      viteOptionWrapperElem?.classList.add('hide')
-      controlElements({ target: 'viteWrapper', action: 'hide' })
-      break
-  }
-}
-
-const form = document.querySelector<HTMLFormElement>('#options')
-form &&
-  form.addEventListener(
-    'click',
-    e => {
-      void handleFormSubmit()
-
-      // TODO: Set another tab to active when toggle same option
-      const target = e.target as HTMLInputElement
-      const value = target.value
-      value && handleTabs(value)
-
-      handleViteOption()
-    },
-    { passive: true },
-  )
-
-// Init content
-// window.onload = () => handleFormSubmit()
+//         void handleTabs('vite')
+//         currentTabName = 'eslint'
+//         handleFormSubmit()
+//       }
+//       viteOptionWrapperElem?.classList.add('hide')
+//       controlElements({ target: 'viteWrapper', action: 'hide' })
+//       break
+//   }
+// }
 
 const config = {
-  axios: true,
-  babel: true,
-  bcrypt: true,
-  dayjs: true,
-  dotenv: true,
-  ejs: true,
-  express: true,
-  fileSaver: true,
-  gatsby: true,
-  graphql: true,
-  husky: true,
-  immer: true,
-  javascriptStringify: true,
-  jest: true,
-  joi: true,
-  jsdiff: true,
-  jsZip: true,
-  koa: true,
-  lodash: true,
-  markdown: true,
-  mongoose: true,
-  next: true,
-  nextAuth: true,
-  nodemon: true,
-  nuxt: true,
-  prism: true,
-  postcss: true,
-  pug: true,
-  react: true,
-  reactHookForm: true,
-  reactInfiniteScroller: true,
-  reactJoyride: true,
-  recoil: true,
-  redis: true,
-  scss: true,
-  socket: true,
-  storybook: true,
+  axios: false,
+  babel: false,
+  bcrypt: false,
+  dayjs: false,
+  dotenv: false,
+  ejs: false,
+  express: false,
+  fileSaver: false,
+  gatsby: false,
+  graphql: false,
+  husky: false,
+  immer: false,
+  javascriptStringify: false,
+  jest: false,
+  joi: false,
+  jsdiff: false,
+  jsZip: false,
+  koa: false,
+  lodash: false,
+  markdown: false,
+  mongoose: false,
+  next: false,
+  nextAuth: false,
+  nodemon: false,
+  nothing: true, // This means that no library selected
+  nuxt: false,
+  prism: false,
+  postcss: false,
+  pug: false,
+  react: false,
+  reactHookForm: false,
+  reactInfiniteScroller: false,
+  reactJoyride: false,
+  recoil: false,
+  redis: false,
+  scss: false,
+  socket: false,
+  storybook: false,
   styledComponents: false,
-  swr: true,
-  tailwind: true,
-  three: true,
+  swr: false,
+  tailwind: false,
+  three: false,
   typescript: true,
-  tanstackQuery: true,
-  vite: true,
-  // Not yet installed
-  vue: false,
-  webpack: true,
-  wordpress: true,
+  tanstackQuery: false,
+  vite: false,
+  vue: false, // Not yet installed
+  webpack: false,
+  wordpress: false,
 }
 
 const result = () => {
@@ -246,7 +225,7 @@ const result = () => {
 
 const bashElem = document.querySelector<HTMLElement>('#bash')
 
-const newStart = () => {
+const provideContents = () => {
   if (codeElem) {
     codeElem.textContent = result()
   }
@@ -255,4 +234,37 @@ const newStart = () => {
   }
 }
 
-window.onload = newStart
+const syntax = ['typescript', 'javascript']
+const jsLib = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue']
+const radioBtns = [...syntax, ...jsLib]
+
+const handleRadioBtns = (value: string) => {
+  const target = syntax.includes(value) ? syntax : jsLib
+  target.forEach(item => (config[item as keyof typeof config] = false))
+  config[value as keyof typeof config] = true
+  provideContents()
+}
+
+const formEvent = (e: MouseEvent) => {
+  // TODO: Set another tab to active when toggle same option
+  const target = e.target as HTMLInputElement
+  const value = target.value
+
+  if (!value) {
+    return
+  }
+  if (radioBtns.includes(value)) {
+    handleRadioBtns(value)
+
+    return
+  }
+
+  config[value as keyof typeof config] = !config[value as keyof typeof config]
+  provideContents()
+}
+
+const form = document.querySelector<HTMLFormElement>('#options')
+form && form.addEventListener('click', formEvent, { passive: true })
+
+// Init content
+window.onload = provideContents
