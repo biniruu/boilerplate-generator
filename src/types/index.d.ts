@@ -58,3 +58,14 @@ export interface SelectOptions {
   webpack: boolean
   wordpress: boolean
 }
+
+export type Tab =
+  | 'eslint'
+  | 'prettier'
+  | 'stylelint'
+  | 'gitignore'
+  | 'jest'
+  | 'postcss'
+  | 'webpack'
+  | 'vite'
+  | 'jest-setup'
