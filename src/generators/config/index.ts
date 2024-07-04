@@ -1,4 +1,5 @@
 import generateEslintConfig from '@generators/config/eslint'
+import generateGitIgnore from '@generators/config/gitignore'
 import generateNextConfig from '@generators/config/next'
 import generatePrettierConfig from '@generators/config/prettier'
 import generateStylelintConfig from '@generators/config/stylelint'
@@ -9,6 +10,7 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
   // TODO: Make sure that it uses dynamic import
   const config = {
     eslint: generateEslintConfig(configOptions),
+    gitignore: generateGitIgnore(configOptions),
     prettier: generatePrettierConfig(configOptions),
     stylelint: generateStylelintConfig(configOptions),
     next: generateNextConfig(configOptions),
