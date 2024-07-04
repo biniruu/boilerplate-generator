@@ -43,13 +43,6 @@ const getTestCommands = (configOptions: SelectOptions) => {
       )
     }
     /**
-     * ts-jest
-     * {@link https://kulshekhar.github.io/ts-jest/}
-     */
-    if (hasTypescript) {
-      testDevDependencies.push('ts-jest')
-    }
-    /**
      * @testing-library/vue (Vue Testing Library)
      * {@link https://testing-library.com/docs/vue-testing-library/intro/}
      *
@@ -84,6 +77,11 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * msw (Mock Service Worker)
      * {@link https://mswjs.io}
      *
+     * ts-jest
+     * {@link https://kulshekhar.github.io/ts-jest/}
+     * ts-jest is necessary when you’re working in a development environment, since it provides types of jest configuration
+     *
+     *
      * If you have added 'jest', you don't need to add these packages: jest-resolve and jest-resolve-dependencies.
      * I recommend adding @types/jest even if it is not a TypeScript project because of its IntelliSense.
      */
@@ -97,6 +95,7 @@ const getTestCommands = (configOptions: SelectOptions) => {
       'jest-watch-typeahead',
       'jsdom',
       'msw',
+      'ts-jest',
     )
   }
 

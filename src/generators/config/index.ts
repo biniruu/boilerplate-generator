@@ -1,5 +1,6 @@
 import generateEslintConfig from '@generators/config/eslint'
 import generateGitIgnore from '@generators/config/gitignore'
+import generateJestConfigs from '@generators/config/jest'
 import generateNextConfig from '@generators/config/next'
 import generatePrettierConfig from '@generators/config/prettier'
 import generateStylelintConfig from '@generators/config/stylelint'
@@ -11,6 +12,8 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
   const config = {
     eslint: generateEslintConfig(configOptions),
     gitignore: generateGitIgnore(configOptions),
+    jest: generateJestConfigs(configOptions).jestConfig,
+    'jest-setup': generateJestConfigs(configOptions).jestSetup,
     prettier: generatePrettierConfig(configOptions),
     stylelint: generateStylelintConfig(configOptions),
     next: generateNextConfig(configOptions),
