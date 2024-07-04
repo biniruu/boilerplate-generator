@@ -68,7 +68,16 @@ const provideContents = (tab: Tab = currentTab) => {
   provideConfig(tab)
   provideCommand()
 }
-window.onload = () => provideContents()
+const initContents = () => {
+  // Make values 'typescript' and 'nothing' in 'config' variable as true
+  const syntax = document.querySelector<HTMLInputElement>('input[name=syntax]:checked')?.value as keyof typeof config
+  const jsLib = document.querySelector<HTMLInputElement>('input[name=js-lib]:checked')?.value as keyof typeof config
+  config[syntax] = true
+  config[jsLib] = true
+
+  provideContents()
+}
+window.onload = initContents
 
 const config = {
   axios: false,
@@ -95,7 +104,7 @@ const config = {
   next: false,
   nextAuth: false,
   nodemon: false,
-  nothing: true, // This means that no library selected
+  nothing: false, // This means that no library selected
   nuxt: false,
   prism: false,
   postcss: false,
@@ -113,7 +122,7 @@ const config = {
   swr: false,
   tailwind: false,
   three: false,
-  typescript: true,
+  typescript: false,
   tanstackQuery: false,
   vite: false,
   vue: false, // Not yet installed
