@@ -2,6 +2,7 @@ import generateEslintConfig from '@generators/config/eslint'
 import generateGitIgnore from '@generators/config/gitignore'
 import generateJestConfigs from '@generators/config/jest'
 import generateNextConfig from '@generators/config/next'
+import generatePostcssConfig from '@generators/config/postcss'
 import generatePrettierConfig from '@generators/config/prettier'
 import generateStylelintConfig from '@generators/config/stylelint'
 import generateWebpackConfig from '@generators/config/webpack'
@@ -15,6 +16,7 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
     jest: generateJestConfigs(configOptions).jestConfig,
     'jest-setup': generateJestConfigs(configOptions).jestSetup,
     prettier: generatePrettierConfig(configOptions),
+    postcss: generatePostcssConfig(configOptions),
     stylelint: generateStylelintConfig(configOptions),
     next: generateNextConfig(configOptions),
     webpack: generateWebpackConfig(configOptions),
