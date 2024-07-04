@@ -6,6 +6,7 @@ import generatePostcssConfig from '@generators/config/postcss'
 import generatePrettierConfig from '@generators/config/prettier'
 import generateStylelintConfig from '@generators/config/stylelint'
 import generateTailwindConfig from '@generators/config/tailwind'
+import generateViteConfig from '@generators/config/vite'
 import generateWebpackConfig from '@generators/config/webpack'
 import type { SelectOptions, Tab } from '_types'
 
@@ -21,6 +22,7 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
     stylelint: generateStylelintConfig(configOptions),
     next: generateNextConfig(configOptions),
     tailwind: generateTailwindConfig(configOptions),
+    vite: generateViteConfig(),
     webpack: generateWebpackConfig(configOptions),
   }
 
