@@ -1,26 +1,21 @@
-import type { Conditions, SelectOptions } from '_types'
-
-import { isCondition } from './typeGuards'
-
-const capitalizeFirstLetter = (string: string) => string.charAt(0).toUpperCase() + string.slice(1)
+import { conditions, objConditions as objConditionData } from '@data/conditions'
+import { options } from '@data/options'
+import type { SelectOptions } from '_types'
 
 const getCertainConditions = (configOptions: SelectOptions) => {
-  const conditions = Object.keys(configOptions).reduce(
-    (acc, curr) => {
-      const condition = 'has'.concat(capitalizeFirstLetter(curr))
-      if (isCondition(condition, configOptions)) {
-        acc[condition] = configOptions[curr as keyof typeof configOptions]
-      }
-      return acc
-    },
-    {} as Record<Conditions, boolean>,
-  )
+  const objConditions = conditions.reduce((acc, curr, idx) => {
+    const matchedOptionWithCondition = options[idx]
+    const valueOfMatchedOption = configOptions[matchedOptionWithCondition]
+    objConditionData[curr] = valueOfMatchedOption
 
-  const { hasJest, hasNext, hasNuxt, hasReact, hasTailwind, hasVite, hasVue, hasWebpack } = conditions
+    return acc
+  }, objConditionData)
+
+  const { hasJest, hasNext, hasNuxt, hasReact, hasTailwind, hasVite, hasVue, hasWebpack } = objConditions
   const hasJsLibs = hasNext || hasNuxt || hasReact || hasVue
   const hasTsExtension = hasJest || hasNuxt || hasTailwind || hasVite || hasWebpack
 
-  return { ...conditions, hasJsLibs, hasTsExtension }
+  return { ...objConditions, hasJsLibs, hasTsExtension }
 }
 
 export default getCertainConditions
