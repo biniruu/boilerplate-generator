@@ -1,12 +1,14 @@
 import getExtension from '@generators/config/webpack/extension'
 import getRules from '@generators/config/webpack/rules'
+import getCertainConditions from '@utils/certainConditions'
 import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
 
 const generateWebpackConfig = (configOptions: SelectOptions) => {
   const extension = getExtension(configOptions)
   const rules = getRules(configOptions)
-  const tsExtensions = configOptions.typescript ? ['.tsx', '.ts'] : []
+  const { hasTypescript } = getCertainConditions(configOptions)
+  const tsExtensions = hasTypescript ? ['.tsx', '.ts'] : []
 
   // devServer: {
   //   compress: true,

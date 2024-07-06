@@ -1,8 +1,9 @@
+import getCertainConditions from '@utils/certainConditions'
 import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
 
 const generateTailwindConfig = (configOptions: SelectOptions) => {
-  const hasTypescript = configOptions.typescript
+  const { hasTypescript } = getCertainConditions(configOptions)
   const ts = hasTypescript ? 'ts,tsx' : ''
   const comma = hasTypescript ? ',' : ''
 

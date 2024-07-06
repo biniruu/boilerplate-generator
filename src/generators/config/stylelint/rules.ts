@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 // rules: {
@@ -139,6 +140,8 @@ import type { SelectOptions } from '_types'
 //   'order/properties-alphabetical-order': true,
 // },
 const getRules = (configOptions: SelectOptions) => {
+  const { hasScss } = getCertainConditions(configOptions)
+
   let result = {
     'alpha-value-notation': 'number',
     'at-rule-empty-line-before': [
@@ -227,7 +230,7 @@ const getRules = (configOptions: SelectOptions) => {
     'order/properties-alphabetical-order': true,
   }
 
-  if (configOptions.scss) {
+  if (hasScss) {
     const scssRules = { 'scss/at-rule-no-unknown': true }
     result = { ...result, ...scssRules }
   }

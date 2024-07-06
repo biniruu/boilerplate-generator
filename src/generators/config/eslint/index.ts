@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
 
@@ -14,15 +15,15 @@ import mergeSettings from './settings'
 const root = true
 
 const generateEslintConfig = (configOptions: SelectOptions) => {
-  const hasTypescript = configOptions.typescript
-  const hasReact = configOptions.react || configOptions.next
+  const { hasNext, hasReact, hasTypescript } = getCertainConditions(configOptions)
+
   const config = {
     env: getEnv(configOptions),
     extends: mergeExtends(configOptions),
     overrides: mergeOverrides(configOptions),
     parser: mergeParser(configOptions),
     ...(hasTypescript ? { parserOptions } : {}),
-    ...(hasReact ? { plugins } : {}),
+    ...(hasReact || hasNext ? { plugins } : {}),
     root,
     rules: mergeRules(configOptions),
     settings: mergeSettings(configOptions),

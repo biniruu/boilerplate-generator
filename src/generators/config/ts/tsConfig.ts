@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import convertToJson from '@utils/convertToJson'
 import type { SelectOptions } from '_types'
 
@@ -7,22 +8,14 @@ const nuxtConfig = {
 }
 
 const getTsConfig = (configOptions: SelectOptions) => {
-  const hasGatsby = configOptions.gatsby
-  const hasJest = configOptions.jest
-  const hasNext = configOptions.next
-  const hasNuxt = configOptions.nuxt
-  const hasReact = configOptions.react
-  const hasTailwind = configOptions.tailwind
-  const hasVite = configOptions.vite
-  const hasVue = configOptions.vue
-  const hasWebpack = configOptions.webpack
-  const hasJsx = hasNext || hasNuxt || hasReact || hasVue
-  const hasTsExtension = hasJest || hasNuxt || hasTailwind || hasVite || hasWebpack
+  const { hasGatsby, hasJest, hasNext, hasNuxt, hasJsLibs, hasTsExtension } = getCertainConditions(configOptions)
 
-  const core = hasJsx ? ['**/*.tsx', '**/tests/**/*.spec.tsx', '**/tests/**/*.test.tsx', 'dist/types/**/*.ts'] : []
-  const gatsby = hasGatsby ? ['gatsby-config.ts'] : []
-  const next = hasNext ? ['next-env.d.ts', '.next/types/**/*.ts'] : []
-  const withTs = hasTsExtension ? ['**/*.config.ts'] : []
+  const gatsbyInclude = hasGatsby ? ['gatsby-config.ts'] : []
+  const jestJsxInclude = hasJsLibs ? ['**/tests/**/*.spec.tsx', '**/tests/**/*.test.tsx'] : []
+  const jestInclude = hasJest ? ['**/tests/**/*.spec.ts', '**/tests/**/*.test.ts', ...jestJsxInclude] : []
+  const jsxInclude = hasJsLibs ? ['**/src/**/*.tsx'] : []
+  const nextInclude = hasNext ? ['next-env.d.ts', '.next/types/**/*.ts'] : []
+  const tsExtInclude = hasTsExtension ? ['**/*.config.ts'] : []
 
   const config = {
     compilerOptions: {
@@ -38,7 +31,15 @@ const getTsConfig = (configOptions: SelectOptions) => {
         : {}),
     },
     extends: './tsconfig.default.json',
-    include: ['**/*.ts', '**/tests/**/*.spec.ts', '**/tests/**/*.test.ts', ...core, ...gatsby, ...next, ...withTs],
+    include: [
+      '**/*.ts',
+      ...jsxInclude,
+      'dist/types/**/*.ts',
+      ...gatsbyInclude,
+      ...jestInclude,
+      ...nextInclude,
+      ...tsExtInclude,
+    ],
   }
 
   const result = convertToJson(hasNuxt ? nuxtConfig : config)

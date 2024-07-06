@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 // overrides: [
@@ -33,15 +34,16 @@ import type { SelectOptions } from '_types'
 //   },
 // ]
 const mergeOverrides = (configOptions: SelectOptions) => {
+  const { hasJest, hasTypescript } = getCertainConditions(configOptions)
   const result = []
 
-  if (configOptions.jest) {
+  if (hasJest) {
     result.push({
       extends: ['plugin:jest/recommended', 'plugin:jest-dom/recommended', 'plugin:testing-library/react'],
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
     })
   }
-  if (configOptions.typescript) {
+  if (hasTypescript) {
     result.push({
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
       files: ['*.js', '*.cjs', '*.config.js', '*.config.ts', '*.test.js', '*.test.ts', '*.spec.js', '*.spec.ts'],

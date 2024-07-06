@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 // rules: {
@@ -297,6 +298,8 @@ import type { SelectOptions } from '_types'
 //   // 'tailwindcss/classnames-order': 'off',
 // },
 const mergeRules = (configOptions: SelectOptions) => {
+  const { hasReact, hasTailwind, hasTypescript } = getCertainConditions(configOptions)
+
   let result = {
     camelcase: [
       'error',
@@ -368,7 +371,7 @@ const mergeRules = (configOptions: SelectOptions) => {
     ],
   }
 
-  if (configOptions.typescript) {
+  if (hasTypescript) {
     const tsOptions = {
       '@typescript-eslint/ban-ts-comment': [
         'error',
@@ -420,7 +423,7 @@ const mergeRules = (configOptions: SelectOptions) => {
 
     result = { ...result, ...tsOptions }
   }
-  if (configOptions.react) {
+  if (hasReact) {
     const reactOptions = {
       'jsx-a11y/label-has-associated-control': [
         'warn',
@@ -497,7 +500,7 @@ const mergeRules = (configOptions: SelectOptions) => {
 
     result = { ...result, ...reactOptions }
   }
-  if (configOptions.tailwind) {
+  if (hasTailwind) {
     const tailwindOptions = {
       'tailwindcss/classnames-order': 'off',
     }

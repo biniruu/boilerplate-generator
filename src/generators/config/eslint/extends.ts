@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 /**
@@ -31,6 +32,8 @@ import type { SelectOptions } from '_types'
 //   'plugin:tailwindcss/recommended',
 // ]
 const mergeExtends = (configOptions: SelectOptions) => {
+  const { hasTypescript, hasNext, hasReact, hasTanstackQuery, hasTailwind } = getCertainConditions(configOptions)
+
   let result = ['eslint:recommended', 'plugin:import/recommended']
   const react = [
     'plugin:jsx-a11y/recommended',
@@ -39,19 +42,19 @@ const mergeExtends = (configOptions: SelectOptions) => {
     'plugin:react-hooks/recommended',
   ]
 
-  if (configOptions.typescript) {
+  if (hasTypescript) {
     result = [...result, 'plugin:import/typescript', 'plugin:@typescript-eslint/recommended-type-checked']
   }
-  if (configOptions.next) {
+  if (hasNext) {
     result = [...result, 'next/core-web-vitals', ...react]
   }
-  if (configOptions.react) {
+  if (hasReact) {
     result = [...result, ...react]
   }
-  if (configOptions.tanstackQuery) {
+  if (hasTanstackQuery) {
     result = [...result, 'plugin:@tanstack/eslint-plugin-query/recommended']
   }
-  if (configOptions.tailwind) {
+  if (hasTailwind) {
     result = [...result, 'plugin:tailwindcss/recommended']
   }
 

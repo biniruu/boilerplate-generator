@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 interface Rule {
@@ -12,9 +13,7 @@ interface Rule {
  * [rules]{@link https://webpack.js.org/loaders}
  */
 const getRules = (configOptions: SelectOptions) => {
-  const hasPostcss = configOptions.postcss
-  const hasScss = configOptions.scss
-  const hasTypescript = configOptions.typescript
+  const { hasPostcss, hasScss, hasTypescript } = getCertainConditions(configOptions)
 
   const postcssLoader = hasPostcss ? ['postcss-loader'] : []
 

@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
 
@@ -11,16 +12,17 @@ import getRules from './rules'
  * {@link https://stylelint.io}
  */
 const generateStylelintConfig = (configOptions: SelectOptions) => {
-  const hasPostcss = configOptions.postcss
+  const { hasPostcss } = getCertainConditions(configOptions)
+
   const config = {
     extends: getExtends(configOptions),
     ...(hasPostcss ? { overrides: getOverrides(configOptions) } : {}),
     plugins: getPlugins(configOptions),
     rules: getRules(configOptions),
   }
-  const code = `module.export = ${convertToString(config)}`
+  const result = `module.export = ${convertToString(config)}`
 
-  return code
+  return result
 }
 
 export default generateStylelintConfig

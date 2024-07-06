@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
 
@@ -62,6 +63,8 @@ interface Config {
 //   },
 // }
 const generateNextConfig = (configOptions: SelectOptions) => {
+  const { hasTypescript } = getCertainConditions(configOptions)
+
   const config: Config = {
     compiler: {
       styledComponents: true,
@@ -87,7 +90,7 @@ const generateNextConfig = (configOptions: SelectOptions) => {
     // trailingSlash: true,
   }
 
-  if (configOptions.typescript) {
+  if (hasTypescript) {
     config.typescript = {
       tsconfigPath: 'replace tsconfigPath',
     }

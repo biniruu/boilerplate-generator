@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 import getTsBuild from './tsBuild'
@@ -9,8 +10,7 @@ import getTsTest from './tsTest'
 const tsNode = getTsNode()
 
 const generateTypescriptConfigs = (configOptions: SelectOptions) => {
-  const hasGatsby = configOptions.gatsby
-  const hasReact = configOptions.react
+  const { hasGatsby, hasReact } = getCertainConditions(configOptions)
   const hasDefaultConfig = !hasGatsby || !hasReact
 
   const tsDefaultConfig = getTsDefault(configOptions)

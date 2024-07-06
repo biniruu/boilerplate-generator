@@ -1,26 +1,13 @@
 declare module '*.jpg' {
   const value: string
+
   export default value
 }
 
 declare module '*.module.css' {
-  const classes: { [key: string]: string }
+  const classes: Record<string, string>
+
   export default classes
-}
-
-declare module '@utils/mergeConfigs' {
-  type MergeConfigs = (
-    acc: {
-      [key: string]: unknown
-    },
-    option: string,
-    currentData: {
-      [key: string]: unknown
-    },
-  ) => void
-
-  const mergeConfigs: MergeConfigs
-  export default mergeConfigs
 }
 
 declare module '@utils/typeGuards' {
@@ -29,5 +16,6 @@ declare module '@utils/typeGuards' {
 
   const isHtmlInputElement: IsHtmlInputElement
   const isHtmlButtonElement: IsHtmlButtonElement
+
   export { isHtmlButtonElement, isHtmlInputElement }
 }

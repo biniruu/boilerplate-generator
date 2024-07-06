@@ -1,9 +1,10 @@
-const isHtmlInputElement = (element: unknown): element is HTMLInputElement => {
-  return element instanceof HTMLInputElement
-}
+import type { Conditions, SelectOptions } from '_types'
 
-const isHtmlButtonElement = (element: unknown): element is HTMLButtonElement => {
-  return element instanceof HTMLButtonElement
-}
+const isHtmlInputElement = (element: unknown): element is HTMLInputElement => element instanceof HTMLInputElement
 
-export { isHtmlButtonElement, isHtmlInputElement }
+const isHtmlButtonElement = (element: unknown): element is HTMLButtonElement => element instanceof HTMLButtonElement
+
+const isCondition = (key: string, configOptions: SelectOptions): key is Conditions =>
+  Object.values(configOptions).includes(key)
+
+export { isCondition, isHtmlButtonElement, isHtmlInputElement }

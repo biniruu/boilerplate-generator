@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 interface Settings {
@@ -39,6 +40,8 @@ interface Settings {
 //   },
 // }
 const mergeSettings = (configOptions: SelectOptions) => {
+  const { hasJest, hasReact } = getCertainConditions(configOptions)
+
   const defaultSettings = {
     'import/resolver': {
       node: {
@@ -48,12 +51,12 @@ const mergeSettings = (configOptions: SelectOptions) => {
   }
   const result: Settings = { ...defaultSettings }
 
-  if (configOptions.jest) {
+  if (hasJest) {
     result.jest = {
       version: 'replace jestVersion',
     }
   }
-  if (configOptions.react) {
+  if (hasReact) {
     result.react = {
       version: 'detect',
     }

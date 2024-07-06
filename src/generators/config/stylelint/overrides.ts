@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 // overrides: [
@@ -21,15 +22,16 @@ import type { SelectOptions } from '_types'
 //   },
 // ],
 const getOverrides = (configOptions: SelectOptions) => {
+  const { hasPostcss, hasStyledComponents } = getCertainConditions(configOptions)
   const result = []
 
-  if (configOptions.postcss) {
+  if (hasPostcss) {
     result.push({
       customSyntax: 'postcss-html',
       files: ['**/*.{html,jsx,tsx}'],
     })
   }
-  if (configOptions.postcss && configOptions.styledComponents) {
+  if (hasPostcss && hasStyledComponents) {
     result.push({
       customSyntax: 'postcss-styled-syntax',
       files: ['**/*.{html,jsx,tsx}'],

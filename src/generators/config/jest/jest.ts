@@ -1,10 +1,11 @@
+import getCertainConditions from '@utils/certainConditions'
 import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
 
 const getOptions = (configOptions: SelectOptions) => {
-  const hasTypescript = configOptions.typescript
-  const hasLodash = configOptions.lodash
-  const next = configOptions.next ? ['./.next/'] : []
+  const { hasLodash, hasNext, hasTypescript, hasVue } = getCertainConditions(configOptions)
+
+  const next = hasNext ? ['./.next/'] : []
   const js = !hasTypescript ? { '^.+\\.(js|jsx)$': 'babel-jest' } : {}
   const ts = hasTypescript
     ? {
@@ -16,7 +17,7 @@ const getOptions = (configOptions: SelectOptions) => {
         ],
       }
     : {}
-  const vue = configOptions.vue ? { '^.+\\.vue$': 'vue-jest' } : {}
+  const vue = hasVue ? { '^.+\\.vue$': 'vue-jest' } : {}
 
   return { hasTypescript, hasLodash, next, js, ts, vue }
 }
@@ -244,7 +245,7 @@ const getJestConfig = (configOptions: SelectOptions) => {
     // watchman: true,
   }
 
-  const code = hasTypescript
+  const result = hasTypescript
     ? `import type { JestConfigWithTsJest } from 'ts-jest'
     
 const jestConfig: JestConfigWithTsJest = ${convertToString(config)}
@@ -254,7 +255,7 @@ export default jestConfig`
     
 module.exports = ${convertToString(config)}`
 
-  return code
+  return result
 }
 
 export default getJestConfig

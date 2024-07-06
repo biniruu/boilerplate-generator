@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 // extends: [
@@ -5,9 +6,10 @@ import type { SelectOptions } from '_types'
 //   'stylelint-config-standard-scss',
 // ],
 const getExtends = (configOptions: SelectOptions) => {
+  const { hasScss } = getCertainConditions(configOptions)
   const result = ['stylelint-config-standard']
 
-  if (configOptions.scss) {
+  if (hasScss) {
     result.push('stylelint-config-standard-scss')
   }
 
