@@ -17,20 +17,25 @@ import type { SelectOptions } from '_types'
  * plugin:react/jsx-runtime : when using the new JSX transform from React 17, it will disable the relevant rules
  * plugin:react-hooks/recommended : recommended eslint-plugin-react-hooks rules
  * plugin:tailwindcss/recommended : Rules enforcing best practices and consistency using Tailwind CSS
+ *
+ * @example
+ *
+ * ```js
+ * extends: [
+ *   'eslint:recommended',
+ *   'next/core-web-vitals',
+ *   'plugin:@tanstack/eslint-plugin-query/recommended',
+ *   'plugin:@typescript-eslint/recommended-type-checked',
+ *   'plugin:import/recommended',
+ *   'plugin:import/typescript',
+ *   'plugin:jsx-a11y/recommended',
+ *   'plugin:react/recommended',
+ *   'plugin:react/jsx-runtime',
+ *   'plugin:react-hooks/recommended',
+ *   'plugin:tailwindcss/recommended',
+ * ]
+ * ```
  */
-// extends: [
-//   'eslint:recommended',
-//   'next/core-web-vitals',
-//   'plugin:@tanstack/eslint-plugin-query/recommended',
-//   'plugin:@typescript-eslint/recommended-type-checked',
-//   'plugin:import/recommended',
-//   'plugin:import/typescript',
-//   'plugin:jsx-a11y/recommended',
-//   'plugin:react/recommended',
-//   'plugin:react/jsx-runtime',
-//   'plugin:react-hooks/recommended',
-//   'plugin:tailwindcss/recommended',
-// ]
 const mergeExtends = (configOptions: SelectOptions) => {
   const { hasTypescript, hasNext, hasReact, hasTanstackQuery, hasTailwind } = getCertainConditions(configOptions)
 
