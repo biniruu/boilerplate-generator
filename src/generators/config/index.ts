@@ -1,14 +1,16 @@
-import generateEslintConfig from '@generators/config/eslint'
-import generateGitIgnore from '@generators/config/gitignore'
-import generateJestConfigs from '@generators/config/jest'
-import generateNextConfig from '@generators/config/next'
-import generatePostcssConfig from '@generators/config/postcss'
-import generatePrettierConfig from '@generators/config/prettier'
-import generateStylelintConfig from '@generators/config/stylelint'
-import generateTailwindConfig from '@generators/config/tailwind'
-import generateViteConfig from '@generators/config/vite'
-import generateWebpackConfig from '@generators/config/webpack'
 import type { SelectOptions, Tab } from '_types'
+
+import generateEslintConfig from './eslint'
+import generateGitIgnore from './gitignore'
+import generateJestConfigs from './jest'
+import generateNextConfig from './next'
+import generatePostcssConfig from './postcss'
+import generatePrettierConfig from './prettier'
+import generateStylelintConfig from './stylelint'
+import generateTailwindConfig from './tailwind'
+import generateTypescriptConfigs from './ts'
+import generateViteConfig from './vite'
+import generateWebpackConfig from './webpack'
 
 const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
   // TODO: Make sure that it uses dynamic import
@@ -22,6 +24,11 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
     stylelint: generateStylelintConfig(configOptions),
     next: generateNextConfig(configOptions),
     tailwind: generateTailwindConfig(configOptions),
+    'ts-build': generateTypescriptConfigs(configOptions).tsBuild,
+    'ts-default': generateTypescriptConfigs(configOptions).tsDefault,
+    'ts-node': generateTypescriptConfigs(configOptions).tsNode,
+    'ts-test': generateTypescriptConfigs(configOptions).tsTest,
+    typescript: generateTypescriptConfigs(configOptions).tsConfig,
     vite: generateViteConfig(),
     webpack: generateWebpackConfig(configOptions),
   }

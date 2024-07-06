@@ -9,9 +9,13 @@ const tabEvent = (e: MouseEvent) => {
   tablinkElems.forEach(tablink => tablink.classList.remove('active'))
 
   const target = e.target as HTMLButtonElement
-  target.classList.add('active')
   const value = target.value as Tab
 
+  // Avoid invoking this function when user clicked outside of input
+  if (!value) {
+    return
+  }
+  target.classList.add('active')
   provideConfig(value)
 }
 let currentTab: Tab = 'eslint'
