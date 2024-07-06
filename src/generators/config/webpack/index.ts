@@ -1,7 +1,7 @@
 import getExtension from '@generators/config/webpack/extension'
 import getRules from '@generators/config/webpack/rules'
+import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
-import { stringify } from 'javascript-stringify'
 
 const generateWebpackConfig = (configOptions: SelectOptions) => {
   const extension = getExtension(configOptions)
@@ -105,7 +105,7 @@ interface Configuration extends WebpackConfiguration {
 const isProduction = process.env.NODE_ENV === 'production'
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
 
-const config: Configuration = ${stringify(config, null, 2)}
+const config: Configuration = ${convertToString(config)}
 
 const result = () => {
   if (!config.plugins) {

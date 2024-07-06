@@ -1,5 +1,5 @@
+import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
-import { stringify } from 'javascript-stringify'
 
 const generateTailwindConfig = (configOptions: SelectOptions) => {
   const hasTypescript = configOptions.typescript
@@ -34,12 +34,12 @@ const generateTailwindConfig = (configOptions: SelectOptions) => {
   const code = hasTypescript
     ? `import type { Config } from 'tailwindcss'
   
-const config: Config = ${stringify(config, null, 2)}
+const config: Config = ${convertToString(config)}
 
 export default config`
     : `/** @type {import('tailwindcss').Config} */
 
-module.exports = ${stringify(config, null, 2)}`
+module.exports = ${convertToString(config)}`
 
   const result = code.replace(
     `'replace backgroundColor'`,

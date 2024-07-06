@@ -1,5 +1,5 @@
+import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
-import { stringify } from 'javascript-stringify'
 
 const generatePostcssConfig = (configOptions: SelectOptions) => {
   const hasTailwind = configOptions.tailwind
@@ -21,7 +21,7 @@ const generatePostcssConfig = (configOptions: SelectOptions) => {
     },
   }
 
-  return `module.exports = ${stringify(config, null, 2)}`
+  return `module.exports = ${convertToString(config)}`
 }
 
 export default generatePostcssConfig

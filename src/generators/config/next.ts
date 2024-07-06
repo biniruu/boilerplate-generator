@@ -1,5 +1,5 @@
+import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
-import { stringify } from 'javascript-stringify'
 
 interface Config {
   compiler: {
@@ -95,7 +95,7 @@ const generateNextConfig = (configOptions: SelectOptions) => {
 
   const code = `const isProduction = process.env.NODE_ENV === 'production'
   
-const nextConfig = ${stringify(config, null, 2)}
+const nextConfig = ${convertToString(config)}
 
 module.exports = nextConfig`
   const result = code.replace(`'replace tsconfigPath'`, `isProduction ? 'tsconfig.build.json' : 'tsconfig.json'`)

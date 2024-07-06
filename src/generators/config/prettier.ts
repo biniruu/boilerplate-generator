@@ -1,5 +1,5 @@
+import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
-import { stringify } from 'javascript-stringify'
 
 interface Config {
   arrowParens: string
@@ -53,7 +53,7 @@ const generatePrettierConfig = (configOptions: SelectOptions) => {
     config.vueIndentScriptAndStyle = true
   }
 
-  const code = `module.export = ${stringify(config, null, 2)}`
+  const code = `module.export = ${convertToString(config)}`
 
   return code
 }

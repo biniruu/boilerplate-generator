@@ -1,9 +1,10 @@
-import getExtends from '@generators/config/stylelint/extends'
-import getOverrides from '@generators/config/stylelint/overrides'
-import getPlugins from '@generators/config/stylelint/plugins'
-import getRules from '@generators/config/stylelint/rules'
+import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
-import { stringify } from 'javascript-stringify'
+
+import getExtends from './extends'
+import getOverrides from './overrides'
+import getPlugins from './plugins'
+import getRules from './rules'
 
 /**
  * Stylelint documentation
@@ -17,7 +18,7 @@ const generateStylelintConfig = (configOptions: SelectOptions) => {
     plugins: getPlugins(configOptions),
     rules: getRules(configOptions),
   }
-  const code = `module.export = ${stringify(config, null, 2)}`
+  const code = `module.export = ${convertToString(config)}`
 
   return code
 }

@@ -1,4 +1,4 @@
-import generateCommands from '@generators/commands'
+import generateCommand from '@generators/command'
 import generateConfig from '@generators/config'
 import type { Tab } from '_types'
 import './style.css'
@@ -61,7 +61,7 @@ const provideConfig = (tab: Tab) => {
 }
 const provideCommand = () => {
   if (bashElem) {
-    bashElem.textContent = generateCommands(config)
+    bashElem.textContent = generateCommand(config)
   }
 }
 const codeElem = document.querySelector<HTMLElement>('#code')

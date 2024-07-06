@@ -1,5 +1,5 @@
+import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
-import { stringify } from 'javascript-stringify'
 
 const getOptions = (configOptions: SelectOptions) => {
   const hasTypescript = configOptions.typescript
@@ -247,12 +247,12 @@ const getJestConfig = (configOptions: SelectOptions) => {
   const code = hasTypescript
     ? `import type { JestConfigWithTsJest } from 'ts-jest'
     
-const jestConfig: JestConfigWithTsJest = ${stringify(config, null, 2)}
+const jestConfig: JestConfigWithTsJest = ${convertToString(config)}
 
 export default jestConfig`
     : `/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
     
-module.exports = ${stringify(config, null, 2)}`
+module.exports = ${convertToString(config)}`
 
   return code
 }

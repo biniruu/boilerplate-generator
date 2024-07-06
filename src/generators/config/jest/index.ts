@@ -1,6 +1,7 @@
-import getJestConfig from '@generators/config/jest/jest'
-import getJestSetup from '@generators/config/jest/jestSetup'
 import type { SelectOptions } from '_types'
+
+import getJestConfig from './jest'
+import getJestSetup from './jestSetup'
 
 const generateJestConfigs = (configOptions: SelectOptions) => {
   const jestConfig = getJestConfig(configOptions)

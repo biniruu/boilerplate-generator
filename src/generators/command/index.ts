@@ -1,19 +1,20 @@
-import getAuthenticationCommands from '@generators/commands/authentication'
-import getBundlerCommands from '@generators/commands/bundler'
-import getCompilerCommands from '@generators/commands/compiler'
-import getCssFrameworkCommands from '@generators/commands/cssFramework'
-import getCssInJsCommands from '@generators/commands/cssInJs'
-import getDataManagementCommands from '@generators/commands/dataManagement'
-import getEslintCommands from '@generators/commands/eslint'
-import getHtmlTemplateCommands from '@generators/commands/htmlTemplate'
-import getPrettierCommands from '@generators/commands/prettier'
-import getStateManagementCommands from '@generators/commands/stateManagement'
-import getStylelintCommands from '@generators/commands/stylelint'
-import getTestCommands from '@generators/commands/test'
-import getUtilityCommands from '@generators/commands/utility'
-import getWebFrameworkCommands from '@generators/commands/webFramework'
+import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
-import { stringify } from 'javascript-stringify'
+
+import getAuthenticationCommands from './authentication'
+import getBundlerCommands from './bundler'
+import getCompilerCommands from './compiler'
+import getCssFrameworkCommands from './cssFramework'
+import getCssInJsCommands from './cssInJs'
+import getDataManagementCommands from './dataManagement'
+import getEslintCommands from './eslint'
+import getHtmlTemplateCommands from './htmlTemplate'
+import getPrettierCommands from './prettier'
+import getStateManagementCommands from './stateManagement'
+import getStylelintCommands from './stylelint'
+import getTestCommands from './test'
+import getUtilityCommands from './utility'
+import getWebFrameworkCommands from './webFramework'
 
 const parseCommands = (commands: string[]) => {
   const parsedCommands = commands.join(' ')
@@ -21,7 +22,7 @@ const parseCommands = (commands: string[]) => {
   return parsedCommands
 }
 
-const generateCommands = (configOptions: SelectOptions) => {
+const generateCommand = (configOptions: SelectOptions) => {
   const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(configOptions)
   const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
   const { compilerDependencies, compilerDevDependencies } = getCompilerCommands(configOptions)
@@ -66,11 +67,11 @@ const generateCommands = (configOptions: SelectOptions) => {
   ]
 
   if (dependencies.length) {
-    return `yarn add ${stringify(dependencies, parseCommands, 2)}
+    return `yarn add ${convertToString(dependencies, parseCommands)}
   
-yarn add -D ${stringify(devDependencies, parseCommands, 2)}`
+yarn add -D ${convertToString(devDependencies, parseCommands)}`
   }
-  return `yarn add -D ${stringify(devDependencies, parseCommands, 2)}`
+  return `yarn add -D ${convertToString(devDependencies, parseCommands)}`
 }
 
-export default generateCommands
+export default generateCommand
