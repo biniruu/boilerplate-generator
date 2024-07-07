@@ -20,6 +20,7 @@ export type Tab =
   | 'postcss'
   | 'pug'
   | 'stylelint'
+  | 'markdown'
   | 'next'
   | 'nodemon'
   | 'tailwind'

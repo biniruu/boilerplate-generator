@@ -4,6 +4,7 @@ import generateBabelConfig from './babel'
 import generateEslintConfig from './eslint'
 import generateGitIgnore from './gitignore'
 import generateJestConfigs from './jest'
+import generateMarkdownConfig from './markdown'
 import generateNextConfig from './next'
 import generateNodemonConfig from './nodemon'
 import generatePostcssConfig from './postcss'
@@ -27,6 +28,7 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
     postcss: generatePostcssConfig(configOptions),
     pug: generatePugConfig(),
     stylelint: generateStylelintConfig(configOptions),
+    markdown: generateMarkdownConfig(),
     next: generateNextConfig(configOptions),
     nodemon: generateNodemonConfig(configOptions),
     tailwind: generateTailwindConfig(configOptions),
