@@ -27,6 +27,7 @@ const options = [
   'nextAuth',
   'nodemon',
   'nothing',
+  'npm',
   'nuxt',
   'prism',
   'postcss',
