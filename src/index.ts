@@ -2,7 +2,7 @@ import { objOptions } from '@data/options'
 import generateCommand from '@generators/command'
 import generateConfig from '@generators/config'
 import generateFile from '@generators/file'
-import { isConfig, isFile } from '@utils/typeGuards'
+import { isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, isTab } from '@utils/typeGuards'
 import type { Option, Tab } from '_types'
 import './style.css'
 
@@ -11,40 +11,48 @@ const tabEvent = (e: MouseEvent) => {
   const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
   tablinkElems.forEach(tablink => tablink.classList.remove('active'))
 
-  const target = e.target as HTMLButtonElement
-  const value = target.value as Tab
+  const target = e.target
+  // Avoid invoking this function when user clicked outside of tab buttons
+  if (!isHtmlButtonElement(target) || !target) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('No target found.')
+    }
 
-  // Avoid invoking this function when user clicked outside of input
-  if (!value) {
     return
   }
-  target.classList.add('active')
-  provideConfig(value)
+
+  const value = target.value
+  if (value && isTab(value)) {
+    target.classList.add('active')
+    provideConfig(value)
+  }
 }
 let currentTab: Tab = 'eslint'
 const tabElems = document.querySelector<HTMLDivElement>('#tabs')
 tabElems && tabElems.addEventListener('click', tabEvent, { passive: true })
 
 // Handle inputs in the sidebar
-const syntax: Option[] = ['typescript', 'javascript']
-const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue']
-const radioBtns = [...syntax, ...jsLib]
 const formEvent = (e: MouseEvent) => {
-  const target = e.target as HTMLInputElement
-  const value = target.value as Option
+  const target = e.target
+  // Avoid invoking this function when user clicked outside of option inputs
+  if (!isHtmlInputElement(target) || !target) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('No target found.')
+    }
 
-  // Avoid invoking this function when user clicked outside of input
-  if (!value) {
     return
   }
-  if (radioBtns.includes(value)) {
-    handleRadioBtns(value)
-  } else {
-    objOptions[value] = !objOptions[value]
+
+  const value = target.value
+  if (value && isOption(value)) {
+    radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
   }
 
   provideContents(currentTab)
 }
+const syntax: Option[] = ['typescript', 'javascript']
+const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue']
+const radioBtns = [...syntax, ...jsLib]
 const handleRadioBtns = (value: Option) => {
   // Reset inputs in 'Syntax' and 'JavaScript library' categories
   const target = syntax.includes(value) ? syntax : jsLib
@@ -80,10 +88,14 @@ const provideContents = (tab: Tab = currentTab) => {
 }
 const initContents = () => {
   // Make values 'typescript' and 'nothing' in 'config' variable as true
-  const syntax = document.querySelector<HTMLInputElement>('input[name=syntax]:checked')?.value as Option
-  const jsLib = document.querySelector<HTMLInputElement>('input[name=js-lib]:checked')?.value as Option
-  objOptions[syntax] = true
-  objOptions[jsLib] = true
+  const syntax = document.querySelector<HTMLInputElement>('input[name=syntax]:checked')?.value
+  const jsLib = document.querySelector<HTMLInputElement>('input[name=js-lib]:checked')?.value
+  if (syntax && isOption(syntax)) {
+    objOptions[syntax] = true
+  }
+  if (jsLib && isOption(jsLib)) {
+    objOptions[jsLib] = true
+  }
 
   provideContents()
 }
