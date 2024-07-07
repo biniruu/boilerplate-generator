@@ -23,6 +23,7 @@ export type Tab =
   | 'stylelint'
   | 'markdown'
   | 'next'
+  | 'nuxt'
   | 'nodemon'
   | 'npm'
   | 'package'

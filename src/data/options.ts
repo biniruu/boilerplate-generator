@@ -1,5 +1,6 @@
 import type { SelectOptions } from '_types'
 
+// This variable is used to create the objOptions, conditions, and objConditions variables, as well as the Option, SelectOptions, and Condition types
 const options = [
   'axios',
   'babel',
