@@ -38,5 +38,6 @@ export type Tab =
   | 'webpack'
   | 'next-layout-file'
   | 'pug-file'
+  | 'tailwind-file'
   | 'tanstack-query-file'
   | 'swr-file'
