@@ -7,6 +7,7 @@ import generateJestConfigs from './jest'
 import generateNextConfig from './next'
 import generatePostcssConfig from './postcss'
 import generatePrettierConfig from './prettier'
+import generatePugConfig from './pug'
 import generateStylelintConfig from './stylelint'
 import generateTailwindConfig from './tailwind'
 import generateTypescriptConfigs from './ts'
@@ -23,6 +24,7 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
     'jest-setup': generateJestConfigs(configOptions).jestSetup,
     prettier: generatePrettierConfig(configOptions),
     postcss: generatePostcssConfig(configOptions),
+    pug: generatePugConfig(),
     stylelint: generateStylelintConfig(configOptions),
     next: generateNextConfig(configOptions),
     tailwind: generateTailwindConfig(configOptions),

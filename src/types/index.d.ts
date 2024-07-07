@@ -18,6 +18,7 @@ export type Tab =
   | 'jest-setup'
   | 'prettier'
   | 'postcss'
+  | 'pug'
   | 'stylelint'
   | 'next'
   | 'tailwind'
