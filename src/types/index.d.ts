@@ -24,6 +24,7 @@ export type Tab =
   | 'markdown'
   | 'next'
   | 'nodemon'
+  | 'package'
   | 'tailwind'
   | 'ts-build'
   | 'ts-default'

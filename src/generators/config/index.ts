@@ -8,6 +8,7 @@ import generateJestConfigs from './jest'
 import generateMarkdownConfig from './markdown'
 import generateNextConfig from './next'
 import generateNodemonConfig from './nodemon'
+import generatePackageConfig from './package'
 import generatePostcssConfig from './postcss'
 import generatePrettierConfig from './prettier'
 import generatePugConfig from './pug'
@@ -33,6 +34,7 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
     markdown: generateMarkdownConfig(),
     next: generateNextConfig(configOptions),
     nodemon: generateNodemonConfig(configOptions),
+    package: generatePackageConfig(configOptions),
     tailwind: generateTailwindConfig(configOptions),
     'ts-build': generateTypescriptConfigs(configOptions).tsBuild,
     'ts-default': generateTypescriptConfigs(configOptions).tsDefault,
