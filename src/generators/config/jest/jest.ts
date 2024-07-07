@@ -6,18 +6,17 @@ const getOptions = (configOptions: SelectOptions) => {
   const { hasLodash, hasNext, hasTypescript, hasVue } = getCertainConditions(configOptions)
 
   const next = hasNext ? ['./.next/'] : []
-  const js = !hasTypescript ? { '^.+\\.(js|jsx)$': 'babel-jest' } : {}
-  const ts = hasTypescript
-    ? {
-        '^.+\\.(ts|tsx)$': [
-          'ts-jest',
-          {
-            tsconfig: './tsconfig.test.json',
-          },
-        ],
-      }
-    : {}
-  const vue = hasVue ? { '^.+\\.vue$': 'vue-jest' } : {}
+  const js = !hasTypescript && { '^.+\\.(js|jsx)$': 'babel-jest' }
+  const ts = hasTypescript && {
+    '^.+\\.(ts|tsx)$': [
+      'ts-jest',
+      {
+        tsconfig: './tsconfig.test.json',
+      },
+    ],
+  }
+
+  const vue = hasVue && { '^.+\\.vue$': 'vue-jest' }
 
   return { hasTypescript, hasLodash, next, js, ts, vue }
 }
@@ -134,7 +133,7 @@ const getJestConfig = (configOptions: SelectOptions) => {
     moduleNameMapper: {
       '@app/(.*)': './src/app/$1',
       '\\.(css|scss)$': 'identity-obj-proxy',
-      ...(hasLodash ? { 'lodash-es': 'lodash' } : {}), // resolve an error that import methods from lodash-es
+      ...(hasLodash && { 'lodash-es': 'lodash' }), // resolve an error that import methods from lodash-es
     },
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -147,7 +146,7 @@ const getJestConfig = (configOptions: SelectOptions) => {
     // notifyMode: "failure-change",
 
     // A preset that is used as a base for Jest's configuration
-    ...(hasTypescript ? { preset: 'ts-jest' } : {}),
+    ...(hasTypescript && { preset: 'ts-jest' }),
 
     // Run tests from one or more projects
     // projects: undefined,

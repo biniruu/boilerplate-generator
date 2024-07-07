@@ -16,7 +16,7 @@ const generateStylelintConfig = (configOptions: SelectOptions) => {
 
   const config = {
     extends: getExtends(configOptions),
-    ...(hasPostcss ? { overrides: getOverrides(configOptions) } : {}),
+    ...(hasPostcss && { overrides: getOverrides(configOptions) }),
     plugins: getPlugins(configOptions),
     rules: getRules(configOptions),
   }

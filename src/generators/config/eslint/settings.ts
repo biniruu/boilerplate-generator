@@ -17,38 +17,32 @@ const mergeSettings = (configOptions: SelectOptions) => {
         extensions: ['*.js', '*.jsx', '*.ts', '*.tsx'],
       },
     },
-    ...(hasJest || hasReact
-      ? {
-          settings: {
-            ...(hasJest
-              ? {
-                  /**
-                   * Jest version setting
-                   * {@link https://github.com/jest-community/eslint-plugin-jest#jest-version-setting}
-                   *
-                   * fetch the installed version of Jest
-                   */
-                  jest: {
-                    version: 'replace jestVersion',
-                  },
-                }
-              : {}),
-            ...(hasReact
-              ? {
-                  /**
-                   * Eslint-plugin-react configuration
-                   * {@link https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc-}
-                   *
-                   * detect the installed version of React
-                   */
-                  react: {
-                    version: 'detect',
-                  },
-                }
-              : {}),
+    ...((hasJest || hasReact) && {
+      settings: {
+        ...(hasJest && {
+          /**
+           * Jest version setting
+           * {@link https://github.com/jest-community/eslint-plugin-jest#jest-version-setting}
+           *
+           * fetch the installed version of Jest
+           */
+          jest: {
+            version: 'replace jestVersion',
           },
-        }
-      : {}),
+        }),
+        ...(hasReact && {
+          /**
+           * Eslint-plugin-react configuration
+           * {@link https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc-}
+           *
+           * detect the installed version of React
+           */
+          react: {
+            version: 'detect',
+          },
+        }),
+      },
+    }),
   }
 
   return result

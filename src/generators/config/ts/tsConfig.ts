@@ -20,15 +20,13 @@ const getTsConfig = (configOptions: SelectOptions) => {
   const config = {
     compilerOptions: {
       /* Editor Support */
-      ...(hasNext
-        ? {
-            plugins: [
-              {
-                name: 'next',
-              },
-            ],
-          }
-        : {}),
+      ...(hasNext && {
+        plugins: [
+          {
+            name: 'next',
+          },
+        ],
+      }),
     },
     extends: './tsconfig.default.json',
     include: [

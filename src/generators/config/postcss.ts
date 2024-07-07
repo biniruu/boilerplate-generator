@@ -8,7 +8,7 @@ const generatePostcssConfig = (configOptions: SelectOptions) => {
   const config = {
     syntax: 'postcss-syntax', //  automatically switch the required PostCSS syntax by file extension/source
     plugins: {
-      ...(hasTailwind ? { '@tailwindcss/nesting': {} } : {}), // this plugin has to come before 'tailwindcss'
+      ...(hasTailwind && { '@tailwindcss/nesting': {} }), // this plugin has to come before 'tailwindcss'
       'postcss-preset-env': {
         autoprefixer: {
           // grid: 'autoplace', // adding prefixes of grid layout properties for IE 10-11
@@ -17,7 +17,7 @@ const generatePostcssConfig = (configOptions: SelectOptions) => {
           'nesting-rules': false, // ensure this value as false when using @tailwindcss/nesting
         },
       },
-      ...(hasTailwind ? { tailwindcss: {} } : {}), // for using tailwindcss
+      ...(hasTailwind && { tailwindcss: {} }), // for using tailwindcss
       cssnano: { preset: 'default' }, // invoking CSS minification in production environment
     },
   }

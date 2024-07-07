@@ -45,7 +45,7 @@ const getTsDefault = (configOptions: SelectOptions) => {
       /* Visit https://aka.ms/tsconfig to read more about this file */
 
       /* Projects */
-      ...(hasNext ? { incremental: true } : {}), // Save .tsbuildinfo files to allow for incremental compilation of projects.
+      ...(hasNext && { incremental: true }), // Save .tsbuildinfo files to allow for incremental compilation of projects.
       // "composite": true, // Enable constraints that allow a TypeScript project to be used with project references.
       // "tsBuildInfoFile": "./.tsbuildinfo", // Specify the path to .tsbuildinfo incremental compilation file.
       // "disableSourceOfProjectReferenceRedirect": true, // Disable preferring source files instead of declaration files when referencing composite projects.
@@ -54,10 +54,10 @@ const getTsDefault = (configOptions: SelectOptions) => {
 
       /* Language and Environment */
       target: 'ESNext', // Set the JavaScript language version for emitted JavaScript and include compatible library declarations.
-      ...(hasJsLibs || hasGatsby ? { lib: ['DOM', 'DOM.Iterable', 'ESNext'] } : {}), // Specify a set of bundled library declaration files that describe the target runtime environment.
-      ...(hasJsLibs || hasGatsby ? { jsx: getJsx() } : {}), // Specify what JSX code is generated.
-      ...(!hasGatsby || !hasReact ? { experimentalDecorators: true } : {}), // Enable experimental support for TC39 stage 2 draft decorators.
-      ...(hasExpress ? { emitDecoratorMetadata: true } : {}), // Emit design-type metadata for decorated declarations in source files.
+      ...((hasJsLibs || hasGatsby) && { lib: ['DOM', 'DOM.Iterable', 'ESNext'] }), // Specify a set of bundled library declaration files that describe the target runtime environment.
+      ...((hasJsLibs || hasGatsby) && { jsx: getJsx() }), // Specify what JSX code is generated.
+      ...((!hasGatsby || !hasReact) && { experimentalDecorators: true }), // Enable experimental support for TC39 stage 2 draft decorators.
+      ...(hasExpress && { emitDecoratorMetadata: true }), // Emit design-type metadata for decorated declarations in source files.
       // "jsxFactory": "", // Specify the JSX factory function used when targeting React JSX emit, e.g. 'React.createElement' or 'h'.
       // "jsxFragmentFactory": "", // Specify the JSX Fragment reference used for fragments when targeting React JSX emit e.g. 'React.Fragment' or 'Fragment'.
       // "jsxImportSource": "", // Specify module specifier used to import the JSX factory functions when using 'jsx: react-jsx*'.
@@ -70,7 +70,7 @@ const getTsDefault = (configOptions: SelectOptions) => {
       module: 'ESNext', // Specify what module code is generated.
       // "rootDir": "./", // Specify the root folder within your source files.
       moduleResolution: hasReact ? 'Bundler' : 'Node', // Specify how TypeScript looks up a file from a given module specifier.
-      ...(hasReact ? { allowImportingTsExtensions: true } : {}),
+      ...(hasReact && { allowImportingTsExtensions: true }),
       baseUrl: hasJsLibs ? './src' : '.', // Specify the base directory to resolve non-relative module names.
       paths: {
         '@/*': ['src/*'],
@@ -147,31 +147,29 @@ const getTsDefault = (configOptions: SelectOptions) => {
       skipLibCheck: true, // Skip type checking all .d.ts files.
     },
     exclude: ['node_modules', 'dist', ...tsExtension],
-    ...(hasGatsby || hasReact
-      ? {
-          include: [...gatsbyInclude, ...reactInclude],
-        }
-      : {}),
-    ...(hasReact ? { references: [{ path: './tsconfig.node.json' }] } : {}),
-    ...(!hasJsLibs && hasTypescript && (hasExpress || hasThree || hasWebpack || hasSocket)
-      ? {
-          'ts-node': {
-            /* https://typestrong.org/ts-node/docs/configuration/#via-tsconfigjson-recommended */
+    ...((hasGatsby || hasReact) && {
+      include: [...gatsbyInclude, ...reactInclude],
+    }),
+    ...(hasReact && { references: [{ path: './tsconfig.node.json' }] }),
+    ...(!hasJsLibs &&
+      hasTypescript &&
+      (hasExpress || hasThree || hasWebpack || hasSocket) && {
+        'ts-node': {
+          /* https://typestrong.org/ts-node/docs/configuration/#via-tsconfigjson-recommended */
 
-            // It is faster to skip typechecking.
-            // Remove if you want ts-node to do typechecking.
-            transpileOnly: true,
-            files: true,
-            compilerOptions: {
-              // compilerOptions specified here will override those declared below,
-              // but *only* in ts-node. Useful if you want ts-node and tsc to use
-              // different options with a single tsconfig.json.
-              module: 'CommonJS',
-            },
-            require: ['tsconfig-paths/register'],
+          // It is faster to skip typechecking.
+          // Remove if you want ts-node to do typechecking.
+          transpileOnly: true,
+          files: true,
+          compilerOptions: {
+            // compilerOptions specified here will override those declared below,
+            // but *only* in ts-node. Useful if you want ts-node and tsc to use
+            // different options with a single tsconfig.json.
+            module: 'CommonJS',
           },
-        }
-      : {}),
+          require: ['tsconfig-paths/register'],
+        },
+      }),
   }
 
   const result = convertToJson(config)

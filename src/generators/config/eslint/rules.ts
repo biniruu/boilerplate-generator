@@ -74,75 +74,73 @@ const mergeRules = (configOptions: SelectOptions) => {
         ignoreMemberSort: true,
       },
     ],
-    ...(hasTypescript
-      ? {
-          /**
-           * Typescript-eslint supported rules
-           * {@link https://typescript-eslint.io/rules/}
-           *
-           * ban-ts-comment : 설명을 추가하는 조건으로 @ts-expect-error, @ts-ignore, @ts-nocheck, @ts-check 주석을 허용
-           * no-explicit-any
-           * no-floating-promises
-           * @property {Object} 'no-misused-promises' - To prevent passing promises to place that are not designed to handle them.
-           * @property {boolean} 'no-misused-promises'.checksVoidReturn.attributes - Weather to check async functions passed as JSX (and <form> tag) attributes.
-           * no-unsafe-argument
-           * no-unsafe-assignment : any 타입 사용 시 알림을 띄움
-           * no-unsafe-call
-           * no-unsafe-member-access
-           * no-unused-vars : eslint에서 제공하는 no-unused-vars와 동일. no-unused-vars를 비활성화 한 후에 사용할 것
-           * no-var-requires : require 문을 변수에 할당 금지. 특정 모듈 문법에 구애 받지 않는 상황이라면 비활성화 할 것
-           * restrict-plus-operands
-           * restrict-template-expressions
-           * space-before-function-paren : 함수 선언 시 함수명과 괄호 사이에 간격 추가를 강제. 공식 문서에서는 사용하지 말 것을 적극 권고한다
-           */
-          '@typescript-eslint/ban-ts-comment': [
-            'error',
-            {
-              'ts-expect-error': 'allow-with-description',
-              'ts-ignore': 'allow-with-description',
-              'ts-nocheck': 'allow-with-description',
-              'ts-check': 'allow-with-description',
-            },
-          ],
-          '@typescript-eslint/no-explicit-any': [
-            'error',
-            {
-              ignoreRestArgs: true,
-            },
-          ],
-          '@typescript-eslint/no-floating-promises': 'warn',
-          '@typescript-eslint/no-misused-promises': [
-            'error',
-            {
-              checksVoidReturn: {
-                attributes: false,
-              },
-            },
-          ],
-          '@typescript-eslint/no-unsafe-argument': 'error',
-          '@typescript-eslint/no-unsafe-assignment': 'error',
-          '@typescript-eslint/no-unsafe-call': 'error',
-          '@typescript-eslint/no-unsafe-member-access': 'error',
-          '@typescript-eslint/no-unused-vars': [
-            'error',
-            {
-              args: 'all',
-              argsIgnorePattern: '^_[2-9]?$',
-            },
-          ],
-          '@typescript-eslint/no-var-requires': 'off',
-          '@typescript-eslint/restrict-plus-operands': 'warn',
-          '@typescript-eslint/restrict-template-expressions': 'warn',
-          '@typescript-eslint/space-before-function-paren': [
-            'warn',
-            {
-              anonymous: 'always',
-              named: 'never',
-              asyncArrow: 'always',
-            },
-          ],
-        }
-      : {}),
+    ...(hasTypescript && {
+      /**
+       * Typescript-eslint supported rules
+       * {@link https://typescript-eslint.io/rules/}
+       *
+       * ban-ts-comment : 설명을 추가하는 조건으로 @ts-expect-error, @ts-ignore, @ts-nocheck, @ts-check 주석을 허용
+       * no-explicit-any
+       * no-floating-promises
+       * @property {Object} 'no-misused-promises' - To prevent passing promises to place that are not designed to handle them.
+       * @property {boolean} 'no-misused-promises'.checksVoidReturn.attributes - Weather to check async functions passed as JSX (and <form> tag) attributes.
+       * no-unsafe-argument
+       * no-unsafe-assignment : any 타입 사용 시 알림을 띄움
+       * no-unsafe-call
+       * no-unsafe-member-access
+       * no-unused-vars : eslint에서 제공하는 no-unused-vars와 동일. no-unused-vars를 비활성화 한 후에 사용할 것
+       * no-var-requires : require 문을 변수에 할당 금지. 특정 모듈 문법에 구애 받지 않는 상황이라면 비활성화 할 것
+       * restrict-plus-operands
+       * restrict-template-expressions
+       * space-before-function-paren : 함수 선언 시 함수명과 괄호 사이에 간격 추가를 강제. 공식 문서에서는 사용하지 말 것을 적극 권고한다
+       */
+      '@typescript-eslint/ban-ts-comment': [
+        'error',
+        {
+          'ts-expect-error': 'allow-with-description',
+          'ts-ignore': 'allow-with-description',
+          'ts-nocheck': 'allow-with-description',
+          'ts-check': 'allow-with-description',
+        },
+      ],
+      '@typescript-eslint/no-explicit-any': [
+        'error',
+        {
+          ignoreRestArgs: true,
+        },
+      ],
+      '@typescript-eslint/no-floating-promises': 'warn',
+      '@typescript-eslint/no-misused-promises': [
+        'error',
+        {
+          checksVoidReturn: {
+            attributes: false,
+          },
+        },
+      ],
+      '@typescript-eslint/no-unsafe-argument': 'error',
+      '@typescript-eslint/no-unsafe-assignment': 'error',
+      '@typescript-eslint/no-unsafe-call': 'error',
+      '@typescript-eslint/no-unsafe-member-access': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          args: 'all',
+          argsIgnorePattern: '^_[2-9]?$',
+        },
+      ],
+      '@typescript-eslint/no-var-requires': 'off',
+      '@typescript-eslint/restrict-plus-operands': 'warn',
+      '@typescript-eslint/restrict-template-expressions': 'warn',
+      '@typescript-eslint/space-before-function-paren': [
+        'warn',
+        {
+          anonymous: 'always',
+          named: 'never',
+          asyncArrow: 'always',
+        },
+      ],
+    }),
     /**
      * Eslint-plugin-import rules
      * {@link https://github.com/import-js/eslint-plugin-import#rules}
@@ -216,101 +214,97 @@ const mergeRules = (configOptions: SelectOptions) => {
         td: ['gridcell'],
       },
     ],
-    ...(hasReact || hasNext
-      ? {
-          /**
-           * Eslint-plugin-react rules
-           * {@link https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules}
-           *
-           * destructuring-assignment : state, prop 등에 구조분해 할당 적용
-           * jsx-curly-brace-presence : jsx 내 불필요한 중괄호 금지
-           * jsx-curly-spacing
-           * jsx-key : 반복문으로 생성하는 요소에 key 속성 강제. 'react/recommended' 설정 시 활성화
-           * jsx-no-useless-fragment : 불필요한 fragment 금지
-           * jsx-pascal-case : 컴포넌트 이름을 PascalCase로 강제
-           * jsx-no-bind : JSX에서 .bind() 또는 화살표 함수 사용 금지
-           * jsx-uses-react : react를 import한 후 JSX 사용 강제. 'react/recommended' 설정 시 활성화. 'no-unused-vars'가 활성화 된 경우 효과 발생. react v17 이후 필요없어짐 {@link https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint How to Upgrade to the New JSX Transform}
-           * jsx-uses-vars : JSX를 import한 후 해당 JSX 사용 강제. 'no-unused-vars'가 활성화 된 경우 효과 발생
-           * no-direct-mutation-state : state 직접 수정 금지. 'react/recommended' 설정 시 활성화
-           * no-unescaped-entities : JSX 안에서 escape 되지 않은 entity 코드 사용 금지. 'react/recommended' 설정 시 활성화
-           * no-unknown-property : DOM property에 해당하지 않는 property를 비활성화
-           * no-unused-state : 사용하지 않는 state가 있을 시 경고 발생
-           * prop-types : prop의 type을 정의하도록 강제. 'react/recommended' 설정 시 활성화. typescript를 사용하면 필요없는 옵션
-           * react-in-jsx-scope : component에서 React를 import하지 않을 경우 오류 발생. 'react/recommended' 설정 시 활성화. react v17 이후 필요없어짐 {@link https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint How to Upgrade to the New JSX Transform}
-           * self-closing-comp : JSX 태그 안에 하위 태그가 없을 경우 self-closing 태그로 변환
-           * static-property-placement : 클래스에서 childContextTypes, contextTypes, contextType, defaultProps, displayName, propTypes를 정의하도록 강제. default : 'static public field'
-           */
-          'react/destructuring-assignment': 'warn',
-          'react/jsx-curly-brace-presence': 'warn',
-          // 'react/jsx-curly-spacing': ['warn', { when: 'always', children: true, objectLiterals: 'never' }], // prettier와 충돌하여 사용할 수 없음
-          'react/jsx-key': 'error',
-          'react/jsx-no-useless-fragment': [
-            'warn',
-            {
-              allowExpressions: true,
-            },
-          ],
-          'react/jsx-pascal-case': 'warn',
-          'react/jsx-no-bind': [
-            'error',
-            {
-              allowArrowFunctions: true,
-              allowFunctions: true,
-            },
-          ],
-          'react/jsx-uses-react': 'off',
-          'react/jsx-uses-vars': 'error',
-          'react/no-direct-mutation-state': 'error',
-          'react/no-unescaped-entities': 'error',
-          'react/no-unknown-property': [
-            'error',
-            {
-              ignore: ['jsx'],
-            },
-          ],
-          'react/no-unused-state': 'warn',
-          'react/prop-types': 'off',
-          'react/react-in-jsx-scope': 'off',
-          'react/self-closing-comp': [
-            'warn',
-            {
-              component: true,
-              html: false,
-            },
-          ],
-          'react/static-property-placement': 'warn',
-          /**
-           * Eslint-plugin-react-hooks rules
-           * {@link https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks}
-           *
-           * react-hooks/rules-of-hooks : react hooks 공식 문서에서 제공하는 규칙을 준수하도록 강제. {@link https://legacy.reactjs.org/docs/hooks-rules.html Roles of Hooks}
-           */
-          'react-hooks/rules-of-hooks': 'error',
-          /**
-           * Eslint-plugin-react-refresh rules
-           * {@link https://github.com/ArnaudBarre/eslint-plugin-react-refresh#options}
-           *
-           * react-refresh/only-export-components : Don't warn when a constant (string, number, boolean, templateLiteral) is exported aside one or more components
-           */
-          'react-refresh/only-export-components': [
-            'warn',
-            {
-              allowConstantExport: true,
-            },
-          ],
-        }
-      : {}),
-    ...(hasTailwind
-      ? {
-          /**
-           * Eslint-plugin-tailwindcss rules
-           * {@link https://github.com/francoismassart/eslint-plugin-tailwindcss/tree/master/docs/rules}
-           *
-           * tailwindcss/classnames-order : className 프로퍼티에 추가한 클래스명 정렬
-           */
-          'tailwindcss/classnames-order': 'off',
-        }
-      : {}),
+    ...((hasReact || hasNext) && {
+      /**
+       * Eslint-plugin-react rules
+       * {@link https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules}
+       *
+       * destructuring-assignment : state, prop 등에 구조분해 할당 적용
+       * jsx-curly-brace-presence : jsx 내 불필요한 중괄호 금지
+       * jsx-curly-spacing
+       * jsx-key : 반복문으로 생성하는 요소에 key 속성 강제. 'react/recommended' 설정 시 활성화
+       * jsx-no-useless-fragment : 불필요한 fragment 금지
+       * jsx-pascal-case : 컴포넌트 이름을 PascalCase로 강제
+       * jsx-no-bind : JSX에서 .bind() 또는 화살표 함수 사용 금지
+       * jsx-uses-react : react를 import한 후 JSX 사용 강제. 'react/recommended' 설정 시 활성화. 'no-unused-vars'가 활성화 된 경우 효과 발생. react v17 이후 필요없어짐 {@link https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint How to Upgrade to the New JSX Transform}
+       * jsx-uses-vars : JSX를 import한 후 해당 JSX 사용 강제. 'no-unused-vars'가 활성화 된 경우 효과 발생
+       * no-direct-mutation-state : state 직접 수정 금지. 'react/recommended' 설정 시 활성화
+       * no-unescaped-entities : JSX 안에서 escape 되지 않은 entity 코드 사용 금지. 'react/recommended' 설정 시 활성화
+       * no-unknown-property : DOM property에 해당하지 않는 property를 비활성화
+       * no-unused-state : 사용하지 않는 state가 있을 시 경고 발생
+       * prop-types : prop의 type을 정의하도록 강제. 'react/recommended' 설정 시 활성화. typescript를 사용하면 필요없는 옵션
+       * react-in-jsx-scope : component에서 React를 import하지 않을 경우 오류 발생. 'react/recommended' 설정 시 활성화. react v17 이후 필요없어짐 {@link https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint How to Upgrade to the New JSX Transform}
+       * self-closing-comp : JSX 태그 안에 하위 태그가 없을 경우 self-closing 태그로 변환
+       * static-property-placement : 클래스에서 childContextTypes, contextTypes, contextType, defaultProps, displayName, propTypes를 정의하도록 강제. default : 'static public field'
+       */
+      'react/destructuring-assignment': 'warn',
+      'react/jsx-curly-brace-presence': 'warn',
+      // 'react/jsx-curly-spacing': ['warn', { when: 'always', children: true, objectLiterals: 'never' }], // prettier와 충돌하여 사용할 수 없음
+      'react/jsx-key': 'error',
+      'react/jsx-no-useless-fragment': [
+        'warn',
+        {
+          allowExpressions: true,
+        },
+      ],
+      'react/jsx-pascal-case': 'warn',
+      'react/jsx-no-bind': [
+        'error',
+        {
+          allowArrowFunctions: true,
+          allowFunctions: true,
+        },
+      ],
+      'react/jsx-uses-react': 'off',
+      'react/jsx-uses-vars': 'error',
+      'react/no-direct-mutation-state': 'error',
+      'react/no-unescaped-entities': 'error',
+      'react/no-unknown-property': [
+        'error',
+        {
+          ignore: ['jsx'],
+        },
+      ],
+      'react/no-unused-state': 'warn',
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react/self-closing-comp': [
+        'warn',
+        {
+          component: true,
+          html: false,
+        },
+      ],
+      'react/static-property-placement': 'warn',
+      /**
+       * Eslint-plugin-react-hooks rules
+       * {@link https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks}
+       *
+       * react-hooks/rules-of-hooks : react hooks 공식 문서에서 제공하는 규칙을 준수하도록 강제. {@link https://legacy.reactjs.org/docs/hooks-rules.html Roles of Hooks}
+       */
+      'react-hooks/rules-of-hooks': 'error',
+      /**
+       * Eslint-plugin-react-refresh rules
+       * {@link https://github.com/ArnaudBarre/eslint-plugin-react-refresh#options}
+       *
+       * react-refresh/only-export-components : Don't warn when a constant (string, number, boolean, templateLiteral) is exported aside one or more components
+       */
+      'react-refresh/only-export-components': [
+        'warn',
+        {
+          allowConstantExport: true,
+        },
+      ],
+    }),
+    ...(hasTailwind && {
+      /**
+       * Eslint-plugin-tailwindcss rules
+       * {@link https://github.com/francoismassart/eslint-plugin-tailwindcss/tree/master/docs/rules}
+       *
+       * tailwindcss/classnames-order : className 프로퍼티에 추가한 클래스명 정렬
+       */
+      'tailwindcss/classnames-order': 'off',
+    }),
   }
 
   return result
