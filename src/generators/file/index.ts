@@ -1,4 +1,5 @@
-import type { SelectOptions, Tab } from '_types'
+import files from '@data/files'
+import type { FileTab, ObjFileTab, SelectOptions } from '_types'
 
 import getDeclarationsFile from './declarations'
 import getLayoutFile from './layout'
@@ -9,20 +10,25 @@ import getSwrProviderFile from './swrProvider'
 import getTailwindFile from './tailwind'
 import getTypeGuardFile from './typeGuard'
 
-const generateFile = (tab: Tab, configOptions: SelectOptions) => {
+const generateFile = (tab: FileTab, configOptions: SelectOptions) => {
   // TODO: Make sure that it uses dynamic import
-  const config = {
-    'pug-file': getPugFile(),
-    'next-layout-file': getLayoutFile(configOptions),
-    'socket-file': getSocketFile(),
-    'swr-file': getSwrProviderFile(configOptions),
-    'tailwind-file': getTailwindFile(),
-    'tanstack-query-file': getReactQueryProviderFile(configOptions),
-    'type-guards-file': getTypeGuardFile(),
-    'typescript-file': getDeclarationsFile(),
-  }
+  const values = [
+    getPugFile(),
+    getLayoutFile(configOptions),
+    getSocketFile(),
+    getSwrProviderFile(configOptions),
+    getTailwindFile(),
+    getReactQueryProviderFile(configOptions),
+    getTypeGuardFile(),
+    getDeclarationsFile(),
+  ]
+  const config = files.reduce((acc, curr, idx) => {
+    acc[curr] = values[idx]
 
-  return config[tab as keyof typeof config]
+    return acc
+  }, {} as ObjFileTab)
+
+  return config[tab]
 }
 
 export default generateFile

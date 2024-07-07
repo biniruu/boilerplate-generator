@@ -2,6 +2,7 @@ import { objOptions } from '@data/options'
 import generateCommand from '@generators/command'
 import generateConfig from '@generators/config'
 import generateFile from '@generators/file'
+import { isConfig, isFile } from '@utils/typeGuards'
 import type { Option, Tab } from '_types'
 import './style.css'
 
@@ -57,9 +58,11 @@ form && form.addEventListener('click', formEvent, { passive: true })
 // Show code and commands to the code windows
 const provideConfig = (tab: Tab) => {
   currentTab = tab
-  const isFile = tab.includes('-file')
+  const config = isConfig(tab) ? generateConfig(tab, objOptions) : ''
+  const file = isFile(tab) ? generateFile(tab, objOptions) : ''
+  const isFileTab = tab.includes('-file')
   if (codeElem) {
-    codeElem.textContent = isFile ? generateFile(tab, objOptions) : generateConfig(tab, objOptions)
+    codeElem.textContent = isFileTab ? file : config
   }
 }
 const provideCommand = () => {
