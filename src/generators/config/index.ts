@@ -5,6 +5,7 @@ import generateEslintConfig from './eslint'
 import generateGitIgnore from './gitignore'
 import generateJestConfigs from './jest'
 import generateNextConfig from './next'
+import generateNodemonConfig from './nodemon'
 import generatePostcssConfig from './postcss'
 import generatePrettierConfig from './prettier'
 import generatePugConfig from './pug'
@@ -27,6 +28,7 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
     pug: generatePugConfig(),
     stylelint: generateStylelintConfig(configOptions),
     next: generateNextConfig(configOptions),
+    nodemon: generateNodemonConfig(configOptions),
     tailwind: generateTailwindConfig(configOptions),
     'ts-build': generateTypescriptConfigs(configOptions).tsBuild,
     'ts-default': generateTypescriptConfigs(configOptions).tsDefault,

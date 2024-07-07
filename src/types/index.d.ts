@@ -21,6 +21,7 @@ export type Tab =
   | 'pug'
   | 'stylelint'
   | 'next'
+  | 'nodemon'
   | 'tailwind'
   | 'ts-build'
   | 'ts-default'
