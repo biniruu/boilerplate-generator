@@ -27,6 +27,7 @@ export type Tab =
   | 'nodemon'
   | 'npm'
   | 'package'
+  | 'pug-file'
   | 'tailwind'
   | 'ts-build'
   | 'ts-default'
