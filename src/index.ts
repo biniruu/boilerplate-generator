@@ -59,7 +59,7 @@ const provideConfig = (tab: Tab) => {
   currentTab = tab
   const isFile = tab.includes('-file')
   if (codeElem) {
-    codeElem.textContent = isFile ? generateFile(tab) : generateConfig(tab, objOptions)
+    codeElem.textContent = isFile ? generateFile(tab, objOptions) : generateConfig(tab, objOptions)
   }
 }
 const provideCommand = () => {

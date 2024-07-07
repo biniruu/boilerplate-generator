@@ -1,10 +1,13 @@
-import generatePugConfig from '@generators/config/pug'
-import type { Tab } from '_types'
+import type { SelectOptions, Tab } from '_types'
 
-const generateFile = (tab: Tab) => {
+import getLayoutFile from './layout'
+import getPugFile from './pug'
+
+const generateFile = (tab: Tab, configOptions: SelectOptions) => {
   // TODO: Make sure that it uses dynamic import
   const config = {
-    'pug-file': generatePugConfig(),
+    'pug-file': getPugFile(),
+    'next-layout-file': getLayoutFile(configOptions),
   }
 
   return config[tab as keyof typeof config]
