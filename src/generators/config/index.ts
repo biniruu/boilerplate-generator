@@ -1,5 +1,6 @@
 import type { SelectOptions, Tab } from '_types'
 
+import generateBabelConfig from './babel'
 import generateEslintConfig from './eslint'
 import generateGitIgnore from './gitignore'
 import generateJestConfigs from './jest'
@@ -15,6 +16,7 @@ import generateWebpackConfig from './webpack'
 const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
   // TODO: Make sure that it uses dynamic import
   const config = {
+    babel: generateBabelConfig(),
     eslint: generateEslintConfig(configOptions),
     gitignore: generateGitIgnore(configOptions),
     jest: generateJestConfigs(configOptions).jestConfig,
