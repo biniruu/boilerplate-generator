@@ -18,6 +18,7 @@ import generateStylelintConfig from './stylelint'
 import generateTailwindConfig from './tailwind'
 import generateTypescriptConfigs from './ts'
 import generateViteConfig from './vite'
+import generateVolarConfig from './volar'
 import generateWebpackConfig from './webpack'
 
 const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
@@ -46,6 +47,7 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
     'ts-test': generateTypescriptConfigs(configOptions).tsTest,
     typescript: generateTypescriptConfigs(configOptions).tsConfig,
     vite: generateViteConfig(),
+    volar: generateVolarConfig(),
     webpack: generateWebpackConfig(configOptions),
   }
 

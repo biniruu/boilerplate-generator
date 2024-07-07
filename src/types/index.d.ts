@@ -34,4 +34,5 @@ export type Tab =
   | 'ts-test'
   | 'typescript'
   | 'vite'
+  | 'volar'
   | 'webpack'
