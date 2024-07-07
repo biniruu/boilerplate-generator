@@ -2,6 +2,7 @@ import type { SelectOptions, Tab } from '_types'
 
 import generateBabelConfig from './babel'
 import generateEslintConfig from './eslint'
+import generateGatsbyConfig from './gatsby'
 import generateGitIgnore from './gitignore'
 import generateJestConfigs from './jest'
 import generateMarkdownConfig from './markdown'
@@ -21,6 +22,7 @@ const generateConfig = (tab: Tab, configOptions: SelectOptions) => {
   const config = {
     babel: generateBabelConfig(),
     eslint: generateEslintConfig(configOptions),
+    gatsby: generateGatsbyConfig(),
     gitignore: generateGitIgnore(configOptions),
     jest: generateJestConfigs(configOptions).jestConfig,
     'jest-setup': generateJestConfigs(configOptions).jestSetup,

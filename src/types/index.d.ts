@@ -13,6 +13,7 @@ export type Condition = MakeType<'has', Capitalize<Option>>
 export type Tab =
   | 'babel'
   | 'eslint'
+  | 'gatsby'
   | 'gitignore'
   | 'jest'
   | 'jest-setup'
