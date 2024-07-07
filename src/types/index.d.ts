@@ -1,16 +1,5 @@
 import { options } from '@data/options'
 
-export interface Env {
-  browser?: boolean
-  es6?: boolean
-  node?: boolean
-  'jest/globals'?: boolean
-}
-
-export interface Config {
-  [key: string]: unknown
-}
-
 export type SelectOptions = {
   [K in (typeof options)[number]]: boolean
 }
