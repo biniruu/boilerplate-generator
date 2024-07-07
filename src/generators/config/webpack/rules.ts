@@ -16,26 +16,6 @@ const getRules = (configOptions: SelectOptions) => {
   const { hasPostcss, hasScss, hasTypescript } = getCertainConditions(configOptions)
 
   const postcssLoader = hasPostcss ? ['postcss-loader'] : []
-
-  // rules: [
-  //   {
-  //     test: /\.(ts|tsx)$/i,
-  //     loader: 'ts-loader',
-  //     exclude: ['/node_modules/'],
-  //   },
-  //   {
-  //     test: /\.css$/i,
-  //     use: [stylesHandler, 'css-loader', 'postcss-loader'],
-  //   },
-  //   {
-  //     test: /\.s[ac]ss$/i,
-  //     use: [stylesHandler, 'css-loader', 'postcss-loader', 'sass-loader'],
-  //   },
-  //   {
-  //     test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-  //     type: 'asset',
-  //   },
-  // ]
   const rules: Rule[] = [
     {
       test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,

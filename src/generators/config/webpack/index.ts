@@ -10,47 +10,6 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
   const { hasTypescript } = getCertainConditions(configOptions)
   const tsExtensions = hasTypescript ? ['.tsx', '.ts'] : []
 
-  // devServer: {
-  //   compress: true,
-  //   open: true,
-  //   host: 'localhost',
-  //   port: 8000,
-  //   static: {
-  //     directory: path.join(__dirname, 'public'),
-  //   },
-  //   watchFiles: ['src/**/*.ts', 'public/*.html'],
-  // },
-  // entry: './src/index.ts',
-  // mode: isProduction ? 'production' : 'development',
-  // module: {
-  //   rules,
-  // },
-  // optimization: {
-  //   minimize: true,
-  //   minimizer: [
-  //     new HtmlMinimizerPlugin({
-  //       minify: HtmlMinimizerPlugin.swcMinify,
-  //       minimizerOptions: {},
-  //     }),
-  //     new TerserPlugin(),
-  //   ],
-  //   mergeDuplicateChunks: true,
-  // },
-  // output: {
-  //   filename: 'index.js',
-  //   path: path.resolve(__dirname, 'dist'),
-  // },
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     template: './public/index.html',
-  //   }),
-  // ],
-  // resolve: {
-  //   alias: {
-  //     '@': path.resolve(__dirname, 'src'),
-  //   },
-  //   extensions: ['.jsx', '.js', '.tsx', '.ts'],
-  // }
   const config = {
     devServer: {
       // allowedHosts: [],
@@ -59,30 +18,81 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
       host: 'localhost',
       port: 8000,
       static: {
+        /**
+         * @example
+         *
+         * ```js
+         * directory: path.join(__dirname, 'public'),
+         * ```
+         */
         directory: 'replace directory',
       },
       watchFiles: [`src/**/*.${extension}`, 'public/*.html'],
     },
     entry: `./src/index.${extension}`,
+    /**
+     * @example
+     *
+     * ```js
+     * mode: isProduction ? 'production' : 'development',
+     * ```
+     */
     mode: 'replace mode',
     module: {
       rules,
     },
     optimization: {
       minimize: true,
+      /**
+       * @example
+       *
+       * ```js
+       * minimizer: [
+       *  new HtmlMinimizerPlugin({
+       *    minify: HtmlMinimizerPlugin.swcMinify,
+       *    minimizerOptions: {},
+       *  }),
+       *  new TerserPlugin(),
+       *],
+       * ```
+       */
       minimizer: ['replace HtmlMinimizerPlugin', 'replace TerserPlugin'],
       mergeDuplicateChunks: true,
     },
     output: {
       filename: 'index.js',
+      /**
+       * @example
+       *
+       * ```js
+       * path: path.resolve(__dirname, 'dist'),
+       * ```
+       */
       path: 'replace output path',
     },
     /**
      * [plugins]{@link https://webpack.js.org/configuration/plugins}
+     *
+     * @example
+     *
+     * ```js
+     * plugins: [
+     *   new HtmlWebpackPlugin({
+     *     template: './public/index.html',
+     *   }),
+     * ],
+     * ```
      */
     plugins: ['replace HtmlWebpackPlugin'],
     resolve: {
       alias: {
+        /**
+         * @example
+         *
+         * ```js
+         * '@': path.resolve(__dirname, 'src'),
+         * ```
+         */
         '@': 'replace alias src',
       },
       extensions: ['.jsx', '.js', ...tsExtensions],

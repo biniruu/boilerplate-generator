@@ -35,33 +35,6 @@ interface Config {
  * @property {string} source - internal path
  * @property {string} destination - external path you need to connect
  */
-// const nextConfig = {
-//   compiler: {
-//     styledComponents: true,
-//   },
-//   distDir: isProduction ? '.next' : 'dist',
-//   images: {
-//     remotePatterns: [
-//       {
-//         protocol: 'https',
-//         hostname: 'images.pexels.com',
-//       },
-//     ],
-//   },
-//   reactStrictMode: true,
-//   async rewrites() {
-//     return [
-//       {
-//         source: '',
-//         destination: `${process.env.NEXT_PUBLIC_DEV_BASE_URL}/:path*/`,
-//       },
-//     ]
-//   },
-//   trailingSlash: true,
-//   typescript: {
-//     tsconfigPath: isProduction ? 'tsconfig.build.json' : 'tsconfig.json',
-//   },
-// }
 const generateNextConfig = (configOptions: SelectOptions) => {
   const { hasTypescript } = getCertainConditions(configOptions)
 
@@ -91,6 +64,15 @@ const generateNextConfig = (configOptions: SelectOptions) => {
   }
 
   if (hasTypescript) {
+    /**
+     * @example
+     *
+     * ```js
+     * typescript: {
+     *   tsconfigPath: isProduction ? 'tsconfig.build.json' : 'tsconfig.json',
+     * },
+     * ```
+     */
     config.typescript = {
       tsconfigPath: 'replace tsconfigPath',
     }
