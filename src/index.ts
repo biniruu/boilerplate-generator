@@ -6,6 +6,7 @@ import { isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, is
 import type { Option, Tab } from '_types'
 import './style.css'
 
+// Handle click inputs and tabs
 const handleEvent = (e: MouseEvent) => {
   const target = e.target
   if (isHtmlButtonElement(target) || isHtmlInputElement(target)) {
@@ -24,12 +25,6 @@ const handleEvent = (e: MouseEvent) => {
     }
   }
 }
-let currentTab: Tab = 'eslint'
-const tabElems = document.querySelector<HTMLDivElement>('#tabs')
-tabElems && tabElems.addEventListener('click', handleEvent, { passive: true })
-const syntax: Option[] = ['typescript', 'javascript']
-const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue']
-const radioBtns = [...syntax, ...jsLib]
 const handleRadioBtns = (value: Option) => {
   // Reset inputs in 'Syntax' and 'JavaScript library' categories
   const target = syntax.includes(value) ? syntax : jsLib
@@ -37,6 +32,12 @@ const handleRadioBtns = (value: Option) => {
   // Select new one
   objOptions[value] = true
 }
+let currentTab: Tab = 'eslint'
+const syntax: Option[] = ['typescript', 'javascript']
+const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue']
+const radioBtns = [...syntax, ...jsLib]
+const tabElems = document.querySelector<HTMLDivElement>('#tabs')
+tabElems && tabElems.addEventListener('click', handleEvent, { passive: true })
 const form = document.querySelector<HTMLFormElement>('#options')
 form && form.addEventListener('click', handleEvent, { passive: true })
 
