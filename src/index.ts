@@ -6,52 +6,27 @@ import { isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, is
 import type { Option, Tab } from '_types'
 import './style.css'
 
-// Toggle 'active' css class on inputs in 'Syntax' and 'JavaScript library' categories in the sidebar
-const tabEvent = (e: MouseEvent) => {
-  const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
-  tablinkElems.forEach(tablink => tablink.classList.remove('active'))
-
+const handleEvent = (e: MouseEvent) => {
   const target = e.target
-  // Avoid invoking this function when user clicked outside of tab buttons
-  if (!isHtmlButtonElement(target) || !target) {
-    // TODO: Remove this if statement
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('No target found.')
+  if (isHtmlButtonElement(target) || isHtmlInputElement(target)) {
+    const value = target.value
+    // Handle inputs in the sidebar
+    if (isHtmlInputElement(target) && isOption(value)) {
+      radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
+      provideContents(currentTab)
     }
-
-    return
-  }
-
-  const value = target.value
-  if (value && isTab(value)) {
-    target.classList.add('active')
-    provideConfig(value)
+    // Toggle 'active' css class on inputs in 'Syntax' and 'JavaScript library' categories in the sidebar
+    if (isHtmlButtonElement(target) && isTab(value)) {
+      const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
+      tablinkElems.forEach(tablink => tablink.classList.remove('active'))
+      target.classList.add('active')
+      provideConfig(value)
+    }
   }
 }
 let currentTab: Tab = 'eslint'
 const tabElems = document.querySelector<HTMLDivElement>('#tabs')
-tabElems && tabElems.addEventListener('click', tabEvent, { passive: true })
-
-// Handle inputs in the sidebar
-const formEvent = (e: MouseEvent) => {
-  const target = e.target
-  // Avoid invoking this function when user clicked outside of option inputs
-  if (!isHtmlInputElement(target) || !target) {
-    // TODO: Remove this if statement
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('No target found.')
-    }
-
-    return
-  }
-
-  const value = target.value
-  if (value && isOption(value)) {
-    radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
-  }
-
-  provideContents(currentTab)
-}
+tabElems && tabElems.addEventListener('click', handleEvent, { passive: true })
 const syntax: Option[] = ['typescript', 'javascript']
 const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue']
 const radioBtns = [...syntax, ...jsLib]
@@ -63,7 +38,7 @@ const handleRadioBtns = (value: Option) => {
   objOptions[value] = true
 }
 const form = document.querySelector<HTMLFormElement>('#options')
-form && form.addEventListener('click', formEvent, { passive: true })
+form && form.addEventListener('click', handleEvent, { passive: true })
 
 // Show code and commands to the code windows
 const provideConfig = (tab: Tab) => {
