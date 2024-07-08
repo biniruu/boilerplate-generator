@@ -17,6 +17,7 @@ import generatePostcssConfig from './postcss'
 import generatePrettierConfig from './prettier'
 import generatePugConfig from './pug'
 import generateStylelintConfig from './stylelint'
+import generateStylelintIgnoreConfig from './stylelintignore'
 import generateTailwindConfig from './tailwind'
 import generateTypescriptConfigs from './ts'
 import generateViteConfig from './vite'
@@ -52,6 +53,7 @@ const generateConfig = (tab: ConfigTab, configOptions: SelectOptions) => {
     generateViteConfig(),
     generateVolarConfig(),
     generateWebpackConfig(configOptions),
+    generateStylelintIgnoreConfig(configOptions),
   ]
   const config = configs.reduce((acc, curr, idx) => {
     acc[curr] = values[idx]

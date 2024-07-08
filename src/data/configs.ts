@@ -25,6 +25,7 @@ const configs = [
   'vite',
   'volar',
   'webpack',
+  'stylelint-ignore',
 ] as const
 
 export default configs

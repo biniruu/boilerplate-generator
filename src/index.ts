@@ -6,6 +6,8 @@ import { isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, is
 import type { Option, Tab } from '_types'
 import './style.css'
 
+let currentTab: Tab = 'eslint'
+
 // Handle click inputs and tabs
 const handleEvent = (e: MouseEvent) => {
   const target = e.target
@@ -32,7 +34,6 @@ const handleRadioBtns = (value: Option) => {
   // Select new one
   objOptions[value] = true
 }
-let currentTab: Tab = 'eslint'
 const syntax: Option[] = ['typescript', 'javascript']
 const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress']
 const radioBtns = [...syntax, ...jsLib]
