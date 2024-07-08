@@ -15,6 +15,7 @@ import generateNuxtConfig from './nuxt'
 import generatePackageConfig from './package'
 import generatePostcssConfig from './postcss'
 import generatePrettierConfig from './prettier'
+import generatePrettierIgnoreConfig from './prettierignore'
 import generatePugConfig from './pug'
 import generateStylelintConfig from './stylelint'
 import generateStylelintIgnoreConfig from './stylelintignore'
@@ -54,6 +55,7 @@ const generateConfig = (tab: ConfigTab, configOptions: SelectOptions) => {
     generateVolarConfig(),
     generateWebpackConfig(configOptions),
     generateStylelintIgnoreConfig(configOptions),
+    generatePrettierIgnoreConfig(),
   ]
   const config = configs.reduce((acc, curr, idx) => {
     acc[curr] = values[idx]

@@ -26,6 +26,7 @@ const configs = [
   'volar',
   'webpack',
   'stylelint-ignore',
+  'prettier-ignore',
 ] as const
 
 export default configs
