@@ -34,7 +34,7 @@ const handleRadioBtns = (value: Option) => {
 }
 let currentTab: Tab = 'eslint'
 const syntax: Option[] = ['typescript', 'javascript']
-const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue']
+const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress']
 const radioBtns = [...syntax, ...jsLib]
 const tabElems = document.querySelector<HTMLDivElement>('#tabs')
 tabElems && tabElems.addEventListener('click', handleEvent, { passive: true })
