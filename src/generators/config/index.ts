@@ -58,34 +58,6 @@ const generateConfig = (tab: ConfigTab, configOptions: SelectOptions) => {
 
     return acc
   }, {} as ObjConfigTab)
-  // const config: Config = {
-  //   babel: generateBabelConfig(),
-  //   eslint: generateEslintConfig(configOptions),
-  //   'eslint-ignore': generateEslintIgnoreConfig(configOptions),
-  //   gatsby: generateGatsbyConfig(),
-  //   gitignore: generateGitIgnore(configOptions),
-  //   jest: generateJestConfigs(configOptions).jestConfig,
-  //   'jest-setup': generateJestConfigs(configOptions).jestSetup,
-  //   prettier: generatePrettierConfig(configOptions),
-  //   postcss: generatePostcssConfig(configOptions),
-  //   pug: generatePugConfig(),
-  //   stylelint: generateStylelintConfig(configOptions),
-  //   markdown: generateMarkdownConfig(),
-  //   next: generateNextConfig(configOptions),
-  //   nodemon: generateNodemonConfig(configOptions),
-  //   npm: generateNpmConfig(),
-  //   nuxt: generateNuxtConfig(),
-  //   package: generatePackageConfig(configOptions),
-  //   tailwind: generateTailwindConfig(configOptions),
-  //   'ts-build': generateTypescriptConfigs(configOptions).tsBuild,
-  //   'ts-default': generateTypescriptConfigs(configOptions).tsDefault,
-  //   'ts-node': generateTypescriptConfigs(configOptions).tsNode,
-  //   'ts-test': generateTypescriptConfigs(configOptions).tsTest,
-  //   typescript: generateTypescriptConfigs(configOptions).tsConfig,
-  //   vite: generateViteConfig(),
-  //   volar: generateVolarConfig(),
-  //   webpack: generateWebpackConfig(configOptions),
-  // }
 
   return config[tab]
 }
