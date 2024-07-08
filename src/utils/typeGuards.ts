@@ -3,7 +3,7 @@ import files from '@data/files'
 import { options } from '@data/options'
 import type { ConfigTab, FileTab, Option, Tab } from '_types'
 
-const tabs = [...configs, ...files]
+const tabs = [...configs, ...files, 'terminal']
 
 const isHtmlInputElement = (element: unknown): element is HTMLInputElement => element instanceof HTMLInputElement
 const isHtmlButtonElement = (element: unknown): element is HTMLButtonElement => element instanceof HTMLButtonElement
