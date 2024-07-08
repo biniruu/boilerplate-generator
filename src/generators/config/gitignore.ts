@@ -1,37 +1,36 @@
-import type { SelectOptions } from '_types'
+import type { Option, SelectOptions } from '_types'
 
-type Options = keyof SelectOptions
+type Template = (typeof templateList)[number]
 
-const isTemplate = (option: Options) => {
+const templateList = ['gatsby', 'nextjs', 'nuxtjs', 'react', 'sass', 'storybookjs', 'vuejs', 'wordpress'] as const
+
+// Convert the option to the corresponding template
+const fitTemplate = (option: string) => {
   switch (option) {
-    case 'gatsby':
-      return 'gatsby'
     case 'next':
       return 'nextjs'
     case 'nuxt':
       return 'nuxtjs'
-    case 'react':
-      return 'react'
     case 'scss':
       return 'sass'
     case 'storybook':
       return 'storybookjs'
     case 'vue':
       return 'vuejs'
-    case 'wordpress':
-      return 'wordpress'
     default:
-      return ''
+      return option
   }
 }
+const isTemplate = (option: string): option is Template => templateList.some(template => template === option)
 
 const generateGitIgnore = (configOptions: SelectOptions) => {
   // A template is a path used to retrieve the corresponding gitignore code
-  const templates = []
+  const templates: Template[] = []
   for (const option in configOptions) {
+    const template = fitTemplate(option)
     // If configOptions[key] is true and it belongs to the list of templates, it is template
-    if (configOptions[option as Options] && isTemplate(option as Options)) {
-      templates.push(option)
+    if (isTemplate(template) && configOptions[option as Option]) {
+      templates.push(template)
     }
   }
 

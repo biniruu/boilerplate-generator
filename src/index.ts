@@ -14,6 +14,7 @@ const tabEvent = (e: MouseEvent) => {
   const target = e.target
   // Avoid invoking this function when user clicked outside of tab buttons
   if (!isHtmlButtonElement(target) || !target) {
+    // TODO: Remove this if statement
     if (process.env.NODE_ENV === 'development') {
       console.warn('No target found.')
     }
@@ -36,6 +37,7 @@ const formEvent = (e: MouseEvent) => {
   const target = e.target
   // Avoid invoking this function when user clicked outside of option inputs
   if (!isHtmlInputElement(target) || !target) {
+    // TODO: Remove this if statement
     if (process.env.NODE_ENV === 'development') {
       console.warn('No target found.')
     }
@@ -66,25 +68,27 @@ form && form.addEventListener('click', formEvent, { passive: true })
 // Show code and commands to the code windows
 const provideConfig = (tab: Tab) => {
   currentTab = tab
-  const config = isConfig(tab) ? generateConfig(tab, objOptions) : ''
-  const file = isFile(tab) ? generateFile(tab, objOptions) : ''
-  const isFileTab = tab.includes('-file')
   if (codeElem) {
-    codeElem.textContent = isFileTab ? file : config
+    codeElem.textContent = switchTab(tab)
   }
 }
-const provideCommand = () => {
-  if (bashElem) {
-    bashElem.textContent = generateCommand(objOptions)
+const switchTab = (tab: Tab) => {
+  if (isConfig(tab)) {
+    return generateConfig(tab, objOptions)
   }
+  if (isFile(tab)) {
+    return generateFile(tab, objOptions)
+  }
+  if (tab === 'terminal') {
+    return generateCommand(objOptions)
+  }
+  return ''
 }
 const codeElem = document.querySelector<HTMLElement>('#code')
-const bashElem = document.querySelector<HTMLElement>('#bash')
 
 // Init content
 const provideContents = (tab: Tab = currentTab) => {
   provideConfig(tab)
-  provideCommand()
 }
 const initContents = () => {
   // Make values 'typescript' and 'nothing' in 'config' variable as true
@@ -96,7 +100,6 @@ const initContents = () => {
   if (jsLib && isOption(jsLib)) {
     objOptions[jsLib] = true
   }
-
   provideContents()
 }
 window.onload = initContents
