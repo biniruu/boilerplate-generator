@@ -36,22 +36,12 @@ body {
   height: 100%;
   overflow: scroll;
   padding: 1rem;
+  white-space: pre-wrap;
   width: 100%;
 }
 
 .code-wrapper {
   display: inline-flex;
-}
-
-.bash {
-  height: 30vh;
-  overflow: scroll;
-  white-space: pre-wrap;
-  width: 30vw;
-}
-
-.bash::-webkit-scrollbar {
-  display: block;
 }
 
 .main {
