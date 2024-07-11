@@ -36,7 +36,9 @@ const generateGitIgnore = (configOptions: SelectOptions) => {
 
   return `// Copy and past the url to the address bar or go to toptal.com
   
-https://www.toptal.com/developers/gitignore/api/dotenv,git,intellij,macos,node,visualstudiocode,webstorm,windows,yarn${templates.length ? ',' : ''}${templates.join(',')}`
+https://www.toptal.com/developers/gitignore/api/dotenv,git,intellij,macos,node,visualstudiocode,webstorm,windows,yarn${templates.length ? ',' : ''}${templates.join(',')}
+
+// If you want to add or remove some files from the .vscode directory, look for the '### VisualStudioCode ###' in the ignore code and make your changes there.`
 }
 
 export default generateGitIgnore
