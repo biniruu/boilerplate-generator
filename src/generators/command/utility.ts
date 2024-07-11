@@ -3,6 +3,7 @@ import type { SelectOptions } from '_types'
 
 const getUtilityCommands = (configOptions: SelectOptions) => {
   const {
+    hasCopyToClipboard,
     hasDayjs,
     hasDotenv,
     hasFileSaver,
@@ -28,6 +29,13 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
   const utilityDependencies: string[] = []
   const utilityDevDependencies: string[] = []
 
+  /**
+   * copy-to-clipboard (Copy to clipboard)
+   * {@link https://github.com/sudodoki/copy-to-clipboard#readme}
+   */
+  if (hasCopyToClipboard) {
+    utilityDependencies.push('copy-to-clipboard')
+  }
   /**
    * dayjs (Day.js)
    * {@link https://day.js.org}

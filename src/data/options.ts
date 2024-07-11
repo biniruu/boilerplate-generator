@@ -6,6 +6,7 @@ const options = [
   'axios',
   'babel',
   'bcrypt',
+  'copyToClipboard',
   'dayjs',
   'dotenv',
   'ejs',
