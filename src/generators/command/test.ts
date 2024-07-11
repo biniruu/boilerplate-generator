@@ -1,14 +1,10 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getTestCommands = (configOptions: SelectOptions) => {
-  const hasJest = configOptions.jest
-  const hasNext = configOptions.next
-  const hasNuxt = configOptions.nuxt
-  const hasPostcss = configOptions.postcss
-  const hasReact = configOptions.react
-  const hasTailwind = configOptions.tailwind
-  const hasTypescript = configOptions.typescript
-  const hasVue = configOptions.vue
+  const { hasJest, hasNext, hasNuxt, hasPostcss, hasReact, hasTailwind, hasTypescript, hasVue } =
+    getCertainConditions(configOptions)
+  // TODO: Add hasCssModule variable to certainConditions.ts
   const hasCssModule = hasPostcss || hasTailwind
 
   const testDevDependencies: string[] = []
@@ -86,6 +82,15 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * I recommend adding @types/jest even if it is not a TypeScript project because of its IntelliSense.
      */
     testDevDependencies.push(
+      '@storybook/addon-a11y',
+      '@storybook/addon-actions',
+      '@storybook/addon-essentials',
+      '@storybook/addon-interactions',
+      '@storybook/addon-links',
+      '@storybook/builder-webpack5',
+      '@storybook/manager-webpack5',
+      '@storybook/react',
+      '@storybook/testing-library',
       '@testing-library/dom',
       '@testing-library/jest-dom',
       '@testing-library/user-event',
