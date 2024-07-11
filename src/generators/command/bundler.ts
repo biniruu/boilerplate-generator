@@ -1,13 +1,9 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getBundlerCommands = (configOptions: SelectOptions) => {
-  const hasNext = configOptions.next
-  const hasReact = configOptions.react
-  const hasScss = configOptions.scss
-  const hasThree = configOptions.three
-  const hasTypescript = configOptions.typescript
-  const hasVite = configOptions.vite
-  const hasWebpack = configOptions.webpack
+  const { hasNext, hasReact, hasScss, hasThree, hasTypescript, hasVite, hasWebpack } =
+    getCertainConditions(configOptions)
 
   const bundlerDependencies: string[] = []
   const bundlerDevDependencies: string[] = []
