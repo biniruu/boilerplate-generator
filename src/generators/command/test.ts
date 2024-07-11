@@ -2,20 +2,8 @@ import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getTestCommands = (configOptions: SelectOptions) => {
-  const {
-    hasJest,
-    hasNext,
-    hasNuxt,
-    hasPostcss,
-    hasReact,
-    hasTailwind,
-    hasStorybook,
-    hasTypescript,
-    hasVue,
-    hasWebpack,
-  } = getCertainConditions(configOptions)
-  // TODO: Add hasCssModule variable to certainConditions.ts
-  const hasCssModule = hasPostcss || hasTailwind
+  const { hasCssModule, hasJest, hasNext, hasNuxt, hasReact, hasStorybook, hasTypescript, hasVue, hasWebpack } =
+    getCertainConditions(configOptions)
 
   const testDevDependencies: string[] = []
 

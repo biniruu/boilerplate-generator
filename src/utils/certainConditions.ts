@@ -11,11 +11,12 @@ const getCertainConditions = (configOptions: SelectOptions) => {
     return acc
   }, objConditionData)
 
-  const { hasJest, hasNext, hasNuxt, hasReact, hasTailwind, hasVite, hasVue, hasWebpack } = objConditions
+  const { hasJest, hasNext, hasNuxt, hasPostcss, hasReact, hasTailwind, hasVite, hasVue, hasWebpack } = objConditions
+  const hasCssModule = hasPostcss || hasTailwind
   const hasJsLibs = hasNext || hasNuxt || hasReact || hasVue
   const hasTsExtension = hasJest || hasNuxt || hasTailwind || hasVite || hasWebpack
 
-  return { ...objConditions, hasJsLibs, hasTsExtension }
+  return { ...objConditions, hasCssModule, hasJsLibs, hasTsExtension }
 }
 
 export default getCertainConditions
