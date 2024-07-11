@@ -3,6 +3,8 @@ import { options } from '@data/options'
 import type { SelectOptions } from '_types'
 
 const getCertainConditions = (configOptions: SelectOptions) => {
+  // convert options that from data/options.ts to conditions
+  // for example: react -> hasReact
   const objConditions = conditions.reduce((acc, curr, idx) => {
     const matchedOptionWithCondition = options[idx]
     const valueOfMatchedOption = configOptions[matchedOptionWithCondition]
