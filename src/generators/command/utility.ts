@@ -166,12 +166,14 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
     utilityDependencies.push('react-joyride')
   }
   /**
-   * React Syntax Highlighter
+   * react-syntax-highlighter (React Syntax Highlighter)
    * {@link https://github.com/react-syntax-highlighter/react-syntax-highlighter#readme}
    */
   if (hasReactSyntaxHighlighter) {
+    if (hasTypescript) {
+      utilityDevDependencies.push('@types/react-syntax-highlighter')
+    }
     utilityDependencies.push('react-syntax-highlighter')
-    utilityDevDependencies.push('@types/react-syntax-highlighter')
   }
 
   return {
