@@ -17,6 +17,7 @@ const options = [
   'javascript',
   'javascriptStringify',
   'jest',
+  'jestHtmlReporters',
   'joi',
   'jsdiff',
   'jsZip',

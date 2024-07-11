@@ -3,8 +3,9 @@ import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
 
 const getOptions = (configOptions: SelectOptions) => {
-  const { hasLodash, hasNext, hasTypescript, hasVue } = getCertainConditions(configOptions)
+  const { hasNext, hasTypescript, hasVue, hasJestHtmlReporters } = getCertainConditions(configOptions)
 
+  const htmlReporters = hasJestHtmlReporters ? ['jest-html-reporters'] : []
   const next = hasNext ? ['./.next/'] : []
   const js = !hasTypescript && { '^.+\\.(js|jsx)$': 'babel-jest' }
   const ts = hasTypescript && {
@@ -15,10 +16,9 @@ const getOptions = (configOptions: SelectOptions) => {
       },
     ],
   }
-
   const vue = hasVue && { '^.+\\.vue$': 'vue-jest' }
 
-  return { hasTypescript, hasLodash, next, js, ts, vue }
+  return { htmlReporters, next, js, ts, vue }
 }
 
 /*
@@ -26,7 +26,8 @@ const getOptions = (configOptions: SelectOptions) => {
  * https://jestjs.io/docs/configuration
  */
 const getJestConfig = (configOptions: SelectOptions) => {
-  const { hasTypescript, hasLodash, next, js, ts, vue } = getOptions(configOptions)
+  const { htmlReporters, next, js, ts, vue } = getOptions(configOptions)
+  const { hasTypescript, hasLodash } = getCertainConditions(configOptions)
 
   /**
    * @property {String[]} moduleDirectories - root directories of the files you will test
@@ -152,7 +153,7 @@ const getJestConfig = (configOptions: SelectOptions) => {
     // projects: undefined,
 
     // Use this configuration option to add custom reporters to Jest
-    // reporters: undefined,
+    reporters: ['default', ...htmlReporters],
 
     // Automatically reset mock state before every test
     // resetMocks: false,

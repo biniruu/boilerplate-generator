@@ -92,6 +92,7 @@ const getTestCommands = (configOptions: SelectOptions) => {
       '@types/jest',
       'jest',
       'jest-environment-jsdom',
+      'jest-html-reporters',
       'jest-watch-typeahead',
       'jsdom',
       'msw',
