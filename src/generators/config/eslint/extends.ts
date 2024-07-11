@@ -16,6 +16,8 @@ import type { SelectOptions } from '_types'
  * plugin:react/recommended : (make sure this is always before react/jsx-runtime) recommended eslint-plugin-react rules
  * plugin:react/jsx-runtime : when using the new JSX transform from React 17, it will disable the relevant rules
  * plugin:react-hooks/recommended : recommended eslint-plugin-react-hooks rules
+ * plugin:storybook/recommended: recommended rules for Storybook
+ * {@link https://github.com/storybookjs/eslint-plugin-storybook#readme}
  * plugin:tailwindcss/recommended : Rules enforcing best practices and consistency using Tailwind CSS
  *
  * @example
@@ -32,12 +34,14 @@ import type { SelectOptions } from '_types'
  *   'plugin:react/recommended',
  *   'plugin:react/jsx-runtime',
  *   'plugin:react-hooks/recommended',
+ *   'plugin:storybook/recommended'
  *   'plugin:tailwindcss/recommended',
  * ]
  * ```
  */
 const mergeExtends = (configOptions: SelectOptions) => {
-  const { hasTypescript, hasNext, hasReact, hasTanstackQuery, hasTailwind } = getCertainConditions(configOptions)
+  const { hasTypescript, hasNext, hasReact, hasStorybook, hasTanstackQuery, hasTailwind } =
+    getCertainConditions(configOptions)
 
   let result = ['eslint:recommended', 'plugin:import/recommended']
   const react = [
@@ -55,6 +59,9 @@ const mergeExtends = (configOptions: SelectOptions) => {
   }
   if (hasReact) {
     result = [...result, ...react]
+  }
+  if (hasStorybook) {
+    result = [...result, 'plugin:storybook/recommended']
   }
   if (hasTanstackQuery) {
     result = [...result, 'plugin:@tanstack/eslint-plugin-query/recommended']
