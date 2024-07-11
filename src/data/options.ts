@@ -8,6 +8,7 @@ const options = [
   'dayjs',
   'dotenv',
   'ejs',
+  'esbuild',
   'express',
   'fileSaver',
   'gatsby',

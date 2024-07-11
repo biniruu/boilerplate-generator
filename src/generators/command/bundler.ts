@@ -2,7 +2,7 @@ import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getBundlerCommands = (configOptions: SelectOptions) => {
-  const { hasNext, hasReact, hasScss, hasThree, hasTypescript, hasVite, hasWebpack } =
+  const { hasEsbuild, hasJest, hasNext, hasReact, hasScss, hasThree, hasTypescript, hasVite, hasWebpack } =
     getCertainConditions(configOptions)
 
   const bundlerDependencies: string[] = []
@@ -94,6 +94,16 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
     if (hasNext) {
       bundlerDevDependencies.push('source-map-loader')
     }
+  }
+  /**
+   * esbuild
+   * {@link https://esbuild.github.io}
+   */
+  if (hasEsbuild) {
+    if (hasJest) {
+      bundlerDevDependencies.push('esbuild-jest')
+    }
+    bundlerDevDependencies.push('esbuild')
   }
 
   return {
