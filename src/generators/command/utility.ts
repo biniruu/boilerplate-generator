@@ -20,6 +20,7 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
     hasReact,
     hasReactInfiniteScroller,
     hasReactJoyride,
+    hasReactSyntaxHighlighter,
     hasTypescript,
     hasWebpack,
   } = getCertainConditions(configOptions)
@@ -155,6 +156,14 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
       utilityDevDependencies.push('@types/react-joyride')
     }
     utilityDependencies.push('react-joyride')
+  }
+  /**
+   * React Syntax Highlighter
+   * {@link https://github.com/react-syntax-highlighter/react-syntax-highlighter#readme}
+   */
+  if (hasReactSyntaxHighlighter) {
+    utilityDependencies.push('react-syntax-highlighter')
+    utilityDevDependencies.push('@types/react-syntax-highlighter')
   }
 
   return {

@@ -40,6 +40,7 @@ const options = [
   'reactHookForm',
   'reactInfiniteScroller',
   'reactJoyride',
+  'reactSyntaxHighlighter',
   'recoil',
   'redis',
   'scss',
