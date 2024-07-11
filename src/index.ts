@@ -2,6 +2,7 @@ import { objOptions } from '@data/options'
 import generateCommand from '@generators/command'
 import generateConfig from '@generators/config'
 import generateFile from '@generators/file'
+import copyToClipboard from '@utils/copyToClipboard'
 import { isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, isTab } from '@utils/typeGuards'
 import type { Option, Tab } from '_types'
 import './style.css'
@@ -62,6 +63,15 @@ const switchTab = (tab: Tab) => {
   return ''
 }
 const codeElem = document.querySelector<HTMLElement>('#code')
+
+// Copy code to clipboard
+const copyBtn = document.querySelector<HTMLButtonElement>('#btn-copy')
+copyBtn &&
+  copyBtn.addEventListener('click', () => {
+    if (codeElem) {
+      void copyToClipboard(codeElem.textContent ?? '')
+    }
+  })
 
 // Init content
 const provideContents = (tab: Tab = currentTab) => {
