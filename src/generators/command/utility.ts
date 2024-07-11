@@ -1,25 +1,28 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getUtilityCommands = (configOptions: SelectOptions) => {
-  const hasDayjs = configOptions.dayjs
-  const hasDotenv = configOptions.dotenv
-  const hasFileSaver = configOptions.fileSaver
-  const hasImmer = configOptions.immer
-  const hasHusky = configOptions.husky
-  const hasJavascriptStringify = configOptions.javascriptStringify
-  const hasJsdiff = configOptions.jsdiff
-  const hasJsZip = configOptions.jsZip
-  const hasLodash = configOptions.lodash
-  const hasMarkdown = configOptions.markdown
-  const hasNext = configOptions.next
-  const hasNodemon = configOptions.nodemon
-  const hasNuxt = configOptions.nuxt
-  const hasPrism = configOptions.prism
-  const hasReact = configOptions.react
-  const hasReactInfiniteScroller = configOptions.reactInfiniteScroller
-  const hasReactJoyride = configOptions.reactJoyride
-  const hasTypescript = configOptions.typescript
-  const hasWebpack = configOptions.webpack
+  const {
+    hasDayjs,
+    hasDotenv,
+    hasFileSaver,
+    hasImmer,
+    hasHusky,
+    hasJavascriptStringify,
+    hasJsdiff,
+    hasJsZip,
+    hasLodash,
+    hasMarkdown,
+    hasNext,
+    hasNodemon,
+    hasNuxt,
+    hasPrism,
+    hasReact,
+    hasReactInfiniteScroller,
+    hasReactJoyride,
+    hasTypescript,
+    hasWebpack,
+  } = getCertainConditions(configOptions)
 
   const utilityDependencies: string[] = []
   const utilityDevDependencies: string[] = []
