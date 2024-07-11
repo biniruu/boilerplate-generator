@@ -2,8 +2,18 @@ import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getTestCommands = (configOptions: SelectOptions) => {
-  const { hasJest, hasNext, hasNuxt, hasPostcss, hasReact, hasTailwind, hasTypescript, hasVue } =
-    getCertainConditions(configOptions)
+  const {
+    hasJest,
+    hasNext,
+    hasNuxt,
+    hasPostcss,
+    hasReact,
+    hasTailwind,
+    hasStorybook,
+    hasTypescript,
+    hasVue,
+    hasWebpack,
+  } = getCertainConditions(configOptions)
   // TODO: Add hasCssModule variable to certainConditions.ts
   const hasCssModule = hasPostcss || hasTailwind
 
@@ -31,6 +41,9 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * {@link https://legacy.reactjs.org/docs/test-renderer.html}
      */
     if (hasReact || hasNext) {
+      if (hasStorybook) {
+        testDevDependencies.push('@storybook/react', '@storybook/testing-library')
+      }
       testDevDependencies.push(
         '@testing-library/react',
         '@testing-library/react-hooks',
@@ -47,6 +60,41 @@ const getTestCommands = (configOptions: SelectOptions) => {
      */
     if (hasNuxt || hasVue) {
       testDevDependencies.push('@testing-library/vue', '@vue/vue3-jest')
+    }
+    // TODO: Edit this jsdoc
+    /**
+     * @storybook/addon-a11y (Accessibility testing)
+     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     *
+     * @storybook/addon-actions (Action logger)
+     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     *
+     * @storybook/addon-essentials (Essential addons)
+     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     *
+     * @storybook/addon-interactions (Interact with components)
+     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     *
+     * @storybook/addon-links (Link to other stories)
+     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     *
+     * @storybook/builder-webpack5 (Webpack 5)
+     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     *
+     * @storybook/manager-webpack5 (Webpack 5 Storybook manager)
+     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     */
+    if (hasStorybook) {
+      if (hasWebpack) {
+        testDevDependencies.push('@storybook/builder-webpack5', '@storybook/manager-webpack5')
+      }
+      testDevDependencies.push(
+        '@storybook/addon-a11y',
+        '@storybook/addon-actions',
+        '@storybook/addon-essentials',
+        '@storybook/addon-interactions',
+        '@storybook/addon-links',
+      )
     }
     /**
      * @testing-library/dom (DOM Testing Library)
@@ -82,15 +130,6 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * I recommend adding @types/jest even if it is not a TypeScript project because of its IntelliSense.
      */
     testDevDependencies.push(
-      '@storybook/addon-a11y',
-      '@storybook/addon-actions',
-      '@storybook/addon-essentials',
-      '@storybook/addon-interactions',
-      '@storybook/addon-links',
-      '@storybook/builder-webpack5',
-      '@storybook/manager-webpack5',
-      '@storybook/react',
-      '@storybook/testing-library',
       '@testing-library/dom',
       '@testing-library/jest-dom',
       '@testing-library/user-event',
