@@ -1,6 +1,7 @@
 import type { SelectOptions } from '_types'
 
-// This variable is used to create the objOptions, conditions, and objConditions variables, as well as the Option, SelectOptions, and Condition types
+// This variable is used to create the objOptions variable in this file, the conditions and the objConditions variables in data/conditions.ts, as well as the Option, SelectOptions, and Condition types in types/index.d.ts
+// And see utils/certainConditions.ts
 const options = [
   'axios',
   'babel',
