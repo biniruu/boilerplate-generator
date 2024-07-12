@@ -65,13 +65,18 @@ const generateCommand = (configOptions: SelectOptions) => {
     ...utilityDevDependencies,
     ...webFrameworkDevDependencies,
   ]
+  const hasDependencies = dependencies.length
+  const hasDevDependencies = devDependencies.length
 
-  if (dependencies.length) {
+  if (hasDependencies && hasDevDependencies) {
     return `yarn add ${convertToString(dependencies, parseCommands)}
   
 yarn add -D ${convertToString(devDependencies, parseCommands)}`
   }
-  return `yarn add -D ${convertToString(devDependencies, parseCommands)}`
+  if (hasDevDependencies) {
+    return `yarn add -D ${convertToString(devDependencies, parseCommands)}`
+  }
+  return ''
 }
 
 export default generateCommand

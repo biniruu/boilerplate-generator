@@ -50,6 +50,7 @@ const options = [
   'socket',
   'storybook',
   'styledComponents',
+  'stylelint',
   'swr',
   'tailwind',
   'three',
