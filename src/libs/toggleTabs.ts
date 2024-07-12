@@ -1,4 +1,5 @@
-import type { Tab } from '_types'
+import dynamicTabList from '@data/dynamicTabList'
+import type { DynamicTabValueList } from '_types'
 
 /**
  * <Always showed>
@@ -111,10 +112,10 @@ import type { Tab } from '_types'
  * webpack.config.ts
  */
 
-const enabledTabs: Partial<Tab>[] = []
+const enabledTabs: DynamicTabValueList[] = []
 const fragment = document.querySelector<HTMLTemplateElement>('#tab')
 const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs')
-const toggleTabs = (tab: Tab) => {
+const toggleTabs = (tab: DynamicTabValueList) => {
   if (enabledTabs.includes(tab)) {
     removeTab(tab)
 
@@ -122,19 +123,19 @@ const toggleTabs = (tab: Tab) => {
   }
   addNewTab(tab)
 }
-const removeTab = (tab: Tab) => {
+const removeTab = (tab: DynamicTabValueList) => {
   enabledTabs.splice(enabledTabs.indexOf(tab), 1)
   const element = document.querySelector<HTMLButtonElement>(`#${tab}-tab`)
   if (element) {
     element.remove()
   }
 }
-const addNewTab = (tab: Tab) => {
+const addNewTab = (tab: DynamicTabValueList) => {
   enabledTabs.push(tab)
   if (fragment) {
     const instance = document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablinks')
     if (instance) {
-      instance.textContent = 'test eslint'
+      instance.textContent = dynamicTabList[tab]
       instance.id = `${tab}-tab`
       instance.value = tab
       dynamicTabsElem?.appendChild(instance)

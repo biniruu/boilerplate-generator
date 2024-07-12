@@ -4,14 +4,25 @@ import generateConfig from '@generators/config'
 import generateFile from '@generators/file'
 import toggleTabs from '@libs/toggleTabs'
 import copyToClipboard from '@utils/copyToClipboard'
-import { isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, isTab } from '@utils/typeGuards'
+import {
+  isConfig,
+  isDynamicTabValue,
+  isFile,
+  isHtmlButtonElement,
+  isHtmlInputElement,
+  isOption,
+  isTab,
+} from '@utils/typeGuards'
 import type { Option, Tab } from '_types'
 import './style.css'
 
-let currentTab: Tab = 'eslint'
-
-const provideContents = (tab: Tab = currentTab) => {
-  toggleTabs(tab)
+const provideContents = (tab?: Tab) => {
+  if (!tab) {
+    return
+  }
+  if (isDynamicTabValue(tab)) {
+    toggleTabs(tab)
+  }
   provideConfig(tab)
 }
 
@@ -24,7 +35,9 @@ const handleEvent = (e: MouseEvent) => {
     if (isHtmlInputElement(target) && isOption(value)) {
       // (objOptions[value] = !objOptions[value]) means that togging checkbox
       radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
-      provideContents(currentTab)
+      if (isTab(value)) {
+        provideContents(value)
+      }
     }
     // Toggle 'active' css class on inputs in 'Syntax' and 'JavaScript library' categories in the sidebar
     if (isHtmlButtonElement(target) && isTab(value)) {
@@ -52,7 +65,6 @@ form && form.addEventListener('click', handleEvent, { passive: true })
 
 // Show code and commands to the code windows
 const provideConfig = (tab: Tab) => {
-  currentTab = tab
   if (codeElem) {
     codeElem.textContent = switchTab(tab)
   }

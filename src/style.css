@@ -68,3 +68,7 @@ body {
 .hidden {
   display: none;
 }
+
+.fixed-tabs {
+  margin-top: auto;
+}

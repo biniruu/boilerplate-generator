@@ -1,7 +1,8 @@
 import configs from '@data/configs'
+import dynamicTabList from '@data/dynamicTabList'
 import files from '@data/files'
 import { options } from '@data/options'
-import type { Condition, ConfigTab, FileTab, Option, Tab } from '_types'
+import type { Condition, ConfigTab, DynamicTabValueList, FileTab, Option, Tab } from '_types'
 
 import capitaliseFirstLetter from './capitaliseFirstLetter'
 
@@ -16,5 +17,7 @@ const isOption = (value: string): value is Option => options.some(option => opti
 // It could be occurring an error 'ReferenceError: Cannot access uninitialized variable' when use 'conditions' via @data/conditions.ts instead of 'options'
 const isCondition = (value: string): value is Condition =>
   options.some(option => 'has'.concat(capitaliseFirstLetter(option)) === value)
+const isDynamicTabValue = (value: string): value is DynamicTabValueList =>
+  Object.keys(dynamicTabList).some(tabValue => tabValue === value)
 
-export { isCondition, isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, isTab }
+export { isCondition, isConfig, isDynamicTabValue, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, isTab }
