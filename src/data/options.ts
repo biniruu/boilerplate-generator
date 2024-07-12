@@ -34,6 +34,7 @@ const options = [
   'nothing',
   'npm',
   'nuxt',
+  'prettier',
   'prism',
   'postcss',
   'pug',

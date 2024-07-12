@@ -1,8 +1,8 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getPrettierCommands = (configOptions: SelectOptions) => {
-  const hasTailwind = configOptions.tailwind
-  const hasPug = configOptions.pug
+  const { hasPrettier, hasPug, hasTailwind } = getCertainConditions(configOptions)
 
   /**
    * prettier
@@ -14,13 +14,17 @@ const getPrettierCommands = (configOptions: SelectOptions) => {
    * prettier-plugin-tailwindcss
    * {@link https://github.com/tailwindlabs/prettier-plugin-tailwindcss#readme}
    */
-  const prettierDevDependencies: string[] = ['prettier']
+  const prettierDevDependencies: string[] = []
 
-  if (hasPug) {
-    prettierDevDependencies.push('@prettier/plugin-pug')
-  }
-  if (hasTailwind) {
-    prettierDevDependencies.push('prettier-plugin-tailwindcss')
+  if (hasPrettier) {
+    prettierDevDependencies.push('prettier')
+
+    if (hasPug) {
+      prettierDevDependencies.push('@prettier/plugin-pug')
+    }
+    if (hasTailwind) {
+      prettierDevDependencies.push('prettier-plugin-tailwindcss')
+    }
   }
 
   return {
