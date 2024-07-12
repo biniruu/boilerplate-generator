@@ -54,10 +54,7 @@ body {
   min-width: fit-content;
 }
 
-.tabs {
-  display: flex;
-}
-
+.tabs,
 .tabs-wrapper {
   display: flex;
   flex-direction: column;
