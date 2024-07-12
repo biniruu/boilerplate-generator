@@ -9,6 +9,10 @@ import './style.css'
 
 let currentTab: Tab = 'eslint'
 
+const provideContents = (tab: Tab = currentTab) => {
+  provideConfig(tab)
+}
+
 // Handle click inputs and tabs
 const handleEvent = (e: MouseEvent) => {
   const target = e.target
@@ -16,6 +20,7 @@ const handleEvent = (e: MouseEvent) => {
     const value = target.value
     // Handle inputs in the sidebar
     if (isHtmlInputElement(target) && isOption(value)) {
+      // (objOptions[value] = !objOptions[value]) means that togging checkbox
       radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
       provideContents(currentTab)
     }
@@ -74,9 +79,6 @@ copyBtn &&
   })
 
 // Init content
-const provideContents = (tab: Tab = currentTab) => {
-  provideConfig(tab)
-}
 const initContents = () => {
   // Make values 'typescript' and 'nothing' in 'config' variable as true
   const syntax = document.querySelector<HTMLInputElement>('input[name=syntax]:checked')?.value
