@@ -1,7 +1,8 @@
+import { conditions } from '@data/conditions'
 import configs from '@data/configs'
 import files from '@data/files'
 import { options } from '@data/options'
-import type { ConfigTab, FileTab, Option, Tab } from '_types'
+import type { Condition, ConfigTab, FileTab, Option, Tab } from '_types'
 
 const tabs = [...configs, ...files, 'terminal']
 
@@ -11,5 +12,6 @@ const isTab = (value: string): value is Tab => tabs.some(tab => tab === value)
 const isConfig = (value: string): value is ConfigTab => configs.some(config => config === value)
 const isFile = (value: string): value is FileTab => files.some(file => file === value)
 const isOption = (value: string): value is Option => options.some(option => option === value)
+const isCondition = (value: string): value is Condition => conditions.some(condition => condition === value)
 
-export { isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, isTab }
+export { isCondition, isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, isTab }
