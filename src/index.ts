@@ -2,6 +2,7 @@ import { objOptions } from '@data/options'
 import generateCommand from '@generators/command'
 import generateConfig from '@generators/config'
 import generateFile from '@generators/file'
+import generateReadme from '@generators/readme'
 import toggleTabs from '@libs/toggleTabs'
 import copyToClipboard from '@utils/copyToClipboard'
 import {
@@ -79,6 +80,9 @@ const switchTab = (tab: Tab) => {
   if (tab === 'terminal') {
     return generateCommand(objOptions)
   }
+  if (tab === 'readme') {
+    return generateReadme()
+  }
   return ''
 }
 const codeElem = document.querySelector<HTMLElement>('#code')
@@ -103,6 +107,10 @@ const initContents = () => {
   if (jsLib && isOption(jsLib)) {
     objOptions[jsLib] = true
   }
-  provideContents()
+  if (readmeElem) {
+    readmeElem.click()
+  }
+  provideConfig('readme')
 }
+const readmeElem = document.querySelector<HTMLButtonElement>('#readme-tab')
 window.onload = initContents

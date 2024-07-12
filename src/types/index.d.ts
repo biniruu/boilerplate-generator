@@ -12,7 +12,7 @@ export type SelectOptions = {
 export type Condition = MakeType<'has', Capitalize<Option>>
 type MakeType<P extends string, F extends string> = `${P}${Capitalize<F>}`
 
-export type Tab = ConfigTab | FileTab | 'terminal'
+export type Tab = ConfigTab | FileTab | 'terminal' | 'readme'
 // See files: /src/data/files.ts
 export type FileTab = (typeof files)[number]
 // See configs: /src/data/configs.ts
