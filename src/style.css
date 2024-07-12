@@ -56,6 +56,10 @@ body {
 
 .tabs {
   display: flex;
+}
+
+.tabs-wrapper {
+  display: flex;
   flex-direction: column;
 }
 

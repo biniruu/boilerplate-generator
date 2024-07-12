@@ -1,3 +1,5 @@
+import type { Tab } from '_types'
+
 /**
  * <Always showed>
  *
@@ -108,3 +110,36 @@
  *
  * webpack.config.ts
  */
+
+const enabledTabs: Partial<Tab>[] = []
+const fragment = document.querySelector<HTMLTemplateElement>('#tab')
+const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs')
+const toggleTabs = (tab: Tab) => {
+  if (enabledTabs.includes(tab)) {
+    removeTab(tab)
+
+    return
+  }
+  addNewTab(tab)
+}
+const removeTab = (tab: Tab) => {
+  enabledTabs.splice(enabledTabs.indexOf(tab), 1)
+  const element = document.querySelector<HTMLButtonElement>(`#${tab}-tab`)
+  if (element) {
+    element.remove()
+  }
+}
+const addNewTab = (tab: Tab) => {
+  enabledTabs.push(tab)
+  if (fragment) {
+    const instance = document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablinks')
+    if (instance) {
+      instance.textContent = 'test eslint'
+      instance.id = `${tab}-tab`
+      instance.value = tab
+      dynamicTabsElem?.appendChild(instance)
+    }
+  }
+}
+
+export default toggleTabs

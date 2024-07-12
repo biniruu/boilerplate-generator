@@ -230,11 +230,14 @@
         <!-- Editor -->
         <section>
           <article id="editor" class="editor">
-            <div id="tabs" class="tabs">
+            <div id="tabs-wrapper" class="tabs-wrapper">
+              <template id="tab">
+                <button class="tablinks" type="button"></button>
+              </template>
+              <div id="dynamic-tabs" class="tabs"></div>
               <button id="eslint-tab" class="tablinks active" type="button" value="eslint">.eslintrc.js</button>
               <button id="prettier-tab" class="tablinks" type="button" value="prettier">.prettierrc.js</button>
               <button id="stylelint-tab" class="tablinks" type="button" value="stylelint">.stylelintrc.js</button>
-              <button id="gitignore-tab" class="tablinks" type="button" value="gitignore">.gitignore</button>
               <button id="jest-tab" class="tablinks" type="button" value="jest">jest.config.ts</button>
               <button id="jest-setup-tab" class="tablinks" type="button" value="jest-setup">jest.setup.ts</button>
               <button id="postcss-tab" class="tablinks" type="button" value="postcss">postcss.config.js</button>
@@ -256,7 +259,6 @@
                 .markdownlint.json
               </button>
               <button id="gatsby-tab" class="tablinks" type="button" value="gatsby">gatsby-config.ts</button>
-              <button id="package-tab" class="tablinks" type="button" value="package">package.json</button>
               <button id="npm-tab" class="tablinks" type="button" value="npm">.npmrc</button>
               <button id="nuxt-tab" class="tablinks" type="button" value="nuxt">nuxt.config.ts</button>
               <button id="volar-tab" class="tablinks" type="button" value="volar">volar.config.cjs</button>
@@ -283,7 +285,11 @@
               <button id="prettier-ignore-tab" class="tablinks" type="button" value="prettier-ignore">
                 .prettierignore
               </button>
-              <button id="terminal-tab" class="tablinks" type="button" value="terminal">Terminal</button>
+              <div id="fixed-tabs" class="tabs">
+                <button id="gitignore-tab" class="tablinks" type="button" value="gitignore">.gitignore</button>
+                <button id="package-tab" class="tablinks" type="button" value="package">package.json</button>
+                <button id="terminal-tab" class="tablinks" type="button" value="terminal">Terminal</button>
+              </div>
             </div>
             <pre class="code-wrapper">
               <code name="code" id="code" class="code file"></code>

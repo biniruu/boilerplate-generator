@@ -2,6 +2,7 @@ import { objOptions } from '@data/options'
 import generateCommand from '@generators/command'
 import generateConfig from '@generators/config'
 import generateFile from '@generators/file'
+import toggleTabs from '@libs/toggleTabs'
 import copyToClipboard from '@utils/copyToClipboard'
 import { isConfig, isFile, isHtmlButtonElement, isHtmlInputElement, isOption, isTab } from '@utils/typeGuards'
 import type { Option, Tab } from '_types'
@@ -10,6 +11,7 @@ import './style.css'
 let currentTab: Tab = 'eslint'
 
 const provideContents = (tab: Tab = currentTab) => {
+  toggleTabs(tab)
   provideConfig(tab)
 }
 
@@ -43,7 +45,7 @@ const handleRadioBtns = (value: Option) => {
 const syntax: Option[] = ['typescript', 'javascript']
 const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress']
 const radioBtns = [...syntax, ...jsLib]
-const tabElems = document.querySelector<HTMLDivElement>('#tabs')
+const tabElems = document.querySelector<HTMLDivElement>('#tabs-wrapper')
 tabElems && tabElems.addEventListener('click', handleEvent, { passive: true })
 const form = document.querySelector<HTMLFormElement>('#options')
 form && form.addEventListener('click', handleEvent, { passive: true })
