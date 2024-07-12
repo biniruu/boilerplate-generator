@@ -1,5 +1,6 @@
 import files from '@data/files'
-import type { FileTab, ObjFileTab, SelectOptions } from '_types'
+import { objOptions } from '@data/options'
+import type { FileTab, ObjFileTab } from '_types'
 
 import getDeclarationsFile from './declarations'
 import getLayoutFile from './layout'
@@ -10,15 +11,15 @@ import getSwrProviderFile from './swrProvider'
 import getTailwindFile from './tailwind'
 import getTypeGuardFile from './typeGuard'
 
-const generateFile = (tab: FileTab, configOptions: SelectOptions) => {
+const generateFile = (tab: FileTab) => {
   // TODO: Make sure that it uses dynamic import
   const values = [
     getPugFile(),
-    getLayoutFile(configOptions),
+    getLayoutFile(objOptions),
     getSocketFile(),
-    getSwrProviderFile(configOptions),
+    getSwrProviderFile(objOptions),
     getTailwindFile(),
-    getReactQueryProviderFile(configOptions),
+    getReactQueryProviderFile(objOptions),
     getTypeGuardFile(),
     getDeclarationsFile(),
   ]

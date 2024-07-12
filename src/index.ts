@@ -17,36 +17,32 @@ import {
 import type { Option, Tab } from '_types'
 import './style.css'
 
-const provideContents = (tab?: Tab) => {
-  if (!tab) {
-    return
-  }
-  if (isDynamicTabValue(tab)) {
-    toggleTabs(tab)
-  }
-  provideConfig(tab)
-}
-
 // Handle click inputs and tabs
 const handleEvent = (e: MouseEvent) => {
   const target = e.target
   if (isHtmlButtonElement(target) || isHtmlInputElement(target)) {
     const value = target.value
     // Handle inputs in the sidebar
-    if (isHtmlInputElement(target) && isOption(value)) {
-      // (objOptions[value] = !objOptions[value]) means that togging checkbox
-      radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
-      if (isTab(value)) {
-        provideContents(value)
-      }
-    }
-    // Toggle 'active' css class on inputs in 'Syntax' and 'JavaScript library' categories in the sidebar
-    if (isHtmlButtonElement(target) && isTab(value)) {
-      const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
-      tablinkElems.forEach(tablink => tablink.classList.remove('active'))
-      target.classList.add('active')
-      provideConfig(value)
-    }
+    isHtmlInputElement(target) && handleOptions(value)
+    isHtmlButtonElement(target) && handleTab(target, value)
+  }
+}
+const handleTab = (target: HTMLButtonElement, value: string) => {
+  const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
+  // Toggle 'active' css class on inputs in 'Syntax' and 'JavaScript library' categories in the sidebar
+  tablinkElems.forEach(tablink => tablink.classList.remove('active'))
+  target.classList.add('active')
+  if (isTab(value)) {
+    provideConfig(value)
+  }
+}
+function handleOptions(value: string) {
+  if (isOption(value)) {
+    // (objOptions[value] = !objOptions[value]) means that togging checkbox
+    radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
+  }
+  if (isDynamicTabValue(value)) {
+    toggleTabs(value)
   }
 }
 const handleRadioBtns = (value: Option) => {
@@ -72,13 +68,13 @@ const provideConfig = (tab: Tab) => {
 }
 const switchTab = (tab: Tab) => {
   if (isConfig(tab)) {
-    return generateConfig(tab, objOptions)
+    return generateConfig(tab)
   }
   if (isFile(tab)) {
-    return generateFile(tab, objOptions)
+    return generateFile(tab)
   }
   if (tab === 'terminal') {
-    return generateCommand(objOptions)
+    return generateCommand()
   }
   if (tab === 'readme') {
     return generateReadme()
