@@ -27,7 +27,7 @@ const options = [
   'jsZip',
   'koa',
   'lodash',
-  'markdown',
+  'markdownlint',
   'mongoose',
   'next',
   'nextAuth',

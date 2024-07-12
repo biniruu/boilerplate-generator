@@ -7,7 +7,7 @@ import generateEslintIgnoreConfig from './eslintIgnore'
 import generateGatsbyConfig from './gatsby'
 import generateGitIgnore from './gitignore'
 import generateJestConfigs from './jest'
-import generateMarkdownConfig from './markdown'
+import generateMarkdownlintConfig from './markdown'
 import generateNextConfig from './next'
 import generateNodemonConfig from './nodemon'
 import generateNpmConfig from './npm'
@@ -39,7 +39,7 @@ const generateConfig = (tab: ConfigTab, configOptions: SelectOptions) => {
     generatePostcssConfig(configOptions),
     generatePugConfig(),
     generateStylelintConfig(configOptions),
-    generateMarkdownConfig(),
+    generateMarkdownlintConfig(),
     generateNextConfig(configOptions),
     generateNodemonConfig(configOptions),
     generateNpmConfig(),

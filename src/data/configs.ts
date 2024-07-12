@@ -10,7 +10,7 @@ const configs = [
   'postcss',
   'pug',
   'stylelint',
-  'markdown',
+  'markdownlint',
   'next',
   'nodemon',
   'npm',

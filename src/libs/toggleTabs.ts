@@ -20,7 +20,7 @@
  * jest.config.ts
  * jest.setup.ts
  *
- * <For Markdown>
+ * <For Markdownlint>
  *
  * markdownlint.json
  *

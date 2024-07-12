@@ -1,6 +1,6 @@
 import convertToJson from '@utils/convertToJson'
 
-const generateMarkdownConfig = () => {
+const generateMarkdownlintConfig = () => {
   const config = {
     MD013: false,
     'no-inline-html': {
@@ -13,4 +13,4 @@ const generateMarkdownConfig = () => {
   return result
 }
 
-export default generateMarkdownConfig
+export default generateMarkdownlintConfig

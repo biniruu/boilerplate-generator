@@ -13,7 +13,7 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
     hasJsdiff,
     hasJsZip,
     hasLodash,
-    hasMarkdown,
+    hasMarkdownlint,
     hasNext,
     hasNodemon,
     hasNuxt,
@@ -127,7 +127,7 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
    * markdownlint
    * {@link https://github.com/DavidAnson/markdownlint#markdownlint}
    */
-  if (hasMarkdown) {
+  if (hasMarkdownlint) {
     utilityDevDependencies.push('markdownlint')
   }
   /**
