@@ -11,6 +11,7 @@ const options = [
   'dotenv',
   'ejs',
   'esbuild',
+  'eslint',
   'express',
   'fileSaver',
   'gatsby',
