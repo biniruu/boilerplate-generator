@@ -113,25 +113,30 @@ import type { DynamicTabValueList } from '_types'
  */
 
 const enabledTabs: DynamicTabValueList[] = []
+const lints = ['eslint', 'prettier', 'stylelint']
+const lintIgnores = lints.map(lint => `${lint}-ignore`)
 const fragment = document.querySelector<HTMLTemplateElement>('#tab')
 const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs')
-const toggleTabs = (tab: DynamicTabValueList) => {
-  if (enabledTabs.includes(tab)) {
-    removeTab(tab)
 
-    return
-  }
-  addNewTab(tab)
+const toggleTabs = (tab: DynamicTabValueList) => {
+  enabledTabs.includes(tab) ? removeTabs(tab) : addNewTabs(tab)
 }
-const removeTab = (tab: DynamicTabValueList) => {
-  enabledTabs.splice(enabledTabs.indexOf(tab), 1)
+const removeTabs = (tab: DynamicTabValueList) => {
+  !lintIgnores.includes(tab) && enabledTabs.splice(enabledTabs.indexOf(tab), 1)
   const element = document.querySelector<HTMLButtonElement>(`#${tab}-tab`)
   if (element) {
     element.remove()
   }
+  // When a lint tab is removed, remove the corresponding ignore tab as well
+  lints.includes(tab) && removeTabs(`${tab}-ignore` as DynamicTabValueList)
 }
-const addNewTab = (tab: DynamicTabValueList) => {
-  enabledTabs.push(tab)
+const addNewTabs = (tab: DynamicTabValueList) => {
+  !lintIgnores.includes(tab) && enabledTabs.push(tab)
+  createTab(tab)
+  // When a lint tab is created, create the corresponding ignore tab as well
+  lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList)
+}
+const createTab = (tab: DynamicTabValueList) => {
   if (fragment) {
     const instance = document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablinks')
     if (instance) {
