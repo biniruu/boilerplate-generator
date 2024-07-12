@@ -28,9 +28,10 @@ const handleEvent = (e: MouseEvent) => {
   }
 }
 const handleTab = (target: HTMLButtonElement, value: string) => {
-  const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
-  // Toggle 'active' css class on inputs in 'Syntax' and 'JavaScript library' categories in the sidebar
-  tablinkElems.forEach(tablink => tablink.classList.remove('active'))
+  // Remove 'active' class from the previous activated tab
+  const currentTab = getActivatedTab()
+  currentTab?.classList.remove('active')
+  // Add 'active' class to the clicked tab
   target.classList.add('active')
   if (isTab(value)) {
     provideConfig(value)
@@ -40,10 +41,22 @@ function handleOptions(value: string) {
   if (isOption(value)) {
     // (objOptions[value] = !objOptions[value]) means that togging checkbox
     radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
+    reloadEditor()
   }
   if (isDynamicTabValue(value)) {
     toggleTabs(value)
   }
+}
+const reloadEditor = () => {
+  const currentTab = getActivatedTab()
+  const value = currentTab?.value
+  value && isTab(value) && provideConfig(value)
+}
+const getActivatedTab = () => {
+  const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
+  const currentTab = Array.from(tablinkElems).find(tab => tab.classList.contains('active'))
+
+  return currentTab
 }
 const handleRadioBtns = (value: Option) => {
   // Reset inputs in 'Syntax' and 'JavaScript library' categories
