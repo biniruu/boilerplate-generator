@@ -122,9 +122,7 @@ const toggleTabs = (tab: DynamicTabValueList) => {
 const removeTabs = (tab: DynamicTabValueList) => {
   !lintIgnores.includes(tab) && enabledTabs.splice(enabledTabs.indexOf(tab), 1)
   const element = document.querySelector<HTMLButtonElement>(`#${tab}-tab`)
-  if (element) {
-    element.remove()
-  }
+  element && element.remove()
   // When a lint tab is removed, remove the corresponding ignore tab as well
   lints.includes(tab) && removeTabs(`${tab}-ignore` as DynamicTabValueList)
 }
@@ -135,14 +133,12 @@ const addNewTabs = (tab: DynamicTabValueList) => {
   lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList)
 }
 const createTab = (tab: DynamicTabValueList) => {
-  if (fragment) {
-    const instance = document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablinks')
-    if (instance) {
-      instance.textContent = dynamicTabList[tab]
-      instance.id = `${tab}-tab`
-      instance.value = tab
-      dynamicTabsElem?.appendChild(instance)
-    }
+  const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablinks')
+  if (instance) {
+    instance.textContent = dynamicTabList[tab]
+    instance.id = `${tab}-tab`
+    instance.value = tab
+    dynamicTabsElem?.appendChild(instance)
   }
 }
 
