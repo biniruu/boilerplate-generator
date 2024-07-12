@@ -1,9 +1,6 @@
-import type { Condition, Option } from '_types'
+import capitaliseFirstLetter from '@utils/capitaliseFirstLetter'
 
 import { options } from './options'
-
-const capitaliseFirstLetter = (string: Option) =>
-  (string.charAt(0).toUpperCase() + string.slice(1)) as Capitalize<Option>
 
 const conditions = options.reduce((acc, curr) => {
   const condition = 'has'.concat(capitaliseFirstLetter(curr)) as Condition
