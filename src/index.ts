@@ -37,7 +37,7 @@ const handleTab = (target: HTMLButtonElement, value: string) => {
     provideConfig(value)
   }
 }
-function handleOptions(value: string) {
+const handleOptions = (value: string) => {
   if (isOption(value)) {
     // (objOptions[value] = !objOptions[value]) means that togging checkbox
     radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
@@ -73,6 +73,8 @@ const handleRadioBtns = (value: Option) => {
 const syntax: Option[] = ['typescript', 'javascript']
 const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress']
 const radioBtns = [...syntax, ...jsLib]
+
+// Use handleEvent as an event listeners
 const tabElems = document.querySelector<HTMLDivElement>('#tabs-wrapper')
 tabElems && tabElems.addEventListener('click', handleEvent, { passive: true })
 const form = document.querySelector<HTMLFormElement>('#options')
@@ -111,7 +113,7 @@ copyBtn &&
 
 // Init content
 const initContents = () => {
-  // Make values 'typescript' and 'nothing' in 'config' variable as true
+  // Make sure that currently checked options in 'config' variable as true
   const syntax = document.querySelector<HTMLInputElement>('input[name=syntax]:checked')?.value
   const jsLib = document.querySelector<HTMLInputElement>('input[name=js-lib]:checked')?.value
   if (syntax && isOption(syntax)) {
@@ -122,7 +124,6 @@ const initContents = () => {
   }
   showReadme()
 }
-const readmeElem = document.querySelector<HTMLButtonElement>('#readme-tab')
 window.onload = initContents
 
 // Reusable functions
@@ -132,6 +133,7 @@ const showReadme = () => {
   }
   provideConfig('readme')
 }
+const readmeElem = document.querySelector<HTMLButtonElement>('#readme-tab')
 
 // Reusable elements
 const codeElem = document.querySelector<HTMLElement>('#code')
