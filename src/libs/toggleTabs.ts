@@ -1,15 +1,26 @@
 /**
  * <Always showed>
  *
- * .eslintrc.js
- * .eslintignore
  * .gitignore
- * .prettierrc
- * .prettierignore
- * .stylelintrc.js
- * .stylelintignore
  * package.json
  * terminal
+ *
+ * <For ESLint>
+ *
+ * .eslintrc.js
+ * .eslintignore
+ *
+ * <For Prettier>
+ *
+ * .prettierrc
+ * .prettierignore
+ *
+ * <For Stylelint>
+ *
+ * .stylelintrc.js
+ * .stylelintignore
+ *
+ * gatsby-config.ts
  *
  * <For Gatsby.js>
  *
