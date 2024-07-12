@@ -57,6 +57,11 @@ const generateConfig = (tab: ConfigTab, configOptions: SelectOptions) => {
     generateStylelintIgnoreConfig(configOptions),
     generatePrettierIgnoreConfig(),
   ]
+
+  if (values.length !== configs.length) {
+    console.error('The lengths of values and configs are not the same')
+  }
+
   const config = configs.reduce((acc, curr, idx) => {
     acc[curr] = values[idx]
 
