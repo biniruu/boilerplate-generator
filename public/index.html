@@ -9,7 +9,7 @@
     <div class="container">
       <header class="header">
         <h1 class="title">Boilerplate Generator for Frontend (beta)</h1>
-        <p>Build a development environment with a few clicks.</p>
+        <p class="desc">Build a development environment with a few clicks.</p>
       </header>
       <main class="main">
         <!-- Sidebar -->
@@ -17,218 +17,336 @@
           <form id="options">
             <fieldset>
               <legend>Syntax</legend>
-              <input type="radio" name="syntax" id="typescript" class="typescript" value="typescript" checked />
-              <label for="typescript">TypeScript</label>
-              <input type="radio" name="syntax" id="javascript" class="javascript" value="javascript" />
-              <label for="javascript">JavaScript</label>
+              <span class="input-wrapper">
+                <input type="radio" name="syntax" id="typescript" class="typescript" value="typescript" checked />
+                <label for="typescript">TypeScript</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="radio" name="syntax" id="javascript" class="javascript" value="javascript" />
+                <label for="javascript">JavaScript</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>JavaScript library</legend>
-              <input type="radio" name="js-lib" id="nothing" class="nothing" value="nothing" checked />
-              <label for="nothing">Nothing</label>
-              <input type="radio" name="js-lib" id="gatsby" class="gatsby" value="gatsby" />
-              <label for="gatsby">Gatsby</label>
-              <input type="radio" name="js-lib" id="next" class="next" value="next" />
-              <label for="next">Next.js</label>
-              <input type="radio" name="js-lib" id="nuxt" class="nuxt" value="nuxt" />
-              <label for="nuxt">Nuxt.js</label>
-              <input type="radio" name="js-lib" id="react" class="react" value="react" />
-              <label for="react">React.js</label>
-              <input type="radio" name="js-lib" id="vue" class="vue" value="vue" />
-              <label for="vue">Vue.js</label>
-              <input type="radio" name="js-lib" id="wordpress" class="wordpress" value="wordpress" />
-              <label for="wordpress">Wordpress</label>
+              <span class="input-wrapper">
+                <input type="radio" name="js-lib" id="nothing" class="nothing" value="nothing" checked />
+                <label for="nothing">Nothing</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="radio" name="js-lib" id="gatsby" class="gatsby" value="gatsby" />
+                <label for="gatsby">Gatsby</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="radio" name="js-lib" id="next" class="next" value="next" />
+                <label for="next">Next.js</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="radio" name="js-lib" id="nuxt" class="nuxt" value="nuxt" />
+                <label for="nuxt">Nuxt.js</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="radio" name="js-lib" id="react" class="react" value="react" />
+                <label for="react">React.js</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="radio" name="js-lib" id="vue" class="vue" value="vue" />
+                <label for="vue">Vue.js</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="radio" name="js-lib" id="wordpress" class="wordpress" value="wordpress" />
+                <label for="wordpress">Wordpress</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>Transpiler</legend>
-              <input type="checkbox" name="babel" id="babel" class="babel" value="babel" />
-              <label for="babel">Babel</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="babel" id="babel" class="babel" value="babel" />
+                <label for="babel">Babel</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>Module bundler</legend>
-              <input type="checkbox" name="webpack" id="webpack" class="webpack" value="webpack" />
-              <label for="webpack">Webpack</label>
-              <input type="checkbox" name="vite" id="vite" class="vite" value="vite" />
-              <label for="vite">Vite</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="webpack" id="webpack" class="webpack" value="webpack" />
+                <label for="webpack">Webpack</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="vite" id="vite" class="vite" value="vite" />
+                <label for="vite">Vite</label>
+              </span>
               <!-- TODO: Make sure that esbuild works -->
-              <input type="checkbox" name="esbuild" id="esbuild" class="esbuild" value="esbuild" disabled />
-              <label for="esbuild">esbuild (preparing)</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="esbuild" id="esbuild" class="esbuild" value="esbuild" disabled />
+                <label for="esbuild">esbuild (preparing)</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>Linting/Formatting library</legend>
-              <input type="checkbox" name="eslint" id="eslint" class="eslint" value="eslint" />
-              <label for="eslint">ESLint</label>
-              <input type="checkbox" name="markdownlint" id="markdownlint" class="markdownlint" value="markdownlint" />
-              <label for="markdownlint">markdownlint</label>
-              <input type="checkbox" name="prettier" id="prettier" class="prettier" value="prettier" />
-              <label for="prettier">Prettier</label>
-              <input type="checkbox" name="stylelint" id="stylelint" class="stylelint" value="stylelint" />
-              <label for="stylelint">Stylelint</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="eslint" id="eslint" class="eslint" value="eslint" />
+                <label for="eslint">ESLint</label>
+              </span>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="markdownlint"
+                  id="markdownlint"
+                  class="markdownlint"
+                  value="markdownlint"
+                />
+                <label for="markdownlint">markdownlint</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="prettier" id="prettier" class="prettier" value="prettier" />
+                <label for="prettier">Prettier</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="stylelint" id="stylelint" class="stylelint" value="stylelint" />
+                <label for="stylelint">Stylelint</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>Web framework</legend>
-              <input type="checkbox" name="express" id="express" class="express" value="express" />
-              <label for="express">Express</label>
-              <input type="checkbox" name="three" id="three" class="three" value="three" />
-              <label for="three">three.js</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="express" id="express" class="express" value="express" />
+                <label for="express">Express</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="three" id="three" class="three" value="three" />
+                <label for="three">three.js</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>CSS framework</legend>
-              <input type="checkbox" name="postcss" id="postcss" class="postcss" value="postcss" />
-              <label for="postcss">PostCSS</label>
-              <input type="checkbox" name="scss" id="scss" class="scss" value="scss" />
-              <label for="scss">SCSS</label>
-              <input
-                type="checkbox"
-                name="styled-components"
-                id="styled-components"
-                class="styled-components"
-                value="styledComponents"
-              />
-              <label for="styled-components">styled-components</label>
-              <input type="checkbox" name="tailwind" id="tailwind" class="tailwind" value="tailwind" />
-              <label for="tailwind">Tailwind CSS</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="postcss" id="postcss" class="postcss" value="postcss" />
+                <label for="postcss">PostCSS</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="scss" id="scss" class="scss" value="scss" />
+                <label for="scss">SCSS</label>
+              </span>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="styled-components"
+                  id="styled-components"
+                  class="styled-components"
+                  value="styledComponents"
+                />
+                <label for="styled-components">styled-components</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="tailwind" id="tailwind" class="tailwind" value="tailwind" />
+                <label for="tailwind">Tailwind CSS</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>Testing library</legend>
-              <input type="checkbox" name="jest" id="jest" class="jest" value="jest" />
-              <label for="jest">Jest</label>
-              <input
-                type="checkbox"
-                name="jest-html-reporters"
-                id="jest-html-reporters"
-                class="jest-html-reporters"
-                value="jestHtmlReporters"
-              />
-              <label for="jest-html-reporters">Jest html reporters</label>
-              <input type="checkbox" name="storybook" id="storybook" class="storybook" value="storybook" />
-              <label for="storybook">Storybook</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="jest" id="jest" class="jest" value="jest" />
+                <label for="jest">Jest</label>
+              </span>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="jest-html-reporters"
+                  id="jest-html-reporters"
+                  class="jest-html-reporters"
+                  value="jestHtmlReporters"
+                />
+                <label for="jest-html-reporters">Jest html reporters</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="storybook" id="storybook" class="storybook" value="storybook" />
+                <label for="storybook">Storybook</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>Data management</legend>
-              <input type="checkbox" name="axios" id="axios" class="axios" value="axios" />
-              <label for="axios">Axios</label>
-              <input type="checkbox" name="graphql" id="graphql" class="graphql" value="graphql" />
-              <label for="graphql">GraphQL</label>
-              <input type="checkbox" name="koa" id="koa" class="koa" value="koa" />
-              <label for="koa">Koa</label>
-              <input type="checkbox" name="mongoose" id="mongoose" class="mongoose" value="mongoose" />
-              <label for="mongoose">Mongoose</label>
-              <input type="checkbox" name="redis" id="redis" class="redis" value="redis" />
-              <label for="redis">Redis</label>
-              <input type="checkbox" name="socket" id="socket" class="socket" value="socket" />
-              <label for="socket">Socket.io (+client)</label>
-              <input
-                type="checkbox"
-                name="tanstack-query"
-                id="tanstack-query"
-                class="tanstack-query"
-                value="tanstackQuery"
-              />
-              <label for="tanstack-query">Tanstack query</label>
-              <input type="checkbox" name="swr" id="swr" class="swr" value="swr" />
-              <label for="swr">SWR</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="axios" id="axios" class="axios" value="axios" />
+                <label for="axios">Axios</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="graphql" id="graphql" class="graphql" value="graphql" />
+                <label for="graphql">GraphQL</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="koa" id="koa" class="koa" value="koa" />
+                <label for="koa">Koa</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="mongoose" id="mongoose" class="mongoose" value="mongoose" />
+                <label for="mongoose">Mongoose</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="redis" id="redis" class="redis" value="redis" />
+                <label for="redis">Redis</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="socket" id="socket" class="socket" value="socket" />
+                <label for="socket">Socket.io (+client)</label>
+              </span>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="tanstack-query"
+                  id="tanstack-query"
+                  class="tanstack-query"
+                  value="tanstackQuery"
+                />
+                <label for="tanstack-query">Tanstack query</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="swr" id="swr" class="swr" value="swr" />
+                <label for="swr">SWR</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>State management</legend>
-              <input type="checkbox" name="recoil" id="recoil" class="recoil" value="recoil" />
-              <label for="recoil">Recoil</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="recoil" id="recoil" class="recoil" value="recoil" />
+                <label for="recoil">Recoil</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>Authentication</legend>
-              <input type="checkbox" name="bcrypt" id="bcrypt" class="bcrypt" value="bcrypt" />
-              <label for="bcrypt">Bcrypt</label>
-              <input type="checkbox" name="next-auth" id="next-auth" class="next-auth" value="nextAuth" />
-              <label for="next-auth">NextAuth.js</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="bcrypt" id="bcrypt" class="bcrypt" value="bcrypt" />
+                <label for="bcrypt">Bcrypt</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="next-auth" id="next-auth" class="next-auth" value="nextAuth" />
+                <label for="next-auth">NextAuth.js</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>Validation</legend>
-              <input type="checkbox" name="joi" id="joi" class="joi" value="joi" />
-              <label for="joi">Joi</label>
-              <input
-                type="checkbox"
-                name="react-hook-form"
-                id="react-hook-form"
-                class="react-hook-form"
-                value="reactHookForm"
-              />
-              <label for="react-hook-form">React Hook Form</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="joi" id="joi" class="joi" value="joi" />
+                <label for="joi">Joi</label>
+              </span>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="react-hook-form"
+                  id="react-hook-form"
+                  class="react-hook-form"
+                  value="reactHookForm"
+                />
+                <label for="react-hook-form">React Hook Form</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>Utility</legend>
-              <input
-                type="checkbox"
-                name="copy-to-clipboard"
-                id="copy-to-clipboard"
-                class="copy-to-clipboard"
-                value="copyToClipboard"
-              />
-              <label for="copy-to-clipboard">Copy to clipboard</label>
-              <input type="checkbox" name="dayjs" id="dayjs" class="dayjs" value="dayjs" />
-              <label for="dayjs">Day.js</label>
-              <input type="checkbox" name="dotenv" id="dotenv" class="dotenv" value="dotenv" />
-              <label for="dotenv">Dotenv</label>
-              <input type="checkbox" name="immer" id="immer" class="immer" value="immer" />
-              <label for="immer">Immer</label>
-              <input type="checkbox" name="husky" id="husky" class="husky" value="husky" />
-              <label for="husky">Husky</label>
-              <input
-                type="checkbox"
-                name="javascript-stringify"
-                id="javascript-stringify"
-                class="javascript-stringify"
-                value="javascriptStringify"
-              />
-              <label for="javascript-stringify">JavaScript Stringify</label>
-              <input type="checkbox" name="jsdiff" id="jsdiff" class="jsdiff" value="jsdiff" />
-              <label for="jsdiff">jsdiff</label>
-              <input type="checkbox" name="jszip" id="jszip" class="jszip" value="jszip" />
-              <label for="jszip">JSZip</label>
-              <input type="checkbox" name="lodash" id="lodash" class="lodash" value="lodash" />
-              <label for="lodash">Lodash</label>
-              <input type="checkbox" name="nodemon" id="nodemon" class="nodemon" value="nodemon" />
-              <label for="nodemon">Nodemon</label>
-              <input type="checkbox" name="prism" id="prism" class="prism" value="prism" />
-              <label for="prism">Prism</label>
-              <input
-                type="checkbox"
-                name="react-infinite-scroller"
-                id="react-infinite-scroller"
-                class="react-infinite-scroller"
-                value="reactInfiniteScroller"
-              />
-              <label for="react-infinite-scroller">React Infinite Scroller</label>
-              <input
-                type="checkbox"
-                name="react-joyride"
-                id="react-joyride"
-                class="react-joyride"
-                value="reactJoyride"
-              />
-              <label for="react-joyride">React Joyride</label>
-              <input
-                type="checkbox"
-                name="react-syntax-highlighter"
-                id="react-syntax-highlighter"
-                class="react-syntax-highlighter"
-                value="reactSyntaxHighlighter"
-              />
-              <label for="react-syntax-highlighter">React Syntax Highlighter</label>
-              <input type="checkbox" name="npm" id="npm" class="npm" value="npm" />
-              <label for="npm">npm</label>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="copy-to-clipboard"
+                  id="copy-to-clipboard"
+                  class="copy-to-clipboard"
+                  value="copyToClipboard"
+                />
+                <label for="copy-to-clipboard">Copy to clipboard</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="dayjs" id="dayjs" class="dayjs" value="dayjs" />
+                <label for="dayjs">Day.js</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="dotenv" id="dotenv" class="dotenv" value="dotenv" />
+                <label for="dotenv">Dotenv</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="immer" id="immer" class="immer" value="immer" />
+                <label for="immer">Immer</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="husky" id="husky" class="husky" value="husky" />
+                <label for="husky">Husky</label>
+              </span>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="javascript-stringify"
+                  id="javascript-stringify"
+                  class="javascript-stringify"
+                  value="javascriptStringify"
+                />
+                <label for="javascript-stringify">JavaScript Stringify</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="jsdiff" id="jsdiff" class="jsdiff" value="jsdiff" />
+                <label for="jsdiff">jsdiff</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="jszip" id="jszip" class="jszip" value="jszip" />
+                <label for="jszip">JSZip</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="lodash" id="lodash" class="lodash" value="lodash" />
+                <label for="lodash">Lodash</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="nodemon" id="nodemon" class="nodemon" value="nodemon" />
+                <label for="nodemon">Nodemon</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="prism" id="prism" class="prism" value="prism" />
+                <label for="prism">Prism</label>
+              </span>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="react-infinite-scroller"
+                  id="react-infinite-scroller"
+                  class="react-infinite-scroller"
+                  value="reactInfiniteScroller"
+                />
+                <label for="react-infinite-scroller">React Infinite Scroller</label>
+              </span>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="react-joyride"
+                  id="react-joyride"
+                  class="react-joyride"
+                  value="reactJoyride"
+                />
+                <label for="react-joyride">React Joyride</label>
+              </span>
+              <span class="input-wrapper">
+                <input
+                  type="checkbox"
+                  name="react-syntax-highlighter"
+                  id="react-syntax-highlighter"
+                  class="react-syntax-highlighter"
+                  value="reactSyntaxHighlighter"
+                />
+                <label for="react-syntax-highlighter">React Syntax Highlighter</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="npm" id="npm" class="npm" value="npm" />
+                <label for="npm">npm</label>
+              </span>
             </fieldset>
             <fieldset>
               <legend>HTML template library</legend>
-              <input type="checkbox" name="ejs" id="ejs" class="ejs" value="ejs" />
-              <label for="ejs">EJS</label>
-              <input type="checkbox" name="pug" id="pug" class="pug" value="pug" />
-              <label for="pug">Pug</label>
+              <span class="input-wrapper">
+                <input type="checkbox" name="ejs" id="ejs" class="ejs" value="ejs" />
+                <label for="ejs">EJS</label>
+              </span>
+              <span class="input-wrapper">
+                <input type="checkbox" name="pug" id="pug" class="pug" value="pug" />
+                <label for="pug">Pug</label>
+              </span>
             </fieldset>
           </form>
         </aside>
         <!-- // Sidebar -->
         <!-- Editor -->
-        <section>
+        <section class="editor-wrapper">
           <article id="editor" class="editor">
             <div id="tabs-wrapper" class="tabs-wrapper">
               <template id="tab">
@@ -245,8 +363,8 @@
             <pre class="code-wrapper">
               <code name="code" id="code" class="code file"></code>
             </pre>
-            <button type="button" id="btn-copy" class="btn-copy">Copy</button>
           </article>
+          <button type="button" id="btn-copy" class="btn-copy">Copy</button>
         </section>
         <!-- // Editor -->
       </main>

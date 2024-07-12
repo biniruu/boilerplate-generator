@@ -4,6 +4,10 @@
   box-sizing: border-box;
   margin: initial;
   padding: initial;
+
+  &:not(:is(h1, h2, h3, h4, h5, h6)) {
+    font-size: 1rem;
+  }
 }
 
 html,
@@ -16,24 +20,49 @@ body {
   padding: 1rem;
 }
 
+button {
+  padding: 0.5rem;
+}
+
+fieldset {
+  margin: 0.75rem;
+  padding: 0.5rem;
+}
+
 .container {
   height: 100%;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .header {
   grid-column: span 2;
 }
 
+.title {
+  margin-bottom: 0.5em;
+}
+
+.desc {
+  margin-bottom: 1em;
+}
+
 .editor {
   display: flex;
-  height: 50%;
+  flex: auto;
+  height: 100%;
   width: 100%;
+}
+
+.editor-wrapper {
+  align-content: stretch;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
 }
 
 .code {
   display: inline-block;
-  font-size: 1rem;
-  height: 100%;
   overflow: scroll;
   padding: 1rem;
   white-space: pre-wrap;
@@ -42,16 +71,20 @@ body {
 
 .code-wrapper {
   display: inline-flex;
+  width: 100%;
 }
 
 .main {
   column-gap: 2rem;
   display: flex;
-  height: 100%;
+  flex: auto;
+  height: 80%;
 }
 
 .sidebar {
-  min-width: fit-content;
+  min-width: 35%;
+  overflow: scroll;
+  width: 35%;
 }
 
 .tabs,
@@ -71,4 +104,18 @@ body {
 
 .fixed-tabs {
   margin-top: auto;
+}
+
+.btn-copy {
+  float: right;
+  padding: 0.75rem 1.25rem;
+
+  &::after {
+    clear: both;
+  }
+}
+
+.input-wrapper {
+  display: inline-block;
+  margin: 0.25rem;
 }
