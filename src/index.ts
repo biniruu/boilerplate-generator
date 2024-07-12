@@ -46,6 +46,11 @@ function handleOptions(value: string) {
   if (isDynamicTabValue(value)) {
     toggleTabs(value)
   }
+  // If the currently active tab within the dynamic tabs is removed, the 'README.md' tab will be displayed instead
+  const currentTab = getActivatedTab()
+  if (!currentTab?.classList.contains('active')) {
+    showReadme()
+  }
 }
 const reloadEditor = () => {
   const currentTab = getActivatedTab()
@@ -94,7 +99,6 @@ const switchTab = (tab: Tab) => {
   }
   return ''
 }
-const codeElem = document.querySelector<HTMLElement>('#code')
 
 // Copy code to clipboard
 const copyBtn = document.querySelector<HTMLButtonElement>('#btn-copy')
@@ -116,10 +120,18 @@ const initContents = () => {
   if (jsLib && isOption(jsLib)) {
     objOptions[jsLib] = true
   }
+  showReadme()
+}
+const readmeElem = document.querySelector<HTMLButtonElement>('#readme-tab')
+window.onload = initContents
+
+// Reusable functions
+const showReadme = () => {
   if (readmeElem) {
     readmeElem.click()
   }
   provideConfig('readme')
 }
-const readmeElem = document.querySelector<HTMLButtonElement>('#readme-tab')
-window.onload = initContents
+
+// Reusable elements
+const codeElem = document.querySelector<HTMLElement>('#code')
