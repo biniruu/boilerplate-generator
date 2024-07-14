@@ -3,7 +3,8 @@ const copyToClipboard = async (text: string) => {
     await navigator.clipboard.writeText(text)
     alert('Code copied to clipboard')
   } catch (err) {
-    console.error('Failed to copy code: ', err)
+    const error = err as unknown as Error
+    console.error('Failed to copy code: ', error.message)
     alert('Something went wrong with copying code to Clipboard')
   }
 }
