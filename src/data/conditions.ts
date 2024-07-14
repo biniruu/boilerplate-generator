@@ -4,7 +4,7 @@ import type { Condition } from '_types'
 
 import { options } from './options'
 
-const conditions = options.reduce((acc, curr) => {
+export const conditions = options.reduce((acc, curr) => {
   const condition = 'has'.concat(capitaliseFirstLetter(curr))
   if (isCondition(condition)) {
     acc.push(condition)
@@ -14,7 +14,7 @@ const conditions = options.reduce((acc, curr) => {
   return acc
 }, [] as Condition[])
 
-const objConditions = conditions.reduce(
+export const objConditions = conditions.reduce(
   (acc, curr) => {
     acc[curr] = false
 
@@ -22,5 +22,3 @@ const objConditions = conditions.reduce(
   },
   {} as Record<Condition, boolean>,
 )
-
-export { conditions, objConditions }

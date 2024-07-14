@@ -2,7 +2,7 @@ import type { SelectOptions } from '_types'
 
 // This variable is used to create the objOptions variable in this file, the conditions and the objConditions variables in data/conditions.ts, as well as the Option, SelectOptions, and Condition types in types/index.d.ts
 // And see utils/certainConditions.ts
-const options = [
+export const options = [
   'axios',
   'babel',
   'bcrypt',
@@ -62,10 +62,8 @@ const options = [
   'wordpress',
 ] as const
 
-const objOptions = options.reduce((acc, curr) => {
+export const objOptions = options.reduce((acc, curr) => {
   acc[curr] = false
 
   return acc
 }, {} as SelectOptions)
-
-export { objOptions, options }
