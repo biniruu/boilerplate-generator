@@ -44,6 +44,9 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
     optimization: {
       minimize: true,
       /**
+       * [terser-webpack-plugin]{@link https://github.com/webpack-contrib/terser-webpack-plugin?tab=readme-ov-file#terser-webpack-plugin}
+       * @desc minify JavaScript code
+       *
        * @example
        *
        * ```js
