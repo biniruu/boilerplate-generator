@@ -120,3 +120,7 @@ fieldset {
   display: inline-block;
   margin: 0.25rem;
 }
+
+.nothing {
+  font-size: 0.75rem;
+}
