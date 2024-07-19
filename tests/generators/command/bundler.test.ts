@@ -36,6 +36,35 @@ describe('Generate command for Bundler', () => {
   })
 
   describe('Webpack', () => {
+    let devDependencies: string[]
+
+    beforeEach(() => {
+      devDependencies = [
+        '@swc/html',
+        'source-map-loader',
+        'style-loader',
+        'webpack',
+        'webpack-cli',
+        'webpack-dev-server',
+        'webpack-merge',
+        'html-webpack-plugin',
+        'mini-css-extract-plugin',
+        'workbox-webpack-plugin',
+      ]
+    })
+
+    test('should generate command for Webpack', () => {
+      configOptions.webpack = true
+
+      const { bundlerDevDependencies } = getBundlerCommands(configOptions)
+
+      expect(bundlerDevDependencies).toIncludeAllMembers([
+        'html-webpack-plugin',
+        'mini-css-extract-plugin',
+        'workbox-webpack-plugin',
+      ])
+    })
+
     test('should generate command for Webpack with Next.js', () => {
       configOptions.webpack = true
       configOptions.next = true
