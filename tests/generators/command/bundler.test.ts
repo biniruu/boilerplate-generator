@@ -36,23 +36,6 @@ describe('Generate command for Bundler', () => {
   })
 
   describe('Webpack', () => {
-    let devDependencies: string[]
-
-    beforeEach(() => {
-      devDependencies = [
-        '@swc/html',
-        'source-map-loader',
-        'style-loader',
-        'webpack',
-        'webpack-cli',
-        'webpack-dev-server',
-        'webpack-merge',
-        'html-webpack-plugin',
-        'mini-css-extract-plugin',
-        'workbox-webpack-plugin',
-      ]
-    })
-
     test('should generate command for Webpack', () => {
       configOptions.webpack = true
 
