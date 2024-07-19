@@ -5,6 +5,8 @@
 
 import type { JestConfigWithTsJest } from 'ts-jest'
 
+import 'jest-extended'
+
 /**
  * @property {String[]} moduleDirectories - root directories of the files you will test
  * {@link https://jestjs.io/docs/configuration#moduledirectories-arraystring}
@@ -156,7 +158,7 @@ const jestConfig: JestConfigWithTsJest = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['jest-extended/all'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
