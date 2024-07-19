@@ -9,8 +9,8 @@ describe('Generate command for authentication', () => {
 
     const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(configOptions)
 
-    expect(authenticationDependencies).toEqual(['bcryptjs'])
-    expect(authenticationDevDependencies).toEqual(['@types/bcryptjs'])
+    expect(authenticationDependencies).toIncludeSameMembers(['bcryptjs'])
+    expect(authenticationDevDependencies).toIncludeSameMembers(['@types/bcryptjs'])
   })
 
   test('should generate command for NextAuth.js', () => {
@@ -19,7 +19,7 @@ describe('Generate command for authentication', () => {
 
     const { authenticationDependencies } = getAuthenticationCommands(configOptions)
 
-    expect(authenticationDependencies).toEqual(['next-auth'])
+    expect(authenticationDependencies).toIncludeSameMembers(['next-auth'])
   })
 
   test('should generate an empty array when all options in configOptions are false', () => {

@@ -9,8 +9,8 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDependencies).toEqual(['vite'])
-      expect(bundlerDevDependencies).toEqual(['vite-plugin-dts'])
+      expect(bundlerDependencies).toIncludeSameMembers(['vite'])
+      expect(bundlerDevDependencies).toIncludeSameMembers(['vite-plugin-dts'])
     })
 
     test('should generate command for Vite with TypeScript', () => {
@@ -19,8 +19,8 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDependencies).toEqual(['vite'])
-      expect(bundlerDevDependencies).toEqual(['vite-tsconfig-paths', 'vite-plugin-dts'])
+      expect(bundlerDependencies).toIncludeSameMembers(['vite'])
+      expect(bundlerDevDependencies).toIncludeSameMembers(['vite-tsconfig-paths', 'vite-plugin-dts'])
     })
 
     test('should generate command for Vite with React.js and TypeScript', () => {
@@ -31,7 +31,7 @@ describe('Generate command for Bundler', () => {
       const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
 
       expect(bundlerDependencies).toBeEmpty()
-      expect(bundlerDevDependencies).toEqual(['vite-tsconfig-paths', 'vite-plugin-dts'])
+      expect(bundlerDevDependencies).toIncludeSameMembers(['vite-tsconfig-paths', 'vite-plugin-dts'])
     })
   })
 
@@ -105,7 +105,7 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDevDependencies).toEqual(['esbuild'])
+      expect(bundlerDevDependencies).toIncludeSameMembers(['esbuild'])
     })
 
     test('should generate command for esbuild with Jest', () => {
