@@ -104,5 +104,15 @@ describe('Generate command for Bundler', () => {
 
       expect(bundlerDevDependencies).toIncludeAllMembers(['@types/webpack', 'ts-loader'])
     })
+
+    test('should generate command for Webpack with TypeScript and SCSS', () => {
+      configOptions.webpack = true
+      configOptions.typescript = true
+      configOptions.scss = true
+
+      const { bundlerDevDependencies } = getBundlerCommands(configOptions)
+
+      expect(bundlerDevDependencies).toIncludeAllMembers(['@types/webpack', 'ts-loader', 'sass-loader'])
+    })
   })
 })
