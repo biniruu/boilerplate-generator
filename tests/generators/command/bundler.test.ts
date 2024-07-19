@@ -105,7 +105,16 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDevDependencies).toContain('esbuild')
+      expect(bundlerDevDependencies).toEqual(['esbuild'])
+    })
+
+    test('should generate command for esbuild with Jest', () => {
+      configOptions.esbuild = true
+      configOptions.jest = true
+
+      const { bundlerDevDependencies } = getBundlerCommands(configOptions)
+
+      expect(bundlerDevDependencies).toIncludeSameMembers(['esbuild', 'esbuild-jest'])
     })
   })
 })
