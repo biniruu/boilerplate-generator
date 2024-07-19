@@ -7,7 +7,7 @@ describe('Generate commands', () => {
     let configOptions: SelectOptions
 
     beforeEach(() => {
-      configOptions = objOptions
+      configOptions = { ...objOptions }
     })
 
     test('should generate command for bcrypt.js', () => {
