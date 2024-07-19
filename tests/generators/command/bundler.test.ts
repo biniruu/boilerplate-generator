@@ -98,4 +98,14 @@ describe('Generate command for Bundler', () => {
       expect(bundlerDevDependencies).toIncludeAllMembers(['@types/webpack', 'ts-loader', 'sass-loader'])
     })
   })
+
+  describe('esbuild', () => {
+    test('should generate command for esbuild', () => {
+      configOptions.esbuild = true
+
+      const { bundlerDevDependencies } = getBundlerCommands(configOptions)
+
+      expect(bundlerDevDependencies).toContain('esbuild')
+    })
+  })
 })
