@@ -1,10 +1,8 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getAuthenticationCommands = (configOptions: SelectOptions) => {
-  const hasBcrypt = configOptions.bcrypt
-  const hasNext = configOptions.next
-  const hasNextAuth = configOptions.nextAuth
-  const hasTypescript = configOptions.typescript
+  const { hasBcrypt, hasNext, hasNextAuth, hasTypescript } = getCertainConditions(configOptions)
 
   const authenticationDependencies: string[] = []
   const authenticationDevDependencies: string[] = []
