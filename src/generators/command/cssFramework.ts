@@ -57,7 +57,9 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
    * https://github.com/csstools/postcss-plugins/tree/main/plugins
    */
   if (hasPostcss) {
-    if (!hasGatsby) {
+    if (hasGatsby) {
+      cssFrameworkDevDependencies.push('postcss-html')
+    } else {
       if (hasCore) {
         cssFrameworkDevDependencies.push('postcss-jsx')
       }
@@ -86,9 +88,6 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
         'postcss-preset-env',
         'postcss-syntax',
       )
-    }
-    if (hasGatsby) {
-      cssFrameworkDevDependencies.push('postcss-html')
     }
   }
   /**
