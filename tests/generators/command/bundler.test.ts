@@ -86,5 +86,14 @@ describe('Generate command for Bundler', () => {
 
       expect(bundlerDevDependencies).toEqual(['source-map-loader'])
     })
+
+    test('should generate command for Webpack with SCSS', () => {
+      configOptions.webpack = true
+      configOptions.scss = true
+
+      const { bundlerDevDependencies } = getBundlerCommands(configOptions)
+
+      expect(bundlerDevDependencies).toContain('sass-loader')
+    })
   })
 })
