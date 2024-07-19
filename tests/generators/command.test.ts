@@ -28,5 +28,12 @@ describe('Generate commands', () => {
 
       expect(authenticationDependencies).toEqual(['next-auth'])
     })
+
+    test('should generate an empty array when all options in configOptions are false', () => {
+      const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(configOptions)
+
+      expect(authenticationDependencies).toBeEmpty()
+      expect(authenticationDevDependencies).toBeEmpty()
+    })
   })
 })
