@@ -65,6 +65,19 @@ describe('Generate command for Bundler', () => {
       ])
     })
 
+    test('should generate command for Webpack with Three.js', () => {
+      configOptions.webpack = true
+      configOptions.three = true
+
+      const { bundlerDevDependencies } = getBundlerCommands(configOptions)
+
+      expect(bundlerDevDependencies).not.toIncludeAllMembers([
+        'html-webpack-plugin',
+        'mini-css-extract-plugin',
+        'workbox-webpack-plugin',
+      ])
+    })
+
     test('should generate command for Webpack with Next.js', () => {
       configOptions.webpack = true
       configOptions.next = true
