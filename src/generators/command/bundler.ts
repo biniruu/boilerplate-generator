@@ -32,7 +32,9 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/webpack-contrib/source-map-loader#source-map-loader}
    */
   if (hasWebpack) {
-    if (!hasNext) {
+    if (hasNext) {
+      bundlerDevDependencies.push('source-map-loader')
+    } else {
       /**
        * ts-loader (TypeScript loader for webpack)
        * {@link https://github.com/TypeStrong/ts-loader#typescript-loader-for-webpack}
@@ -90,9 +92,6 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
         'webpack-dev-server',
         'webpack-merge',
       )
-    }
-    if (hasNext) {
-      bundlerDevDependencies.push('source-map-loader')
     }
   }
   /**
