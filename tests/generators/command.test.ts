@@ -19,5 +19,14 @@ describe('Generate commands', () => {
       expect(authenticationDependencies).toContain('bcryptjs')
       expect(authenticationDevDependencies).toContain('@types/bcryptjs')
     })
+
+    test('should generate command for NextAuth.js', () => {
+      configOptions.next = true
+      configOptions.nextAuth = true
+
+      const { authenticationDependencies } = getAuthenticationCommands(configOptions)
+
+      expect(authenticationDependencies).toContain('next-auth')
+    })
   })
 })
