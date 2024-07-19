@@ -1,14 +1,8 @@
-import { objOptions } from '@data/options'
 import getAuthenticationCommands from '@generators/command/authentication'
-import type { SelectOptions } from '_types'
+
+import { configOptions } from './configOptions.test'
 
 describe('Generate command for authentication', () => {
-  let configOptions: SelectOptions
-
-  beforeEach(() => {
-    configOptions = { ...objOptions }
-  })
-
   test('should generate command for bcrypt.js', () => {
     configOptions.bcrypt = true
     configOptions.typescript = true
