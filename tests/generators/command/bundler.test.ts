@@ -9,8 +9,11 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDependencies).toIncludeSameMembers(['vite'])
-      expect(bundlerDevDependencies).toIncludeSameMembers(['vite-plugin-dts'])
+      const dependencies = ['vite']
+      expect(bundlerDependencies).toIncludeSameMembers(dependencies)
+
+      const devDependencies = ['vite-plugin-dts']
+      expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies)
     })
 
     test('should generate command for Vite with TypeScript', () => {
@@ -19,8 +22,11 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDependencies).toIncludeSameMembers(['vite'])
-      expect(bundlerDevDependencies).toIncludeSameMembers(['vite-tsconfig-paths', 'vite-plugin-dts'])
+      const dependencies = ['vite']
+      expect(bundlerDependencies).toIncludeSameMembers(dependencies)
+
+      const devDependencies = ['vite-tsconfig-paths', 'vite-plugin-dts']
+      expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies)
     })
 
     test('should generate command for Vite with React.js and TypeScript', () => {
@@ -31,21 +37,21 @@ describe('Generate command for Bundler', () => {
       const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
 
       expect(bundlerDependencies).toBeEmpty()
-      expect(bundlerDevDependencies).toIncludeSameMembers(['vite-tsconfig-paths', 'vite-plugin-dts'])
+
+      const devDependencies = ['vite-tsconfig-paths', 'vite-plugin-dts']
+      expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies)
     })
   })
 
   describe('Webpack', () => {
+    const devDependenciesWithoutThree = ['html-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin']
+
     test('should generate command for Webpack', () => {
       configOptions.webpack = true
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDevDependencies).toIncludeAllMembers([
-        'html-webpack-plugin',
-        'mini-css-extract-plugin',
-        'workbox-webpack-plugin',
-      ])
+      expect(bundlerDevDependencies).toIncludeAllMembers(devDependenciesWithoutThree)
     })
 
     test('should generate command for Webpack with Three.js', () => {
@@ -54,11 +60,7 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDevDependencies).not.toIncludeAllMembers([
-        'html-webpack-plugin',
-        'mini-css-extract-plugin',
-        'workbox-webpack-plugin',
-      ])
+      expect(bundlerDevDependencies).not.toIncludeAllMembers(devDependenciesWithoutThree)
     })
 
     test('should generate command for Webpack with Next.js', () => {
@@ -67,7 +69,8 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDevDependencies).toEqual(['source-map-loader'])
+      const devDependencies = ['source-map-loader']
+      expect(bundlerDevDependencies).toEqual(devDependencies)
     })
 
     test('should generate command for Webpack with SCSS', () => {
@@ -85,7 +88,8 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDevDependencies).toIncludeAllMembers(['@types/webpack', 'ts-loader'])
+      const devDependencies = ['@types/webpack', 'ts-loader']
+      expect(bundlerDevDependencies).toIncludeAllMembers(devDependencies)
     })
 
     test('should generate command for Webpack with TypeScript and SCSS', () => {
@@ -95,7 +99,8 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDevDependencies).toIncludeAllMembers(['@types/webpack', 'ts-loader', 'sass-loader'])
+      const devDependencies = ['@types/webpack', 'ts-loader', 'sass-loader']
+      expect(bundlerDevDependencies).toIncludeAllMembers(devDependencies)
     })
   })
 
@@ -105,7 +110,8 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDevDependencies).toIncludeSameMembers(['esbuild'])
+      const devDependencies = ['esbuild']
+      expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies)
     })
 
     test('should generate command for esbuild with Jest', () => {
@@ -114,7 +120,8 @@ describe('Generate command for Bundler', () => {
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
 
-      expect(bundlerDevDependencies).toIncludeSameMembers(['esbuild', 'esbuild-jest'])
+      const devDependencies = ['esbuild', 'esbuild-jest']
+      expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies)
     })
   })
 })
