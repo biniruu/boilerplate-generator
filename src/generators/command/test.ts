@@ -100,6 +100,9 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * jest-environment-jsdom
      * {@link https://github.com/jestjs/jest#readme}
      *
+     * Jest Extended
+     * {{@link https://jest-extended.jestcommunity.dev/docs}}
+     *
      * jest-watch-typeahead
      * {@link https://github.com/jest-community/jest-watch-typeahead#jest-watch-typeahead}
      *
@@ -124,6 +127,7 @@ const getTestCommands = (configOptions: SelectOptions) => {
       '@types/jest',
       'jest',
       'jest-environment-jsdom',
+      'jest-extended',
       'jest-html-reporters',
       'jest-watch-typeahead',
       'jsdom',

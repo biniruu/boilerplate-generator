@@ -30,7 +30,7 @@ const getJestConfig = (configOptions: SelectOptions) => {
   const { hasTypescript, hasLodash } = getCertainConditions(configOptions)
 
   /**
-   * @property {String[]} moduleDirectories - root directories of the files you will test
+   * @property {string[]} moduleDirectories - root directories of the files you will test
    * {@link https://jestjs.io/docs/configuration#moduledirectories-arraystring}
    *
    * @property {Object} moduleNameMapper - match aliases with its paths
@@ -42,9 +42,17 @@ const getJestConfig = (configOptions: SelectOptions) => {
    *
    * @property {string} rootDir - keep it as default if there are no issues there
    *
-   * @property {string} roots - the path where the test files are
+   * @property {string[]} roots - the path where the test files are
    *
    * @property {string} testEnvironment - if it is set as 'node', it makes any tests intended for a browser environment invalid.
+   *
+   * @property {string[]} setupFilesAfterEnv - Jest extensions
+   *
+   * jest-dom
+   * {@link https://testing-library.com/docs/ecosystem-jest-dom/}
+   *
+   * Jest Extended
+   * {@link https://jest-extended.jestcommunity.dev/docs}
    *
    * @property {Object} transform - specify presets to transform non-javascript files to javascript ones
    * {@link https://kulshekhar.github.io/ts-jest/docs/getting-started/presets#advanced}
@@ -52,8 +60,6 @@ const getJestConfig = (configOptions: SelectOptions) => {
    * Paths mapping
    * {@link https://kulshekhar.github.io/ts-jest/docs/getting-started/paths-mapping}
    */
-
-  // import { defaults as tsjPreset } from 'ts-jest/presets'
 
   const config = {
     // All imported modules in your tests should be mocked automatically
@@ -180,7 +186,7 @@ const getJestConfig = (configOptions: SelectOptions) => {
     // setupFiles: [],
 
     // A list of paths to modules that run some code to configure or set up the testing framework before each test
-    setupFilesAfterEnv: [`./jest.setup.${hasTypescript ? 'ts' : 'js'}`],
+    setupFilesAfterEnv: [`./jest.setup.${hasTypescript ? 'ts' : 'js'}`, 'jest-extended/all'],
 
     // The number of seconds after which a test is considered as slow and reported as such in the results.
     // slowTestThreshold: 5,
@@ -247,6 +253,8 @@ const getJestConfig = (configOptions: SelectOptions) => {
 
   const result = hasTypescript
     ? `import type { JestConfigWithTsJest } from 'ts-jest'
+
+import 'jest-extended'
     
 const jestConfig: JestConfigWithTsJest = ${convertToString(config)}
 
