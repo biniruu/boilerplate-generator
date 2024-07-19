@@ -16,8 +16,8 @@ describe('Generate commands', () => {
 
       const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(configOptions)
 
-      expect(authenticationDependencies).toContain('bcryptjs')
-      expect(authenticationDevDependencies).toContain('@types/bcryptjs')
+      expect(authenticationDependencies).toEqual(['bcryptjs'])
+      expect(authenticationDevDependencies).toEqual(['@types/bcryptjs'])
     })
 
     test('should generate command for NextAuth.js', () => {
@@ -26,7 +26,7 @@ describe('Generate commands', () => {
 
       const { authenticationDependencies } = getAuthenticationCommands(configOptions)
 
-      expect(authenticationDependencies).toContain('next-auth')
+      expect(authenticationDependencies).toEqual(['next-auth'])
     })
   })
 })
