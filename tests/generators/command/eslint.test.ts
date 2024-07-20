@@ -21,4 +21,19 @@ describe('ESLint', () => {
       'eslint-plugin-import',
     ])
   })
+
+  test('should generate a command for ESLint with Gatsby.js', () => {
+    configOptions.eslint = true
+    configOptions.gatsby = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers([
+      '@typescript-eslint/eslint-plugin',
+      '@typescript-eslint/parser',
+      'eslint',
+      'eslint-import-resolver-typescript',
+      'eslint-plugin-import',
+    ])
+  })
 })
