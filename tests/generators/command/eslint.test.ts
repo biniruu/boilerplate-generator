@@ -246,4 +246,14 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForJavascript])
   })
+
+  test('should generate a command for ESLint with Webpack and TypeScript', () => {
+    configOptions.eslint = true
+    configOptions.webpack = true
+    configOptions.typescript = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForTypescript])
+  })
 })
