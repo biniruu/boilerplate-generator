@@ -9,4 +9,12 @@ describe('Data Management Libraries', () => {
     expect(dataManagementDependencies).toBeEmpty()
     expect(dataManagementDevDependencies).toBeEmpty()
   })
+
+  test('should generate a command for AXIOS', () => {
+    configOptions.axios = true
+
+    const { dataManagementDependencies } = getDataManagementCommands(configOptions)
+
+    expect(dataManagementDependencies).toEqual(['axios'])
+  })
 })
