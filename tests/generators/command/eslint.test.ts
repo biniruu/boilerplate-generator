@@ -353,6 +353,30 @@ describe('ESLint', () => {
 
       expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForTypescript])
     })
+
+    test('should generate a command for ESLint with Next.js, Tailwind CSS', () => {
+      configOptions.eslint = true
+      configOptions.next = true
+      configOptions.tailwind = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForNext])
+    })
+
+    test('should generate a command for ESLint with Next.js, Tailwind CSS and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.next = true
+      configOptions.tailwind = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        'eslint-plugin-tailwindcss',
+        ...dependenciesForNextWithTypescript,
+      ])
+    })
   })
 
   describe('Webpack', () => {
