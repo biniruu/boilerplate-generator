@@ -33,4 +33,12 @@ describe('Data Management Libraries', () => {
     ])
     expect(dataManagementDevDependencies).toEqual(['@graphql-codegen/cli'])
   })
+
+  test('should generate a command for Koa', () => {
+    configOptions.koa = true
+
+    const { dataManagementDependencies } = getDataManagementCommands(configOptions)
+
+    expect(dataManagementDependencies).toIncludeSameMembers(['koa', '@koa/router'])
+  })
 })
