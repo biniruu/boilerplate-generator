@@ -20,7 +20,6 @@ const getEslintCommands = (configOptions: SelectOptions) => {
     hasWebpack,
     hasWordpress,
   } = getCertainConditions(configOptions)
-  const hasCore = hasGatsby || hasJsLibs || hasThree || hasTypescript || hasWordpress
 
   const eslintDevDependencies: string[] = []
 
@@ -92,68 +91,66 @@ const getEslintCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/jestjs/jest#readme}
    */
   if (hasEslint) {
-    if (hasCore) {
-      if (hasGatsby) {
-        // For TypeScript only
-        eslintDevDependencies.push(
-          '@typescript-eslint/eslint-plugin',
-          '@typescript-eslint/parser',
-          'eslint',
-          'eslint-import-resolver-typescript',
-          'eslint-plugin-import',
-        )
-      }
-      if (hasNext) {
-        if (hasTypescript) {
-          eslintDevDependencies.push('@typescript-eslint/eslint-plugin')
-        }
-        eslintDevDependencies.push('eslint-plugin-react-refresh', 'eslint-plugin-testing-library')
-      }
-      if (hasNuxt) {
-        if (hasTypescript) {
-          eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
-        }
-        eslintDevDependencies.push(
-          '@nuxtjs/eslint-config-typescript',
-          'eslint',
-          'eslint-plugin-import',
-          'eslint-plugin-jest',
-          'eslint-plugin-jsx-a11y',
-          'eslint-plugin-nuxt',
-          'eslint-plugin-testing-library',
-          'vue-eslint-parser',
-        )
-      }
-      // For React.js that build with Vite
-      if (hasReact) {
-        if (hasTypescript) {
-          eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
-        }
-        eslintDevDependencies.push(
-          'eslint-plugin-import',
-          'eslint-plugin-jsx-a11y',
-          'eslint-plugin-react',
-          'eslint-plugin-testing-library',
-          'jest-resolve',
-        )
-      }
-      if (hasThree || hasTypescript) {
-        eslintDevDependencies.push(
-          '@typescript-eslint/eslint-plugin',
-          '@typescript-eslint/parser',
-          'eslint',
-          'eslint-import-resolver-typescript',
-          'eslint-plugin-import',
-        )
-      }
-      if (hasWordpress) {
-        eslintDevDependencies.push('eslint')
-      }
-    } else {
+    if (!hasGatsby && !hasJsLibs && !hasThree && !hasTypescript && !hasWordpress) {
       // For VanillaJS
       eslintDevDependencies.push('@babel/eslint-parser', 'eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import')
     }
-
+    if (hasGatsby) {
+      // For TypeScript only
+      eslintDevDependencies.push(
+        '@typescript-eslint/eslint-plugin',
+        '@typescript-eslint/parser',
+        'eslint',
+        'eslint-import-resolver-typescript',
+        'eslint-plugin-import',
+      )
+    }
+    if (hasNext) {
+      if (hasTypescript) {
+        eslintDevDependencies.push('@typescript-eslint/eslint-plugin')
+      }
+      eslintDevDependencies.push('eslint-plugin-react-refresh', 'eslint-plugin-testing-library')
+    }
+    if (hasNuxt) {
+      if (hasTypescript) {
+        eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
+      }
+      eslintDevDependencies.push(
+        '@nuxtjs/eslint-config-typescript',
+        'eslint',
+        'eslint-plugin-import',
+        'eslint-plugin-jest',
+        'eslint-plugin-jsx-a11y',
+        'eslint-plugin-nuxt',
+        'eslint-plugin-testing-library',
+        'vue-eslint-parser',
+      )
+    }
+    // For React.js that build with Vite
+    if (hasReact) {
+      if (hasTypescript) {
+        eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
+      }
+      eslintDevDependencies.push(
+        'eslint-plugin-import',
+        'eslint-plugin-jsx-a11y',
+        'eslint-plugin-react',
+        'eslint-plugin-testing-library',
+        'jest-resolve',
+      )
+    }
+    if (hasThree || hasTypescript) {
+      eslintDevDependencies.push(
+        '@typescript-eslint/eslint-plugin',
+        '@typescript-eslint/parser',
+        'eslint',
+        'eslint-import-resolver-typescript',
+        'eslint-plugin-import',
+      )
+    }
+    if (hasWordpress) {
+      eslintDevDependencies.push('eslint')
+    }
     if (hasGraphql) {
       eslintDevDependencies.push('@graphql-eslint/eslint-plugin')
     }
