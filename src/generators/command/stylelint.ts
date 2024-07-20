@@ -4,6 +4,8 @@ import type { SelectOptions } from '_types'
 const getStylelintCommands = (configOptions: SelectOptions) => {
   const { hasScss, hasStylelint } = getCertainConditions(configOptions)
 
+  const stylelintDevDependencies: string[] = []
+
   /**
    * stylelint (Stylelint)
    * {@link https://stylelint.io}
@@ -20,8 +22,6 @@ const getStylelintCommands = (configOptions: SelectOptions) => {
    * stylelint-scss
    * {@link https://github.com/stylelint-scss/stylelint-scss#readme}
    */
-  const stylelintDevDependencies: string[] = []
-
   if (hasStylelint) {
     stylelintDevDependencies.push('stylelint', 'stylelint-config-standard', 'stylelint-order')
 

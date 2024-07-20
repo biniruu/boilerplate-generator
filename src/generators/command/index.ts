@@ -25,8 +25,8 @@ const parseCommands = (commands: string[]) => {
 const generateCommand = () => {
   const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(objOptions)
   const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(objOptions)
-  const { compilerDependencies, compilerDevDependencies } = getCompilerCommands(objOptions)
-  const { cssFrameworkDependencies, cssFrameworkDevDependencies } = getCssFrameworkCommands(objOptions)
+  const { compilerDevDependencies } = getCompilerCommands(objOptions)
+  const { cssFrameworkDevDependencies } = getCssFrameworkCommands(objOptions)
   const { cssInJsDependencies, cssInJsDevDependencies } = getCssInJsCommands(objOptions)
   const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands(objOptions)
   const { eslintDevDependencies } = getEslintCommands(objOptions)
@@ -41,8 +41,6 @@ const generateCommand = () => {
   const dependencies = [
     ...authenticationDependencies,
     ...bundlerDependencies,
-    ...compilerDependencies,
-    ...cssFrameworkDependencies,
     ...cssInJsDependencies,
     ...dataManagementDependencies,
     ...htmlTemplateDependencies,

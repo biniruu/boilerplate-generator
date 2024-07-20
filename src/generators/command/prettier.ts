@@ -4,6 +4,8 @@ import type { SelectOptions } from '_types'
 const getPrettierCommands = (configOptions: SelectOptions) => {
   const { hasPrettier, hasPug, hasTailwind } = getCertainConditions(configOptions)
 
+  const prettierDevDependencies: string[] = []
+
   /**
    * prettier
    * {@link https://prettier.io}
@@ -14,8 +16,6 @@ const getPrettierCommands = (configOptions: SelectOptions) => {
    * prettier-plugin-tailwindcss
    * {@link https://github.com/tailwindlabs/prettier-plugin-tailwindcss#readme}
    */
-  const prettierDevDependencies: string[] = []
-
   if (hasPrettier) {
     prettierDevDependencies.push('prettier')
 

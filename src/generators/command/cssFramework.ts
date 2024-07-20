@@ -5,7 +5,6 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
   const { hasGatsby, hasPostcss, hasScss, hasStyledComponents, hasTailwind, hasTypescript, hasJsLibs } =
     getCertainConditions(configOptions)
 
-  const cssFrameworkDependencies: string[] = []
   const cssFrameworkDevDependencies: string[] = []
 
   /**
@@ -97,7 +96,6 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
   }
 
   return {
-    cssFrameworkDependencies,
     cssFrameworkDevDependencies,
   }
 }

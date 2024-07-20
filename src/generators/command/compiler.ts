@@ -4,7 +4,6 @@ const getCompilerCommands = (configOptions: SelectOptions) => {
   const hasBabel = configOptions.babel
   const hasWordpress = configOptions.wordpress
 
-  const compilerDependencies: string[] = []
   const compilerDevDependencies: string[] = []
 
   /**
@@ -38,7 +37,6 @@ const getCompilerCommands = (configOptions: SelectOptions) => {
   }
 
   return {
-    compilerDependencies,
     compilerDevDependencies,
   }
 }

@@ -5,7 +5,6 @@ const getValidationCommands = (configOptions: SelectOptions) => {
   const hasReactHookForm = configOptions.reactHookForm
 
   const validationDependencies: string[] = []
-  const validationDevDependencies: string[] = []
 
   /**
    * joi
@@ -24,7 +23,6 @@ const getValidationCommands = (configOptions: SelectOptions) => {
 
   return {
     validationDependencies,
-    validationDevDependencies,
   }
 }
 
