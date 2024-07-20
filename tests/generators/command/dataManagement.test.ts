@@ -59,4 +59,12 @@ describe('Data Management Libraries', () => {
 
     expect(dataManagementDependencies).toEqual(['redis'])
   })
+
+  test('should generate a command for socket.io with socket.io-client', () => {
+    configOptions.socket = true
+
+    const { dataManagementDependencies } = getDataManagementCommands(configOptions)
+
+    expect(dataManagementDependencies).toIncludeSameMembers(['socket.io', 'socket.io-client'])
+  })
 })
