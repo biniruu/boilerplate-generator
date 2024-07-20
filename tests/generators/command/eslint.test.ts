@@ -9,22 +9,21 @@ describe('ESLint', () => {
     expect(eslintDevDependencies).toBeEmpty()
   })
 
+  const dependencies = ['eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import']
+  const dependenciesForJavascript = ['@babel/eslint-parser', ...dependencies]
+
   test('should generate a command for ESLint', () => {
     configOptions.eslint = true
 
     const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers([
-      '@babel/eslint-parser',
-      'eslint',
-      'eslint-plugin-jsx-a11y',
-      'eslint-plugin-import',
-    ])
+    expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForJavascript)
   })
 
-  test('should generate a command for ESLint with Gatsby.js', () => {
+  test('should generate a command for ESLint with Gatsby.js with TypeScript', () => {
     configOptions.eslint = true
     configOptions.gatsby = true
+    configOptions.typescript = true
 
     const { eslintDevDependencies } = getEslintCommands(configOptions)
 
@@ -107,6 +106,6 @@ describe('ESLint', () => {
 
     const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toEqual(['@graphql-eslint/eslint-plugin'])
+    expect(eslintDevDependencies).toIncludeSameMembers(['@graphql-eslint/eslint-plugin', ...dependenciesForJavascript])
   })
 })
