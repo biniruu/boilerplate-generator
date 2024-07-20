@@ -118,6 +118,11 @@ describe('ESLint', () => {
     'eslint-plugin-testing-library',
     'vue-eslint-parser',
   ]
+  const dependenciesForNuxtWithTypescript = [
+    '@typescript-eslint/eslint-plugin',
+    'eslint-import-resolver-typescript',
+    ...dependenciesForNuxt,
+  ]
   describe('Nuxt.js', () => {
     test('should generate a command for ESLint with Nuxt.js and should exclude TypeScript', () => {
       configOptions.eslint = true
@@ -135,11 +140,7 @@ describe('ESLint', () => {
 
       const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-      expect(eslintDevDependencies).toIncludeSameMembers([
-        '@typescript-eslint/eslint-plugin',
-        'eslint-import-resolver-typescript',
-        ...dependenciesForNuxt,
-      ])
+      expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNuxtWithTypescript)
     })
   })
 
@@ -285,7 +286,7 @@ describe('ESLint', () => {
   })
 
   describe('TanstackQuery', () => {
-    test('should generate a command for ESLint with React.js, TanstackQuery', () => {
+    test('should generate a command for ESLint with React.js and TanstackQuery', () => {
       configOptions.eslint = true
       configOptions.react = true
       configOptions.tanstackQuery = true
@@ -309,7 +310,7 @@ describe('ESLint', () => {
       ])
     })
 
-    test('should generate a command for ESLint with Next.js, TanstackQuery', () => {
+    test('should generate a command for ESLint with Next.js and TanstackQuery', () => {
       configOptions.eslint = true
       configOptions.next = true
       configOptions.tanstackQuery = true
@@ -354,7 +355,7 @@ describe('ESLint', () => {
       expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForTypescript])
     })
 
-    test('should generate a command for ESLint with Next.js, Tailwind CSS', () => {
+    test('should generate a command for ESLint with Next.js and Tailwind CSS', () => {
       configOptions.eslint = true
       configOptions.next = true
       configOptions.tailwind = true
@@ -397,6 +398,30 @@ describe('ESLint', () => {
       const { eslintDevDependencies } = getEslintCommands(configOptions)
 
       expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForTypescript])
+    })
+
+    test('should generate a command for ESLint with Nuxt.js and Webpack', () => {
+      configOptions.eslint = true
+      configOptions.nuxt = true
+      configOptions.webpack = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForNuxt])
+    })
+
+    test('should generate a command for ESLint with Nuxt.js, Webpack and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.nuxt = true
+      configOptions.webpack = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        'eslint-webpack-plugin',
+        ...dependenciesForNuxtWithTypescript,
+      ])
     })
   })
 })
