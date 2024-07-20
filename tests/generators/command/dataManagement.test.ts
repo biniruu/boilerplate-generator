@@ -51,4 +51,12 @@ describe('Data Management Libraries', () => {
     expect(dataManagementDependencies).toIncludeSameMembers(['koa', '@koa/router'])
     expect(dataManagementDevDependencies).toIncludeSameMembers(['@types/koa', '@types/koa__router'])
   })
+
+  test('should generate a command for Mongoose', () => {
+    configOptions.mongoose = true
+
+    const { dataManagementDependencies } = getDataManagementCommands(configOptions)
+
+    expect(dataManagementDependencies).toEqual(['mongoose'])
+  })
 })
