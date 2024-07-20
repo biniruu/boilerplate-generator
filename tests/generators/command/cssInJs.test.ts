@@ -16,4 +16,14 @@ describe('CSS in JS', () => {
 
     expect(cssInJsDependencies).toEqual(['styled-components'])
   })
+
+  test('should generate commands for styled-components with TypeScript', () => {
+    configOptions.styledComponents = true
+    configOptions.typescript = true
+
+    const { cssInJsDependencies, cssInJsDevDependencies } = getCssInJsCommands(configOptions)
+
+    expect(cssInJsDependencies).toEqual(['styled-components'])
+    expect(cssInJsDevDependencies).toEqual(['@types/styled-components'])
+  })
 })
