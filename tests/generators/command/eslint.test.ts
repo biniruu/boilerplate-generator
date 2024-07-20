@@ -53,6 +53,7 @@ describe('ESLint', () => {
   })
 
   const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
+  const dependenciesForNextWithTypescript = ['@typescript-eslint/eslint-plugin', ...dependenciesForNext]
   describe('Next.js', () => {
     test('should generate a command for ESLint with Next.js and should exclude TypeScript', () => {
       configOptions.eslint = true
@@ -70,7 +71,7 @@ describe('ESLint', () => {
 
       const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-      expect(eslintDevDependencies).toIncludeSameMembers(['@typescript-eslint/eslint-plugin', ...dependenciesForNext])
+      expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNextWithTypescript)
     })
   })
 
@@ -80,6 +81,11 @@ describe('ESLint', () => {
     'eslint-plugin-react',
     'eslint-plugin-testing-library',
     'jest-resolve',
+  ]
+  const dependenciesForReactWithTypescript = [
+    '@typescript-eslint/eslint-plugin',
+    'eslint-import-resolver-typescript',
+    ...dependenciesForReact,
   ]
   describe('React.js', () => {
     test('should generate a command for ESLint with React.js and should exclude TypeScript', () => {
@@ -98,11 +104,7 @@ describe('ESLint', () => {
 
       const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-      expect(eslintDevDependencies).toIncludeSameMembers([
-        '@typescript-eslint/eslint-plugin',
-        'eslint-import-resolver-typescript',
-        ...dependenciesForReact,
-      ])
+      expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForReactWithTypescript)
     })
   })
 
@@ -283,20 +285,19 @@ describe('ESLint', () => {
   })
 
   describe('TanstackQuery', () => {
-    test('should generate a command for ESLint with TanstackQuery', () => {
+    test('should generate a command for ESLint with React.js, TanstackQuery', () => {
       configOptions.eslint = true
+      configOptions.react = true
       configOptions.tanstackQuery = true
 
       const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-      expect(eslintDevDependencies).toIncludeSameMembers([
-        '@tanstack/eslint-plugin-query',
-        ...dependenciesForJavascript,
-      ])
+      expect(eslintDevDependencies).toIncludeSameMembers(['@tanstack/eslint-plugin-query', ...dependenciesForReact])
     })
 
-    test('should generate a command for ESLint with TanstackQuery and TypeScript', () => {
+    test('should generate a command for ESLint with React.js, TanstackQuery and TypeScript', () => {
       configOptions.eslint = true
+      configOptions.react = true
       configOptions.tanstackQuery = true
       configOptions.typescript = true
 
@@ -304,7 +305,31 @@ describe('ESLint', () => {
 
       expect(eslintDevDependencies).toIncludeSameMembers([
         '@tanstack/eslint-plugin-query',
-        ...dependenciesForTypescript,
+        ...dependenciesForReactWithTypescript,
+      ])
+    })
+
+    test('should generate a command for ESLint with Next.js, TanstackQuery', () => {
+      configOptions.eslint = true
+      configOptions.next = true
+      configOptions.tanstackQuery = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(['@tanstack/eslint-plugin-query', ...dependenciesForNext])
+    })
+
+    test('should generate a command for ESLint with Next.js, TanstackQuery and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.next = true
+      configOptions.tanstackQuery = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        '@tanstack/eslint-plugin-query',
+        ...dependenciesForNextWithTypescript,
       ])
     })
   })
