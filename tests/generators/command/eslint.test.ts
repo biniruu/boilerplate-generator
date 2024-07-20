@@ -36,224 +36,258 @@ describe('ESLint', () => {
     expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForTypescript)
   })
 
-  test('should generate a command for ESLint with Gatsby.js with TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.gatsby = true
-    configOptions.typescript = true
+  describe('Gatsby.js', () => {
+    test('should generate a command for ESLint with Gatsby.js with TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.gatsby = true
+      configOptions.typescript = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers([
-      '@typescript-eslint/eslint-plugin',
-      '@typescript-eslint/parser',
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        '@typescript-eslint/eslint-plugin',
+        '@typescript-eslint/parser',
+        'eslint',
+        'eslint-import-resolver-typescript',
+        'eslint-plugin-import',
+      ])
+    })
+  })
+
+  describe('Next.js', () => {
+    const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
+
+    test('should generate a command for ESLint with Next.js and should exclude TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.next = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNext)
+    })
+
+    test('should generate a command for ESLint with Next.js and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.next = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(['@typescript-eslint/eslint-plugin', ...dependenciesForNext])
+    })
+  })
+
+  describe('Nuxt.js', () => {
+    const dependenciesForNuxt = [
+      '@nuxtjs/eslint-config-typescript',
       'eslint',
-      'eslint-import-resolver-typescript',
       'eslint-plugin-import',
-    ])
-  })
-
-  const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
-
-  test('should generate a command for ESLint with Next.js and should exclude TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.next = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNext)
-  })
-
-  test('should generate a command for ESLint with Next.js and TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.next = true
-    configOptions.typescript = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toIncludeSameMembers(['@typescript-eslint/eslint-plugin', ...dependenciesForNext])
-  })
-
-  const dependenciesForNuxt = [
-    '@nuxtjs/eslint-config-typescript',
-    'eslint',
-    'eslint-plugin-import',
-    'eslint-plugin-jest',
-    'eslint-plugin-jsx-a11y',
-    'eslint-plugin-nuxt',
-    'eslint-plugin-testing-library',
-    'vue-eslint-parser',
-  ]
-
-  test('should generate a command for ESLint with Nuxt.js and should exclude TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.nuxt = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNuxt)
-  })
-
-  test('should generate a command for ESLint with Nuxt.js and TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.nuxt = true
-    configOptions.typescript = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toIncludeSameMembers([
-      '@typescript-eslint/eslint-plugin',
-      'eslint-import-resolver-typescript',
-      ...dependenciesForNuxt,
-    ])
-  })
-
-  test('should generate a command for ESLint with WordPress', () => {
-    configOptions.eslint = true
-    configOptions.wordpress = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toEqual(['eslint'])
-  })
-
-  test('should generate a command for ESLint with GraphQL.js', () => {
-    configOptions.eslint = true
-    configOptions.graphql = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toIncludeSameMembers(['@graphql-eslint/eslint-plugin', ...dependenciesForJavascript])
-  })
-
-  test('should generate a command for ESLint with GraphQL.js and TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.graphql = true
-    configOptions.typescript = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toIncludeSameMembers(['@graphql-eslint/eslint-plugin', ...dependenciesForTypescript])
-  })
-
-  test('should generate a command for ESLint with Jest', () => {
-    configOptions.eslint = true
-    configOptions.jest = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toIncludeSameMembers([
       'eslint-plugin-jest',
-      'eslint-plugin-jest-dom',
-      ...dependenciesForJavascript,
-    ])
+      'eslint-plugin-jsx-a11y',
+      'eslint-plugin-nuxt',
+      'eslint-plugin-testing-library',
+      'vue-eslint-parser',
+    ]
+
+    test('should generate a command for ESLint with Nuxt.js and should exclude TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.nuxt = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNuxt)
+    })
+
+    test('should generate a command for ESLint with Nuxt.js and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.nuxt = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        '@typescript-eslint/eslint-plugin',
+        'eslint-import-resolver-typescript',
+        ...dependenciesForNuxt,
+      ])
+    })
   })
 
-  test('should generate a command for ESLint with Jest and TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.jest = true
-    configOptions.typescript = true
+  describe('WordPress', () => {
+    test('should generate a command for ESLint with WordPress', () => {
+      configOptions.eslint = true
+      configOptions.wordpress = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers([
-      'eslint-plugin-jest',
-      'eslint-plugin-jest-dom',
-      ...dependenciesForTypescript,
-    ])
+      expect(eslintDevDependencies).toEqual(['eslint'])
+    })
   })
 
-  test('should generate a command for ESLint with Pug', () => {
-    configOptions.eslint = true
-    configOptions.pug = true
+  describe('GraphQL.js', () => {
+    test('should generate a command for ESLint with GraphQL.js', () => {
+      configOptions.eslint = true
+      configOptions.graphql = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-pug', ...dependenciesForJavascript])
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        '@graphql-eslint/eslint-plugin',
+        ...dependenciesForJavascript,
+      ])
+    })
+
+    test('should generate a command for ESLint with GraphQL.js and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.graphql = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        '@graphql-eslint/eslint-plugin',
+        ...dependenciesForTypescript,
+      ])
+    })
   })
 
-  test('should generate a command for ESLint with Pug and TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.pug = true
-    configOptions.typescript = true
+  describe('Jest', () => {
+    test('should generate a command for ESLint with Jest', () => {
+      configOptions.eslint = true
+      configOptions.jest = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-pug', ...dependenciesForTypescript])
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        'eslint-plugin-jest',
+        'eslint-plugin-jest-dom',
+        ...dependenciesForJavascript,
+      ])
+    })
+
+    test('should generate a command for ESLint with Jest and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.jest = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        'eslint-plugin-jest',
+        'eslint-plugin-jest-dom',
+        ...dependenciesForTypescript,
+      ])
+    })
   })
 
-  test('should generate a command for ESLint with Storybook', () => {
-    configOptions.eslint = true
-    configOptions.storybook = true
+  describe('Pug', () => {
+    test('should generate a command for ESLint with Pug', () => {
+      configOptions.eslint = true
+      configOptions.pug = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-storybook', ...dependenciesForJavascript])
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-pug', ...dependenciesForJavascript])
+    })
+
+    test('should generate a command for ESLint with Pug and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.pug = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-pug', ...dependenciesForTypescript])
+    })
   })
 
-  test('should generate a command for ESLint with Storybook and TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.storybook = true
-    configOptions.typescript = true
+  describe('Storybook', () => {
+    test('should generate a command for ESLint with Storybook', () => {
+      configOptions.eslint = true
+      configOptions.storybook = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-storybook', ...dependenciesForTypescript])
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-storybook', ...dependenciesForJavascript])
+    })
+
+    test('should generate a command for ESLint with Storybook and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.storybook = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-storybook', ...dependenciesForTypescript])
+    })
   })
 
-  test('should generate a command for ESLint with TanstackQuery', () => {
-    configOptions.eslint = true
-    configOptions.tanstackQuery = true
+  describe('TanstackQuery', () => {
+    test('should generate a command for ESLint with TanstackQuery', () => {
+      configOptions.eslint = true
+      configOptions.tanstackQuery = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers(['@tanstack/eslint-plugin-query', ...dependenciesForJavascript])
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        '@tanstack/eslint-plugin-query',
+        ...dependenciesForJavascript,
+      ])
+    })
+
+    test('should generate a command for ESLint with TanstackQuery and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.tanstackQuery = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        '@tanstack/eslint-plugin-query',
+        ...dependenciesForTypescript,
+      ])
+    })
   })
 
-  test('should generate a command for ESLint with TanstackQuery and TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.tanstackQuery = true
-    configOptions.typescript = true
+  describe('Tailwind CSS', () => {
+    test('should generate a command for ESLint with Tailwind CSS', () => {
+      configOptions.eslint = true
+      configOptions.tailwind = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers(['@tanstack/eslint-plugin-query', ...dependenciesForTypescript])
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForJavascript])
+    })
+
+    test('should generate a command for ESLint with Tailwind CSS and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.tailwind = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForTypescript])
+    })
   })
 
-  test('should generate a command for ESLint with Tailwind CSS', () => {
-    configOptions.eslint = true
-    configOptions.tailwind = true
+  describe('Webpack', () => {
+    test('should generate a command for ESLint with Webpack', () => {
+      configOptions.eslint = true
+      configOptions.webpack = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForJavascript])
-  })
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForJavascript])
+    })
 
-  test('should generate a command for ESLint with Tailwind CSS and TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.tailwind = true
-    configOptions.typescript = true
+    test('should generate a command for ESLint with Webpack and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.webpack = true
+      configOptions.typescript = true
 
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
 
-    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForTypescript])
-  })
-
-  test('should generate a command for ESLint with Webpack', () => {
-    configOptions.eslint = true
-    configOptions.webpack = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForJavascript])
-  })
-
-  test('should generate a command for ESLint with Webpack and TypeScript', () => {
-    configOptions.eslint = true
-    configOptions.webpack = true
-    configOptions.typescript = true
-
-    const { eslintDevDependencies } = getEslintCommands(configOptions)
-
-    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForTypescript])
+      expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForTypescript])
+    })
   })
 })
