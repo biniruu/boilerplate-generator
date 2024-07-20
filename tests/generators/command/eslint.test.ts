@@ -227,4 +227,14 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForJavascript])
   })
+
+  test('should generate a command for ESLint with Tailwind CSS and TypeScript', () => {
+    configOptions.eslint = true
+    configOptions.tailwind = true
+    configOptions.typescript = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForTypescript])
+  })
 })
