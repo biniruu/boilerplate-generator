@@ -11,7 +11,6 @@ describe('ESLint', () => {
 
   const dependencies = ['eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import']
   const dependenciesForJavascript = ['@babel/eslint-parser', ...dependencies]
-
   test('should generate a command for ESLint', () => {
     configOptions.eslint = true
 
@@ -26,7 +25,6 @@ describe('ESLint', () => {
     'eslint-import-resolver-typescript',
     ...dependencies,
   ]
-
   test('should generate a command for ESLint with TypeScript', () => {
     configOptions.eslint = true
     configOptions.typescript = true
@@ -56,7 +54,6 @@ describe('ESLint', () => {
 
   describe('Next.js', () => {
     const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
-
     test('should generate a command for ESLint with Next.js and should exclude TypeScript', () => {
       configOptions.eslint = true
       configOptions.next = true
@@ -88,7 +85,6 @@ describe('ESLint', () => {
       'eslint-plugin-testing-library',
       'vue-eslint-parser',
     ]
-
     test('should generate a command for ESLint with Nuxt.js and should exclude TypeScript', () => {
       configOptions.eslint = true
       configOptions.nuxt = true
@@ -147,6 +143,22 @@ describe('ESLint', () => {
       expect(eslintDevDependencies).toIncludeSameMembers([
         '@graphql-eslint/eslint-plugin',
         ...dependenciesForTypescript,
+      ])
+    })
+
+    const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
+    test('should generate a command for ESLint with Next.js, GraphQL.js and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.next = true
+      configOptions.graphql = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        '@graphql-eslint/eslint-plugin',
+        '@typescript-eslint/eslint-plugin',
+        ...dependenciesForNext,
       ])
     })
   })
