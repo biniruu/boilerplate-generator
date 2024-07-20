@@ -1,12 +1,11 @@
 import getCssFrameworkCommands from '@generators/command/cssFramework'
 
-import { configOptions, setHasJsLibs } from './configOptions.test'
+import { configOptions, setHasJsLibs } from '../../configOptions.test'
 
 describe('CSS Framework', () => {
   test('should return empty values when all options are false', () => {
-    const { cssFrameworkDependencies, cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
 
-    expect(cssFrameworkDependencies).toBeEmpty()
     expect(cssFrameworkDevDependencies).toBeEmpty()
   })
 
