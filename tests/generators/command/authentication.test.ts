@@ -2,8 +2,15 @@ import getAuthenticationCommands from '@generators/command/authentication'
 
 import { configOptions } from './configOptions.test'
 
-describe('Generate command for authentication', () => {
-  test('should generate command for bcrypt.js', () => {
+describe('Authentication', () => {
+  test('should generate empty values when all options in options are false', () => {
+    const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(configOptions)
+
+    expect(authenticationDependencies).toBeEmpty()
+    expect(authenticationDevDependencies).toBeEmpty()
+  })
+
+  test('should generate a command for bcrypt.js', () => {
     configOptions.bcrypt = true
     configOptions.typescript = true
 
@@ -16,7 +23,7 @@ describe('Generate command for authentication', () => {
     expect(authenticationDevDependencies).toIncludeSameMembers(devDependencies)
   })
 
-  test('should generate command for NextAuth.js', () => {
+  test('should generate a command for NextAuth.js', () => {
     configOptions.next = true
     configOptions.nextAuth = true
 
@@ -24,12 +31,5 @@ describe('Generate command for authentication', () => {
 
     const dependencies = ['next-auth']
     expect(authenticationDependencies).toIncludeSameMembers(dependencies)
-  })
-
-  test('should generate an empty array when all options in configOptions are false', () => {
-    const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(configOptions)
-
-    expect(authenticationDependencies).toBeEmpty()
-    expect(authenticationDevDependencies).toBeEmpty()
   })
 })

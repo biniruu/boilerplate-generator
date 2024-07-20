@@ -2,9 +2,9 @@ import getBundlerCommands from '@generators/command/bundler'
 
 import { configOptions } from './configOptions.test'
 
-describe('Generate command for Bundler', () => {
+describe('Bundler', () => {
   describe('Vite', () => {
-    test('should generate command for Vite', () => {
+    test('should generate a command for Vite', () => {
       configOptions.vite = true
 
       const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
@@ -16,7 +16,7 @@ describe('Generate command for Bundler', () => {
       expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies)
     })
 
-    test('should generate command for Vite with TypeScript', () => {
+    test('should generate a command for Vite with TypeScript', () => {
       configOptions.vite = true
       configOptions.typescript = true
 
@@ -29,7 +29,7 @@ describe('Generate command for Bundler', () => {
       expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies)
     })
 
-    test('should generate command for Vite with React.js and TypeScript', () => {
+    test('should generate a command for Vite with React.js and TypeScript', () => {
       configOptions.vite = true
       configOptions.react = true
       configOptions.typescript = true
@@ -46,7 +46,7 @@ describe('Generate command for Bundler', () => {
   describe('Webpack', () => {
     const devDependenciesWithoutThree = ['html-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin']
 
-    test('should generate command for Webpack', () => {
+    test('should generate a command for Webpack', () => {
       configOptions.webpack = true
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
@@ -54,7 +54,7 @@ describe('Generate command for Bundler', () => {
       expect(bundlerDevDependencies).toIncludeAllMembers(devDependenciesWithoutThree)
     })
 
-    test('should generate command for Webpack with Three.js', () => {
+    test('should generate a command for Webpack with Three.js', () => {
       configOptions.webpack = true
       configOptions.three = true
 
@@ -63,7 +63,7 @@ describe('Generate command for Bundler', () => {
       expect(bundlerDevDependencies).not.toIncludeAllMembers(devDependenciesWithoutThree)
     })
 
-    test('should generate command for Webpack with Next.js', () => {
+    test('should generate a command for Webpack with Next.js', () => {
       configOptions.webpack = true
       configOptions.next = true
 
@@ -73,7 +73,7 @@ describe('Generate command for Bundler', () => {
       expect(bundlerDevDependencies).toEqual(devDependencies)
     })
 
-    test('should generate command for Webpack with SCSS', () => {
+    test('should generate a command for Webpack with SCSS', () => {
       configOptions.webpack = true
       configOptions.scss = true
 
@@ -82,7 +82,7 @@ describe('Generate command for Bundler', () => {
       expect(bundlerDevDependencies).toContain('sass-loader')
     })
 
-    test('should generate command for Webpack with TypeScript', () => {
+    test('should generate a command for Webpack with TypeScript', () => {
       configOptions.webpack = true
       configOptions.typescript = true
 
@@ -92,7 +92,7 @@ describe('Generate command for Bundler', () => {
       expect(bundlerDevDependencies).toIncludeAllMembers(devDependencies)
     })
 
-    test('should generate command for Webpack with TypeScript and SCSS', () => {
+    test('should generate a command for Webpack with TypeScript and SCSS', () => {
       configOptions.webpack = true
       configOptions.typescript = true
       configOptions.scss = true
@@ -105,7 +105,7 @@ describe('Generate command for Bundler', () => {
   })
 
   describe('esbuild', () => {
-    test('should generate command for esbuild', () => {
+    test('should generate a command for esbuild', () => {
       configOptions.esbuild = true
 
       const { bundlerDevDependencies } = getBundlerCommands(configOptions)
@@ -114,7 +114,7 @@ describe('Generate command for Bundler', () => {
       expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies)
     })
 
-    test('should generate command for esbuild with Jest', () => {
+    test('should generate a command for esbuild with Jest', () => {
       configOptions.esbuild = true
       configOptions.jest = true
 

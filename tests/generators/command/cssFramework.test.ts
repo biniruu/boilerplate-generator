@@ -11,7 +11,7 @@ describe('CSS Framework', () => {
   })
 
   describe('PostCSS', () => {
-    test('should generate commands for PostCSS with Gatsby.js', () => {
+    test('should generate a command for PostCSS with Gatsby.js', () => {
       configOptions.postcss = true
       configOptions.gatsby = true
 
@@ -31,7 +31,7 @@ describe('CSS Framework', () => {
       'postcss-syntax',
     ]
 
-    test('should generate commands for PostCSS without Gatsby.js and JavaScript Libraries', () => {
+    test('should generate a command for PostCSS without Gatsby.js and JavaScript Libraries', () => {
       configOptions.postcss = true
 
       const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
@@ -39,7 +39,7 @@ describe('CSS Framework', () => {
       expect(cssFrameworkDevDependencies).toIncludeSameMembers(['postcss', ...devDependenciesWithoutGatsby])
     })
 
-    test('should generate commands for PostCSS with JavaScript Libraries but should exclude Gatsby.js', () => {
+    test('should generate a command for PostCSS with JavaScript Libraries but should exclude Gatsby.js', () => {
       configOptions.postcss = true
 
       const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
@@ -47,7 +47,7 @@ describe('CSS Framework', () => {
       expect(cssFrameworkDevDependencies).toIncludeSameMembers(['postcss', ...devDependenciesWithoutGatsby])
     })
 
-    test('should generate commands for PostCSS without JavaScript Libraries but should exclude Gatsby.js', () => {
+    test('should generate a command for PostCSS without JavaScript Libraries but should exclude Gatsby.js', () => {
       configOptions.postcss = true
       setHasJsLibs()
 
@@ -56,7 +56,7 @@ describe('CSS Framework', () => {
       expect(cssFrameworkDevDependencies).toIncludeSameMembers(['postcss-jsx', ...devDependenciesWithoutGatsby])
     })
 
-    test('should generate commands for PostCSS with SCSS but should exclude Gatsby.js and JavaScript Libraries', () => {
+    test('should generate a command for PostCSS with SCSS but should exclude Gatsby.js and JavaScript Libraries', () => {
       configOptions.postcss = true
       configOptions.scss = true
 
@@ -70,7 +70,7 @@ describe('CSS Framework', () => {
     })
   })
 
-  test('should generate commands for SCSS', () => {
+  test('should generate a command for SCSS', () => {
     configOptions.scss = true
 
     const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
@@ -78,7 +78,7 @@ describe('CSS Framework', () => {
     expect(cssFrameworkDevDependencies).toEqual(['sass'])
   })
 
-  test('should generate commands for Tailwind CSS', () => {
+  test('should generate a command for Tailwind CSS', () => {
     configOptions.tailwind = true
 
     const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)

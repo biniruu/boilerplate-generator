@@ -17,7 +17,7 @@ describe('Compiler', () => {
     expect(compilerDevDependencies).toBeEmpty()
   })
 
-  test('should generate command for Babel', () => {
+  test('should generate a command for Babel', () => {
     configOptions.babel = true
 
     const { compilerDevDependencies } = getCompilerCommands(configOptions)
@@ -25,7 +25,7 @@ describe('Compiler', () => {
     expect(compilerDevDependencies).toIncludeSameMembers(['@babel/core', ...devDependenciesWithoutWordpress])
   })
 
-  test('should generate command for Babel with Wordpress', () => {
+  test('should generate a command for Babel with Wordpress', () => {
     configOptions.babel = true
     configOptions.wordpress = true
 
