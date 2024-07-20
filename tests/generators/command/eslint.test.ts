@@ -124,4 +124,14 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toIncludeSameMembers(['@graphql-eslint/eslint-plugin', ...dependenciesForJavascript])
   })
+
+  test('should generate a command for ESLint with GraphQL.js and TypeScript', () => {
+    configOptions.eslint = true
+    configOptions.graphql = true
+    configOptions.typescript = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers(['@graphql-eslint/eslint-plugin', ...dependenciesForTypescript])
+  })
 })
