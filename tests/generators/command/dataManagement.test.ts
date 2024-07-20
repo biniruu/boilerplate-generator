@@ -85,4 +85,14 @@ describe('Data Management Libraries', () => {
     expect(dataManagementDependencies).toIncludeSameMembers(['@tanstack/query-core', '@tanstack/react-query'])
     expect(dataManagementDevDependencies).toEqual(['@tanstack/react-query-devtools'])
   })
+
+  test('should generate a command for Tanstack Query with Next.js', () => {
+    configOptions.tanstackQuery = true
+    configOptions.next = true
+
+    const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands(configOptions)
+
+    expect(dataManagementDependencies).toIncludeSameMembers(['@tanstack/query-core', '@tanstack/react-query'])
+    expect(dataManagementDevDependencies).toEqual(['@tanstack/react-query-devtools'])
+  })
 })
