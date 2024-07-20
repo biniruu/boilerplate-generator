@@ -17,4 +17,20 @@ describe('Data Management Libraries', () => {
 
     expect(dataManagementDependencies).toEqual(['axios'])
   })
+
+  test('should generate a command for GraphQL.js', () => {
+    configOptions.graphql = true
+
+    const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands(configOptions)
+
+    expect(dataManagementDependencies).toIncludeSameMembers([
+      '@apollo/client',
+      'dataloader',
+      'graphql',
+      'graphql-scalars',
+      'reflect-metadata',
+      'type-graphql',
+    ])
+    expect(dataManagementDevDependencies).toEqual(['@graphql-codegen/cli'])
+  })
 })
