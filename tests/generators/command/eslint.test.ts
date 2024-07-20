@@ -147,4 +147,18 @@ describe('ESLint', () => {
       ...dependenciesForJavascript,
     ])
   })
+
+  test('should generate a command for ESLint with Jest and TypeScript', () => {
+    configOptions.eslint = true
+    configOptions.jest = true
+    configOptions.typescript = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers([
+      'eslint-plugin-jest',
+      'eslint-plugin-jest-dom',
+      ...dependenciesForTypescript,
+    ])
+  })
 })
