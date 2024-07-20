@@ -107,7 +107,7 @@ describe('ESLint', () => {
     ])
   })
 
-  test('should generate a command for WordPress', () => {
+  test('should generate a command for ESLint with WordPress', () => {
     configOptions.eslint = true
     configOptions.wordpress = true
 
@@ -116,7 +116,7 @@ describe('ESLint', () => {
     expect(eslintDevDependencies).toEqual(['eslint'])
   })
 
-  test('should generate a command for GraphQL.js', () => {
+  test('should generate a command for ESLint with GraphQL.js', () => {
     configOptions.eslint = true
     configOptions.graphql = true
 
