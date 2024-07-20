@@ -100,4 +100,13 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toEqual(['eslint'])
   })
+
+  test('should generate a command for GraphQL.js', () => {
+    configOptions.eslint = true
+    configOptions.graphql = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toEqual(['@graphql-eslint/eslint-plugin'])
+  })
 })
