@@ -170,4 +170,14 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-pug', ...dependenciesForJavascript])
   })
+
+  test('should generate a command for ESLint with Pug and TypeScript', () => {
+    configOptions.eslint = true
+    configOptions.pug = true
+    configOptions.typescript = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-pug', ...dependenciesForTypescript])
+  })
 })
