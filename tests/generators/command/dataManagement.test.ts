@@ -75,4 +75,14 @@ describe('Data Management Libraries', () => {
 
     expect(dataManagementDependencies).toEqual(['swr'])
   })
+
+  test('should generate a command for Tanstack Query with React.js', () => {
+    configOptions.tanstackQuery = true
+    configOptions.react = true
+
+    const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands(configOptions)
+
+    expect(dataManagementDependencies).toIncludeSameMembers(['@tanstack/query-core', '@tanstack/react-query'])
+    expect(dataManagementDevDependencies).toEqual(['@tanstack/react-query-devtools'])
+  })
 })
