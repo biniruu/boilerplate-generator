@@ -18,4 +18,23 @@ describe('CSS Framework', () => {
 
     expect(cssFrameworkDevDependencies).toEqual(['postcss-html'])
   })
+
+  const devDependenciesWithoutGatsby = [
+    'cssnano',
+    'postcss-flexbugs-fixes',
+    'postcss-hexrgba',
+    'postcss-html',
+    'postcss-loader',
+    'postcss-normalize',
+    'postcss-preset-env',
+    'postcss-syntax',
+  ]
+
+  test('should generate commands for PostCSS without Gatsby.js and JavaScript Libraries', () => {
+    configOptions.postcss = true
+
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
+
+    expect(cssFrameworkDevDependencies).toIncludeSameMembers(['postcss', ...devDependenciesWithoutGatsby])
+  })
 })
