@@ -134,4 +134,17 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toIncludeSameMembers(['@graphql-eslint/eslint-plugin', ...dependenciesForTypescript])
   })
+
+  test('should generate a command for ESLint with Jest', () => {
+    configOptions.eslint = true
+    configOptions.jest = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers([
+      'eslint-plugin-jest',
+      'eslint-plugin-jest-dom',
+      ...dependenciesForJavascript,
+    ])
+  })
 })
