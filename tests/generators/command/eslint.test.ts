@@ -208,4 +208,14 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toIncludeSameMembers(['@tanstack/eslint-plugin-query', ...dependenciesForJavascript])
   })
+
+  test('should generate a command for ESLint with TanstackQuery and TypeScript', () => {
+    configOptions.eslint = true
+    configOptions.tanstackQuery = true
+    configOptions.typescript = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers(['@tanstack/eslint-plugin-query', ...dependenciesForTypescript])
+  })
 })
