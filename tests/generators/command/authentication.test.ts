@@ -1,6 +1,6 @@
 import getAuthenticationCommands from '@generators/command/authentication'
 
-import { configOptions } from './configOptions.test'
+import { configOptions } from '../../configOptions.test'
 
 describe('Authentication', () => {
   test('should generate empty values when all options in options are false', () => {

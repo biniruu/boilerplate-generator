@@ -1,6 +1,6 @@
 import getDataManagementCommands from '@generators/command/dataManagement'
 
-import { configOptions } from './configOptions.test'
+import { configOptions } from '../../configOptions.test'
 
 describe('Data Management Libraries', () => {
   test('should return empty values when all options are false', () => {
