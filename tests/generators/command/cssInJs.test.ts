@@ -8,4 +8,12 @@ describe('CSS in JS', () => {
 
     expect(cssInJsDevDependencies).toBeEmpty()
   })
+
+  test('should generate commands for styled-components', () => {
+    configOptions.styledComponents = true
+
+    const { cssInJsDependencies } = getCssInJsCommands(configOptions)
+
+    expect(cssInJsDependencies).toEqual(['styled-components'])
+  })
 })
