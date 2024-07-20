@@ -91,4 +91,13 @@ describe('ESLint', () => {
       ...dependenciesForNuxt,
     ])
   })
+
+  test('should generate a command for WordPress', () => {
+    configOptions.eslint = true
+    configOptions.wordpress = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toEqual(['eslint'])
+  })
 })
