@@ -57,4 +57,24 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toIncludeSameMembers(['@typescript-eslint/eslint-plugin', ...dependenciesForNext])
   })
+
+  const dependenciesForNuxt = [
+    '@nuxtjs/eslint-config-typescript',
+    'eslint',
+    'eslint-plugin-import',
+    'eslint-plugin-jest',
+    'eslint-plugin-jsx-a11y',
+    'eslint-plugin-nuxt',
+    'eslint-plugin-testing-library',
+    'vue-eslint-parser',
+  ]
+
+  test('should generate a command for ESLint with Nuxt.js and should exclude TypeScript', () => {
+    configOptions.eslint = true
+    configOptions.nuxt = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNuxt)
+  })
 })
