@@ -37,4 +37,12 @@ describe('CSS Framework', () => {
 
     expect(cssFrameworkDevDependencies).toIncludeSameMembers(['postcss', ...devDependenciesWithoutGatsby])
   })
+
+  test('should generate commands for PostCSS with JavaScript Libraries but should exclude Gatsby.js', () => {
+    configOptions.postcss = true
+
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
+
+    expect(cssFrameworkDevDependencies).toIncludeSameMembers(['postcss', ...devDependenciesWithoutGatsby])
+  })
 })
