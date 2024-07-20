@@ -77,4 +77,12 @@ describe('CSS Framework', () => {
 
     expect(cssFrameworkDevDependencies).toEqual(['sass'])
   })
+
+  test('should generate commands for Tailwind CSS', () => {
+    configOptions.tailwind = true
+
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
+
+    expect(cssFrameworkDevDependencies).toEqual(['tailwindcss'])
+  })
 })
