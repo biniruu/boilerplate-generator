@@ -67,4 +67,12 @@ describe('Data Management Libraries', () => {
 
     expect(dataManagementDependencies).toIncludeSameMembers(['socket.io', 'socket.io-client'])
   })
+
+  test('should generate a command for SWR', () => {
+    configOptions.swr = true
+
+    const { dataManagementDependencies } = getDataManagementCommands(configOptions)
+
+    expect(dataManagementDependencies).toEqual(['swr'])
+  })
 })
