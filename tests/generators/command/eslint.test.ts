@@ -36,4 +36,15 @@ describe('ESLint', () => {
       'eslint-plugin-import',
     ])
   })
+
+  const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
+
+  test('should generate a command for ESLint with Next.js and exclude TypeScript', () => {
+    configOptions.eslint = true
+    configOptions.next = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNext)
+  })
 })
