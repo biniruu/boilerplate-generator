@@ -8,4 +8,17 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toBeEmpty()
   })
+
+  test('should generate a command for ESLint', () => {
+    configOptions.eslint = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers([
+      '@babel/eslint-parser',
+      'eslint',
+      'eslint-plugin-jsx-a11y',
+      'eslint-plugin-import',
+    ])
+  })
 })
