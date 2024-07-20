@@ -52,11 +52,11 @@ describe('Data Management Libraries', () => {
     expect(dataManagementDevDependencies).toIncludeSameMembers(['@types/koa', '@types/koa__router'])
   })
 
-  test('should generate a command for Mongoose', () => {
-    configOptions.mongoose = true
+  test('should generate a command for Node-Redis', () => {
+    configOptions.redis = true
 
     const { dataManagementDependencies } = getDataManagementCommands(configOptions)
 
-    expect(dataManagementDependencies).toEqual(['mongoose'])
+    expect(dataManagementDependencies).toEqual(['redis'])
   })
 })
