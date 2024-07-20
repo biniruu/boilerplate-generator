@@ -54,7 +54,6 @@ describe('ESLint', () => {
 
   const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
   describe('Next.js', () => {
-    const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
     test('should generate a command for ESLint with Next.js and should exclude TypeScript', () => {
       configOptions.eslint = true
       configOptions.next = true
@@ -107,16 +106,16 @@ describe('ESLint', () => {
     })
   })
 
-    const dependenciesForNuxt = [
-      '@nuxtjs/eslint-config-typescript',
-      'eslint',
-      'eslint-plugin-import',
-      'eslint-plugin-jest',
-      'eslint-plugin-jsx-a11y',
-      'eslint-plugin-nuxt',
-      'eslint-plugin-testing-library',
-      'vue-eslint-parser',
-    ]
+  const dependenciesForNuxt = [
+    '@nuxtjs/eslint-config-typescript',
+    'eslint',
+    'eslint-plugin-import',
+    'eslint-plugin-jest',
+    'eslint-plugin-jsx-a11y',
+    'eslint-plugin-nuxt',
+    'eslint-plugin-testing-library',
+    'vue-eslint-parser',
+  ]
   describe('Nuxt.js', () => {
     test('should generate a command for ESLint with Nuxt.js and should exclude TypeScript', () => {
       configOptions.eslint = true
@@ -220,6 +219,23 @@ describe('ESLint', () => {
         'eslint-plugin-jest',
         'eslint-plugin-jest-dom',
         ...dependenciesForTypescript,
+      ])
+    })
+
+    test('should generate a command for ESLint with React.js, Jest and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.jest = true
+      configOptions.react = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        'eslint-plugin-jest',
+        'eslint-plugin-jest-dom',
+        '@typescript-eslint/eslint-plugin',
+        'eslint-import-resolver-typescript',
+        ...dependenciesForReact,
       ])
     })
   })
