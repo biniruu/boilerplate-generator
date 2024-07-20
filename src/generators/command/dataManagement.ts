@@ -1,17 +1,20 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getDataManagementCommands = (configOptions: SelectOptions) => {
-  const hasAxios = configOptions.axios
-  const hasGraphql = configOptions.graphql
-  const hasKoa = configOptions.koa
-  const hasMongoose = configOptions.mongoose
-  const hasNext = configOptions.next
-  const hasReact = configOptions.react
-  const hasRedis = configOptions.redis
-  const hasSocket = configOptions.socket
-  const hasSwr = configOptions.swr
-  const hasTanstackQuery = configOptions.tanstackQuery
-  const hasTypescript = configOptions.typescript
+  const {
+    hasAxios,
+    hasGraphql,
+    hasKoa,
+    hasMongoose,
+    hasNext,
+    hasReact,
+    hasRedis,
+    hasSocket,
+    hasSwr,
+    hasTanstackQuery,
+    hasTypescript,
+  } = getCertainConditions(configOptions)
 
   const dataManagementDependencies: string[] = []
   const dataManagementDevDependencies: string[] = []
