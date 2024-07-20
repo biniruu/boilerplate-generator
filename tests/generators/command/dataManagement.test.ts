@@ -41,4 +41,14 @@ describe('Data Management Libraries', () => {
 
     expect(dataManagementDependencies).toIncludeSameMembers(['koa', '@koa/router'])
   })
+
+  test('should generate a command for Koa with TypeScript', () => {
+    configOptions.koa = true
+    configOptions.typescript = true
+
+    const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands(configOptions)
+
+    expect(dataManagementDependencies).toIncludeSameMembers(['koa', '@koa/router'])
+    expect(dataManagementDevDependencies).toIncludeSameMembers(['@types/koa', '@types/koa__router'])
+  })
 })
