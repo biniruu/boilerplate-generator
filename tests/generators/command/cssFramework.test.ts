@@ -69,4 +69,12 @@ describe('CSS Framework', () => {
       ])
     })
   })
+
+  test('should generate commands for SCSS', () => {
+    configOptions.scss = true
+
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
+
+    expect(cssFrameworkDevDependencies).toEqual(['sass'])
+  })
 })
