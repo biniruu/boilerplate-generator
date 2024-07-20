@@ -52,6 +52,7 @@ describe('ESLint', () => {
     })
   })
 
+  const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
   describe('Next.js', () => {
     const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
     test('should generate a command for ESLint with Next.js and should exclude TypeScript', () => {
@@ -74,7 +75,38 @@ describe('ESLint', () => {
     })
   })
 
-  describe('Nuxt.js', () => {
+  const dependenciesForReact = [
+    'eslint-plugin-import',
+    'eslint-plugin-jsx-a11y',
+    'eslint-plugin-react',
+    'eslint-plugin-testing-library',
+    'jest-resolve',
+  ]
+  describe('React.js', () => {
+    test('should generate a command for ESLint with React.js and should exclude TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.react = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForReact)
+    })
+
+    test('should generate a command for ESLint with React.js and TypeScript', () => {
+      configOptions.eslint = true
+      configOptions.react = true
+      configOptions.typescript = true
+
+      const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+      expect(eslintDevDependencies).toIncludeSameMembers([
+        '@typescript-eslint/eslint-plugin',
+        'eslint-import-resolver-typescript',
+        ...dependenciesForReact,
+      ])
+    })
+  })
+
     const dependenciesForNuxt = [
       '@nuxtjs/eslint-config-typescript',
       'eslint',
@@ -85,6 +117,7 @@ describe('ESLint', () => {
       'eslint-plugin-testing-library',
       'vue-eslint-parser',
     ]
+  describe('Nuxt.js', () => {
     test('should generate a command for ESLint with Nuxt.js and should exclude TypeScript', () => {
       configOptions.eslint = true
       configOptions.nuxt = true
@@ -146,7 +179,6 @@ describe('ESLint', () => {
       ])
     })
 
-    const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library']
     test('should generate a command for ESLint with Next.js, GraphQL.js and TypeScript', () => {
       configOptions.eslint = true
       configOptions.next = true
