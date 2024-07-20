@@ -4,6 +4,13 @@ import { configOptions } from './configOptions.test'
 
 describe('Bundler', () => {
   describe('Vite', () => {
+    test('should generate empty values when all options in options are false', () => {
+      const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
+
+      expect(bundlerDependencies).toBeEmpty()
+      expect(bundlerDevDependencies).toBeEmpty()
+    })
+
     test('should generate a command for Vite', () => {
       configOptions.vite = true
 
