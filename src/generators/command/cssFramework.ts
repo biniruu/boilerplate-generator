@@ -1,17 +1,9 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getCssFrameworkCommands = (configOptions: SelectOptions) => {
-  const hasGatsby = configOptions.gatsby
-  const hasNext = configOptions.next
-  const hasNuxt = configOptions.nuxt
-  const hasPostcss = configOptions.postcss
-  const hasReact = configOptions.react
-  const hasScss = configOptions.scss
-  const hasStyledComponents = configOptions.styledComponents
-  const hasTailwind = configOptions.tailwind
-  const hasTypescript = configOptions.typescript
-  const hasVue = configOptions.vue
-  const hasCore = hasNext || hasNuxt || hasReact || hasVue
+  const { hasGatsby, hasPostcss, hasScss, hasStyledComponents, hasTailwind, hasTypescript, hasJsLibs } =
+    getCertainConditions(configOptions)
 
   const cssFrameworkDependencies: string[] = []
   const cssFrameworkDevDependencies: string[] = []
@@ -60,10 +52,9 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
     if (hasGatsby) {
       cssFrameworkDevDependencies.push('postcss-html')
     } else {
-      if (hasCore) {
+      if (hasJsLibs) {
         cssFrameworkDevDependencies.push('postcss-jsx')
-      }
-      if (!hasCore) {
+      } else {
         cssFrameworkDevDependencies.push('postcss')
       }
       if (hasScss) {
