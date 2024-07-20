@@ -9,4 +9,13 @@ describe('CSS Framework', () => {
     expect(cssFrameworkDependencies).toBeEmpty()
     expect(cssFrameworkDevDependencies).toBeEmpty()
   })
+
+  test('should generate commands for PostCSS with Gatsby.js', () => {
+    configOptions.postcss = true
+    configOptions.gatsby = true
+
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions)
+
+    expect(cssFrameworkDevDependencies).toEqual(['postcss-html'])
+  })
 })
