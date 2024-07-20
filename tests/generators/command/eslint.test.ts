@@ -189,4 +189,14 @@ describe('ESLint', () => {
 
     expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-storybook', ...dependenciesForJavascript])
   })
+
+  test('should generate a command for ESLint with Storybook and TypeScript', () => {
+    configOptions.eslint = true
+    configOptions.storybook = true
+    configOptions.typescript = true
+
+    const { eslintDevDependencies } = getEslintCommands(configOptions)
+
+    expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-storybook', ...dependenciesForTypescript])
+  })
 })
