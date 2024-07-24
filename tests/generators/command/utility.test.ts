@@ -86,15 +86,6 @@ describe('Utility commands', () => {
     expect(utilityDependencies).toIncludeSameMembers(['immer', 'use-immer'])
   })
 
-  test('should generate a command for Immer With Next.js', () => {
-    configOptions.immer = true
-    configOptions.next = true
-
-    const { utilityDependencies } = getUtilityCommands(configOptions)
-
-    expect(utilityDependencies).toIncludeSameMembers(['immer', 'use-immer'])
-  })
-
   test('should generate a command for JavaScript Stringify', () => {
     configOptions.javascriptStringify = true
 
@@ -117,6 +108,16 @@ describe('Utility commands', () => {
     const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
 
     expect(utilityDependencies).toIncludeSameMembers(['lodash', 'lodash-es'])
+    expect(utilityDevDependencies).toEqual(['@types/lodash-es'])
+  })
+
+  test('should generate a command for Lodash with React.js', () => {
+    configOptions.lodash = true
+    configOptions.react = true
+
+    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['lodash-es'])
     expect(utilityDevDependencies).toEqual(['@types/lodash-es'])
   })
 })

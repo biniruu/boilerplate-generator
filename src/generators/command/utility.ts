@@ -113,7 +113,7 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
   if (hasLodash) {
     utilityDependencies.push('lodash-es')
     utilityDevDependencies.push('@types/lodash-es')
-    if (!hasNext || !hasReact || !hasNuxt || !hasWebpack) {
+    if (!hasNext && !hasReact && !hasNuxt && !hasWebpack) {
       utilityDependencies.push('lodash')
     }
   }
