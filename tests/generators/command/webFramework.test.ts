@@ -67,4 +67,14 @@ describe('Web Framework commands', () => {
 
     expect(webFrameworkDependencies).toEqual(['three'])
   })
+
+  test('should generate a command for three.js with TypeScript', () => {
+    configOptions.three = true
+    configOptions.typescript = true
+
+    const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions)
+
+    expect(webFrameworkDependencies).toEqual(['three'])
+    expect(webFrameworkDevDependencies).toEqual(['@types/three'])
+  })
 })
