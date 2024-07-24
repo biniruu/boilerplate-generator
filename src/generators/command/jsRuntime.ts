@@ -20,7 +20,7 @@ const getJsRuntimeCommands = (configOptions: SelectOptions) => {
      * ts-node-dev
      * {@link https://github.com/wclr/ts-node-dev#readme}
      */
-    if (!hasGatsby || !hasWebpack || !hasJsLibs) {
+    if (!hasGatsby && !hasWebpack && !hasJsLibs) {
       jsRuntimeDevDependencies.push('@types/node', 'tsconfig-paths', 'ts-node', 'ts-node-dev')
     }
     if (hasNext) {
