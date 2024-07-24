@@ -12,10 +12,8 @@ const getHtmlTemplateCommands = (configOptions: SelectOptions) => {
    * {@link https://ejs.co}
    */
   if (hasEjs) {
-    if (hasTypescript) {
-      htmlTemplateDevDependencies.push('@types/ejs')
-    }
     htmlTemplateDependencies.push('ejs')
+    hasTypescript && htmlTemplateDevDependencies.push('@types/ejs')
   }
   /**
    * pug (Pug)
