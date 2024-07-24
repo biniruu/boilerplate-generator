@@ -67,10 +67,8 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/koajs/router#koarouter}
    */
   if (hasKoa) {
-    if (hasTypescript) {
-      dataManagementDevDependencies.push('@types/koa', '@types/koa__router')
-    }
     dataManagementDependencies.push('koa', '@koa/router')
+    hasTypescript && dataManagementDevDependencies.push('@types/koa', '@types/koa__router')
   }
   /**
    * mongoose (Mongoose)
@@ -111,11 +109,9 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
    * @tanstack/react-query-devtools
    * {@link https://tanstack.com/query/latest}
    */
-  if (hasTanstackQuery) {
-    if (hasReact || hasNext) {
-      dataManagementDependencies.push('@tanstack/query-core', '@tanstack/react-query')
-      dataManagementDevDependencies.push('@tanstack/react-query-devtools')
-    }
+  if (hasTanstackQuery && (hasReact || hasNext)) {
+    dataManagementDependencies.push('@tanstack/query-core', '@tanstack/react-query')
+    dataManagementDevDependencies.push('@tanstack/react-query-devtools')
   }
 
   return {
