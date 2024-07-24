@@ -51,23 +51,6 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
     if (hasGatsby) {
       cssFrameworkDevDependencies.push('postcss-html')
     } else {
-      if (hasJsLibs) {
-        cssFrameworkDevDependencies.push('postcss-jsx')
-      } else {
-        cssFrameworkDevDependencies.push('postcss')
-      }
-      if (hasScss) {
-        cssFrameworkDevDependencies.push('postcss-scss')
-      }
-      if (hasStyledComponents) {
-        cssFrameworkDevDependencies.push('postcss-styled-syntax')
-      }
-      if (hasTailwind) {
-        cssFrameworkDevDependencies.push('@tailwindcss/nesting')
-      }
-      if (hasTypescript) {
-        cssFrameworkDevDependencies.push('@types/postcss-flexbugs-fixes', '@types/postcss-html')
-      }
       cssFrameworkDevDependencies.push(
         'cssnano',
         'postcss-flexbugs-fixes',
@@ -78,6 +61,14 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
         'postcss-preset-env',
         'postcss-syntax',
       )
+
+      const postcss = hasJsLibs ? 'postcss-jsx' : 'postcss'
+      cssFrameworkDevDependencies.push(postcss)
+
+      hasScss && cssFrameworkDevDependencies.push('postcss-scss')
+      hasStyledComponents && cssFrameworkDevDependencies.push('postcss-styled-syntax')
+      hasTailwind && cssFrameworkDevDependencies.push('@tailwindcss/nesting')
+      hasTypescript && cssFrameworkDevDependencies.push('@types/postcss-flexbugs-fixes', '@types/postcss-html')
     }
   }
   /**
