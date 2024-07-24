@@ -24,10 +24,7 @@ const getStylelintCommands = (configOptions: SelectOptions) => {
    */
   if (hasStylelint) {
     stylelintDevDependencies.push('stylelint', 'stylelint-config-standard', 'stylelint-order')
-
-    if (hasScss) {
-      stylelintDevDependencies.push('stylelint-config-standard-scss', 'stylelint-scss')
-    }
+    hasScss && stylelintDevDependencies.push('stylelint-config-standard-scss', 'stylelint-scss')
   }
 
   return {
