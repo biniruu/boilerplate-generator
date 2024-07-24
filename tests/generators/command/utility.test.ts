@@ -171,6 +171,14 @@ describe('Utility commands', () => {
     expect(utilityDevDependencies).toEqual(['@types/react-joyride'])
   })
 
+  test('should generate a command for React Syntax Highlighter', () => {
+    configOptions.reactSyntaxHighlighter = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['react-syntax-highlighter'])
+  })
+
   test('should generate a command for React Syntax Highlighter with TypeScript', () => {
     configOptions.reactSyntaxHighlighter = true
     configOptions.typescript = true
