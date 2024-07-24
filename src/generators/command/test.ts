@@ -63,10 +63,8 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * {@link https://github.com/keyz/identity-obj-proxy#readme}
      */
     if (hasCssModule) {
-      if (hasTypescript) {
-        testDevDependencies.push('@types/identity-obj-proxy')
-      }
       testDevDependencies.push('identity-obj-proxy')
+      hasTypescript && testDevDependencies.push('@types/identity-obj-proxy')
     }
     /**
      * @testing-library/react (React Testing Library)
@@ -79,15 +77,13 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * {@link https://legacy.reactjs.org/docs/test-renderer.html}
      */
     if (hasReact || hasNext) {
-      if (hasStorybook) {
-        testDevDependencies.push('@storybook/react', '@storybook/testing-library')
-      }
       testDevDependencies.push(
         '@testing-library/react',
         '@testing-library/react-hooks',
         '@types/react-test-renderer',
         'react-test-renderer',
       )
+      hasStorybook && testDevDependencies.push('@storybook/react', '@storybook/testing-library')
     }
     /**
      * @testing-library/vue (Vue Testing Library)
@@ -123,9 +119,6 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
      */
     if (hasStorybook && !hasReact && !hasNext) {
-      if (hasWebpack) {
-        testDevDependencies.push('@storybook/builder-webpack5', '@storybook/manager-webpack5')
-      }
       testDevDependencies.push(
         '@storybook/addon-a11y',
         '@storybook/addon-actions',
@@ -133,6 +126,7 @@ const getTestCommands = (configOptions: SelectOptions) => {
         '@storybook/addon-interactions',
         '@storybook/addon-links',
       )
+      hasWebpack && testDevDependencies.push('@storybook/builder-webpack5', '@storybook/manager-webpack5')
     }
   }
 
