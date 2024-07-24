@@ -122,7 +122,7 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * @storybook/manager-webpack5 (Webpack 5 Storybook manager)
      * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
      */
-    if (hasStorybook) {
+    if (hasStorybook && !hasReact && !hasNext) {
       if (hasWebpack) {
         testDevDependencies.push('@storybook/builder-webpack5', '@storybook/manager-webpack5')
       }

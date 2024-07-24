@@ -55,19 +55,20 @@ describe('Test commands', () => {
     ])
   })
 
+  const dependenciesForReact = [
+    '@testing-library/react',
+    '@testing-library/react-hooks',
+    '@types/react-test-renderer',
+    'react-test-renderer',
+    ...dependencies,
+  ]
   test('should generate a command for Jest with React.js', () => {
     configOptions.jest = true
     configOptions.react = true
 
     const { testDevDependencies } = getTestCommands(configOptions)
 
-    expect(testDevDependencies).toIncludeSameMembers([
-      '@testing-library/react',
-      '@testing-library/react-hooks',
-      '@types/react-test-renderer',
-      'react-test-renderer',
-      ...dependencies,
-    ])
+    expect(testDevDependencies).toIncludeSameMembers(dependenciesForReact)
   })
 
   test('should generate a command for Jest with Next.js', () => {
@@ -76,12 +77,20 @@ describe('Test commands', () => {
 
     const { testDevDependencies } = getTestCommands(configOptions)
 
+    expect(testDevDependencies).toIncludeSameMembers(dependenciesForReact)
+  })
+
+  test('should generate a command for Jest with React.js and Storybook', () => {
+    configOptions.jest = true
+    configOptions.react = true
+    configOptions.storybook = true
+
+    const { testDevDependencies } = getTestCommands(configOptions)
+
     expect(testDevDependencies).toIncludeSameMembers([
-      '@testing-library/react',
-      '@testing-library/react-hooks',
-      '@types/react-test-renderer',
-      'react-test-renderer',
-      ...dependencies,
+      '@storybook/react',
+      '@storybook/testing-library',
+      ...dependenciesForReact,
     ])
   })
 })
