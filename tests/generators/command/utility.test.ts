@@ -8,4 +8,12 @@ describe('Utility commands', () => {
     expect(utilityDependencies).toBeEmpty()
     expect(utilityDevDependencies).toBeEmpty()
   })
+
+  test('should generate a command for Copy to Clipboard', () => {
+    configOptions.copyToClipboard = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['copy-to-clipboard'])
+  })
 })
