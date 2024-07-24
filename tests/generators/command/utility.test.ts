@@ -120,4 +120,12 @@ describe('Utility commands', () => {
     expect(utilityDependencies).toEqual(['lodash-es'])
     expect(utilityDevDependencies).toEqual(['@types/lodash-es'])
   })
+
+  test('should generate a command for markdownlint', () => {
+    configOptions.markdownlint = true
+
+    const { utilityDevDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDevDependencies).toEqual(['markdownlint'])
+  })
 })
