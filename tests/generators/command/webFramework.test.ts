@@ -26,4 +26,12 @@ describe('Web Framework commands', () => {
     expect(webFrameworkDependencies).toIncludeSameMembers(['body-parser', 'cors', 'express'])
     expect(webFrameworkDevDependencies).toIncludeSameMembers(['@types/body-parser', '@types/cors', '@types/express'])
   })
+
+  test('should generate a command for Next.js', () => {
+    configOptions.next = true
+
+    const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions)
+
+    expect(webFrameworkDependencies).toEqual(['react-refresh'])
+  })
 })
