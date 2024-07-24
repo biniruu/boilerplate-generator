@@ -8,4 +8,13 @@ describe('HTML Template', () => {
     expect(htmlTemplateDependencies).toBeEmpty()
     expect(htmlTemplateDevDependencies).toBeEmpty()
   })
+
+  test('should generate a command for EJS', () => {
+    configOptions.ejs = true
+
+    const { htmlTemplateDependencies, htmlTemplateDevDependencies } = getHtmlTemplateCommands(configOptions)
+
+    expect(htmlTemplateDependencies).toEqual(['ejs'])
+    expect(htmlTemplateDevDependencies).toBeEmpty()
+  })
 })
