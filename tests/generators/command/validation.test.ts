@@ -7,4 +7,12 @@ describe('Validation commands', () => {
 
     expect(validationDependencies).toBeEmpty()
   })
+
+  test('should generate a command for Joi', () => {
+    configOptions.joi = true
+
+    const { validationDependencies } = getValidationCommands(configOptions)
+
+    expect(validationDependencies).toEqual(['joi'])
+  })
 })
