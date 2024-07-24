@@ -69,4 +69,19 @@ describe('Test commands', () => {
       ...dependencies,
     ])
   })
+
+  test('should generate a command for Jest with Next.js', () => {
+    configOptions.jest = true
+    configOptions.next = true
+
+    const { testDevDependencies } = getTestCommands(configOptions)
+
+    expect(testDevDependencies).toIncludeSameMembers([
+      '@testing-library/react',
+      '@testing-library/react-hooks',
+      '@types/react-test-renderer',
+      'react-test-renderer',
+      ...dependencies,
+    ])
+  })
 })
