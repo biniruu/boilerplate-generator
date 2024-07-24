@@ -8,11 +8,20 @@ describe('Prettier Commands', () => {
     expect(prettierDevDependencies).toBeEmpty()
   })
 
-  test('should generate a command for prettier', () => {
+  test('should generate a command for Prettier', () => {
     configOptions.prettier = true
 
     const { prettierDevDependencies } = getPrettierCommands(configOptions)
 
     expect(prettierDevDependencies).toEqual(['prettier'])
+  })
+
+  test('should generate a command for Prettier with Pug', () => {
+    configOptions.prettier = true
+    configOptions.pug = true
+
+    const { prettierDevDependencies } = getPrettierCommands(configOptions)
+
+    expect(prettierDevDependencies).toIncludeSameMembers(['prettier', '@prettier/plugin-pug'])
   })
 })
