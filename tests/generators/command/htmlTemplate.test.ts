@@ -17,4 +17,14 @@ describe('HTML Template', () => {
     expect(htmlTemplateDependencies).toEqual(['ejs'])
     expect(htmlTemplateDevDependencies).toBeEmpty()
   })
+
+  test('should generate a command for EJS with TypeScript', () => {
+    configOptions.ejs = true
+    configOptions.typescript = true
+
+    const { htmlTemplateDependencies, htmlTemplateDevDependencies } = getHtmlTemplateCommands(configOptions)
+
+    expect(htmlTemplateDependencies).toEqual(['ejs'])
+    expect(htmlTemplateDevDependencies).toEqual(['@types/ejs'])
+  })
 })
