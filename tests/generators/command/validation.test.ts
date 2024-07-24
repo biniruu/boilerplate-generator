@@ -15,4 +15,12 @@ describe('Validation commands', () => {
 
     expect(validationDependencies).toEqual(['joi'])
   })
+
+  test('should generate a command for React Hook Form', () => {
+    configOptions.reactHookForm = true
+
+    const { validationDependencies } = getValidationCommands(configOptions)
+
+    expect(validationDependencies).toEqual(['react-hook-form'])
+  })
 })
