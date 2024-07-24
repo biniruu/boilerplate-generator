@@ -152,4 +152,12 @@ describe('Utility commands', () => {
 
     expect(utilityDependencies).toEqual(['react-infinite-scroller'])
   })
+
+  test('should generate a command for React Joyride', () => {
+    configOptions.reactJoyride = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['react-joyride'])
+  })
 })
