@@ -7,4 +7,13 @@ describe('Stylelint Commands', () => {
 
     expect(stylelintDevDependencies).toBeEmpty()
   })
+
+  const dependencies = ['stylelint', 'stylelint-config-standard', 'stylelint-order']
+  test('should generate a command for Stylelint', () => {
+    configOptions.stylelint = true
+
+    const { stylelintDevDependencies } = getStylelintCommands(configOptions)
+
+    expect(stylelintDevDependencies).toIncludeSameMembers(dependencies)
+  })
 })
