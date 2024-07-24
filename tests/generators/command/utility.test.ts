@@ -136,4 +136,12 @@ describe('Utility commands', () => {
 
     expect(utilityDependencies).toEqual(['nodemon'])
   })
+
+  test('should generate a command for Prism', () => {
+    configOptions.prism = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['prismjs'])
+  })
 })
