@@ -128,4 +128,12 @@ describe('Utility commands', () => {
 
     expect(utilityDevDependencies).toEqual(['markdownlint'])
   })
+
+  test('should generate a command for nodemon', () => {
+    configOptions.nodemon = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['nodemon'])
+  })
 })
