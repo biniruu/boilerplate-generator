@@ -16,4 +16,17 @@ describe('Stylelint Commands', () => {
 
     expect(stylelintDevDependencies).toIncludeSameMembers(dependencies)
   })
+
+  test('should generate a command for Stylelint with SCSS', () => {
+    configOptions.stylelint = true
+    configOptions.scss = true
+
+    const { stylelintDevDependencies } = getStylelintCommands(configOptions)
+
+    expect(stylelintDevDependencies).toIncludeSameMembers([
+      'stylelint-config-standard-scss',
+      'stylelint-scss',
+      ...dependencies,
+    ])
+  })
 })
