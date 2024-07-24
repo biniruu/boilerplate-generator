@@ -39,4 +39,19 @@ describe('Test commands', () => {
 
     expect(testDevDependencies).toIncludeSameMembers(['identity-obj-proxy', ...dependencies])
   })
+
+  test('should generate a command for Jest with CSS Modules and TypeScript', () => {
+    configOptions.jest = true
+    configOptions.postcss = true
+    configOptions.tailwind = true
+    configOptions.typescript = true
+
+    const { testDevDependencies } = getTestCommands(configOptions)
+
+    expect(testDevDependencies).toIncludeSameMembers([
+      'identity-obj-proxy',
+      '@types/identity-obj-proxy',
+      ...dependencies,
+    ])
+  })
 })
