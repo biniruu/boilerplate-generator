@@ -7,4 +7,12 @@ describe('State management Commands', () => {
 
     expect(stateManagementDependencies).toBeEmpty()
   })
+
+  test('should generate a command for Recoil', () => {
+    configOptions.recoil = true
+
+    const { stateManagementDependencies } = getStateManagementCommands(configOptions)
+
+    expect(stateManagementDependencies).toEqual(['recoil'])
+  })
 })
