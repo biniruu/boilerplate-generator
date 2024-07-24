@@ -24,4 +24,14 @@ describe('JavaScript Runtime', () => {
 
     expect(jsRuntimeDevDependencies).toIncludeSameMembers(['@types/node', 'ts-node'])
   })
+
+  test('should generate a command for Node.js with React.js and Vite', () => {
+    configOptions.typescript = true
+    configOptions.react = true
+    configOptions.vite = true
+
+    const { jsRuntimeDevDependencies } = getJsRuntimeCommands(configOptions)
+
+    expect(jsRuntimeDevDependencies).toIncludeSameMembers(['@types/node', 'ts-node', 'ts-node-dev'])
+  })
 })
