@@ -8,4 +8,22 @@ describe('Web Framework commands', () => {
     expect(webFrameworkDependencies).toBeEmpty()
     expect(webFrameworkDevDependencies).toBeEmpty()
   })
+
+  test('should generate a command for Express.js', () => {
+    configOptions.express = true
+
+    const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions)
+
+    expect(webFrameworkDependencies).toIncludeSameMembers(['body-parser', 'cors', 'express'])
+  })
+
+  test('should generate a command for Express.js with TypeScript', () => {
+    configOptions.express = true
+    configOptions.typescript = true
+
+    const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions)
+
+    expect(webFrameworkDependencies).toIncludeSameMembers(['body-parser', 'cors', 'express'])
+    expect(webFrameworkDevDependencies).toIncludeSameMembers(['@types/body-parser', '@types/cors', '@types/express'])
+  })
 })
