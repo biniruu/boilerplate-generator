@@ -113,6 +113,7 @@ const jestConfig: JestConfigWithTsJest = {
     '@libs/(.*)': '<rootDir>/src/libs/$1',
     '@types/(.*)': '<rootDir>/src/types/$1',
     '@utils/(.*)': '<rootDir>/src/utils/$1',
+    'tests/(.*)': '<rootDir>/tests/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -149,7 +150,7 @@ const jestConfig: JestConfigWithTsJest = {
   // rootDir: undefined,
 
   // A list of paths to directories that Jest should use to search for files in
-  roots: ['<rootDir>/tests'],
+  roots: ['<rootDir>/tests', '<rootDir>'],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
