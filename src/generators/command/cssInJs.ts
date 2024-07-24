@@ -1,8 +1,8 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getCssInJsCommands = (configOptions: SelectOptions) => {
-  const hasStyledComponents = configOptions.styledComponents
-  const hasTypescript = configOptions.typescript
+  const { hasStyledComponents, hasTypescript } = getCertainConditions(configOptions)
 
   const cssInJsDependencies: string[] = []
   const cssInJsDevDependencies: string[] = []
