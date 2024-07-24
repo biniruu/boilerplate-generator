@@ -15,4 +15,13 @@ describe('JavaScript Runtime', () => {
 
     expect(jsRuntimeDevDependencies).toIncludeSameMembers(['@types/node', 'tsconfig-paths', 'ts-node', 'ts-node-dev'])
   })
+
+  test('should generate a command for Node.js with Next.js', () => {
+    configOptions.typescript = true
+    configOptions.next = true
+
+    const { jsRuntimeDevDependencies } = getJsRuntimeCommands(configOptions)
+
+    expect(jsRuntimeDevDependencies).toIncludeSameMembers(['@types/node', 'ts-node'])
+  })
 })
