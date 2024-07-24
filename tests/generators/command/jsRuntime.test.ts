@@ -34,4 +34,13 @@ describe('JavaScript Runtime', () => {
 
     expect(jsRuntimeDevDependencies).toIncludeSameMembers(['@types/node', 'ts-node', 'ts-node-dev'])
   })
+
+  test('should generate a command for Webpack', () => {
+    configOptions.typescript = true
+    configOptions.webpack = true
+
+    const { jsRuntimeDevDependencies } = getJsRuntimeCommands(configOptions)
+
+    expect(jsRuntimeDevDependencies).toIncludeSameMembers(['tsconfig-paths', 'ts-node', 'ts-node-dev'])
+  })
 })
