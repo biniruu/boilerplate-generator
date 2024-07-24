@@ -27,4 +27,13 @@ describe('HTML Template', () => {
     expect(htmlTemplateDependencies).toEqual(['ejs'])
     expect(htmlTemplateDevDependencies).toEqual(['@types/ejs'])
   })
+
+  test('should generate a command for Pug', () => {
+    configOptions.pug = true
+
+    const { htmlTemplateDependencies, htmlTemplateDevDependencies } = getHtmlTemplateCommands(configOptions)
+
+    expect(htmlTemplateDependencies).toEqual(['pug'])
+    expect(htmlTemplateDevDependencies).toEqual(['pug-lint'])
+  })
 })
