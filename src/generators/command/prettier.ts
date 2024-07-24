@@ -18,13 +18,8 @@ const getPrettierCommands = (configOptions: SelectOptions) => {
    */
   if (hasPrettier) {
     prettierDevDependencies.push('prettier')
-
-    if (hasPug) {
-      prettierDevDependencies.push('@prettier/plugin-pug')
-    }
-    if (hasTailwind) {
-      prettierDevDependencies.push('prettier-plugin-tailwindcss')
-    }
+    hasPug && prettierDevDependencies.push('@prettier/plugin-pug')
+    hasTailwind && prettierDevDependencies.push('prettier-plugin-tailwindcss')
   }
 
   return {
