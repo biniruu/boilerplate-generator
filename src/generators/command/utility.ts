@@ -54,22 +54,16 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/toddbluhm/env-cmd#readme}
    */
   if (hasDotenv) {
-    if (hasNuxt) {
-      utilityDevDependencies.push('dotenv-expand')
-    }
-    if (hasReact) {
-      utilityDevDependencies.push('dotenv', 'dotenv-expand', 'env-cmd')
-    }
+    hasNuxt && utilityDevDependencies.push('dotenv-expand')
+    hasReact && utilityDevDependencies.push('dotenv', 'dotenv-expand', 'env-cmd')
   }
   /**
    * file-saver (File Saver)
    * {@link https://github.com/eligrey/FileSaver.js#readme}
    */
   if (hasFileSaver) {
-    if (hasTypescript) {
-      utilityDevDependencies.push('@types/file-saver')
-    }
     utilityDependencies.push('file-saver')
+    hasTypescript && utilityDevDependencies.push('@types/file-saver')
   }
   /**
    * husky (Husky)
@@ -86,10 +80,10 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/immerjs/use-immer#readme}
    */
   if (hasImmer) {
+    utilityDependencies.push('immer')
     if (hasReact || hasNext) {
       utilityDependencies.push('use-immer')
     }
-    utilityDependencies.push('immer')
   }
   /**
    * javascript-stringify (JavaScript Stringify)
@@ -117,11 +111,11 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
    * {@link https://lodash.com}
    */
   if (hasLodash) {
+    utilityDependencies.push('lodash-es')
+    utilityDevDependencies.push('@types/lodash-es')
     if (!hasNext || !hasReact || !hasNuxt || !hasWebpack) {
       utilityDependencies.push('lodash')
     }
-    utilityDependencies.push('lodash-es')
-    utilityDevDependencies.push('@types/lodash-es')
   }
   /**
    * markdownlint
@@ -150,30 +144,24 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/danbovey/react-infinite-scroller#readme}
    */
   if (hasReactInfiniteScroller) {
-    if (hasTypescript) {
-      utilityDevDependencies.push('@types/react-infinite-scroller')
-    }
     utilityDependencies.push('react-infinite-scroller')
+    hasTypescript && utilityDevDependencies.push('@types/react-infinite-scroller')
   }
   /**
    * react-joyride (React Joyride)
    * {@link https://react-joyride.com}
    */
   if (hasReactJoyride) {
-    if (hasTypescript) {
-      utilityDevDependencies.push('@types/react-joyride')
-    }
     utilityDependencies.push('react-joyride')
+    hasTypescript && utilityDevDependencies.push('@types/react-joyride')
   }
   /**
    * react-syntax-highlighter (React Syntax Highlighter)
    * {@link https://github.com/react-syntax-highlighter/react-syntax-highlighter#readme}
    */
   if (hasReactSyntaxHighlighter) {
-    if (hasTypescript) {
-      utilityDevDependencies.push('@types/react-syntax-highlighter')
-    }
     utilityDependencies.push('react-syntax-highlighter')
+    hasTypescript && utilityDevDependencies.push('@types/react-syntax-highlighter')
   }
 
   return {

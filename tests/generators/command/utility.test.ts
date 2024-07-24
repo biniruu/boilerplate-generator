@@ -60,4 +60,63 @@ describe('Utility commands', () => {
     expect(utilityDependencies).toEqual(['file-saver'])
     expect(utilityDevDependencies).toEqual(['@types/file-saver'])
   })
+
+  test('should generate a command for Husky', () => {
+    configOptions.husky = true
+
+    const { utilityDevDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDevDependencies).toEqual(['husky'])
+  })
+
+  test('should generate a command for Immer', () => {
+    configOptions.immer = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['immer'])
+  })
+
+  test('should generate a command for Immer With React.js', () => {
+    configOptions.immer = true
+    configOptions.react = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toIncludeSameMembers(['immer', 'use-immer'])
+  })
+
+  test('should generate a command for Immer With Next.js', () => {
+    configOptions.immer = true
+    configOptions.next = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toIncludeSameMembers(['immer', 'use-immer'])
+  })
+
+  test('should generate a command for JavaScript Stringify', () => {
+    configOptions.javascriptStringify = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['javascript-stringify'])
+  })
+
+  test('should generate a command for jsdiff', () => {
+    configOptions.jsdiff = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['jsdiff'])
+  })
+
+  test('should generate a command for Lodash', () => {
+    configOptions.lodash = true
+
+    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toIncludeSameMembers(['lodash', 'lodash-es'])
+    expect(utilityDevDependencies).toEqual(['@types/lodash-es'])
+  })
 })
