@@ -25,15 +25,14 @@ const getCompilerCommands = (configOptions: SelectOptions) => {
    * {@link https://babel.dev/docs/babel-preset-env}
    */
   if (hasBabel) {
-    if (!hasWordpress) {
+    compilerDevDependencies.push('@babel/core')
+    !hasWordpress &&
       compilerDevDependencies.push(
         '@babel/node',
         '@babel/plugin-transform-modules-commonjs',
         '@babel/plugin-transform-runtime',
         '@babel/preset-env',
       )
-    }
-    compilerDevDependencies.push('@babel/core')
   }
 
   return {
