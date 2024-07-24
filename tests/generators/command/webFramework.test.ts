@@ -59,4 +59,12 @@ describe('Web Framework commands', () => {
 
     expect(webFrameworkDevDependencies).toIncludeSameMembers(['volar-service-vetur', 'vue-tsc'])
   })
+
+  test('should generate a command for three.js', () => {
+    configOptions.three = true
+
+    const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions)
+
+    expect(webFrameworkDependencies).toEqual(['three'])
+  })
 })
