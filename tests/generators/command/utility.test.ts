@@ -16,4 +16,12 @@ describe('Utility commands', () => {
 
     expect(utilityDependencies).toEqual(['copy-to-clipboard'])
   })
+
+  test('should generate a command for Day.js', () => {
+    configOptions.dayjs = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['dayjs'])
+  })
 })
