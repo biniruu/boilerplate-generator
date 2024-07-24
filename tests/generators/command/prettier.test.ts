@@ -24,4 +24,13 @@ describe('Prettier Commands', () => {
 
     expect(prettierDevDependencies).toIncludeSameMembers(['prettier', '@prettier/plugin-pug'])
   })
+
+  test('should generate a command for Prettier with Tailwind', () => {
+    configOptions.prettier = true
+    configOptions.tailwind = true
+
+    const { prettierDevDependencies } = getPrettierCommands(configOptions)
+
+    expect(prettierDevDependencies).toIncludeSameMembers(['prettier', 'prettier-plugin-tailwindcss'])
+  })
 })
