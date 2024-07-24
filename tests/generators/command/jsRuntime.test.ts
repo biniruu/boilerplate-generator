@@ -7,4 +7,12 @@ describe('JavaScript Runtime', () => {
 
     expect(jsRuntimeDevDependencies).toBeEmpty()
   })
+
+  test('should generate a command for Node.js', () => {
+    configOptions.typescript = true
+
+    const { jsRuntimeDevDependencies } = getJsRuntimeCommands(configOptions)
+
+    expect(jsRuntimeDevDependencies).toIncludeSameMembers(['@types/node', 'tsconfig-paths', 'ts-node', 'ts-node-dev'])
+  })
 })

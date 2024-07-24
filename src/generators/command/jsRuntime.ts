@@ -2,7 +2,7 @@ import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getJsRuntimeCommands = (configOptions: SelectOptions) => {
-  const { hasGatsby, hasNext, hasNuxt, hasReact, hasTypescript, hasWebpack, hasVite } =
+  const { hasGatsby, hasNext, hasReact, hasTypescript, hasWebpack, hasVite, hasJsLibs } =
     getCertainConditions(configOptions)
 
   const jsRuntimeDevDependencies: string[] = []
@@ -20,7 +20,7 @@ const getJsRuntimeCommands = (configOptions: SelectOptions) => {
      * ts-node-dev
      * {@link https://github.com/wclr/ts-node-dev#readme}
      */
-    if (!hasGatsby || !hasNext || !hasReact || !hasWebpack || !hasNuxt) {
+    if (!hasGatsby || !hasWebpack || !hasJsLibs) {
       jsRuntimeDevDependencies.push('@types/node', 'tsconfig-paths', 'ts-node', 'ts-node-dev')
     }
     if (hasNext) {
