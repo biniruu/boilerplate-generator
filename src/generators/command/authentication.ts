@@ -12,10 +12,8 @@ const getAuthenticationCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/dcodeIO/bcrypt.js#readme}
    */
   if (hasBcrypt) {
-    if (hasTypescript) {
-      authenticationDevDependencies.push('@types/bcryptjs')
-    }
     authenticationDependencies.push('bcryptjs')
+    hasTypescript && authenticationDevDependencies.push('@types/bcryptjs')
   }
   /**
    * next-auth (NextAuth.js)
