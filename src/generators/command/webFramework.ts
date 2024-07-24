@@ -19,10 +19,8 @@ const getWebFrameworkCommands = (configOptions: SelectOptions) => {
    * {@link https://expressjs.com}
    */
   if (hasExpress) {
-    if (hasTypescript) {
-      webFrameworkDevDependencies.push('@types/body-parser', '@types/cors', '@types/express')
-    }
     webFrameworkDependencies.push('body-parser', 'cors', 'express')
+    hasTypescript && webFrameworkDevDependencies.push('@types/body-parser', '@types/cors', '@types/express')
   }
   /**
    * react-refresh
@@ -40,10 +38,8 @@ const getWebFrameworkCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/vuejs/language-tools#readme}
    */
   if (hasNuxt || hasVue) {
-    if (hasTypescript) {
-      webFrameworkDevDependencies.push('vue-tsc')
-    }
     webFrameworkDevDependencies.push('volar-service-vetur')
+    hasTypescript && webFrameworkDevDependencies.push('vue-tsc')
   }
   /**
    * react-router-dom (React Router DOM)
@@ -57,10 +53,8 @@ const getWebFrameworkCommands = (configOptions: SelectOptions) => {
    * {@link https://threejs.org}
    */
   if (hasThree) {
-    if (hasTypescript) {
-      webFrameworkDevDependencies.push('@types/three')
-    }
     webFrameworkDependencies.push('three')
+    hasTypescript && webFrameworkDevDependencies.push('@types/three')
   }
 
   return {
