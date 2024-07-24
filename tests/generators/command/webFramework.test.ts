@@ -34,4 +34,12 @@ describe('Web Framework commands', () => {
 
     expect(webFrameworkDependencies).toEqual(['react-refresh'])
   })
+
+  test('should generate a command for React.js', () => {
+    configOptions.react = true
+
+    const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions)
+
+    expect(webFrameworkDependencies).toIncludeSameMembers(['react-refresh', 'react-router-dom'])
+  })
 })
