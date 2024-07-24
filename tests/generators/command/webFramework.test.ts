@@ -42,4 +42,12 @@ describe('Web Framework commands', () => {
 
     expect(webFrameworkDependencies).toIncludeSameMembers(['react-refresh', 'react-router-dom'])
   })
+
+  test('should generate a command for Nuxt.js', () => {
+    configOptions.nuxt = true
+
+    const { webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions)
+
+    expect(webFrameworkDevDependencies).toEqual(['volar-service-vetur'])
+  })
 })
