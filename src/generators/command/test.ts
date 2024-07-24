@@ -9,6 +9,56 @@ const getTestCommands = (configOptions: SelectOptions) => {
 
   if (hasJest) {
     /**
+     * @testing-library/dom (DOM Testing Library)
+     * {@link https://testing-library.com/docs/dom-testing-library/intro/}
+     *
+     * @testing-library/jest-dom (jest-dom)
+     * {@link https://github.com/testing-library/jest-dom#readme}
+     *
+     * @testing-library/user-event (user-event)
+     * {@link https://github.com/testing-library/user-event#readme}
+     *
+     * jest (Jest)
+     * {@link https://jestjs.io}
+     *
+     * jest-environment-jsdom
+     * {@link https://github.com/jestjs/jest#readme}
+     *
+     * Jest Extended
+     * {{@link https://jest-extended.jestcommunity.dev/docs}}
+     *
+     * jest-watch-typeahead
+     * {@link https://github.com/jest-community/jest-watch-typeahead#jest-watch-typeahead}
+     *
+     * jsdom
+     * {@link https://github.com/jsdom/jsdom#readme}
+     *
+     * msw (Mock Service Worker)
+     * {@link https://mswjs.io}
+     *
+     * ts-jest
+     * {@link https://kulshekhar.github.io/ts-jest/}
+     * ts-jest is necessary when you’re working in a development environment, since it provides types of jest configuration
+     *
+     *
+     * If you have added 'jest', you don't need to add these packages: jest-resolve and jest-resolve-dependencies.
+     * I recommend adding @types/jest even if it is not a TypeScript project because of its IntelliSense.
+     */
+    testDevDependencies.push(
+      '@testing-library/dom',
+      '@testing-library/jest-dom',
+      '@testing-library/user-event',
+      '@types/jest',
+      'jest',
+      'jest-environment-jsdom',
+      'jest-extended',
+      'jest-html-reporters',
+      'jest-watch-typeahead',
+      'jsdom',
+      'msw',
+      'ts-jest',
+    )
+    /**
      * identity-obj-proxy
      * {@link https://github.com/keyz/identity-obj-proxy#readme}
      */
@@ -84,56 +134,6 @@ const getTestCommands = (configOptions: SelectOptions) => {
         '@storybook/addon-links',
       )
     }
-    /**
-     * @testing-library/dom (DOM Testing Library)
-     * {@link https://testing-library.com/docs/dom-testing-library/intro/}
-     *
-     * @testing-library/jest-dom (jest-dom)
-     * {@link https://github.com/testing-library/jest-dom#readme}
-     *
-     * @testing-library/user-event (user-event)
-     * {@link https://github.com/testing-library/user-event#readme}
-     *
-     * jest (Jest)
-     * {@link https://jestjs.io}
-     *
-     * jest-environment-jsdom
-     * {@link https://github.com/jestjs/jest#readme}
-     *
-     * Jest Extended
-     * {{@link https://jest-extended.jestcommunity.dev/docs}}
-     *
-     * jest-watch-typeahead
-     * {@link https://github.com/jest-community/jest-watch-typeahead#jest-watch-typeahead}
-     *
-     * jsdom
-     * {@link https://github.com/jsdom/jsdom#readme}
-     *
-     * msw (Mock Service Worker)
-     * {@link https://mswjs.io}
-     *
-     * ts-jest
-     * {@link https://kulshekhar.github.io/ts-jest/}
-     * ts-jest is necessary when you’re working in a development environment, since it provides types of jest configuration
-     *
-     *
-     * If you have added 'jest', you don't need to add these packages: jest-resolve and jest-resolve-dependencies.
-     * I recommend adding @types/jest even if it is not a TypeScript project because of its IntelliSense.
-     */
-    testDevDependencies.push(
-      '@testing-library/dom',
-      '@testing-library/jest-dom',
-      '@testing-library/user-event',
-      '@types/jest',
-      'jest',
-      'jest-environment-jsdom',
-      'jest-extended',
-      'jest-html-reporters',
-      'jest-watch-typeahead',
-      'jsdom',
-      'msw',
-      'ts-jest',
-    )
   }
 
   return {
