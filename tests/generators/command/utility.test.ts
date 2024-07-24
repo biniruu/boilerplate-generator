@@ -144,4 +144,12 @@ describe('Utility commands', () => {
 
     expect(utilityDependencies).toEqual(['prismjs'])
   })
+
+  test('should generate a command for React Infinite Scroller', () => {
+    configOptions.reactInfiniteScroller = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['react-infinite-scroller'])
+  })
 })
