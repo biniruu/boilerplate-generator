@@ -24,4 +24,13 @@ describe('Utility commands', () => {
 
     expect(utilityDependencies).toEqual(['dayjs'])
   })
+
+  test('should generate a command for Dotenv with Nuxt.js', () => {
+    configOptions.dotenv = true
+    configOptions.nuxt = true
+
+    const { utilityDevDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDevDependencies).toEqual(['dotenv-expand'])
+  })
 })
