@@ -12,10 +12,8 @@ const getCssInJsCommands = (configOptions: SelectOptions) => {
    * {@link https://styled-components.com}
    */
   if (hasStyledComponents) {
-    if (hasTypescript) {
-      cssInJsDevDependencies.push('@types/styled-components')
-    }
     cssInJsDependencies.push('styled-components')
+    hasTypescript && cssInJsDevDependencies.push('@types/styled-components')
   }
 
   return {
