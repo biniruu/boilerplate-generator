@@ -160,4 +160,14 @@ describe('Utility commands', () => {
 
     expect(utilityDependencies).toEqual(['react-joyride'])
   })
+
+  test('should generate a command for React Joyride with TypeScript', () => {
+    configOptions.reactJoyride = true
+    configOptions.typescript = true
+
+    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['react-joyride'])
+    expect(utilityDevDependencies).toEqual(['@types/react-joyride'])
+  })
 })
