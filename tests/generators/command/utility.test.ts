@@ -33,4 +33,13 @@ describe('Utility commands', () => {
 
     expect(utilityDevDependencies).toEqual(['dotenv-expand'])
   })
+
+  test('should generate a command for Dotenv with React.js', () => {
+    configOptions.dotenv = true
+    configOptions.react = true
+
+    const { utilityDevDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDevDependencies).toIncludeSameMembers(['dotenv', 'dotenv-expand', 'env-cmd'])
+  })
 })
