@@ -7,4 +7,12 @@ describe('Prettier Commands', () => {
 
     expect(prettierDevDependencies).toBeEmpty()
   })
+
+  test('should generate a command for prettier', () => {
+    configOptions.prettier = true
+
+    const { prettierDevDependencies } = getPrettierCommands(configOptions)
+
+    expect(prettierDevDependencies).toEqual(['prettier'])
+  })
 })
