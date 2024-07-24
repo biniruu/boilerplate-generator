@@ -42,4 +42,22 @@ describe('Utility commands', () => {
 
     expect(utilityDevDependencies).toIncludeSameMembers(['dotenv', 'dotenv-expand', 'env-cmd'])
   })
+
+  test('should generate a command for File Saver', () => {
+    configOptions.fileSaver = true
+
+    const { utilityDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['file-saver'])
+  })
+
+  test('should generate a command for File Saver with TypeScript', () => {
+    configOptions.fileSaver = true
+    configOptions.typescript = true
+
+    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+
+    expect(utilityDependencies).toEqual(['file-saver'])
+    expect(utilityDevDependencies).toEqual(['@types/file-saver'])
+  })
 })
