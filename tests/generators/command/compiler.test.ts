@@ -1,6 +1,5 @@
 import getCompilerCommands from '@generators/command/compiler'
-
-import { configOptions } from '../../configOptions.test'
+import { configOptions } from 'tests/configOptions.test'
 
 describe('Compiler', () => {
   test('should return empty arrays when all options are false', () => {

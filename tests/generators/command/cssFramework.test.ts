@@ -1,6 +1,5 @@
 import getCssFrameworkCommands from '@generators/command/cssFramework'
-
-import { configOptions, setHasJsLibs } from '../../configOptions.test'
+import { configOptions, setHasJsLibs } from 'tests/configOptions.test'
 
 describe('CSS Framework', () => {
   test('should return empty values when all options are false', () => {

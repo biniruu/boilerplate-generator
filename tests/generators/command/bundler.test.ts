@@ -1,6 +1,5 @@
 import getBundlerCommands from '@generators/command/bundler'
-
-import { configOptions } from '../../configOptions.test'
+import { configOptions } from 'tests/configOptions.test'
 
 describe('Bundler', () => {
   describe('Vite', () => {
