@@ -23,6 +23,13 @@ const getWebFrameworkCommands = (configOptions: SelectOptions) => {
     hasTypescript && webFrameworkDevDependencies.push('@types/body-parser', '@types/cors', '@types/express')
   }
   /**
+   * react-router-dom (React Router DOM)
+   * {@link https://reactrouter.com/en/main}
+   */
+  if (hasReact) {
+    webFrameworkDependencies.push('react-router-dom')
+  }
+  /**
    * react-refresh
    * {@link https://www.npmjs.com/package/react-refresh}
    */
@@ -40,13 +47,6 @@ const getWebFrameworkCommands = (configOptions: SelectOptions) => {
   if (hasNuxt || hasVue) {
     webFrameworkDevDependencies.push('volar-service-vetur')
     hasTypescript && webFrameworkDevDependencies.push('vue-tsc')
-  }
-  /**
-   * react-router-dom (React Router DOM)
-   * {@link https://reactrouter.com/en/main}
-   */
-  if (hasReact) {
-    webFrameworkDependencies.push('react-router-dom')
   }
   /**
    * three (three.js)
