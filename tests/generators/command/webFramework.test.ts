@@ -50,4 +50,13 @@ describe('Web Framework commands', () => {
 
     expect(webFrameworkDevDependencies).toEqual(['volar-service-vetur'])
   })
+
+  test('should generate a command for Nuxt.js with TypeScript', () => {
+    configOptions.nuxt = true
+    configOptions.typescript = true
+
+    const { webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions)
+
+    expect(webFrameworkDevDependencies).toIncludeSameMembers(['volar-service-vetur', 'vue-tsc'])
+  })
 })
