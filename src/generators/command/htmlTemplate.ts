@@ -1,9 +1,8 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getHtmlTemplateCommands = (configOptions: SelectOptions) => {
-  const hasEjs = configOptions.ejs
-  const hasPug = configOptions.pug
-  const hasTypescript = configOptions.typescript
+  const { hasEjs, hasPug, hasTypescript } = getCertainConditions(configOptions)
 
   const htmlTemplateDependencies: string[] = []
   const htmlTemplateDevDependencies: string[] = []
