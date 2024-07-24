@@ -95,11 +95,9 @@ const getEslintCommands = (configOptions: SelectOptions) => {
   }
 
   if (!hasGatsby && !hasJsLibs && !hasThree && !hasWordpress) {
-    if (!hasTypescript) {
-      eslintDevDependencies.push('@babel/eslint-parser')
-    }
     // For VanillaJS
     eslintDevDependencies.push('eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import')
+    !hasTypescript && eslintDevDependencies.push('@babel/eslint-parser')
   }
   // Gatsby.js is ony for using TypeScript
   if (hasGatsby && hasTypescript) {
@@ -112,15 +110,10 @@ const getEslintCommands = (configOptions: SelectOptions) => {
     )
   }
   if (hasNext) {
-    if (hasTypescript) {
-      eslintDevDependencies.push('@typescript-eslint/eslint-plugin')
-    }
     eslintDevDependencies.push('eslint-plugin-react-refresh', 'eslint-plugin-testing-library')
+    hasTypescript && eslintDevDependencies.push('@typescript-eslint/eslint-plugin')
   }
   if (hasNuxt) {
-    if (hasTypescript) {
-      eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
-    }
     eslintDevDependencies.push(
       '@nuxtjs/eslint-config-typescript',
       'eslint',
@@ -131,12 +124,10 @@ const getEslintCommands = (configOptions: SelectOptions) => {
       'eslint-plugin-testing-library',
       'vue-eslint-parser',
     )
+    hasTypescript && eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
   }
   // For React.js that build with Vite
   if (hasReact) {
-    if (hasTypescript) {
-      eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
-    }
     eslintDevDependencies.push(
       'eslint-plugin-import',
       'eslint-plugin-jsx-a11y',
@@ -144,6 +135,7 @@ const getEslintCommands = (configOptions: SelectOptions) => {
       'eslint-plugin-testing-library',
       'jest-resolve',
     )
+    hasTypescript && eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
   }
   if (!hasJsLibs && !hasGatsby && !hasWordpress && (hasThree || hasTypescript)) {
     eslintDevDependencies.push(
