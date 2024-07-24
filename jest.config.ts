@@ -117,7 +117,7 @@ const jestConfig: JestConfigWithTsJest = {
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  // modulePathIgnorePatterns: [],
+  modulePathIgnorePatterns: ['<rootDir>/tests/\\w+.(spec|test).ts', '<rootDir>/src/generators/command/test.ts'],
 
   // Activates notifications for test results
   // notify: false,
