@@ -1,13 +1,9 @@
+import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getWebFrameworkCommands = (configOptions: SelectOptions) => {
-  const hasExpress = configOptions.express
-  const hasNext = configOptions.next
-  const hasNuxt = configOptions.nuxt
-  const hasReact = configOptions.react
-  const hasThree = configOptions.three
-  const hasTypescript = configOptions.typescript
-  const hasVue = configOptions.vue
+  const { hasExpress, hasNext, hasNuxt, hasReact, hasThree, hasTypescript, hasVue } =
+    getCertainConditions(configOptions)
 
   const webFrameworkDependencies: string[] = []
   const webFrameworkDevDependencies: string[] = []
