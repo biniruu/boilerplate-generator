@@ -59,7 +59,6 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-extended": "^4.0.2",
-    "jsdom": "^24.0.0",
     "mini-css-extract-plugin": "^2.8.1",
     "postcss": "^8.4.38",
     "postcss-html": "^1.6.0",
