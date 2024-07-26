@@ -18,7 +18,6 @@ describe('Test commands', () => {
     'jest-extended',
     'jest-html-reporters',
     'jest-watch-typeahead',
-    'jsdom',
     'msw',
     'ts-jest',
   ]
