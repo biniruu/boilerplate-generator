@@ -30,9 +30,6 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * jest-watch-typeahead
      * {@link https://github.com/jest-community/jest-watch-typeahead#jest-watch-typeahead}
      *
-     * jsdom
-     * {@link https://github.com/jsdom/jsdom#readme}
-     *
      * msw (Mock Service Worker)
      * {@link https://mswjs.io}
      *
@@ -54,7 +51,6 @@ const getTestCommands = (configOptions: SelectOptions) => {
       'jest-extended',
       'jest-html-reporters',
       'jest-watch-typeahead',
-      'jsdom',
       'msw',
       'ts-jest',
     )
