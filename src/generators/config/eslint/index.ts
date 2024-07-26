@@ -28,7 +28,7 @@ const generateEslintConfig = (configOptions: SelectOptions) => {
     rules: mergeRules(configOptions),
     settings: mergeSettings(configOptions),
   }
-  const code = `module.export = ${convertToString(config)}`
+  const code = `module.exports = ${convertToString(config)}`
   const result = code
     .replace(`'replace jestVersion'`, `require('jest/package.json').version`)
     .replace(`'replace tsconfigRootDir'`, '__dirname')

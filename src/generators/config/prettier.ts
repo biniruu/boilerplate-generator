@@ -56,7 +56,7 @@ const generatePrettierConfig = (configOptions: SelectOptions) => {
     config.vueIndentScriptAndStyle = true
   }
 
-  const code = `module.export = ${convertToString(config)}`
+  const code = `module.exports = ${convertToString(config)}`
 
   return code
 }

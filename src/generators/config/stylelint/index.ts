@@ -20,7 +20,7 @@ const generateStylelintConfig = (configOptions: SelectOptions) => {
     plugins: getPlugins(configOptions),
     rules: getRules(configOptions),
   }
-  const result = `module.export = ${convertToString(config)}`
+  const result = `module.exports = ${convertToString(config)}`
 
   return result
 }
