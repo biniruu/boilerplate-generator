@@ -1,18 +1,16 @@
 import getStateManagementCommands from '@generators/command/stateManagement'
 import { configOptions } from 'tests/configOptions.test'
 
-describe('State management Commands', () => {
-  test('should return an empty value when all options are false', () => {
-    const { stateManagementDependencies } = getStateManagementCommands(configOptions)
+test('should return an empty array when all options are false', () => {
+  const { stateManagementDependencies } = getStateManagementCommands(configOptions)
 
-    expect(stateManagementDependencies).toBeEmpty()
-  })
+  expect(stateManagementDependencies).toBeEmpty()
+})
 
-  test('should generate a command for Recoil', () => {
-    configOptions.recoil = true
+test('should return dependencies for Recoil', () => {
+  configOptions.recoil = true
 
-    const { stateManagementDependencies } = getStateManagementCommands(configOptions)
+  const { stateManagementDependencies } = getStateManagementCommands(configOptions)
 
-    expect(stateManagementDependencies).toEqual(['recoil'])
-  })
+  expect(stateManagementDependencies).toEqual(['recoil'])
 })

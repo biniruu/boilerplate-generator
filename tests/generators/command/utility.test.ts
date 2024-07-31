@@ -1,191 +1,189 @@
 import getUtilityCommands from '@generators/command/utility'
 import { configOptions } from 'tests/configOptions.test'
 
-describe('Utility commands', () => {
-  test('should return an empty value when all options are false', () => {
-    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+test('should return empty arrays when all options are false', () => {
+  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toBeEmpty()
-    expect(utilityDevDependencies).toBeEmpty()
-  })
+  expect(utilityDependencies).toBeEmpty()
+  expect(utilityDevDependencies).toBeEmpty()
+})
 
-  test('should generate a command for Copy to Clipboard', () => {
-    configOptions.copyToClipboard = true
+test('should return dependencies for Copy to Clipboard', () => {
+  configOptions.copyToClipboard = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['copy-to-clipboard'])
-  })
+  expect(utilityDependencies).toEqual(['copy-to-clipboard'])
+})
 
-  test('should generate a command for Day.js', () => {
-    configOptions.dayjs = true
+test('should return dependencies for Day.js', () => {
+  configOptions.dayjs = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['dayjs'])
-  })
+  expect(utilityDependencies).toEqual(['dayjs'])
+})
 
-  test('should generate a command for Dotenv with Nuxt.js', () => {
-    configOptions.dotenv = true
-    configOptions.nuxt = true
+test('should return dependencies for Dotenv with Nuxt.js', () => {
+  configOptions.dotenv = true
+  configOptions.nuxt = true
 
-    const { utilityDevDependencies } = getUtilityCommands(configOptions)
+  const { utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDevDependencies).toEqual(['dotenv-expand'])
-  })
+  expect(utilityDevDependencies).toEqual(['dotenv-expand'])
+})
 
-  test('should generate a command for Dotenv with React.js', () => {
-    configOptions.dotenv = true
-    configOptions.react = true
+test('should return dependencies for Dotenv with React.js', () => {
+  configOptions.dotenv = true
+  configOptions.react = true
 
-    const { utilityDevDependencies } = getUtilityCommands(configOptions)
+  const { utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDevDependencies).toIncludeSameMembers(['dotenv', 'dotenv-expand', 'env-cmd'])
-  })
+  expect(utilityDevDependencies).toIncludeSameMembers(['dotenv', 'dotenv-expand', 'env-cmd'])
+})
 
-  test('should generate a command for File Saver', () => {
-    configOptions.fileSaver = true
+test('should return dependencies for File Saver', () => {
+  configOptions.fileSaver = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['file-saver'])
-  })
+  expect(utilityDependencies).toEqual(['file-saver'])
+})
 
-  test('should generate a command for File Saver with TypeScript', () => {
-    configOptions.fileSaver = true
-    configOptions.typescript = true
+test('should return dependencies for File Saver with TypeScript', () => {
+  configOptions.fileSaver = true
+  configOptions.typescript = true
 
-    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['file-saver'])
-    expect(utilityDevDependencies).toEqual(['@types/file-saver'])
-  })
+  expect(utilityDependencies).toEqual(['file-saver'])
+  expect(utilityDevDependencies).toEqual(['@types/file-saver'])
+})
 
-  test('should generate a command for Husky', () => {
-    configOptions.husky = true
+test('should return dependencies for Husky', () => {
+  configOptions.husky = true
 
-    const { utilityDevDependencies } = getUtilityCommands(configOptions)
+  const { utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDevDependencies).toEqual(['husky'])
-  })
+  expect(utilityDevDependencies).toEqual(['husky'])
+})
 
-  test('should generate a command for Immer', () => {
-    configOptions.immer = true
+test('should return dependencies for Immer', () => {
+  configOptions.immer = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['immer'])
-  })
+  expect(utilityDependencies).toEqual(['immer'])
+})
 
-  test('should generate a command for Immer With React.js', () => {
-    configOptions.immer = true
-    configOptions.react = true
+test('should return dependencies for Immer With React.js', () => {
+  configOptions.immer = true
+  configOptions.react = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toIncludeSameMembers(['immer', 'use-immer'])
-  })
+  expect(utilityDependencies).toIncludeSameMembers(['immer', 'use-immer'])
+})
 
-  test('should generate a command for JavaScript Stringify', () => {
-    configOptions.javascriptStringify = true
+test('should return dependencies for JavaScript Stringify', () => {
+  configOptions.javascriptStringify = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['javascript-stringify'])
-  })
+  expect(utilityDependencies).toEqual(['javascript-stringify'])
+})
 
-  test('should generate a command for jsdiff', () => {
-    configOptions.jsdiff = true
+test('should return dependencies for jsdiff', () => {
+  configOptions.jsdiff = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['jsdiff'])
-  })
+  expect(utilityDependencies).toEqual(['jsdiff'])
+})
 
-  test('should generate a command for Lodash', () => {
-    configOptions.lodash = true
+test('should return dependencies for Lodash', () => {
+  configOptions.lodash = true
 
-    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toIncludeSameMembers(['lodash', 'lodash-es'])
-    expect(utilityDevDependencies).toEqual(['@types/lodash-es'])
-  })
+  expect(utilityDependencies).toIncludeSameMembers(['lodash', 'lodash-es'])
+  expect(utilityDevDependencies).toEqual(['@types/lodash-es'])
+})
 
-  test('should generate a command for Lodash with React.js', () => {
-    configOptions.lodash = true
-    configOptions.react = true
+test('should return dependencies for Lodash with React.js', () => {
+  configOptions.lodash = true
+  configOptions.react = true
 
-    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['lodash-es'])
-    expect(utilityDevDependencies).toEqual(['@types/lodash-es'])
-  })
+  expect(utilityDependencies).toEqual(['lodash-es'])
+  expect(utilityDevDependencies).toEqual(['@types/lodash-es'])
+})
 
-  test('should generate a command for markdownlint', () => {
-    configOptions.markdownlint = true
+test('should return dependencies for markdownlint', () => {
+  configOptions.markdownlint = true
 
-    const { utilityDevDependencies } = getUtilityCommands(configOptions)
+  const { utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDevDependencies).toEqual(['markdownlint'])
-  })
+  expect(utilityDevDependencies).toEqual(['markdownlint'])
+})
 
-  test('should generate a command for nodemon', () => {
-    configOptions.nodemon = true
+test('should return dependencies for nodemon', () => {
+  configOptions.nodemon = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['nodemon'])
-  })
+  expect(utilityDependencies).toEqual(['nodemon'])
+})
 
-  test('should generate a command for Prism', () => {
-    configOptions.prism = true
+test('should return dependencies for Prism', () => {
+  configOptions.prism = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['prismjs'])
-  })
+  expect(utilityDependencies).toEqual(['prismjs'])
+})
 
-  test('should generate a command for React Infinite Scroller', () => {
-    configOptions.reactInfiniteScroller = true
+test('should return dependencies for React Infinite Scroller', () => {
+  configOptions.reactInfiniteScroller = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['react-infinite-scroller'])
-  })
+  expect(utilityDependencies).toEqual(['react-infinite-scroller'])
+})
 
-  test('should generate a command for React Joyride', () => {
-    configOptions.reactJoyride = true
+test('should return dependencies for React Joyride', () => {
+  configOptions.reactJoyride = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['react-joyride'])
-  })
+  expect(utilityDependencies).toEqual(['react-joyride'])
+})
 
-  test('should generate a command for React Joyride with TypeScript', () => {
-    configOptions.reactJoyride = true
-    configOptions.typescript = true
+test('should return dependencies for React Joyride with TypeScript', () => {
+  configOptions.reactJoyride = true
+  configOptions.typescript = true
 
-    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['react-joyride'])
-    expect(utilityDevDependencies).toEqual(['@types/react-joyride'])
-  })
+  expect(utilityDependencies).toEqual(['react-joyride'])
+  expect(utilityDevDependencies).toEqual(['@types/react-joyride'])
+})
 
-  test('should generate a command for React Syntax Highlighter', () => {
-    configOptions.reactSyntaxHighlighter = true
+test('should return dependencies for React Syntax Highlighter', () => {
+  configOptions.reactSyntaxHighlighter = true
 
-    const { utilityDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['react-syntax-highlighter'])
-  })
+  expect(utilityDependencies).toEqual(['react-syntax-highlighter'])
+})
 
-  test('should generate a command for React Syntax Highlighter with TypeScript', () => {
-    configOptions.reactSyntaxHighlighter = true
-    configOptions.typescript = true
+test('should return dependencies for React Syntax Highlighter with TypeScript', () => {
+  configOptions.reactSyntaxHighlighter = true
+  configOptions.typescript = true
 
-    const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
+  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(configOptions)
 
-    expect(utilityDependencies).toEqual(['react-syntax-highlighter'])
-    expect(utilityDevDependencies).toEqual(['@types/react-syntax-highlighter'])
-  })
+  expect(utilityDependencies).toEqual(['react-syntax-highlighter'])
+  expect(utilityDevDependencies).toEqual(['@types/react-syntax-highlighter'])
 })

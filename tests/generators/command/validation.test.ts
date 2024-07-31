@@ -1,26 +1,24 @@
 import getValidationCommands from '@generators/command/validation'
 import { configOptions } from 'tests/configOptions.test'
 
-describe('Validation commands', () => {
-  test('should return an empty value when all options are false', () => {
-    const { validationDependencies } = getValidationCommands(configOptions)
+test('should return an empty array when all options are false', () => {
+  const { validationDependencies } = getValidationCommands(configOptions)
 
-    expect(validationDependencies).toBeEmpty()
-  })
+  expect(validationDependencies).toBeEmpty()
+})
 
-  test('should generate a command for Joi', () => {
-    configOptions.joi = true
+test('should return dependencies for Joi', () => {
+  configOptions.joi = true
 
-    const { validationDependencies } = getValidationCommands(configOptions)
+  const { validationDependencies } = getValidationCommands(configOptions)
 
-    expect(validationDependencies).toEqual(['joi'])
-  })
+  expect(validationDependencies).toEqual(['joi'])
+})
 
-  test('should generate a command for React Hook Form', () => {
-    configOptions.reactHookForm = true
+test('should return dependencies for React Hook Form', () => {
+  configOptions.reactHookForm = true
 
-    const { validationDependencies } = getValidationCommands(configOptions)
+  const { validationDependencies } = getValidationCommands(configOptions)
 
-    expect(validationDependencies).toEqual(['react-hook-form'])
-  })
+  expect(validationDependencies).toEqual(['react-hook-form'])
 })
