@@ -59,6 +59,7 @@ const generateConfig = (tab: ConfigTab) => {
     generatePrettierIgnoreConfig(),
   ]
 
+  // The values of the two variables, values and configs, are identical in both order and length
   if (values.length !== configs.length) {
     console.error('The lengths of values and configs are not the same')
   }
