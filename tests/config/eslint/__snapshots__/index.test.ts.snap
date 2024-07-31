@@ -1,0 +1,1399 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should generate an ESLint configuration for Next.js with TypeScript 1`] = `
+"module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  'extends': [
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended-type-checked',
+    'next/core-web-vitals',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended'
+  ],
+  overrides: [
+    {
+      'extends': [
+        'plugin:@typescript-eslint/disable-type-checked'
+      ],
+      files: [
+        '*.js',
+        '*.cjs',
+        '*.config.js',
+        '*.config.ts',
+        '*.test.js',
+        '*.test.ts',
+        '*.spec.js',
+        '*.spec.ts'
+      ]
+    }
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: true,
+    tsconfigRootDir: __dirname
+  },
+  plugins: [
+    'react-refresh'
+  ],
+  root: true,
+  rules: {
+    camelcase: [
+      'error',
+      {
+        properties: 'never'
+      }
+    ],
+    eqeqeq: 'error',
+    'new-cap': 'error',
+    'no-array-constructor': 'error',
+    'no-console': [
+      'warn',
+      {
+        allow: [
+          'warn',
+          'error'
+        ]
+      }
+    ],
+    'no-debugger': 'error',
+    'no-inner-declarations': 'warn',
+    'no-nested-ternary': 'warn',
+    'no-new-object': 'warn',
+    'no-undef': 'error',
+    'no-underscore-dangle': [
+      'warn',
+      {
+        allowAfterThis: true
+      }
+    ],
+    'no-unused-vars': 'off',
+    'no-useless-escape': 'warn',
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'prefer-rest-params': 'error',
+    quotes: [
+      'warn',
+      'single',
+      {
+        allowTemplateLiterals: true
+      }
+    ],
+    'sort-imports': [
+      'warn',
+      {
+        allowSeparatedGroups: true,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: true
+      }
+    ],
+    '@typescript-eslint/ban-ts-comment': [
+      'error',
+      {
+        'ts-expect-error': 'allow-with-description',
+        'ts-ignore': 'allow-with-description',
+        'ts-nocheck': 'allow-with-description',
+        'ts-check': 'allow-with-description'
+      }
+    ],
+    '@typescript-eslint/no-explicit-any': [
+      'error',
+      {
+        ignoreRestArgs: true
+      }
+    ],
+    '@typescript-eslint/no-floating-promises': 'warn',
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      {
+        checksVoidReturn: {
+          attributes: false
+        }
+      }
+    ],
+    '@typescript-eslint/no-unsafe-argument': 'error',
+    '@typescript-eslint/no-unsafe-assignment': 'error',
+    '@typescript-eslint/no-unsafe-call': 'error',
+    '@typescript-eslint/no-unsafe-member-access': 'error',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        argsIgnorePattern: '^_[2-9]?$'
+      }
+    ],
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/restrict-plus-operands': 'warn',
+    '@typescript-eslint/restrict-template-expressions': 'warn',
+    '@typescript-eslint/space-before-function-paren': [
+      'warn',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always'
+      }
+    ],
+    'import/consistent-type-specifier-style': 'warn',
+    'import/newline-after-import': 'warn',
+    'import/no-anonymous-default-export': [
+      'warn',
+      {
+        allowArray: true,
+        allowObject: true
+      }
+    ],
+    'import/no-unresolved': 'off',
+    'import/order': [
+      'warn',
+      {
+        'newlines-between': 'always'
+      }
+    ],
+    'jsx-a11y/label-has-associated-control': [
+      'warn',
+      {
+        labelComponents: [
+          'label'
+        ],
+        labelAttributes: [
+          'htmlFor'
+        ],
+        controlComponents: [
+          'Input'
+        ],
+        depth: 1
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': [
+      'warn',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp'
+        ]
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': [
+      'warn',
+      {
+        ul: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        ol: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        li: [
+          'button',
+          'menuitem',
+          'option',
+          'row',
+          'tab',
+          'treeitem'
+        ],
+        table: [
+          'grid'
+        ],
+        td: [
+          'gridcell'
+        ]
+      }
+    ],
+    'react/destructuring-assignment': 'warn',
+    'react/jsx-curly-brace-presence': 'warn',
+    'react/jsx-key': 'error',
+    'react/jsx-no-useless-fragment': [
+      'warn',
+      {
+        allowExpressions: true
+      }
+    ],
+    'react/jsx-pascal-case': 'warn',
+    'react/jsx-no-bind': [
+      'error',
+      {
+        allowArrowFunctions: true,
+        allowFunctions: true
+      }
+    ],
+    'react/jsx-uses-react': 'off',
+    'react/jsx-uses-vars': 'error',
+    'react/no-direct-mutation-state': 'error',
+    'react/no-unescaped-entities': 'error',
+    'react/no-unknown-property': [
+      'error',
+      {
+        ignore: [
+          'jsx'
+        ]
+      }
+    ],
+    'react/no-unused-state': 'warn',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/self-closing-comp': [
+      'warn',
+      {
+        component: true,
+        html: false
+      }
+    ],
+    'react/static-property-placement': 'warn',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-refresh/only-export-components': [
+      'warn',
+      {
+        allowConstantExport: true
+      }
+    ]
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [
+          '*.js',
+          '*.jsx',
+          '*.ts',
+          '*.tsx'
+        ]
+      }
+    }
+  }
+}"
+`;
+
+exports[`should generate an ESLint configuration for Next.js without TypeScript 1`] = `
+"module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  'extends': [
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'next/core-web-vitals',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended'
+  ],
+  overrides: [],
+  parser: '@babel/eslint-parser',
+  plugins: [
+    'react-refresh'
+  ],
+  root: true,
+  rules: {
+    camelcase: [
+      'error',
+      {
+        properties: 'never'
+      }
+    ],
+    eqeqeq: 'error',
+    'new-cap': 'error',
+    'no-array-constructor': 'error',
+    'no-console': [
+      'warn',
+      {
+        allow: [
+          'warn',
+          'error'
+        ]
+      }
+    ],
+    'no-debugger': 'error',
+    'no-inner-declarations': 'warn',
+    'no-nested-ternary': 'warn',
+    'no-new-object': 'warn',
+    'no-undef': 'error',
+    'no-underscore-dangle': [
+      'warn',
+      {
+        allowAfterThis: true
+      }
+    ],
+    'no-unused-vars': 'off',
+    'no-useless-escape': 'warn',
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'prefer-rest-params': 'error',
+    quotes: [
+      'warn',
+      'single',
+      {
+        allowTemplateLiterals: true
+      }
+    ],
+    'sort-imports': [
+      'warn',
+      {
+        allowSeparatedGroups: true,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: true
+      }
+    ],
+    'import/consistent-type-specifier-style': 'warn',
+    'import/newline-after-import': 'warn',
+    'import/no-anonymous-default-export': [
+      'warn',
+      {
+        allowArray: true,
+        allowObject: true
+      }
+    ],
+    'import/no-unresolved': 'off',
+    'import/order': [
+      'warn',
+      {
+        'newlines-between': 'always'
+      }
+    ],
+    'jsx-a11y/label-has-associated-control': [
+      'warn',
+      {
+        labelComponents: [
+          'label'
+        ],
+        labelAttributes: [
+          'htmlFor'
+        ],
+        controlComponents: [
+          'Input'
+        ],
+        depth: 1
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': [
+      'warn',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp'
+        ]
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': [
+      'warn',
+      {
+        ul: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        ol: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        li: [
+          'button',
+          'menuitem',
+          'option',
+          'row',
+          'tab',
+          'treeitem'
+        ],
+        table: [
+          'grid'
+        ],
+        td: [
+          'gridcell'
+        ]
+      }
+    ],
+    'react/destructuring-assignment': 'warn',
+    'react/jsx-curly-brace-presence': 'warn',
+    'react/jsx-key': 'error',
+    'react/jsx-no-useless-fragment': [
+      'warn',
+      {
+        allowExpressions: true
+      }
+    ],
+    'react/jsx-pascal-case': 'warn',
+    'react/jsx-no-bind': [
+      'error',
+      {
+        allowArrowFunctions: true,
+        allowFunctions: true
+      }
+    ],
+    'react/jsx-uses-react': 'off',
+    'react/jsx-uses-vars': 'error',
+    'react/no-direct-mutation-state': 'error',
+    'react/no-unescaped-entities': 'error',
+    'react/no-unknown-property': [
+      'error',
+      {
+        ignore: [
+          'jsx'
+        ]
+      }
+    ],
+    'react/no-unused-state': 'warn',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/self-closing-comp': [
+      'warn',
+      {
+        component: true,
+        html: false
+      }
+    ],
+    'react/static-property-placement': 'warn',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-refresh/only-export-components': [
+      'warn',
+      {
+        allowConstantExport: true
+      }
+    ]
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [
+          '*.js',
+          '*.jsx',
+          '*.ts',
+          '*.tsx'
+        ]
+      }
+    }
+  }
+}"
+`;
+
+exports[`should generate an ESLint configuration for React.js with TypeScript 1`] = `
+"module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  'extends': [
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended-type-checked',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended'
+  ],
+  overrides: [
+    {
+      'extends': [
+        'plugin:@typescript-eslint/disable-type-checked'
+      ],
+      files: [
+        '*.js',
+        '*.cjs',
+        '*.config.js',
+        '*.config.ts',
+        '*.test.js',
+        '*.test.ts',
+        '*.spec.js',
+        '*.spec.ts'
+      ]
+    }
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: true,
+    tsconfigRootDir: __dirname
+  },
+  plugins: [
+    'react-refresh'
+  ],
+  root: true,
+  rules: {
+    camelcase: [
+      'error',
+      {
+        properties: 'never'
+      }
+    ],
+    eqeqeq: 'error',
+    'new-cap': 'error',
+    'no-array-constructor': 'error',
+    'no-console': [
+      'warn',
+      {
+        allow: [
+          'warn',
+          'error'
+        ]
+      }
+    ],
+    'no-debugger': 'error',
+    'no-inner-declarations': 'warn',
+    'no-nested-ternary': 'warn',
+    'no-new-object': 'warn',
+    'no-undef': 'error',
+    'no-underscore-dangle': [
+      'warn',
+      {
+        allowAfterThis: true
+      }
+    ],
+    'no-unused-vars': 'off',
+    'no-useless-escape': 'warn',
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'prefer-rest-params': 'error',
+    quotes: [
+      'warn',
+      'single',
+      {
+        allowTemplateLiterals: true
+      }
+    ],
+    'sort-imports': [
+      'warn',
+      {
+        allowSeparatedGroups: true,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: true
+      }
+    ],
+    '@typescript-eslint/ban-ts-comment': [
+      'error',
+      {
+        'ts-expect-error': 'allow-with-description',
+        'ts-ignore': 'allow-with-description',
+        'ts-nocheck': 'allow-with-description',
+        'ts-check': 'allow-with-description'
+      }
+    ],
+    '@typescript-eslint/no-explicit-any': [
+      'error',
+      {
+        ignoreRestArgs: true
+      }
+    ],
+    '@typescript-eslint/no-floating-promises': 'warn',
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      {
+        checksVoidReturn: {
+          attributes: false
+        }
+      }
+    ],
+    '@typescript-eslint/no-unsafe-argument': 'error',
+    '@typescript-eslint/no-unsafe-assignment': 'error',
+    '@typescript-eslint/no-unsafe-call': 'error',
+    '@typescript-eslint/no-unsafe-member-access': 'error',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        argsIgnorePattern: '^_[2-9]?$'
+      }
+    ],
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/restrict-plus-operands': 'warn',
+    '@typescript-eslint/restrict-template-expressions': 'warn',
+    '@typescript-eslint/space-before-function-paren': [
+      'warn',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always'
+      }
+    ],
+    'import/consistent-type-specifier-style': 'warn',
+    'import/newline-after-import': 'warn',
+    'import/no-anonymous-default-export': [
+      'warn',
+      {
+        allowArray: true,
+        allowObject: true
+      }
+    ],
+    'import/no-unresolved': 'off',
+    'import/order': [
+      'warn',
+      {
+        'newlines-between': 'always'
+      }
+    ],
+    'jsx-a11y/label-has-associated-control': [
+      'warn',
+      {
+        labelComponents: [
+          'label'
+        ],
+        labelAttributes: [
+          'htmlFor'
+        ],
+        controlComponents: [
+          'Input'
+        ],
+        depth: 1
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': [
+      'warn',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp'
+        ]
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': [
+      'warn',
+      {
+        ul: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        ol: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        li: [
+          'button',
+          'menuitem',
+          'option',
+          'row',
+          'tab',
+          'treeitem'
+        ],
+        table: [
+          'grid'
+        ],
+        td: [
+          'gridcell'
+        ]
+      }
+    ],
+    'react/destructuring-assignment': 'warn',
+    'react/jsx-curly-brace-presence': 'warn',
+    'react/jsx-key': 'error',
+    'react/jsx-no-useless-fragment': [
+      'warn',
+      {
+        allowExpressions: true
+      }
+    ],
+    'react/jsx-pascal-case': 'warn',
+    'react/jsx-no-bind': [
+      'error',
+      {
+        allowArrowFunctions: true,
+        allowFunctions: true
+      }
+    ],
+    'react/jsx-uses-react': 'off',
+    'react/jsx-uses-vars': 'error',
+    'react/no-direct-mutation-state': 'error',
+    'react/no-unescaped-entities': 'error',
+    'react/no-unknown-property': [
+      'error',
+      {
+        ignore: [
+          'jsx'
+        ]
+      }
+    ],
+    'react/no-unused-state': 'warn',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/self-closing-comp': [
+      'warn',
+      {
+        component: true,
+        html: false
+      }
+    ],
+    'react/static-property-placement': 'warn',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-refresh/only-export-components': [
+      'warn',
+      {
+        allowConstantExport: true
+      }
+    ]
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [
+          '*.js',
+          '*.jsx',
+          '*.ts',
+          '*.tsx'
+        ]
+      }
+    },
+    settings: {
+      react: {
+        version: 'detect'
+      }
+    }
+  }
+}"
+`;
+
+exports[`should generate an ESLint configuration for React.js without TypeScript 1`] = `
+"module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  'extends': [
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended'
+  ],
+  overrides: [],
+  parser: '@babel/eslint-parser',
+  plugins: [
+    'react-refresh'
+  ],
+  root: true,
+  rules: {
+    camelcase: [
+      'error',
+      {
+        properties: 'never'
+      }
+    ],
+    eqeqeq: 'error',
+    'new-cap': 'error',
+    'no-array-constructor': 'error',
+    'no-console': [
+      'warn',
+      {
+        allow: [
+          'warn',
+          'error'
+        ]
+      }
+    ],
+    'no-debugger': 'error',
+    'no-inner-declarations': 'warn',
+    'no-nested-ternary': 'warn',
+    'no-new-object': 'warn',
+    'no-undef': 'error',
+    'no-underscore-dangle': [
+      'warn',
+      {
+        allowAfterThis: true
+      }
+    ],
+    'no-unused-vars': 'off',
+    'no-useless-escape': 'warn',
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'prefer-rest-params': 'error',
+    quotes: [
+      'warn',
+      'single',
+      {
+        allowTemplateLiterals: true
+      }
+    ],
+    'sort-imports': [
+      'warn',
+      {
+        allowSeparatedGroups: true,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: true
+      }
+    ],
+    'import/consistent-type-specifier-style': 'warn',
+    'import/newline-after-import': 'warn',
+    'import/no-anonymous-default-export': [
+      'warn',
+      {
+        allowArray: true,
+        allowObject: true
+      }
+    ],
+    'import/no-unresolved': 'off',
+    'import/order': [
+      'warn',
+      {
+        'newlines-between': 'always'
+      }
+    ],
+    'jsx-a11y/label-has-associated-control': [
+      'warn',
+      {
+        labelComponents: [
+          'label'
+        ],
+        labelAttributes: [
+          'htmlFor'
+        ],
+        controlComponents: [
+          'Input'
+        ],
+        depth: 1
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': [
+      'warn',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp'
+        ]
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': [
+      'warn',
+      {
+        ul: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        ol: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        li: [
+          'button',
+          'menuitem',
+          'option',
+          'row',
+          'tab',
+          'treeitem'
+        ],
+        table: [
+          'grid'
+        ],
+        td: [
+          'gridcell'
+        ]
+      }
+    ],
+    'react/destructuring-assignment': 'warn',
+    'react/jsx-curly-brace-presence': 'warn',
+    'react/jsx-key': 'error',
+    'react/jsx-no-useless-fragment': [
+      'warn',
+      {
+        allowExpressions: true
+      }
+    ],
+    'react/jsx-pascal-case': 'warn',
+    'react/jsx-no-bind': [
+      'error',
+      {
+        allowArrowFunctions: true,
+        allowFunctions: true
+      }
+    ],
+    'react/jsx-uses-react': 'off',
+    'react/jsx-uses-vars': 'error',
+    'react/no-direct-mutation-state': 'error',
+    'react/no-unescaped-entities': 'error',
+    'react/no-unknown-property': [
+      'error',
+      {
+        ignore: [
+          'jsx'
+        ]
+      }
+    ],
+    'react/no-unused-state': 'warn',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/self-closing-comp': [
+      'warn',
+      {
+        component: true,
+        html: false
+      }
+    ],
+    'react/static-property-placement': 'warn',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-refresh/only-export-components': [
+      'warn',
+      {
+        allowConstantExport: true
+      }
+    ]
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [
+          '*.js',
+          '*.jsx',
+          '*.ts',
+          '*.tsx'
+        ]
+      }
+    },
+    settings: {
+      react: {
+        version: 'detect'
+      }
+    }
+  }
+}"
+`;
+
+exports[`should generate an ESLint configuration for TypeScript 1`] = `
+"module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  'extends': [
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended-type-checked'
+  ],
+  overrides: [
+    {
+      'extends': [
+        'plugin:@typescript-eslint/disable-type-checked'
+      ],
+      files: [
+        '*.js',
+        '*.cjs',
+        '*.config.js',
+        '*.config.ts',
+        '*.test.js',
+        '*.test.ts',
+        '*.spec.js',
+        '*.spec.ts'
+      ]
+    }
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: true,
+    tsconfigRootDir: __dirname
+  },
+  root: true,
+  rules: {
+    camelcase: [
+      'error',
+      {
+        properties: 'never'
+      }
+    ],
+    eqeqeq: 'error',
+    'new-cap': 'error',
+    'no-array-constructor': 'error',
+    'no-console': [
+      'warn',
+      {
+        allow: [
+          'warn',
+          'error'
+        ]
+      }
+    ],
+    'no-debugger': 'error',
+    'no-inner-declarations': 'warn',
+    'no-nested-ternary': 'warn',
+    'no-new-object': 'warn',
+    'no-undef': 'error',
+    'no-underscore-dangle': [
+      'warn',
+      {
+        allowAfterThis: true
+      }
+    ],
+    'no-unused-vars': 'off',
+    'no-useless-escape': 'warn',
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'prefer-rest-params': 'error',
+    quotes: [
+      'warn',
+      'single',
+      {
+        allowTemplateLiterals: true
+      }
+    ],
+    'sort-imports': [
+      'warn',
+      {
+        allowSeparatedGroups: true,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: true
+      }
+    ],
+    '@typescript-eslint/ban-ts-comment': [
+      'error',
+      {
+        'ts-expect-error': 'allow-with-description',
+        'ts-ignore': 'allow-with-description',
+        'ts-nocheck': 'allow-with-description',
+        'ts-check': 'allow-with-description'
+      }
+    ],
+    '@typescript-eslint/no-explicit-any': [
+      'error',
+      {
+        ignoreRestArgs: true
+      }
+    ],
+    '@typescript-eslint/no-floating-promises': 'warn',
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      {
+        checksVoidReturn: {
+          attributes: false
+        }
+      }
+    ],
+    '@typescript-eslint/no-unsafe-argument': 'error',
+    '@typescript-eslint/no-unsafe-assignment': 'error',
+    '@typescript-eslint/no-unsafe-call': 'error',
+    '@typescript-eslint/no-unsafe-member-access': 'error',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        argsIgnorePattern: '^_[2-9]?$'
+      }
+    ],
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/restrict-plus-operands': 'warn',
+    '@typescript-eslint/restrict-template-expressions': 'warn',
+    '@typescript-eslint/space-before-function-paren': [
+      'warn',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always'
+      }
+    ],
+    'import/consistent-type-specifier-style': 'warn',
+    'import/newline-after-import': 'warn',
+    'import/no-anonymous-default-export': [
+      'warn',
+      {
+        allowArray: true,
+        allowObject: true
+      }
+    ],
+    'import/no-unresolved': 'off',
+    'import/order': [
+      'warn',
+      {
+        'newlines-between': 'always'
+      }
+    ],
+    'jsx-a11y/label-has-associated-control': [
+      'warn',
+      {
+        labelComponents: [
+          'label'
+        ],
+        labelAttributes: [
+          'htmlFor'
+        ],
+        controlComponents: [
+          'Input'
+        ],
+        depth: 1
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': [
+      'warn',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp'
+        ]
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': [
+      'warn',
+      {
+        ul: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        ol: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        li: [
+          'button',
+          'menuitem',
+          'option',
+          'row',
+          'tab',
+          'treeitem'
+        ],
+        table: [
+          'grid'
+        ],
+        td: [
+          'gridcell'
+        ]
+      }
+    ]
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [
+          '*.js',
+          '*.jsx',
+          '*.ts',
+          '*.tsx'
+        ]
+      }
+    }
+  }
+}"
+`;
+
+exports[`should generate an ESLint configuration for VanillaScript 1`] = `
+"module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  'extends': [
+    'eslint:recommended',
+    'plugin:import/recommended'
+  ],
+  overrides: [],
+  parser: '@babel/eslint-parser',
+  root: true,
+  rules: {
+    camelcase: [
+      'error',
+      {
+        properties: 'never'
+      }
+    ],
+    eqeqeq: 'error',
+    'new-cap': 'error',
+    'no-array-constructor': 'error',
+    'no-console': [
+      'warn',
+      {
+        allow: [
+          'warn',
+          'error'
+        ]
+      }
+    ],
+    'no-debugger': 'error',
+    'no-inner-declarations': 'warn',
+    'no-nested-ternary': 'warn',
+    'no-new-object': 'warn',
+    'no-undef': 'error',
+    'no-underscore-dangle': [
+      'warn',
+      {
+        allowAfterThis: true
+      }
+    ],
+    'no-unused-vars': 'off',
+    'no-useless-escape': 'warn',
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'prefer-rest-params': 'error',
+    quotes: [
+      'warn',
+      'single',
+      {
+        allowTemplateLiterals: true
+      }
+    ],
+    'sort-imports': [
+      'warn',
+      {
+        allowSeparatedGroups: true,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: true
+      }
+    ],
+    'import/consistent-type-specifier-style': 'warn',
+    'import/newline-after-import': 'warn',
+    'import/no-anonymous-default-export': [
+      'warn',
+      {
+        allowArray: true,
+        allowObject: true
+      }
+    ],
+    'import/no-unresolved': 'off',
+    'import/order': [
+      'warn',
+      {
+        'newlines-between': 'always'
+      }
+    ],
+    'jsx-a11y/label-has-associated-control': [
+      'warn',
+      {
+        labelComponents: [
+          'label'
+        ],
+        labelAttributes: [
+          'htmlFor'
+        ],
+        controlComponents: [
+          'Input'
+        ],
+        depth: 1
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': [
+      'warn',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp'
+        ]
+      }
+    ],
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': [
+      'warn',
+      {
+        ul: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        ol: [
+          'listbox',
+          'menu',
+          'menubar',
+          'radiogroup',
+          'tablist',
+          'tree',
+          'treegrid'
+        ],
+        li: [
+          'button',
+          'menuitem',
+          'option',
+          'row',
+          'tab',
+          'treeitem'
+        ],
+        table: [
+          'grid'
+        ],
+        td: [
+          'gridcell'
+        ]
+      }
+    ]
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [
+          '*.js',
+          '*.jsx',
+          '*.ts',
+          '*.tsx'
+        ]
+      }
+    }
+  }
+}"
+`;
