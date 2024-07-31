@@ -107,11 +107,10 @@ const jestConfig: JestConfigWithTsJest = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '@/(.*)': '<rootDir>/src/$1',
     '@data/(.*)': '<rootDir>/src/data/$1',
     '@generators/(.*)': '<rootDir>/src/generators/$1',
     '@libs/(.*)': '<rootDir>/src/libs/$1',
-    '@types/(.*)': '<rootDir>/src/types/$1',
+    '_types/(.*)': '<rootDir>/src/types/$1',
     '@utils/(.*)': '<rootDir>/src/utils/$1',
     'tests/(.*)': '<rootDir>/tests/$1',
   },
