@@ -33,9 +33,7 @@ const handleTab = (target: HTMLButtonElement, value: string) => {
   currentTab?.classList.remove('active')
   // Add 'active' class to the clicked tab
   target.classList.add('active')
-  if (isTab(value)) {
-    provideConfig(value)
-  }
+  isTab(value) && provideConfig(value)
 }
 const handleOptions = (value: string) => {
   if (isOption(value)) {
@@ -55,7 +53,9 @@ const handleOptions = (value: string) => {
 const reloadEditor = () => {
   const currentTab = getActivatedTab()
   const value = currentTab?.value
-  value && isTab(value) && provideConfig(value)
+  if (value && isTab(value)) {
+    provideConfig(value)
+  }
 }
 const getActivatedTab = () => {
   const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
@@ -76,9 +76,9 @@ const radioBtns = [...syntax, ...jsLib]
 
 // Use handleEvent as an event listeners
 const tabElems = document.querySelector<HTMLDivElement>('#tabs-wrapper')
-tabElems && tabElems.addEventListener('click', handleEvent, { passive: true })
+tabElems?.addEventListener('click', handleEvent, { passive: true })
 const form = document.querySelector<HTMLFormElement>('#options')
-form && form.addEventListener('click', handleEvent, { passive: true })
+form?.addEventListener('click', handleEvent, { passive: true })
 
 // Show code and commands to the code windows
 const provideConfig = (tab: Tab) => {
@@ -104,12 +104,7 @@ const switchTab = (tab: Tab) => {
 
 // Copy code to clipboard
 const copyBtn = document.querySelector<HTMLButtonElement>('#btn-copy')
-copyBtn &&
-  copyBtn.addEventListener('click', () => {
-    if (codeElem) {
-      void copyToClipboard(codeElem.textContent ?? '')
-    }
-  })
+copyBtn?.addEventListener('click', () => void copyToClipboard(codeElem?.textContent ?? ''))
 
 // Init content
 const initContents = () => {
@@ -126,10 +121,8 @@ const initContents = () => {
 window.onload = initContents
 
 // Reusable functions
-const showReadme = () => {
-  if (readmeElem) {
-    readmeElem.click()
-  }
+export const showReadme = () => {
+  readmeElem?.click()
   provideConfig('readme')
 }
 const readmeElem = document.querySelector<HTMLButtonElement>('#readme-tab')
