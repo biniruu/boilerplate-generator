@@ -113,7 +113,6 @@ copyBtn &&
 
 // Init content
 const initContents = () => {
-  // Make sure that currently checked options in 'config' variable as true
   const syntax = document.querySelector<HTMLInputElement>('input[name=syntax]:checked')?.value
   const jsLib = document.querySelector<HTMLInputElement>('input[name=js-lib]:checked')?.value
   if (syntax && isOption(syntax)) {
