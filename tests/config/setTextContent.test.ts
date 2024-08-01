@@ -4,7 +4,7 @@ import type { SelectOptions } from '_types'
 export const options = objOptions
 
 interface Params {
-  generateConfig?: (param: SelectOptions) => string
+  generateConfig?: ((param: SelectOptions) => string) | (() => string)
   content?: string
 }
 
