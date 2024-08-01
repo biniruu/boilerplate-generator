@@ -1,10 +1,11 @@
 import getJestConfig from '@generators/config/jest/jest'
+import getJestSetup from '@generators/config/jest/jestSetup'
 
 import { elemCode, options, setTextContent } from '../setTextContent.test'
 
 describe('For jest.config.ts', () => {
   it('should return the configuration that has no selected options', () => {
-    setTextContent(getJestConfig)
+    setTextContent({ generateConfig: getJestConfig })
 
     expect(elemCode?.textContent).toMatchSnapshot()
   })
@@ -57,4 +58,10 @@ describe('For jest.config.ts', () => {
 
     expect(elemCode?.textContent).toMatchSnapshot()
   })
+})
+
+test('should return the jest.setup.ts', () => {
+  setTextContent({ content: getJestSetup() })
+
+  expect(elemCode?.textContent).toMatchSnapshot()
 })

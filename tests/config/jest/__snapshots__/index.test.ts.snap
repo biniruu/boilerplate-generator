@@ -318,3 +318,5 @@ module.exports = {
   verbose: true
 }"
 `;
+
+exports[`should return the jest.setup.ts 1`] = `"import '@testing-library/jest-dom'"`;
