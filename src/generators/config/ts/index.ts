@@ -20,6 +20,12 @@ const generateTypescriptConfigs = (configOptions: SelectOptions) => {
   const tsDefault = tsDefaultConfig
   const tsTest = getTsTest(configOptions)
 
+  // These will become individual files:
+  // tsBuild - tsconfig.build.json
+  // tsConfig - tsconfig.json
+  // tsDefault - tsconfig.default.json
+  // tsNode - tsconfig.node.json
+  // tsTest - tsconfig.test.json
   return { tsBuild, tsConfig, tsDefault, tsNode, tsTest }
 }
 
