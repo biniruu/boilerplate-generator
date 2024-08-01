@@ -12,7 +12,7 @@ describe('For jest.config.ts', () => {
   it('should return the configuration with TypeScript', () => {
     options.typescript = true
 
-    setTextContent(getJestConfig)
+    setTextContent({ generateConfig: getJestConfig })
 
     expect(elemCode?.textContent).toMatchSnapshot()
   })
@@ -20,7 +20,7 @@ describe('For jest.config.ts', () => {
   it('should return the configuration with Lodash', () => {
     options.lodash = true
 
-    setTextContent(getJestConfig)
+    setTextContent({ generateConfig: getJestConfig })
 
     expect(elemCode?.textContent).toMatchSnapshot()
   })
@@ -28,7 +28,7 @@ describe('For jest.config.ts', () => {
   it('should return the configuration with Next.js', () => {
     options.next = true
 
-    setTextContent(getJestConfig)
+    setTextContent({ generateConfig: getJestConfig })
 
     expect(elemCode?.textContent).toMatchSnapshot()
   })
@@ -37,7 +37,7 @@ describe('For jest.config.ts', () => {
     options.next = true
     options.typescript = true
 
-    setTextContent(getJestConfig)
+    setTextContent({ generateConfig: getJestConfig })
 
     expect(elemCode?.textContent).toMatchSnapshot()
   })
@@ -45,7 +45,7 @@ describe('For jest.config.ts', () => {
   it('should return the configuration with Vue.js', () => {
     options.next = true
 
-    setTextContent(getJestConfig)
+    setTextContent({ generateConfig: getJestConfig })
 
     expect(elemCode?.textContent).toMatchSnapshot()
   })
@@ -53,7 +53,7 @@ describe('For jest.config.ts', () => {
   it('should return the configuration with Jest HTML Reporters', () => {
     options.jestHtmlReporters = true
 
-    setTextContent(getJestConfig)
+    setTextContent({ generateConfig: getJestConfig })
 
     expect(elemCode?.textContent).toMatchSnapshot()
   })

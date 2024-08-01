@@ -3,9 +3,22 @@ import type { SelectOptions } from '_types'
 
 export const options = objOptions
 
-export const setTextContent = (generateConfig: (param: SelectOptions) => string) => {
-  if (elemCode) {
+interface Params {
+  generateConfig?: (param: SelectOptions) => string
+  content?: string
+}
+
+export const setTextContent = ({ generateConfig, content }: Params) => {
+  if (!elemCode) {
+    throw new Error('elemCode is not defined')
+  }
+  if (generateConfig) {
     elemCode.textContent = generateConfig(options)
+
+    return
+  }
+  if (content) {
+    elemCode.textContent = content
   }
 }
 
