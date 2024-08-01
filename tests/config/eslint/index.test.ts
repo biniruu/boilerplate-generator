@@ -1,68 +1,51 @@
-import { objOptions } from '@data/options'
 import generateEslintConfig from '@generators/config/eslint'
 
-const setTextContent = () => {
-  if (elemCode) {
-    elemCode.textContent = generateEslintConfig(objOptions)
-  }
-}
-
-let elemCode: HTMLElement | null
-
-beforeEach(() => {
-  document.body.innerHTML = `<code id="code" />`
-  elemCode = document.querySelector<HTMLElement>('#code')
-
-  // Reset objOptions
-  for (const key in objOptions) {
-    objOptions[key as keyof typeof objOptions] = false
-  }
-})
+import { elemCode, options, setTextContent } from '../setTextContent.test'
 
 test('should generate an ESLint configuration for VanillaScript', () => {
-  setTextContent()
+  setTextContent(generateEslintConfig)
 
   expect(elemCode?.textContent).toMatchSnapshot()
 })
 
 test('should generate an ESLint configuration for TypeScript', () => {
-  objOptions.typescript = true
+  options.typescript = true
 
-  setTextContent()
+  setTextContent(generateEslintConfig)
 
   expect(elemCode?.textContent).toMatchSnapshot()
 })
 
 test('should generate an ESLint configuration for React.js with TypeScript', () => {
-  objOptions.react = true
-  objOptions.typescript = true
+  options.react = true
+  options.typescript = true
 
-  setTextContent()
+  setTextContent(generateEslintConfig)
 
   expect(elemCode?.textContent).toMatchSnapshot()
 })
 
 test('should generate an ESLint configuration for React.js without TypeScript', () => {
-  objOptions.react = true
+  options.react = true
 
-  setTextContent()
+  setTextContent(generateEslintConfig)
 
   expect(elemCode?.textContent).toMatchSnapshot()
 })
 
 test('should generate an ESLint configuration for Next.js with TypeScript', () => {
-  objOptions.next = true
-  objOptions.typescript = true
+  options.next = true
+  options.typescript = true
 
-  setTextContent()
+  setTextContent(generateEslintConfig)
 
   expect(elemCode?.textContent).toMatchSnapshot()
 })
 
 test('should generate an ESLint configuration for Next.js without TypeScript', () => {
-  objOptions.next = true
+  options.next = true
 
-  setTextContent()
+  setTextContent(generateEslintConfig)
 
   expect(elemCode?.textContent).toMatchSnapshot()
 })
