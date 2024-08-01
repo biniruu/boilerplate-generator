@@ -1,7 +1,7 @@
 import getJestConfig from '@generators/config/jest/jest'
 import getJestSetup from '@generators/config/jest/jestSetup'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from './setTextContent.test'
 
 describe('For jest.config.ts', () => {
   it('should return the configuration that has no selected options', () => {
