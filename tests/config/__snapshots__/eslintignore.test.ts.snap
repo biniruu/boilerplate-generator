@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return .eslintignore 1`] = `
+"# files
+
+# paths
+node_modules/"
+`;
+
+exports[`should return an .eslintignore configuration for Storybook 1`] = `
+"# files
+
+# paths
+node_modules/
+storybook-static/
+!.storybook"
+`;
+
+exports[`should return an .eslintignore configuration for TypeScript 1`] = `
+"# files
+**/tsconfig.json
+**/tsconfig.build.json
+**/tsconfig.default.json
+**/tsconfig.test.json
+
+# paths
+node_modules/"
+`;
+
+exports[`should return an .eslintignore configuration for Wordpress 1`] = `
+"# files
+
+# paths
+node_modules/"
+`;
+
+exports[`should return an .eslintignore configuration for all options 1`] = `
+"# files
+**/tsconfig.json
+
+# paths
+node_modules/
+storybook-static/
+!.storybook"
+`;
