@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return tsconfig.build.json 1`] = `
+"{
+  "compilerOptions": {
+    "sourceMap": false
+  },
+  "extends": "./tsconfig.default.json",
+  "include": [
+    "**/src/**/*.ts"
+  ]
+}"
+`;
+
+exports[`should return tsconfig.default.json 1`] = `
+"{
+  "compilerOptions": {
+    "target": "ESNext",
+    "experimentalDecorators": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@app/*": [
+        "app/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "allowJs": false,
+    "checkJs": false,
+    "sourceMap": true,
+    "outDir": "dist",
+    "removeComments": true,
+    "noEmit": false,
+    "noEmitOnError": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}"
+`;
+
+exports[`should return tsconfig.json 1`] = `
+"{
+  "compilerOptions": {
+    "target": "ESNext",
+    "experimentalDecorators": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@app/*": [
+        "app/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "allowJs": false,
+    "checkJs": false,
+    "sourceMap": true,
+    "outDir": "dist",
+    "removeComments": true,
+    "noEmit": false,
+    "noEmitOnError": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}"
+`;
+
+exports[`should return tsconfig.json when React.js is selected 1`] = `
+"{
+  "compilerOptions": {},
+  "extends": "./tsconfig.default.json",
+  "include": [
+    "**/*.ts",
+    "**/src/**/*.tsx",
+    "dist/types/**/*.ts"
+  ]
+}"
+`;
+
+exports[`should return tsconfig.node.json 1`] = `
+"{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true
+  },
+  "include": [
+    "vite.config.ts"
+  ]
+}"
+`;
+
+exports[`should return tsconfig.test.json 1`] = `
+"{
+  "extends": "./tsconfig.json"
+}"
+`;
