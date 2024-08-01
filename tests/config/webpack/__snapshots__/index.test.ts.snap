@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a Webpack configuration 1`] = `
+"import path from 'path'
+  
+import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import TerserPlugin from 'terser-webpack-plugin'
+import type { Configuration as WebpackConfiguration } from 'webpack'
+import { SourceMapDevToolPlugin } from 'webpack'
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
+import WorkboxWebpackPlugin from 'workbox-webpack-plugin'
+
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration
+}
+
+const isProduction = process.env.NODE_ENV === 'production'
+const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
+
+const config: Configuration = {
+  devServer: {
+    compress: true,
+    open: true,
+    host: 'localhost',
+    port: 8000,
+    'static': {
+      directory: path.join(__dirname, 'public')
+    },
+    watchFiles: [
+      'src/**/*.js',
+      'public/*.html'
+    ]
+  },
+  entry: './src/index.js',
+  mode: isProduction ? 'production' : 'development',
+  module: {
+    rules: [
+      {
+        test: /\\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: 'asset'
+      },
+      {
+        test: /\\.css$/i,
+        use: [
+          stylesHandler,
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new HtmlMinimizerPlugin({
+        minify: HtmlMinimizerPlugin.swcMinify,
+        minimizerOptions: {},
+      }),
+      new TerserPlugin()
+    ],
+    mergeDuplicateChunks: true
+  },
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    })
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    },
+    extensions: [
+      '.jsx',
+      '.js'
+    ]
+  }
+}
+
+const result = () => {
+  if (!config.plugins) {
+    throw new Error('config.plugins is not defined.')
+  }
+  if (isProduction) {
+    config.plugins.push(new MiniCssExtractPlugin(), new WorkboxWebpackPlugin.GenerateSW())
+  }
+  if (!isProduction) {
+    config.plugins.push(new SourceMapDevToolPlugin({}))
+  }
+
+  return config
+}
+
+export default result"
+`;
+
+exports[`should return a Webpack configuration with TypeScript 1`] = `
+"import path from 'path'
+  
+import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import TerserPlugin from 'terser-webpack-plugin'
+import type { Configuration as WebpackConfiguration } from 'webpack'
+import { SourceMapDevToolPlugin } from 'webpack'
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
+import WorkboxWebpackPlugin from 'workbox-webpack-plugin'
+
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration
+}
+
+const isProduction = process.env.NODE_ENV === 'production'
+const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
+
+const config: Configuration = {
+  devServer: {
+    compress: true,
+    open: true,
+    host: 'localhost',
+    port: 8000,
+    'static': {
+      directory: path.join(__dirname, 'public')
+    },
+    watchFiles: [
+      'src/**/*.ts',
+      'public/*.html'
+    ]
+  },
+  entry: './src/index.ts',
+  mode: isProduction ? 'production' : 'development',
+  module: {
+    rules: [
+      {
+        test: /\\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: 'asset'
+      },
+      {
+        test: /\\.css$/i,
+        use: [
+          stylesHandler,
+          'css-loader'
+        ]
+      },
+      {
+        test: /\\.(ts|tsx)$/i,
+        loader: 'ts-loader',
+        exclude: [
+          '/node_modules/'
+        ]
+      }
+    ]
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new HtmlMinimizerPlugin({
+        minify: HtmlMinimizerPlugin.swcMinify,
+        minimizerOptions: {},
+      }),
+      new TerserPlugin()
+    ],
+    mergeDuplicateChunks: true
+  },
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    })
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    },
+    extensions: [
+      '.jsx',
+      '.js',
+      '.tsx',
+      '.ts'
+    ]
+  }
+}
+
+const result = () => {
+  if (!config.plugins) {
+    throw new Error('config.plugins is not defined.')
+  }
+  if (isProduction) {
+    config.plugins.push(new MiniCssExtractPlugin(), new WorkboxWebpackPlugin.GenerateSW())
+  }
+  if (!isProduction) {
+    config.plugins.push(new SourceMapDevToolPlugin({}))
+  }
+
+  return config
+}
+
+export default result"
+`;
