@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a Next.js configuration 1`] = `
+"const isProduction = process.env.NODE_ENV === 'production'
+  
+const nextConfig = {
+  compiler: {
+    styledComponents: true
+  },
+  distDir: '.next',
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com'
+      }
+    ]
+  },
+  reactStrictMode: true
+}
+
+module.exports = nextConfig"
+`;
+
+exports[`should return a Next.js with TypeScript configuration 1`] = `
+"const isProduction = process.env.NODE_ENV === 'production'
+  
+const nextConfig = {
+  compiler: {
+    styledComponents: true
+  },
+  distDir: '.next',
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com'
+      }
+    ]
+  },
+  reactStrictMode: true,
+  typescript: {
+    tsconfigPath: isProduction ? 'tsconfig.build.json' : 'tsconfig.json'
+  }
+}
+
+module.exports = nextConfig"
+`;
