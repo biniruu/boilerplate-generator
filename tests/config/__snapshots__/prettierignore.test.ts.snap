@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a .prettierignore file 1`] = `
+"node_modules/
+.gitignore"
+`;
