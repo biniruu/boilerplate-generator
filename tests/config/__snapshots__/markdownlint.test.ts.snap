@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a markdownlint file 1`] = `
+"{
+  "MD013": false,
+  "no-inline-html": {
+    "allowed_elements": [
+      "details",
+      "br",
+      "ins"
+    ]
+  }
+}"
+`;
