@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a .stylelintignore file 1`] = `
+"# files
+**/*.cjs
+**/*.config.cjs
+**/*.html
+**/*.js
+**/*.json
+**/*.lock
+**/*.svg
+**/*.md
+**/*.ico
+**/*.png
+**/*.txt
+**/*.log
+
+# paths
+node_modules/"
+`;
+
+exports[`should return a .stylelintignore file with JavaScript Libraries 1`] = `
+"# files
+**/*.cjs
+**/*.config.cjs
+**/*.html
+**/*.js
+**/*.json
+**/*.lock
+**/*.svg
+**/*.md
+**/*.ico
+**/*.png
+**/*.txt
+**/*.log
+**/*.test.js
+**/*.spec.js
+**/*.test.jsx
+**/*.spec.jsx
+
+# paths
+node_modules/"
+`;
+
+exports[`should return a .stylelintignore file with JavaScript Libraries and TypeScript 1`] = `
+"# files
+**/*.cjs
+**/*.config.cjs
+**/*.html
+**/*.js
+**/*.json
+**/*.lock
+**/*.svg
+**/*.md
+**/*.ico
+**/*.png
+**/*.txt
+**/*.log
+**/*.test.ts
+**/*.spec.ts
+**/*.test.tsx
+**/*.test.tsx
+**/*.ts
+**/*.config.ts
+
+# paths
+node_modules/"
+`;
+
+exports[`should return a .stylelintignore file with Jest 1`] = `
+"# files
+**/*.cjs
+**/*.config.cjs
+**/*.html
+**/*.js
+**/*.json
+**/*.lock
+**/*.svg
+**/*.md
+**/*.ico
+**/*.png
+**/*.txt
+**/*.log
+**/*.test.js
+**/*.spec.js
+
+# paths
+node_modules/"
+`;
+
+exports[`should return a .stylelintignore file with Jest and TypeScript 1`] = `
+"# files
+**/*.cjs
+**/*.config.cjs
+**/*.html
+**/*.js
+**/*.json
+**/*.lock
+**/*.svg
+**/*.md
+**/*.ico
+**/*.png
+**/*.txt
+**/*.log
+**/*.test.ts
+**/*.spec.ts
+**/*.ts
+**/*.config.ts
+
+# paths
+node_modules/"
+`;
+
+exports[`should return a .stylelintignore file with TypeScript 1`] = `
+"# files
+**/*.cjs
+**/*.config.cjs
+**/*.html
+**/*.js
+**/*.json
+**/*.lock
+**/*.svg
+**/*.md
+**/*.ico
+**/*.png
+**/*.txt
+**/*.log
+**/*.ts
+**/*.config.ts
+
+# paths
+node_modules/"
+`;
+
+exports[`should return a .stylelintignore file with Wordpress 1`] = `
+"# files
+**/*.cjs
+**/*.config.cjs
+**/*.html
+**/*.js
+**/*.json
+**/*.lock
+**/*.svg
+**/*.md
+**/*.ico
+**/*.png
+**/*.txt
+**/*.log
+**/*.php
+
+# paths
+node_modules/"
+`;
