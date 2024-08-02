@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a typeGuards.ts file 1`] = `
+"const isHtmlInputElement = (element: unknown): element is HTMLInputElement => element instanceof HTMLInputElement
+const isHtmlButtonElement = (element: unknown): element is HTMLButtonElement => element instanceof HTMLButtonElement
+
+export { isHtmlButtonElement, isHtmlInputElement }"
+`;
