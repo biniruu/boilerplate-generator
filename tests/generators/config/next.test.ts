@@ -1,6 +1,6 @@
 import generateNextConfig from '@generators/config/next'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
 test('should return a Next.js configuration', () => {
   setTextContent({ content: generateNextConfig(options) })

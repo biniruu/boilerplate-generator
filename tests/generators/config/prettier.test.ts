@@ -1,6 +1,6 @@
 import generatePrettierConfig from '@generators/config/prettier'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
 test('should return a configuration for Prettier', () => {
   setTextContent({ content: generatePrettierConfig(options) })

@@ -1,6 +1,6 @@
 import generateStylelintConfig from '@generators/config/stylelint'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
 test('should return a stylelint configuration', () => {
   setTextContent({ generateConfig: generateStylelintConfig })

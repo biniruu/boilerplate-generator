@@ -1,6 +1,6 @@
 import generateNodemonConfig from '@generators/config/nodemon'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
 test('should return a nodemon configuration', () => {
   setTextContent({ content: generateNodemonConfig(options) })

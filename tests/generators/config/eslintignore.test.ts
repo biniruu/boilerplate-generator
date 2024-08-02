@@ -1,6 +1,6 @@
 import generateEslintIgnoreConfig from '@generators/config/eslintIgnore'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
 test('should return .eslintignore', () => {
   setTextContent({ content: generateEslintIgnoreConfig(options) })

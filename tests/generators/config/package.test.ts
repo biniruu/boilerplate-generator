@@ -1,6 +1,6 @@
 import generatePackageConfig from '@generators/config/package'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
 test('should return a configuration for package.json', () => {
   setTextContent({ content: generatePackageConfig(options) })

@@ -4,7 +4,7 @@ import getTsDefault from '@generators/config/ts/tsDefault'
 import getTsNode from '@generators/config/ts/tsNode'
 import getTsTest from '@generators/config/ts/tsTest'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
 test('should return tsconfig.build.json', () => {
   setTextContent({ generateConfig: getTsBuild })
