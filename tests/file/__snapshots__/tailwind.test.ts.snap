@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a tailwind.config.ts 1`] = `
+"@tailwind base;
+@tailwind components;
+@tailwind utilities;"
+`;
