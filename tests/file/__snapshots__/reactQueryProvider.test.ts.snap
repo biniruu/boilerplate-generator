@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a reactQueryProvider.tsx file 1`] = `
+"import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { PropsWithChildren, useState } from 'react'
+
+function ReactQueryProvider({ children }: PropsWithChildren) {
+  const [client] = useState(new QueryClient())
+
+  return (
+    <QueryClientProvider client={client}>
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  )
+}
+
+export default ReactQueryProvider"
+`;
+
+exports[`should return a reactQueryProvider.tsx file including Next.js 1`] = `
+"'use client'
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { PropsWithChildren, useState } from 'react'
+
+function ReactQueryProvider({ children }: PropsWithChildren) {
+  const [client] = useState(new QueryClient())
+
+  return (
+    <QueryClientProvider client={client}>
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  )
+}
+
+export default ReactQueryProvider"
+`;
