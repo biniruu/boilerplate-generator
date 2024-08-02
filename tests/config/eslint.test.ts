@@ -1,6 +1,6 @@
 import generateEslintConfig from '@generators/config/eslint'
 
-import { elemCode, options, setTextContent } from './setTextContent.test'
+import { elemCode, options, setTextContent } from '../setTextContent.test'
 
 test('should generate an ESLint configuration for VanillaScript', () => {
   setTextContent({ generateConfig: generateEslintConfig })

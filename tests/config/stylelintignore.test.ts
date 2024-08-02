@@ -1,7 +1,7 @@
 import generateStylelintIgnoreConfig from '@generators/config/stylelintignore'
 import { setHasJsLibs } from 'tests/configOptions.test'
 
-import { elemCode, options, setTextContent } from './setTextContent.test'
+import { elemCode, options, setTextContent } from '../setTextContent.test'
 
 test('should return a .stylelintignore file', () => {
   setTextContent({ content: generateStylelintIgnoreConfig(options) })
