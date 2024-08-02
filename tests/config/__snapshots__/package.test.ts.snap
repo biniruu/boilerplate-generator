@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a configuration for package.json 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "dev:server": "nodemon ./server/index.ts",
+    "lint": "eslint . && stylelint .",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
+
+exports[`should return a configuration for package.json with Express.js 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "dev:server": "nodemon ./server/index.ts",
+    "lint": "eslint . && stylelint .",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
+
+exports[`should return a configuration for package.json with Gatsby.js 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit",
+    "dev:server": "nodemon ./server/index.ts",
+    "lint": "eslint . && stylelint .",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
+
+exports[`should return a configuration for package.json with Jest 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "dev:server": "nodemon ./server/index.ts",
+    "test": "jest",
+    "test:update": "jest -u",
+    "test:watch": "jest --watch",
+    "lint": "eslint . && stylelint .",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
+
+exports[`should return a configuration for package.json with Next.js 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . && stylelint .",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
+
+exports[`should return a configuration for package.json with Next.js, TypeScript and Storybook 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . && stylelint .",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
+
+exports[`should return a configuration for package.json with React.js 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && NODE_ENV=development vite build --mode development",
+    "build:prod": "yarn lint && tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . && stylelint .",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
+
+exports[`should return a configuration for package.json with Storybook 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "dev:server": "nodemon ./server/index.ts",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "lint": "eslint . && stylelint .",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
+
+exports[`should return a configuration for package.json with TypeScript 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "dev:server": "nodemon ./server/index.ts",
+    "dev": "nodemon",
+    "start": "yarn compile & nodemon",
+    "compile": "rm -r dist ; npx tsc --project tsconfig.build.json",
+    "lint": "eslint . && stylelint .",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
+
+exports[`should return a configuration for package.json with Webpack 1`] = `
+"{
+  "name": "my-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "this-is-my-site",
+  "license": "ISC",
+  "author": "my-name",
+  "main": "src/index.js",
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "scripts": {
+    "dev:server": "nodemon ./server/index.ts",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve",
+    "lint": "eslint . && stylelint .",
+    "update-packages": "yarn upgrade --latest && yarn sync-package-version",
+    "sync-package-version": "npx syncyarnlock -ks"
+  }
+}"
+`;
