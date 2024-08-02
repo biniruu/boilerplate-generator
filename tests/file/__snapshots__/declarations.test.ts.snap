@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a declarations.d.ts file 1`] = `
+"declare module '*.jpg' {
+  const value: string
+  export default value
+}
+
+declare module '*.module.css' {
+  const classes: { [key: string]: string }
+  export default classes
+}"
+`;
