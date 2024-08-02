@@ -1,6 +1,6 @@
 import getSwrProviderFile from '@file/swrProvider'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
 test('should return a swrProvider.tsx file', () => {
   setTextContent({ content: getSwrProviderFile(options) })

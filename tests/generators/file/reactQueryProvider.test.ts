@@ -1,6 +1,6 @@
 import getReactQueryProviderFile from '@file/reactQueryProvider'
 
-import { elemCode, options, setTextContent } from '../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
 test('should return a reactQueryProvider.tsx file', () => {
   setTextContent({ content: getReactQueryProviderFile(options) })

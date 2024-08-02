@@ -1,6 +1,6 @@
 import getPugFile from '@file/pug'
 
-import { elemCode, setTextContent } from '../setTextContent.test'
+import { elemCode, setTextContent } from '../../setTextContent.test'
 
 test('should return a home.pug file', () => {
   setTextContent({ content: getPugFile() })
