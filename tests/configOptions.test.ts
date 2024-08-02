@@ -2,11 +2,11 @@ import { objOptions } from '@data/options'
 import type { SelectOptions } from '_types'
 
 export let configOptions: SelectOptions
-export const setHasJsLibs = () => {
-  configOptions.next = true
-  configOptions.nuxt = true
-  configOptions.react = true
-  configOptions.vue = true
+
+const jsLibs = ['next', 'nuxt', 'react', 'vue']
+export const setHasJsLibs = (selectOptions?: SelectOptions) => {
+  const options = selectOptions || configOptions
+  jsLibs.forEach(item => (options[item as keyof typeof options] = true))
 }
 
 beforeEach(() => {
