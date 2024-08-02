@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a swrProvider.tsx file 1`] = `
+"import { PropsWithChildren } from 'react'
+import { SWRConfig } from 'swr'
+
+const SWRProvider = ({ children }: PropsWithChildren) => {
+  return <SWRConfig>{children}</SWRConfig>
+}
+
+export default SWRProvider"
+`;
