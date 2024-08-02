@@ -8,7 +8,7 @@ interface Config {
   htmlWhitespaceSensitivity: string
   plugins?: string[]
   printWidth: number
-  semi: boolean
+  semi?: boolean
   singleQuote: boolean
   tabWidth: number
   tailwindConfig?: string
@@ -40,7 +40,7 @@ const generatePrettierConfig = (configOptions: SelectOptions) => {
     endOfLine: 'auto',
     htmlWhitespaceSensitivity: 'ignore',
     printWidth: 120,
-    semi: false,
+    // semi: false,
     singleQuote: true,
     tabWidth: 2,
     // tailwindConfig: './tailwind.config.js',
