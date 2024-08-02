@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a configuration for PostCSS 1`] = `
+"module.exports = {
+  syntax: 'postcss-syntax',
+  plugins: {
+    'postcss-preset-env': {
+      autoprefixer: {},
+      features: {
+        'nesting-rules': false
+      }
+    },
+    cssnano: {
+      preset: 'default'
+    }
+  }
+}"
+`;
+
+exports[`should return a configuration for PostCSS with Tailwind CSS 1`] = `
+"module.exports = {
+  syntax: 'postcss-syntax',
+  plugins: {
+    '@tailwindcss/nesting': {},
+    'postcss-preset-env': {
+      autoprefixer: {},
+      features: {
+        'nesting-rules': false
+      }
+    },
+    tailwindcss: {},
+    cssnano: {
+      preset: 'default'
+    }
+  }
+}"
+`;
