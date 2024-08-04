@@ -1,6 +1,5 @@
 import configs from '@data/configs'
-import { objOptions } from '@data/options'
-import type { ConfigTab, ObjConfigTab } from '_types'
+import type { ConfigTab, ObjConfigTab, SelectOptions } from '_types'
 
 import generateBabelConfig from './babel'
 import generateEslintConfig from './eslint'
@@ -26,35 +25,35 @@ import generateViteConfig from './vite'
 import generateVolarConfig from './volar'
 import generateWebpackConfig from './webpack'
 
-const generateConfig = (tab: ConfigTab) => {
+const generateConfig = (tab: ConfigTab, options: SelectOptions) => {
   const values = [
     generateBabelConfig(),
-    generateEslintConfig(objOptions),
-    generateEslintIgnoreConfig(objOptions),
+    generateEslintConfig(options),
+    generateEslintIgnoreConfig(options),
     generateGatsbyConfig(),
-    generateGitIgnore(objOptions),
-    generateJestConfigs(objOptions).jestConfig,
-    generateJestConfigs(objOptions).jestSetup,
-    generatePrettierConfig(objOptions),
-    generatePostcssConfig(objOptions),
+    generateGitIgnore(options),
+    generateJestConfigs(options).jestConfig,
+    generateJestConfigs(options).jestSetup,
+    generatePrettierConfig(options),
+    generatePostcssConfig(options),
     generatePugConfig(),
-    generateStylelintConfig(objOptions),
+    generateStylelintConfig(options),
     generateMarkdownlintConfig(),
-    generateNextConfig(objOptions),
-    generateNodemonConfig(objOptions),
+    generateNextConfig(options),
+    generateNodemonConfig(options),
     generateNpmConfig(),
     generateNuxtConfig(),
-    generatePackageConfig(objOptions),
-    generateTailwindConfig(objOptions),
-    generateTypescriptConfigs(objOptions).tsBuild,
-    generateTypescriptConfigs(objOptions).tsDefault,
-    generateTypescriptConfigs(objOptions).tsNode,
-    generateTypescriptConfigs(objOptions).tsTest,
-    generateTypescriptConfigs(objOptions).tsConfig,
+    generatePackageConfig(options),
+    generateTailwindConfig(options),
+    generateTypescriptConfigs(options).tsBuild,
+    generateTypescriptConfigs(options).tsDefault,
+    generateTypescriptConfigs(options).tsNode,
+    generateTypescriptConfigs(options).tsTest,
+    generateTypescriptConfigs(options).tsConfig,
     generateViteConfig(),
     generateVolarConfig(),
-    generateWebpackConfig(objOptions),
-    generateStylelintIgnoreConfig(objOptions),
+    generateWebpackConfig(options),
+    generateStylelintIgnoreConfig(options),
     generatePrettierIgnoreConfig(),
   ]
 

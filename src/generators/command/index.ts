@@ -1,5 +1,5 @@
-import { objOptions } from '@data/options'
 import convertToString from '@utils/convertToString'
+import type { SelectOptions } from '_types'
 
 import getAuthenticationCommands from './authentication'
 import getBundlerCommands from './bundler'
@@ -22,21 +22,21 @@ const parseCommands = (commands: string[]) => {
   return parsedCommands
 }
 
-const generateCommand = () => {
-  const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(objOptions)
-  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(objOptions)
-  const { compilerDevDependencies } = getCompilerCommands(objOptions)
-  const { cssFrameworkDevDependencies } = getCssFrameworkCommands(objOptions)
-  const { cssInJsDependencies, cssInJsDevDependencies } = getCssInJsCommands(objOptions)
-  const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands(objOptions)
-  const { eslintDevDependencies } = getEslintCommands(objOptions)
-  const { htmlTemplateDependencies, htmlTemplateDevDependencies } = getHtmlTemplateCommands(objOptions)
-  const { prettierDevDependencies } = getPrettierCommands(objOptions)
-  const { stateManagementDependencies } = getStateManagementCommands(objOptions)
-  const { stylelintDevDependencies } = getStylelintCommands(objOptions)
-  const { testDevDependencies } = getTestCommands(objOptions)
-  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(objOptions)
-  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(objOptions)
+const generateCommand = (options: SelectOptions) => {
+  const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(options)
+  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(options)
+  const { compilerDevDependencies } = getCompilerCommands(options)
+  const { cssFrameworkDevDependencies } = getCssFrameworkCommands(options)
+  const { cssInJsDependencies, cssInJsDevDependencies } = getCssInJsCommands(options)
+  const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands(options)
+  const { eslintDevDependencies } = getEslintCommands(options)
+  const { htmlTemplateDependencies, htmlTemplateDevDependencies } = getHtmlTemplateCommands(options)
+  const { prettierDevDependencies } = getPrettierCommands(options)
+  const { stateManagementDependencies } = getStateManagementCommands(options)
+  const { stylelintDevDependencies } = getStylelintCommands(options)
+  const { testDevDependencies } = getTestCommands(options)
+  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(options)
+  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(options)
 
   const dependencies = [
     ...authenticationDependencies,

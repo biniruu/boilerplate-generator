@@ -1,4 +1,3 @@
-// TODO: Make objOptions immutable
 import { objOptions } from '@data/options'
 import generateCommand from '@generators/command'
 import generateConfig from '@generators/config'
@@ -17,6 +16,8 @@ import {
 } from '@utils/typeGuards'
 import type { Option, Tab } from '_types'
 import './style.css'
+
+const options = { ...objOptions }
 
 // Handle click inputs and tabs
 const handleEvent = (e: MouseEvent) => {
@@ -38,8 +39,8 @@ const handleTab = (target: HTMLButtonElement, value: string) => {
 }
 const handleOptions = (value: string) => {
   if (isOption(value)) {
-    // (objOptions[value] = !objOptions[value]) means that togging checkbox
-    radioBtns.includes(value) ? handleRadioBtns(value) : (objOptions[value] = !objOptions[value])
+    // (options[value] = !options[value]) means that togging checkbox
+    radioBtns.includes(value) ? handleRadioBtns(value) : (options[value] = !options[value])
     reloadEditor()
   }
   if (isDynamicTabValue(value)) {
@@ -67,9 +68,9 @@ const getActivatedTab = () => {
 const handleRadioBtns = (value: Option) => {
   // Reset inputs in 'Syntax' and 'JavaScript library' categories
   const target = syntax.includes(value) ? syntax : jsLib
-  target.forEach(item => (objOptions[item] = false))
+  target.forEach(item => (options[item] = false))
   // Select new one
-  objOptions[value] = true
+  options[value] = true
 }
 const syntax: Option[] = ['typescript', 'javascript']
 const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress']
@@ -89,16 +90,16 @@ const provideConfig = (tab: Tab) => {
 }
 const switchTab = (tab: Tab) => {
   if (isConfig(tab)) {
-    return generateConfig(tab)
+    return generateConfig(tab, options)
   }
   if (isFile(tab)) {
-    return generateFile(tab)
+    return generateFile(tab, options)
   }
   if (tab === 'terminal') {
-    return generateCommand()
+    return generateCommand(options)
   }
   if (tab === 'readme') {
-    return generateReadme(objOptions)
+    return generateReadme(options)
   }
   return ''
 }
@@ -112,10 +113,10 @@ const initContents = () => {
   const syntax = document.querySelector<HTMLInputElement>('input[name=syntax]:checked')?.value
   const jsLib = document.querySelector<HTMLInputElement>('input[name=js-lib]:checked')?.value
   if (syntax && isOption(syntax)) {
-    objOptions[syntax] = true
+    options[syntax] = true
   }
   if (jsLib && isOption(jsLib)) {
-    objOptions[jsLib] = true
+    options[jsLib] = true
   }
   showReadme()
 }
