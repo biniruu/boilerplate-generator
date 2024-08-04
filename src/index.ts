@@ -1,3 +1,4 @@
+// TODO: Make objOptions immutable
 import { objOptions } from '@data/options'
 import generateCommand from '@generators/command'
 import generateConfig from '@generators/config'
@@ -97,7 +98,7 @@ const switchTab = (tab: Tab) => {
     return generateCommand()
   }
   if (tab === 'readme') {
-    return generateReadme()
+    return generateReadme(objOptions)
   }
   return ''
 }
