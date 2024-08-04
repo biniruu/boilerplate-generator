@@ -53,7 +53,7 @@ const generateReadme = (configOptions: SelectOptions) => {
 
   const code = `# How to set a development environment
 ${command() ? `\n${number()}. Create an app using \`${command()}\`` : ''}
-${number()}. ${getGatsbyDesc() ? 'Create the Gatsby.js app and install' : 'Install'} the packages you selected
+${number()}. ${hasGatsby ? 'Create the Gatsby.js app and install' : 'Install'} the packages you selected
 ${number()}. Add the created configuration files to the environment
 ${number()}. Happy coding😎${more() ? `\n${more()}` : ''}`
 
