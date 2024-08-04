@@ -12,7 +12,6 @@ import getTailwindFile from './tailwind'
 import getTypeGuardFile from './typeGuard'
 
 const generateFile = (tab: FileTab) => {
-  // TODO: Make sure that it uses dynamic import
   const values = [
     getPugFile(),
     getLayoutFile(objOptions),
