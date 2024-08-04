@@ -27,7 +27,6 @@ import generateVolarConfig from './volar'
 import generateWebpackConfig from './webpack'
 
 const generateConfig = (tab: ConfigTab) => {
-  // TODO: Make sure that it uses dynamic import
   const values = [
     generateBabelConfig(),
     generateEslintConfig(objOptions),
