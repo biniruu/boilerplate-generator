@@ -91,28 +91,27 @@ const getTestCommands = (configOptions: SelectOptions) => {
     if (hasNuxt || hasVue) {
       testDevDependencies.push('@testing-library/vue', '@vue/vue3-jest')
     }
-    // TODO: Edit this jsdoc
     /**
      * @storybook/addon-a11y (Accessibility testing)
-     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     * {@link https://github.com/storybookjs/storybook/tree/next/code/addons/a11y#storybook-addon-a11y}
      *
      * @storybook/addon-actions (Action logger)
-     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     * {@link https://github.com/storybookjs/storybook/tree/next/code/addons/actions#storybook-addon-actions}
      *
      * @storybook/addon-essentials (Essential addons)
-     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     * {@link https://github.com/storybookjs/storybook/tree/next/code/addons/essentials#storybook-essentials}
      *
      * @storybook/addon-interactions (Interact with components)
-     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     * {@link https://github.com/storybookjs/storybook/tree/next/code/addons/interactions#storybook-addon-interactions}
      *
      * @storybook/addon-links (Link to other stories)
-     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     * {@link https://github.com/storybookjs/storybook/tree/next/code/addons/links#story-links-addon}
      *
      * @storybook/builder-webpack5 (Webpack 5)
-     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     * {@link https://github.com/storybookjs/storybook/tree/next/code/builders/builder-webpack5#builder-webpack5}
      *
      * @storybook/manager-webpack5 (Webpack 5 Storybook manager)
-     * {@link XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+     * {@link https://www.npmjs.com/package/@storybook/manager-webpack5}
      */
     if (hasStorybook && !hasReact && !hasNext) {
       testDevDependencies.push(
