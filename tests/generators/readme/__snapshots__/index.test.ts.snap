@@ -3,7 +3,7 @@
 exports[`should return a README.md file 1`] = `
 "# How to set a development environment
 
-1. Create the Gatsby.js app and install the packages you selected
+1. Install the packages you selected
 2. Add the created configuration files to the environment
 3. Happy coding😎"
 `;
@@ -47,7 +47,7 @@ exports[`should return a README.md file for Next.js project 1`] = `
 "# How to set a development environment
 
 1. Create an app using \`yarn create next-app <my-app-name>\`
-2. Create the Gatsby.js app and install the packages you selected
+2. Install the packages you selected
 3. Add the created configuration files to the environment
 4. Happy coding😎"
 `;
@@ -56,7 +56,7 @@ exports[`should return a README.md file for Next.js project with TypeScript 1`] 
 "# How to set a development environment
 
 1. Create an app using \`yarn create next-app <my-app-name> --typescript\`
-2. Create the Gatsby.js app and install the packages you selected
+2. Install the packages you selected
 3. Add the created configuration files to the environment
 4. Happy coding😎"
 `;
@@ -65,7 +65,7 @@ exports[`should return a README.md file for Nuxt.js project 1`] = `
 "# How to set a development environment
 
 1. Create an app using \`npx nuxi@latest init <project-name>\`
-2. Create the Gatsby.js app and install the packages you selected
+2. Install the packages you selected
 3. Add the created configuration files to the environment
 4. Happy coding😎
 
@@ -92,7 +92,7 @@ exports[`should return a README.md file for Nuxt.js project with Webpack 1`] = `
 "# How to set a development environment
 
 1. Create an app using \`npx nuxi@latest init <project-name>\`
-2. Create the Gatsby.js app and install the packages you selected
+2. Install the packages you selected
 3. Add the created configuration files to the environment
 4. Happy coding😎
 
@@ -127,7 +127,7 @@ exports[`should return a README.md file for React.js project 1`] = `
 "# How to set a development environment
 
 1. Create an app using \`yarn create vite <my-app-name> --template react-ts\`
-2. Create the Gatsby.js app and install the packages you selected
+2. Install the packages you selected
 3. Add the created configuration files to the environment
 4. Happy coding😎"
 `;
@@ -135,7 +135,7 @@ exports[`should return a README.md file for React.js project 1`] = `
 exports[`should return a README.md file for Webpack project 1`] = `
 "# How to set a development environment
 
-1. Create the Gatsby.js app and install the packages you selected
+1. Install the packages you selected
 2. Add the created configuration files to the environment
 3. Happy coding😎
 
