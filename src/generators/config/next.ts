@@ -3,7 +3,7 @@ import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
 
 interface Config {
-  compiler: {
+  compiler?: {
     styledComponents: boolean
   }
   distDir: string
@@ -36,12 +36,14 @@ interface Config {
  * @property {string} destination - external path you need to connect
  */
 const generateNextConfig = (configOptions: SelectOptions) => {
-  const { hasTypescript } = getCertainConditions(configOptions)
+  const { hasTypescript, hasStyledComponents } = getCertainConditions(configOptions)
 
   const config: Config = {
-    compiler: {
-      styledComponents: true,
-    },
+    ...(hasStyledComponents && {
+      compiler: {
+        styledComponents: true,
+      },
+    }),
     distDir: '.next',
     images: {
       remotePatterns: [
@@ -78,8 +80,10 @@ const generateNextConfig = (configOptions: SelectOptions) => {
     }
   }
 
-  const code = `const isProduction = process.env.NODE_ENV === 'production'
-  
+  const code = `/** @type {import('next').NextConfig} */
+
+const isProduction = process.env.NODE_ENV === 'production'
+
 const nextConfig = ${convertToString(config)}
 
 module.exports = nextConfig`
