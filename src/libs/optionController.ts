@@ -21,24 +21,32 @@
  */
 
 import { isDynamicTabValue, isOption } from '@utils/typeGuards'
-import type { Option, SelectOptions } from '_types'
+import type { DynamicTabValueList, Option, SelectOptions } from '_types'
 
 import { reloadEditor, showReadme } from './editorController'
 import { getActivatedTab } from './tabController'
 import toggleTabs from './toggleTabs'
 
-const syntax: Option[] = ['typescript', 'javascript']
-const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress']
-const radioBtns = [...syntax, ...jsLib]
+type JsLib = (typeof jsLib)[number]
 
-export const handleOptions = (value: string, options: SelectOptions) => {
+const syntax: Option[] = ['typescript', 'javascript']
+const jsLib = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress'] as const
+const radioBtns = [...syntax, ...jsLib]
+let precedentValue: JsLib
+
+export const handleOptions = (value: Option, isChecked: boolean, options: SelectOptions) => {
   if (isOption(value)) {
     // (options[value] = !options[value]) means that togging checkbox
     radioBtns.includes(value) ? handleRadioBtns(value, options) : (options[value] = !options[value])
     reloadEditor(options)
   }
+
+  if (jsLib.includes(value as JsLib)) {
+    toggleTabs(precedentValue as Extract<DynamicTabValueList, JsLib>, false)
+    precedentValue = value as JsLib
+  }
   if (isDynamicTabValue(value)) {
-    toggleTabs(value)
+    toggleTabs(value, isChecked)
   }
   // If the currently active tab within the dynamic tabs is removed, the 'README.md' tab will be displayed instead
   const elemCurrentTab = getActivatedTab()
@@ -53,4 +61,13 @@ const handleRadioBtns = (value: Option, options: SelectOptions) => {
   target.forEach(item => (options[item] = false))
   // Select new one
   options[value] = true
+}
+
+export const toggleChecked = (value: Option) => document.querySelector<HTMLInputElement>(`#${value}`)?.click()
+
+export const toggleDisabled = (value: Option) => {
+  const elem = document.querySelector<HTMLInputElement>(`#${value}`)
+  if (elem) {
+    elem.disabled = !elem.disabled
+  }
 }
