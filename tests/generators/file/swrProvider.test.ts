@@ -1,4 +1,4 @@
-import getSwrProviderFile from '@file/swrProvider'
+import getSwrProviderFile from '@generators/file/swrProvider'
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test'
 

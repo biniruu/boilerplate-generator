@@ -1,4 +1,4 @@
-import getTypeGuardFile from '@file/typeGuard'
+import getTypeGuardFile from '@generators/file/typeGuard'
 
 import { elemCode, setTextContent } from '../../setTextContent.test'
 

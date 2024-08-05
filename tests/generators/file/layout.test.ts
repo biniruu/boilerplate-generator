@@ -1,4 +1,4 @@
-import getLayoutFile from '@file/layout'
+import getLayoutFile from '@generators/file/layout'
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test'
 

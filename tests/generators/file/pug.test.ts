@@ -1,4 +1,4 @@
-import getPugFile from '@file/pug'
+import getPugFile from '@generators/file/pug'
 
 import { elemCode, setTextContent } from '../../setTextContent.test'
 

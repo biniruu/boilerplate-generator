@@ -1,4 +1,4 @@
-import getSocketFile from '@file/socket'
+import getSocketFile from '@generators/file/socket'
 
 import { elemCode, setTextContent } from '../../setTextContent.test'
 

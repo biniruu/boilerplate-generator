@@ -1,4 +1,4 @@
-import getTailwindFile from '@file/tailwind'
+import getTailwindFile from '@generators/file/tailwind'
 
 import { elemCode, setTextContent } from '../../setTextContent.test'
 

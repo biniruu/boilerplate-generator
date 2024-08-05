@@ -1,4 +1,4 @@
-import getReactQueryProviderFile from '@file/reactQueryProvider'
+import getReactQueryProviderFile from '@generators/file/reactQueryProvider'
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test'
 
