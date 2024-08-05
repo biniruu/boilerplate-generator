@@ -1,9 +1,9 @@
 import { isTab } from '@utils/typeGuards'
-import type { SelectOptions } from '_types'
+import type { SelectOptions, Tab } from '_types'
 
 import { provideConfig } from './editorController'
 
-export const handleTab = (target: HTMLButtonElement, value: string, options: SelectOptions) => {
+export const handleTab = (target: HTMLButtonElement, value: Tab, options: SelectOptions) => {
   // Remove 'active' class from the previous activated tab
   const elemCurrentTab = getActivatedTab()
   elemCurrentTab?.classList.remove('active')
