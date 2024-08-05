@@ -31,8 +31,8 @@ const handleEvent = (e: MouseEvent) => {
 }
 const handleTab = (target: HTMLButtonElement, value: string) => {
   // Remove 'active' class from the previous activated tab
-  const currentTab = getActivatedTab()
-  currentTab?.classList.remove('active')
+  const elemCurrentTab = getActivatedTab()
+  elemCurrentTab?.classList.remove('active')
   // Add 'active' class to the clicked tab
   target.classList.add('active')
   isTab(value) && provideConfig(value)
@@ -47,23 +47,23 @@ const handleOptions = (value: string) => {
     toggleTabs(value)
   }
   // If the currently active tab within the dynamic tabs is removed, the 'README.md' tab will be displayed instead
-  const currentTab = getActivatedTab()
-  if (!currentTab?.classList.contains('active')) {
+  const elemCurrentTab = getActivatedTab()
+  if (!elemCurrentTab?.classList.contains('active')) {
     showReadme()
   }
 }
 const reloadEditor = () => {
-  const currentTab = getActivatedTab()
-  const value = currentTab?.value
+  const elemCurrentTab = getActivatedTab()
+  const value = elemCurrentTab?.value
   if (value && isTab(value)) {
     provideConfig(value)
   }
 }
 const getActivatedTab = () => {
-  const tablinkElems = document.querySelectorAll<HTMLButtonElement>('.tablinks')
-  const currentTab = Array.from(tablinkElems).find(tab => tab.classList.contains('active'))
+  const elemTablinks = document.querySelectorAll<HTMLButtonElement>('.tablinks')
+  const elemCurrentTab = Array.from(elemTablinks).find(tab => tab.classList.contains('active'))
 
-  return currentTab
+  return elemCurrentTab
 }
 const handleRadioBtns = (value: Option) => {
   // Reset inputs in 'Syntax' and 'JavaScript library' categories
@@ -77,15 +77,15 @@ const jsLib: Option[] = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'w
 const radioBtns = [...syntax, ...jsLib]
 
 // Use handleEvent as an event listeners
-const tabElems = document.querySelector<HTMLDivElement>('#tabs-wrapper')
-tabElems?.addEventListener('click', handleEvent, { passive: true })
+const elemTabs = document.querySelector<HTMLDivElement>('#tabs-wrapper')
+elemTabs?.addEventListener('click', handleEvent, { passive: true })
 const form = document.querySelector<HTMLFormElement>('#options')
 form?.addEventListener('click', handleEvent, { passive: true })
 
 // Show code and commands to the code windows
 const provideConfig = (tab: Tab) => {
-  if (codeElem) {
-    codeElem.textContent = switchTab(tab)
+  if (elemCode) {
+    elemCode.textContent = switchTab(tab)
   }
 }
 const switchTab = (tab: Tab) => {
@@ -105,8 +105,8 @@ const switchTab = (tab: Tab) => {
 }
 
 // Copy code to clipboard
-const copyBtn = document.querySelector<HTMLButtonElement>('#btn-copy')
-copyBtn?.addEventListener('click', () => void copyToClipboard(codeElem?.textContent ?? ''))
+const elemCopyBtn = document.querySelector<HTMLButtonElement>('#btn-copy')
+elemCopyBtn?.addEventListener('click', () => void copyToClipboard(elemCode?.textContent ?? ''))
 
 // Init content
 const initContents = () => {
@@ -124,10 +124,10 @@ window.onload = initContents
 
 // Reusable functions
 export const showReadme = () => {
-  readmeElem?.click()
+  elemReadme?.click()
   provideConfig('readme')
 }
-const readmeElem = document.querySelector<HTMLButtonElement>('#readme-tab')
+const elemReadme = document.querySelector<HTMLButtonElement>('#readme-tab')
 
 // Reusable elements
-const codeElem = document.querySelector<HTMLElement>('#code')
+const elemCode = document.querySelector<HTMLElement>('#code')
