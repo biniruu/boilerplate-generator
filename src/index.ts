@@ -4,7 +4,9 @@ import { handleOptions } from '@libs/optionController'
 import { handleTab } from '@libs/tabController'
 import copyToClipboard from '@utils/copyToClipboard'
 import { isHtmlButtonElement, isHtmlInputElement, isOption } from '@utils/typeGuards'
+
 import './style.css'
+import { isTab } from './utils/typeGuards'
 
 const options = { ...objOptions }
 
@@ -15,13 +17,18 @@ const elemCopyBtn = document.querySelector<HTMLButtonElement>('#btn-copy')
 elemCopyBtn?.addEventListener('click', () => void copyToClipboard(elemCode?.textContent ?? ''))
 
 // Handle click inputs and tabs
-const handleEvent = (e: MouseEvent) => {
+const handleEvent = (e: MouseEvent | Event) => {
   const target = e.target
-  if (isHtmlButtonElement(target) || isHtmlInputElement(target)) {
+  if (isHtmlButtonElement(target)) {
     const value = target.value
-    // Handle inputs in the sidebar
-    isHtmlInputElement(target) && handleOptions(value, options)
-    isHtmlButtonElement(target) && handleTab(target, value, options)
+    isTab(value) && handleTab(target, value, options)
+
+    return
+  }
+  if (isHtmlInputElement(target)) {
+    const value = target.value
+    const isChecked = target.checked
+    isOption(value) && handleOptions(value, isChecked, options)
   }
 }
 
@@ -29,7 +36,7 @@ const handleEvent = (e: MouseEvent) => {
 const elemTabs = document.querySelector<HTMLDivElement>('#tabs-wrapper')
 elemTabs?.addEventListener('click', handleEvent, { passive: true })
 const form = document.querySelector<HTMLFormElement>('#options')
-form?.addEventListener('click', handleEvent, { passive: true })
+form?.addEventListener('change', handleEvent, { passive: true })
 
 // Init content
 const initContents = () => {
