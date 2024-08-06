@@ -113,6 +113,7 @@ const jestConfig: JestConfigWithTsJest = {
     '_types/(.*)': '<rootDir>/src/types/$1',
     '@utils/(.*)': '<rootDir>/src/utils/$1',
     'tests/(.*)': '<rootDir>/tests/$1',
+    'lodash-es': 'lodash',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
