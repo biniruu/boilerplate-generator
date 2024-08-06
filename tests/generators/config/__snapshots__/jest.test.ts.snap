@@ -13,6 +13,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     '@app/(.*)': './src/app/$1',
+    'tests/(.*)': '<rootDir>/tests/$1',
     '\\\\.(css|scss)$': 'identity-obj-proxy'
   },
   reporters: [
@@ -55,6 +56,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     '@app/(.*)': './src/app/$1',
+    'tests/(.*)': '<rootDir>/tests/$1',
     '\\\\.(css|scss)$': 'identity-obj-proxy'
   },
   reporters: [
@@ -98,6 +100,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     '@app/(.*)': './src/app/$1',
+    'tests/(.*)': '<rootDir>/tests/$1',
     '\\\\.(css|scss)$': 'identity-obj-proxy',
     'lodash-es': 'lodash'
   },
@@ -141,6 +144,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     '@app/(.*)': './src/app/$1',
+    'tests/(.*)': '<rootDir>/tests/$1',
     '\\\\.(css|scss)$': 'identity-obj-proxy'
   },
   reporters: [
@@ -186,6 +190,8 @@ const jestConfig: JestConfigWithTsJest = {
   ],
   moduleNameMapper: {
     '@app/(.*)': './src/app/$1',
+    'tests/(.*)': '<rootDir>/tests/$1',
+    '_types/(.*)': '<rootDir>/src/types/$1',
     '\\\\.(css|scss)$': 'identity-obj-proxy'
   },
   preset: 'ts-jest',
@@ -239,6 +245,8 @@ const jestConfig: JestConfigWithTsJest = {
   ],
   moduleNameMapper: {
     '@app/(.*)': './src/app/$1',
+    'tests/(.*)': '<rootDir>/tests/$1',
+    '_types/(.*)': '<rootDir>/src/types/$1',
     '\\\\.(css|scss)$': 'identity-obj-proxy'
   },
   preset: 'ts-jest',
@@ -289,6 +297,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     '@app/(.*)': './src/app/$1',
+    'tests/(.*)': '<rootDir>/tests/$1',
     '\\\\.(css|scss)$': 'identity-obj-proxy'
   },
   reporters: [
