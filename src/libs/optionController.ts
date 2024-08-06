@@ -39,6 +39,7 @@ export const handleOptions = (value: Option, isChecked: boolean, options: Select
     // (options[value] = !options[value]) means that togging checkbox
     radioBtns.includes(value) ? handleRadioBtns(value, options) : (options[value] = !options[value])
     reloadEditor(options)
+    operateSwitchOptions(value)
   }
 
   if (jsLib.includes(value as JsLib)) {
@@ -69,5 +70,12 @@ export const toggleDisabled = (value: Option) => {
   const elem = document.querySelector<HTMLInputElement>(`#${value}`)
   if (elem) {
     elem.disabled = !elem.disabled
+  }
+}
+
+const operateSwitchOptions = (option: Option) => {
+  if (option === 'react') {
+    toggleChecked('vite')
+    toggleDisabled('vite')
   }
 }
