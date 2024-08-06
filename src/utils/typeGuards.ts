@@ -3,8 +3,7 @@ import dynamicTabList from '@data/dynamicTabList'
 import files from '@data/files'
 import { options } from '@data/options'
 import type { Condition, ConfigTab, DynamicTabValueList, FileTab, Option, Tab } from '_types'
-
-import capitaliseFirstLetter from './capitaliseFirstLetter'
+import { upperFirst } from 'lodash-es'
 
 const tabs = [...configs, ...files, 'terminal', 'readme']
 
@@ -17,6 +16,6 @@ export const isFile = (value: string): value is FileTab => files.some(file => fi
 export const isOption = (value: string): value is Option => options.some(option => option === value)
 // It could be occurring an error 'ReferenceError: Cannot access uninitialized variable' when use 'conditions' via @data/conditions.ts instead of 'options'
 export const isCondition = (value: string): value is Condition =>
-  options.some(option => 'has'.concat(capitaliseFirstLetter(option)) === value)
+  options.some(option => 'has'.concat(upperFirst(option)) === value)
 export const isDynamicTabValue = (value: string): value is DynamicTabValueList =>
   Object.keys(dynamicTabList).some(tabValue => tabValue === value)

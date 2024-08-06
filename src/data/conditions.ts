@@ -1,11 +1,11 @@
-import capitaliseFirstLetter from '@utils/capitaliseFirstLetter'
 import { isCondition } from '@utils/typeGuards'
 import type { Condition } from '_types'
+import { upperFirst } from 'lodash-es'
 
 import { options } from './options'
 
 export const conditions = options.reduce((acc, curr) => {
-  const condition = 'has'.concat(capitaliseFirstLetter(curr))
+  const condition = 'has'.concat(upperFirst(curr))
   if (isCondition(condition)) {
     acc.push(condition)
   } else {
