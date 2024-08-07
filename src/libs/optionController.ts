@@ -24,6 +24,7 @@ import { isDynamicTabValue, isOption } from '@utils/typeGuards'
 import type { DynamicTabValueList, Option, SelectOptions } from '_types'
 
 import { reloadEditor, showReadme } from './editorController'
+import toggleOptionState from './optionState'
 import { getActivatedTab } from './tabController'
 import toggleTabs from './toggleTabs'
 
@@ -39,7 +40,7 @@ export const handleOptions = (value: Option, isChecked: boolean, options: Select
     // (options[value] = !options[value]) means that togging checkbox
     radioBtns.includes(value) ? handleRadioBtns(value, options) : (options[value] = !options[value])
     reloadEditor(options)
-    operateSwitchOptions(value)
+    toggleOptionState(value)
   }
 
   if (jsLib.includes(value as JsLib)) {
@@ -70,12 +71,5 @@ export const toggleDisabled = (value: Option) => {
   const elem = document.querySelector<HTMLInputElement>(`#${value}`)
   if (elem) {
     elem.disabled = !elem.disabled
-  }
-}
-
-const operateSwitchOptions = (option: Option) => {
-  if (option === 'react') {
-    toggleChecked('vite')
-    toggleDisabled('vite')
   }
 }
