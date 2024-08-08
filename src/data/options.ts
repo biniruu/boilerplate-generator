@@ -1,5 +1,9 @@
 import type { SelectOptions } from '_types'
 
+export const syntax = ['typescript', 'javascript'] as const
+export const jsLib = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress'] as const
+export const radioBtns = [...syntax, ...jsLib]
+
 // This variable is used to create the objOptions variable in this file, the conditions and the objConditions variables in data/conditions.ts, as well as the Option, SelectOptions, and Condition types in types/index.d.ts
 // And see utils/certainConditions.ts
 export const options = [
@@ -14,11 +18,9 @@ export const options = [
   'eslint',
   'express',
   'fileSaver',
-  'gatsby',
   'graphql',
   'husky',
   'immer',
-  'javascript',
   'javascriptStringify',
   'jest',
   'jestHtmlReporters',
@@ -29,17 +31,13 @@ export const options = [
   'lodash',
   'markdownlint',
   'mongoose',
-  'next',
   'nextAuth',
   'nodemon',
-  'nothing',
   'npm',
-  'nuxt',
   'prettier',
   'prism',
   'postcss',
   'pug',
-  'react',
   'reactHookForm',
   'reactInfiniteScroller',
   'reactJoyride',
@@ -54,12 +52,10 @@ export const options = [
   'swr',
   'tailwind',
   'three',
-  'typescript',
   'tanstackQuery',
   'vite',
-  'vue',
   'webpack',
-  'wordpress',
+  ...radioBtns,
 ] as const
 
 export const objOptions = options.reduce((acc, curr) => {
