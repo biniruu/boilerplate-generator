@@ -1,7 +1,7 @@
 import configs from '@data/configs'
 import dynamicTabList from '@data/dynamicTabList'
 import files from '@data/files'
-import { options } from '@data/options'
+import { jsLib, options } from '@data/options'
 
 // See options: /src/data/options.ts
 export type Option = (typeof options)[number]
@@ -23,3 +23,5 @@ export type ObjFileTab = Record<FileTab, string>
 
 // See dynamicTabList: /src/data/dynamicTabList.ts
 export type DynamicTabValueList = keyof typeof dynamicTabList
+
+export type JsLib = (typeof jsLib)[number]
