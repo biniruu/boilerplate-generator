@@ -1,21 +1,51 @@
-import type { Option } from '_types'
+import type { JsLib, Option } from '_types'
 
-import { toggleChecked, toggleDisabled } from './optionController'
+let precedingOption: JsLib = 'nothing'
+const toggleOptionState = (option: JsLib) => {
+  switch (option) {
+    case 'react':
+      controlReact()
+      break
 
-const setReactProject = () => {
-  toggleChecked('vite')
+    default:
+      // TODO: Ensure that the 'vite' option remains checked if it was already checked before this function is invoked
+      precedingOption === 'react' && controlVite()
+      break
+  }
+  precedingOption = option
+}
+
+const controlReact = () => {
+  const isCheckedVite = isChecked(getOptionElem('vite'))
+  !isCheckedVite && toggleChecked('vite')
   toggleDisabled('vite')
 }
-
-const setProjects = {
-  react: setReactProject,
+const controlVite = () => {
+  const isDisabledVite = isDisabled(getOptionElem('vite'))
+  isDisabledVite && toggleDisabled('vite')
+  toggleChecked('vite')
 }
 
-const isProject = (option: Option): option is keyof typeof setProjects => Object.keys(setProjects).includes(option)
+const toggleChecked = (value: Option) => getOptionElem(value)?.click()
+const toggleDisabled = (value: Option) => {
+  const elem = getOptionElem(value)
+  if (elem) {
+    elem.disabled = !elem.disabled
+  }
+}
 
-// Automatically select/deselect or enable/disable based on specific options
-const toggleOptionState = (option: Option) => {
-  isProject(option) && setProjects[option as keyof typeof setProjects]()
+const getOptionElem = (option: Option) => document.querySelector<HTMLInputElement>(`#${option}`)
+const isChecked = (element: HTMLInputElement | null) => {
+  if (element) {
+    return element.checked
+  }
+  console.error('Element not found')
+}
+const isDisabled = (element: HTMLInputElement | null) => {
+  if (element) {
+    return element.disabled
+  }
+  console.error('Element not found')
 }
 
 export default toggleOptionState
