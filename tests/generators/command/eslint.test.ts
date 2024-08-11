@@ -8,7 +8,7 @@ test('should return an empty array when all options are false', () => {
 })
 
 const dependencies = ['eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import']
-const dependenciesForJavascript = ['@babel/eslint-parser', ...dependencies]
+const dependenciesForJavascript = ['@babel/core', '@babel/eslint-parser', ...dependencies]
 test('should return dependencies for ESLint', () => {
   configOptions.eslint = true
 
