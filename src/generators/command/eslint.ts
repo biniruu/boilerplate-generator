@@ -97,7 +97,7 @@ const getEslintCommands = (configOptions: SelectOptions) => {
   if (!hasGatsby && !hasJsLibs && !hasThree && !hasWordpress) {
     // For VanillaJS
     eslintDevDependencies.push('eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import')
-    !hasTypescript && eslintDevDependencies.push('@babel/eslint-parser')
+    !hasTypescript && eslintDevDependencies.push('@babel/core', '@babel/eslint-parser')
   }
   // Gatsby.js is ony for using TypeScript
   if (hasGatsby && hasTypescript) {
