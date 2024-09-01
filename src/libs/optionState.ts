@@ -1,4 +1,5 @@
-import type { JsLib, Option } from '_types'
+import { getOptionElem } from '@utils/getElements'
+import type { JsLib } from '_types'
 
 interface State {
   precedingOption: JsLib
@@ -54,8 +55,6 @@ const controlNuxt = () => {
   ] as const
   options.forEach(option => toggleDisabled(getOptionElem(option)))
 }
-
-const getOptionElem = (option: Option) => document.querySelector<HTMLInputElement>(`#${option}`)
 
 const toggleChecked = (element: HTMLInputElement | null) => element?.click()
 const toggleDisabled = (element: HTMLInputElement | null) => {
