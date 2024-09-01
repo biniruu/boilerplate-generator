@@ -1,11 +1,11 @@
-import toggleOptionState from '@libs/optionState'
+import toggleOptionState, { setState } from '@libs/optionState'
 
-test(`should set the option 'vite' to checked and disabled when setReactProject is invoked with 'react' argument if the option is unchecked and enabled`, () => {
-  document.body.innerHTML = `
-    <div>
-      <input type="checkbox" id="vite">
-    </div>
-  `
+beforeEach(() => {
+  setState({ precedingOption: 'nothing' })
+})
+
+test(`should set the option 'vite' to checked and disabled when controlReact is invoked if the option is unchecked and enabled`, () => {
+  document.body.innerHTML = `<div><input type="checkbox" id="vite"></div>`
 
   toggleOptionState('react')
 
@@ -14,12 +14,8 @@ test(`should set the option 'vite' to checked and disabled when setReactProject 
   expect(elemViteOption && elemViteOption.disabled).toBe(true)
 })
 
-test(`should set the option 'vite' to disabled when setReactProject is invoked with the 'react' argument if the option is checked but is not disabled`, () => {
-  document.body.innerHTML = `
-    <div>
-      <input type="checkbox" id="vite" checked>
-    </div>
-  `
+test(`should set the option 'vite' to disabled when controlReact is invoked if the option is checked but is not disabled`, () => {
+  document.body.innerHTML = `<div><input type="checkbox" id="vite" checked></div>`
 
   toggleOptionState('react')
 
@@ -28,17 +24,11 @@ test(`should set the option 'vite' to disabled when setReactProject is invoked w
   expect(elemViteOption && elemViteOption.disabled).toBe(true)
 })
 
-test(`should set the option 'vite' to unchecked and enabled when setReactProject is invoked with the 'react' argument if the option is unchecked and enabled`, () => {
-  document.body.innerHTML = `
-    <div>
-      <input type="checkbox" id="vite">
-    </div>
-  `
+test(`should set the option 'vite' to unchecked and enabled when controlReact is invoked if the option is checked and disabled`, () => {
+  document.body.innerHTML = `<div><input type="checkbox" id="vite" checked disabled></div> `
+  setState({ precedingOption: 'react' })
 
-  // The 'vite' option will be checked and disabled
   toggleOptionState('react')
-  // The 'vite' option will be unchecked and enabled
-  toggleOptionState('nuxt')
 
   const elemViteOption = document.querySelector<HTMLInputElement>('#vite')
   expect(elemViteOption && elemViteOption.checked).toBe(false)
