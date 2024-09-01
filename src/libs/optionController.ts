@@ -1,25 +1,3 @@
-/**
- * <For Nuxt.js>
- *
- * "disable"
- * Immer
- * NextAuth.js
- * React hook form
- * React infinite scroller
- * React joyride
- * Recoil
- * SWR
- * Tanstack query - since not yet prepared
- * Vite
- *
- * <For React.js>
- *
- * "enable"
- * Vite
- *
- *
- */
-
 import { jsLib, radioBtns, syntax } from '@data/options'
 import { isDynamicTabValue, isOption } from '@utils/typeGuards'
 import type { DynamicTabValueList, JsLib, Option, SelectOptions } from '_types'
