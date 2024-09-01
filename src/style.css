@@ -10,13 +10,7 @@
   }
 }
 
-html,
 body {
-  height: 100%;
-}
-
-body {
-  overflow: hidden;
   padding: 1rem;
 }
 
@@ -30,13 +24,13 @@ fieldset {
 }
 
 .container {
-  height: 100%;
   margin: 0 auto;
   width: 70%;
 }
 
 .header {
   grid-column: span 2;
+  margin-bottom: 4rem;
 }
 
 .title {
@@ -59,6 +53,8 @@ fieldset {
   display: flex;
   flex: auto;
   flex-direction: column;
+  height: 30rem;
+  margin-bottom: 4rem;
 }
 
 .code {
@@ -76,17 +72,7 @@ fieldset {
 }
 
 .main {
-  column-gap: 2rem;
-  display: flex;
-  flex: auto;
-  height: 80%;
   margin-bottom: 2rem;
-}
-
-.sidebar {
-  min-width: 35%;
-  overflow: scroll;
-  width: 35%;
 }
 
 .tabs,
@@ -102,10 +88,6 @@ fieldset {
 .hide,
 .hidden {
   display: none;
-}
-
-.fixed-tabs {
-  margin-top: auto;
 }
 
 .btn-copy {

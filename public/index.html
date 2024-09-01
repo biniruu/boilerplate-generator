@@ -12,8 +12,27 @@
         <p class="desc">Build a development environment with a few clicks.</p>
       </header>
       <main class="main">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="sidebar">
+        <section class="editor-wrapper">
+          <article id="editor" class="editor">
+            <div id="tabs-wrapper" class="tabs-wrapper">
+              <template id="tab">
+                <button class="tablinks" type="button"></button>
+              </template>
+              <div class="tabs">
+                <button id="readme-tab" class="tablinks" type="button" value="readme">README.md</button>
+                <button id="gitignore-tab" class="tablinks" type="button" value="gitignore">.gitignore</button>
+                <button id="package-tab" class="tablinks" type="button" value="package">package.json</button>
+                <button id="terminal-tab" class="tablinks" type="button" value="terminal">Terminal</button>
+              </div>
+              <div id="dynamic-tabs" class="tabs"></div>
+            </div>
+            <pre class="code-wrapper">
+              <code name="code" id="code" class="code file"></code>
+            </pre>
+          </article>
+          <button type="button" id="btn-copy" class="btn-copy">Copy</button>
+        </section>
+        <section>
           <form id="options">
             <fieldset>
               <legend>Syntax</legend>
@@ -343,30 +362,7 @@
               </span>
             </fieldset>
           </form>
-        </aside>
-        <!-- // Sidebar -->
-        <!-- Editor -->
-        <section class="editor-wrapper">
-          <article id="editor" class="editor">
-            <div id="tabs-wrapper" class="tabs-wrapper">
-              <template id="tab">
-                <button class="tablinks" type="button"></button>
-              </template>
-              <div id="dynamic-tabs" class="tabs"></div>
-              <div id="fixed-tabs" class="tabs fixed-tabs">
-                <button id="readme-tab" class="tablinks" type="button" value="readme">README.md</button>
-                <button id="gitignore-tab" class="tablinks" type="button" value="gitignore">.gitignore</button>
-                <button id="package-tab" class="tablinks" type="button" value="package">package.json</button>
-                <button id="terminal-tab" class="tablinks" type="button" value="terminal">Terminal</button>
-              </div>
-            </div>
-            <pre class="code-wrapper">
-              <code name="code" id="code" class="code file"></code>
-            </pre>
-          </article>
-          <button type="button" id="btn-copy" class="btn-copy">Copy</button>
         </section>
-        <!-- // Editor -->
       </main>
       <footer class="footer">
         <a href="https://github.com/biniruu/boilerplate-generator" aria-label="visit my github repository">
