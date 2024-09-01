@@ -23,18 +23,36 @@ fieldset {
   padding: 0.5rem;
 }
 
+.active {
+  filter: invert(100%);
+}
+
+.btn-copy {
+  float: right;
+  padding: 0.75rem 1.25rem;
+
+  &::after {
+    clear: both;
+  }
+}
+
+.code {
+  display: inline-block;
+  font-size: 0.875rem;
+  overflow: scroll;
+  padding: 1rem;
+  white-space: pre-wrap;
+  width: 100%;
+}
+
+.code-wrapper {
+  display: inline-flex;
+  width: 100%;
+}
+
 .container {
   margin: 0 auto;
   width: 70%;
-}
-
-.header {
-  grid-column: span 2;
-  margin-bottom: 4rem;
-}
-
-.title {
-  margin-bottom: 0.5em;
 }
 
 .desc {
@@ -57,22 +75,36 @@ fieldset {
   margin-bottom: 4rem;
 }
 
-.code {
-  display: inline-block;
-  font-size: 0.875rem;
-  overflow: scroll;
-  padding: 1rem;
-  white-space: pre-wrap;
-  width: 100%;
+.footer {
+  display: flex;
+  justify-content: end;
 }
 
-.code-wrapper {
-  display: inline-flex;
-  width: 100%;
+.header {
+  grid-column: span 2;
+  margin-bottom: 4rem;
+}
+
+.hide,
+.hidden {
+  display: none;
+}
+
+.icon-github {
+  width: 1.875rem;
+}
+
+.input-wrapper {
+  display: inline-block;
+  margin: 0.25rem;
 }
 
 .main {
   margin-bottom: 2rem;
+}
+
+.nothing {
+  font-size: 0.75rem;
 }
 
 .tabs,
@@ -81,38 +113,6 @@ fieldset {
   flex-direction: column;
 }
 
-.active {
-  filter: invert(100%);
-}
-
-.hide,
-.hidden {
-  display: none;
-}
-
-.btn-copy {
-  float: right;
-  padding: 0.75rem 1.25rem;
-
-  &::after {
-    clear: both;
-  }
-}
-
-.input-wrapper {
-  display: inline-block;
-  margin: 0.25rem;
-}
-
-.nothing {
-  font-size: 0.75rem;
-}
-
-.footer {
-  display: flex;
-  justify-content: end;
-}
-
-.icon-github {
-  width: 1.875rem;
+.title {
+  margin-bottom: 0.5em;
 }
