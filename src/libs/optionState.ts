@@ -1,40 +1,69 @@
 import type { JsLib, Option } from '_types'
 
-let precedingOption: JsLib = 'nothing'
+interface State {
+  precedingOption: JsLib
+}
+
+let state: State = {
+  precedingOption: 'nothing',
+}
+export const setState = (newState: State) => {
+  state = { ...state, ...newState }
+}
+
 const toggleOptionState = (option: JsLib) => {
   switch (option) {
     case 'react':
       controlReact()
       break
+    case 'nuxt':
+      controlNuxt()
+      break
 
     default:
-      // TODO: Ensure that the 'vite' option remains checked if it was already checked before this function is invoked
-      precedingOption === 'react' && controlVite()
+      console.error('Option not found')
       break
   }
-  precedingOption = option
+  // TODO: Ensure that the 'vite' option remains checked if it was already checked before this function is invoked
+  state.precedingOption === 'react' && controlVite()
+  setState({ precedingOption: option })
 }
 
 const controlReact = () => {
-  const isCheckedVite = isChecked(getOptionElem('vite'))
-  !isCheckedVite && toggleChecked('vite')
-  toggleDisabled('vite')
+  const elemVite = getOptionElem('vite')
+  !isChecked(elemVite) && toggleChecked(elemVite)
+  toggleDisabled(elemVite)
 }
 const controlVite = () => {
-  const isDisabledVite = isDisabled(getOptionElem('vite'))
-  isDisabledVite && toggleDisabled('vite')
-  toggleChecked('vite')
+  const elemVite = getOptionElem('vite')
+  isDisabled(elemVite) && toggleDisabled(elemVite)
+  toggleChecked(elemVite)
 }
-
-const toggleChecked = (value: Option) => getOptionElem(value)?.click()
-const toggleDisabled = (value: Option) => {
-  const elem = getOptionElem(value)
-  if (elem) {
-    elem.disabled = !elem.disabled
-  }
+const controlNuxt = () => {
+  // TODO: Make sure that Tanstack Query will be compatible with Nuxt.js
+  const options = [
+    'immer',
+    'nextAuth',
+    'reactHookForm',
+    'reactInfiniteScroller',
+    'reactJoyride',
+    'recoil',
+    'swr',
+    'tanstackQuery',
+    'vite',
+  ] as const
+  options.forEach(option => toggleDisabled(getOptionElem(option)))
 }
 
 const getOptionElem = (option: Option) => document.querySelector<HTMLInputElement>(`#${option}`)
+
+const toggleChecked = (element: HTMLInputElement | null) => element?.click()
+const toggleDisabled = (element: HTMLInputElement | null) => {
+  if (element) {
+    element.disabled = !element.disabled
+  }
+}
+
 const isChecked = (element: HTMLInputElement | null) => {
   if (element) {
     return element.checked
