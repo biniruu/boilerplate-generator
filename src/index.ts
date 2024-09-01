@@ -3,9 +3,10 @@ import { showReadme } from '@libs/editorController'
 import { handleOptions } from '@libs/optionController'
 import { handleTab } from '@libs/tabController'
 import copyToClipboard from '@utils/copyToClipboard'
+import { getButtonElem } from '@utils/getElements'
 import { isHtmlButtonElement, isHtmlInputElement, isOption } from '@utils/typeGuards'
-
 import './style.css'
+
 import { isTab } from './utils/typeGuards'
 
 const options = { ...objOptions }
@@ -13,7 +14,7 @@ const options = { ...objOptions }
 const elemCode = document.querySelector<HTMLElement>('#code')
 
 // Copy code to clipboard
-const elemCopyBtn = document.querySelector<HTMLButtonElement>('#btn-copy')
+const elemCopyBtn = getButtonElem('btn-copy')
 elemCopyBtn?.addEventListener('click', () => void copyToClipboard(elemCode?.textContent ?? ''))
 
 // Handle click inputs and tabs

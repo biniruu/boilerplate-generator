@@ -2,6 +2,7 @@ import generateCommand from '@generators/command'
 import generateConfig from '@generators/config'
 import generateFile from '@generators/file'
 import generateReadme from '@generators/readme'
+import { getButtonElem } from '@utils/getElements'
 import { isConfig, isFile, isTab } from '@utils/typeGuards'
 import type { SelectOptions, Tab } from '_types'
 
@@ -40,6 +41,6 @@ export const provideConfig = (tab: Tab, options: SelectOptions) => {
 }
 
 export const showReadme = (options: SelectOptions) => {
-  document.querySelector<HTMLButtonElement>('#readme-tab')?.click()
+  getButtonElem('readme-tab')?.click()
   provideConfig('readme', options)
 }

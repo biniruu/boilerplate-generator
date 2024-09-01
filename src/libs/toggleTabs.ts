@@ -1,4 +1,5 @@
 import dynamicTabList from '@data/dynamicTabList'
+import { getButtonElem } from '@utils/getElements'
 import type { DynamicTabValueList } from '_types'
 
 // <Always showed>
@@ -115,7 +116,7 @@ const lints = ['eslint', 'prettier', 'stylelint']
 const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => (isChecked ? addNewTabs(tab) : removeTabs(tab))
 
 const removeTabs = (tab: DynamicTabValueList) => {
-  const element = document.querySelector<HTMLButtonElement>(`#${tab}-tab`)
+  const element = getButtonElem(`${tab}-tab`)
   element && element.remove()
   removeAdditionalTabs(tab)
 }
