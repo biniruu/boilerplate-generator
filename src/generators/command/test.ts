@@ -79,7 +79,7 @@ const getTestCommands = (configOptions: SelectOptions) => {
         '@types/react-test-renderer',
         'react-test-renderer',
       )
-      hasStorybook && testDevDependencies.push('@storybook/react', '@storybook/testing-library')
+      hasStorybook && testDevDependencies.push('@storybook/react')
     }
     /**
      * @testing-library/vue (Vue Testing Library)

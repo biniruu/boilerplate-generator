@@ -81,9 +81,5 @@ test('should return dependencies for Jest with React.js and Storybook', () => {
 
   const { testDevDependencies } = getTestCommands(configOptions)
 
-  expect(testDevDependencies).toIncludeSameMembers([
-    '@storybook/react',
-    '@storybook/testing-library',
-    ...dependenciesForReact,
-  ])
+  expect(testDevDependencies).toIncludeSameMembers(['@storybook/react', ...dependenciesForReact])
 })
