@@ -2,6 +2,7 @@ const configs = [
   'babel',
   'eslint',
   'eslint-ignore',
+  'eslint-flat-config',
   'gatsby',
   'gitignore',
   'jest',

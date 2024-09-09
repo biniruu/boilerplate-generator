@@ -25,3 +25,19 @@ export type ObjFileTab = Record<FileTab, string>
 export type DynamicTabValueList = keyof typeof dynamicTabList
 
 export type JsLib = (typeof jsLib)[number]
+
+export interface Config {
+  name: string
+  extends?: string[]
+  files?: string[]
+  ignores?: string[]
+  languageOptions?: {
+    globals?: string
+    parser?: string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    parserOptions?: Record<string, any>
+  }
+  plugins?: Record<string, string>
+  rules?: Record<string, string | Array<string | object>>
+  settings?: Record<string, string | object>
+}

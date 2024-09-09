@@ -3,6 +3,7 @@ import type { ConfigTab, ObjConfigTab, SelectOptions } from '_types'
 
 import generateBabelConfig from './babel'
 import generateEslintConfig from './eslint'
+import generateEslintFlatConfig from './eslint-flat-config'
 import generateEslintIgnoreConfig from './eslintIgnore'
 import generateGatsbyConfig from './gatsby'
 import generateGitIgnore from './gitignore'
@@ -30,6 +31,7 @@ const generateConfig = (tab: ConfigTab, options: SelectOptions) => {
     generateBabelConfig(),
     generateEslintConfig(options),
     generateEslintIgnoreConfig(options),
+    generateEslintFlatConfig(options),
     generateGatsbyConfig(),
     generateGitIgnore(options),
     generateJestConfigs(options).jestConfig,
