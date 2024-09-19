@@ -3,7 +3,7 @@ import type { SelectOptions } from '_types'
 
 const getEslintFlatConfigCommands = (configOptions: SelectOptions) => {
   const {
-    hasEslint,
+    hasEslintFlatConfig,
     hasGatsby,
     hasGraphql,
     hasJest,
@@ -81,26 +81,23 @@ const getEslintFlatConfigCommands = (configOptions: SelectOptions) => {
    * eslint-webpack-plugin
    * {@link https://github.com/webpack-contrib/eslint-webpack-plugin#eslint-webpack-plugin}
    */
-  if (!hasEslint) {
+  if (!hasEslintFlatConfig) {
     return { eslintFlatConfigDevDependencies }
   }
 
   eslintFlatConfigDevDependencies.push('@eslint/compat')
 
-  if (!hasGatsby || !hasNext) {
+  if (!(hasGatsby || hasNext)) {
     eslintFlatConfigDevDependencies.push('eslint')
-    !hasWordpress && eslintFlatConfigDevDependencies.push('eslint-plugin-import')
+  }
+  if (!(hasGatsby || hasWordpress)) {
+    eslintFlatConfigDevDependencies.push('eslint-plugin-import')
   }
   if (hasJsLibs) {
     eslintFlatConfigDevDependencies.push('eslint-plugin-jsx-a11y', 'eslint-plugin-testing-library')
   }
   if (hasNuxt) {
-    eslintFlatConfigDevDependencies.push(
-      '@nuxtjs/eslint-config-typescript',
-      'eslint-plugin-jest',
-      'eslint-plugin-nuxt',
-      'vue-eslint-parser',
-    )
+    eslintFlatConfigDevDependencies.push('@nuxtjs/eslint-config-typescript', 'eslint-plugin-nuxt', 'vue-eslint-parser')
   }
   // For React.js that build with Vite
   if (hasReact || hasNext) {

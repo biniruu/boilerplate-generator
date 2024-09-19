@@ -16,7 +16,7 @@ export const options = [
   'ejs',
   'esbuild',
   'eslint',
-  'eslint-flat-config',
+  'eslintFlatConfig',
   'express',
   'fileSaver',
   'graphql',
