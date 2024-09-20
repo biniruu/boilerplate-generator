@@ -2,6 +2,15 @@
 
 Build a recommended development environment with a few clicks.
 
+## To-do
+
+- [] Fix issues
+- [] Add tooltips to options
+- [] Implement creating and downloading files
+- [] Add highlight to code
+- [] Update design
+- [] Implement an internal terminal
+
 ## For this repository (not for users)
 
 ### How to add options
