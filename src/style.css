@@ -66,6 +66,7 @@ fieldset {
 
   .warn {
     color: rgb(180 133 88);
+    display: block;
   }
 }
 
@@ -93,6 +94,7 @@ fieldset {
 .header {
   grid-column: span 2;
   margin-bottom: 4rem;
+  text-align: center;
 }
 
 .hide,
