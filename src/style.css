@@ -108,6 +108,7 @@ fieldset {
 }
 
 .icon-github {
+  filter: invert(100%);
   width: 1.875rem;
 }
 
