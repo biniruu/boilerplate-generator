@@ -1,6 +1,12 @@
+```
+⚠️ This project is currently in progress.
+```
+
 # Boilerplate Generator
 
 Build a recommended development environment with a few clicks.
+
+[Visit the website](https://biniruu.github.io/boilerplate-generator/)
 
 ## To-do
 
@@ -8,10 +14,10 @@ Build a recommended development environment with a few clicks.
 - [] Add tooltips to options
 - [] Implement creating and downloading files
 - [] Add highlight to code
-- [] Update design
+- [] Improve UI design
 - [] Implement an internal terminal
 
-## For this repository (not for users)
+## Repository maintenance instruction
 
 ### How to add options
 
