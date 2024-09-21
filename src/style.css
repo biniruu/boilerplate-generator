@@ -155,5 +155,6 @@ fieldset {
 }
 
 .title {
-  margin-bottom: 0.5em;
+  font-weight: normal;
+  margin-bottom: 0.75em;
 }
