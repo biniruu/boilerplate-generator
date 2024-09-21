@@ -22,6 +22,10 @@ Build a recommended development environment with a few clicks.
 1. Add files to `generators/file/*.ts` if they are needed
 1. Update the option controller in `libs/optionController.ts` if it is needed
 
+### How to add commends
+
+Add dependencies and devDependencies from a new command file to `generators/command/index.ts`
+
 ### How to add tabs
 
 1. Add a tab to `index.html`
