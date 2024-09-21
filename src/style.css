@@ -99,7 +99,7 @@ fieldset {
 
 .header {
   grid-column: span 2;
-  margin-bottom: 4rem;
+  margin: 3rem 0;
   text-align: center;
 }
 
@@ -121,7 +121,7 @@ fieldset {
 .main {
   column-gap: 3rem;
   display: flex;
-  margin-bottom: 2rem;
+  margin: 3rem 0;
 }
 
 .nothing {
