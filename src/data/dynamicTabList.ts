@@ -1,6 +1,6 @@
 const dynamicTabList = {
   eslint: '.eslintrc.js',
-  'eslint-flat-config': 'eslint.config.js',
+  eslintFlatConfig: 'eslint.config.js',
   prettier: '.prettierrc.js',
   stylelint: '.stylelintrc.js',
   jest: 'jest.config.ts',

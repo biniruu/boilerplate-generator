@@ -1,8 +1,9 @@
+// The items in this value are paired in order with the items of the 'generateConfig' variable's value in '/src/generators/config/index.ts'
 const configs = [
   'babel',
   'eslint',
   'eslint-ignore',
-  'eslint-flat-config',
+  'eslintFlatConfig',
   'gatsby',
   'gitignore',
   'jest',
