@@ -135,7 +135,7 @@ const addAdditionalTabs = (tab: DynamicTabValueList) =>
 export const createTab = (tab: DynamicTabValueList) => {
   const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs')
   const fragment = document.querySelector<HTMLTemplateElement>('#tab')
-  const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablinks')
+  const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablink')
   if (instance) {
     instance.textContent = dynamicTabList[tab]
     instance.id = `${tab}-tab`

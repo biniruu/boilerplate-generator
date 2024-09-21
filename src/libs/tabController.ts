@@ -13,7 +13,7 @@ export const handleTab = (target: HTMLButtonElement, value: Tab, options: Select
 }
 
 export const getActivatedTab = () => {
-  const elemTablinks = document.querySelectorAll<HTMLButtonElement>('.tablinks')
+  const elemTablinks = document.querySelectorAll<HTMLButtonElement>('.tablink')
   const elemCurrentTab = Array.from(elemTablinks).find(tab => tab.classList.contains('active'))
 
   return elemCurrentTab

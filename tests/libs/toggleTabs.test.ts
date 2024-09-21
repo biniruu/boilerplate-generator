@@ -5,7 +5,7 @@ test('should create a tab element using a template element with given data throu
   // Insert elements into the DOM for testing
   document.body.innerHTML = `
       <template id="tab">
-        <button class="tablinks" type="button"></button>
+        <button class="tablink" type="button"></button>
       </template>
       <div id="dynamic-tabs"></div>`
 

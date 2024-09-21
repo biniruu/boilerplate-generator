@@ -15,26 +15,6 @@
         </p>
       </header>
       <main class="main">
-        <section class="editor-wrapper">
-          <article id="editor" class="editor">
-            <div id="tabs-wrapper" class="tabs-wrapper">
-              <template id="tab">
-                <button class="tablinks" type="button"></button>
-              </template>
-              <div class="tabs">
-                <button id="readme-tab" class="tablinks" type="button" value="readme">README.md</button>
-                <button id="gitignore-tab" class="tablinks" type="button" value="gitignore">.gitignore</button>
-                <button id="package-tab" class="tablinks" type="button" value="package">package.json</button>
-                <button id="terminal-tab" class="tablinks" type="button" value="terminal">Terminal</button>
-              </div>
-              <div id="dynamic-tabs" class="tabs"></div>
-            </div>
-            <pre class="code-wrapper">
-              <code name="code" id="code" class="code file"></code>
-            </pre>
-          </article>
-          <button type="button" id="btn-copy" class="btn-copy">Copy</button>
-        </section>
         <section>
           <form id="options">
             <fieldset>
@@ -375,6 +355,26 @@
               </span>
             </fieldset>
           </form>
+        </section>
+        <section class="editor-wrapper">
+          <article id="editor" class="editor">
+            <div id="tabs-wrapper" class="tabs-wrapper">
+              <template id="tab">
+                <button class="tablink" type="button"></button>
+              </template>
+              <div class="tabs">
+                <button id="readme-tab" class="tablink" type="button" value="readme">README.md</button>
+                <button id="gitignore-tab" class="tablink" type="button" value="gitignore">.gitignore</button>
+                <button id="package-tab" class="tablink" type="button" value="package">package.json</button>
+                <button id="terminal-tab" class="tablink" type="button" value="terminal">Terminal</button>
+              </div>
+              <div id="dynamic-tabs" class="tabs"></div>
+            </div>
+            <pre class="code-wrapper">
+              <code name="code" id="code" class="code file"></code>
+            </pre>
+          </article>
+          <button type="button" id="btn-copy" class="btn-copy">Copy</button>
         </section>
       </main>
       <footer class="footer">
