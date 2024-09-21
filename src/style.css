@@ -37,6 +37,11 @@ fieldset {
   padding: 0.375rem 1.75rem;
   position: absolute;
   right: 1rem;
+
+  &:hover {
+    background: rgb(117 117 117);
+    color: rgb(239 239 239);
+  }
 }
 
 .code {
@@ -112,6 +117,7 @@ fieldset {
 }
 
 .main {
+  column-gap: 3rem;
   display: flex;
   margin-bottom: 2rem;
 }
