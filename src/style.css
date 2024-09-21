@@ -13,6 +13,7 @@
 body {
   background: rgb(40 41 42);
   color: rgb(255 255 255);
+  font-family: system-ui;
   padding: 1rem;
 }
 
