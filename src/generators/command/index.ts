@@ -8,6 +8,7 @@ import getCssFrameworkCommands from './cssFramework'
 import getCssInJsCommands from './cssInJs'
 import getDataManagementCommands from './dataManagement'
 import getEslintCommands from './eslint'
+import getEslintFlatConfigCommands from './eslint-flat-config'
 import getHtmlTemplateCommands from './htmlTemplate'
 import getPrettierCommands from './prettier'
 import getStateManagementCommands from './stateManagement'
@@ -30,6 +31,7 @@ const generateCommand = (options: SelectOptions) => {
   const { cssInJsDependencies, cssInJsDevDependencies } = getCssInJsCommands(options)
   const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands(options)
   const { eslintDevDependencies } = getEslintCommands(options)
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands(options)
   const { htmlTemplateDependencies, htmlTemplateDevDependencies } = getHtmlTemplateCommands(options)
   const { prettierDevDependencies } = getPrettierCommands(options)
   const { stateManagementDependencies } = getStateManagementCommands(options)
@@ -56,6 +58,7 @@ const generateCommand = (options: SelectOptions) => {
     ...cssInJsDevDependencies,
     ...dataManagementDevDependencies,
     ...eslintDevDependencies,
+    ...eslintFlatConfigDevDependencies,
     ...htmlTemplateDevDependencies,
     ...prettierDevDependencies,
     ...stylelintDevDependencies,
