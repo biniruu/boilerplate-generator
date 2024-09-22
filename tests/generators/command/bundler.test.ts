@@ -1,7 +1,7 @@
 import getBundlerCommands from '@generators/command/bundler'
 import { configOptions } from 'tests/configOptions.test'
 
-test('should return empty arrays when all options in options are false', () => {
+test('should return empty arrays when all options are false', () => {
   const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions)
 
   expect(bundlerDependencies).toBeEmpty()
