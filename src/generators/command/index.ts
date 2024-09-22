@@ -14,6 +14,7 @@ import getPrettierCommands from './prettier'
 import getStateManagementCommands from './stateManagement'
 import getStylelintCommands from './stylelint'
 import getTestCommands from './test'
+import getTypescriptCommands from './typescript'
 import getUtilityCommands from './utility'
 import getWebFrameworkCommands from './webFramework'
 
@@ -39,6 +40,7 @@ const generateCommand = (options: SelectOptions) => {
   const { testDevDependencies } = getTestCommands(options)
   const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(options)
   const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(options)
+  const { typescriptDevDependencies } = getTypescriptCommands(options)
 
   const dependencies = [
     ...authenticationDependencies,
@@ -65,6 +67,7 @@ const generateCommand = (options: SelectOptions) => {
     ...testDevDependencies,
     ...utilityDevDependencies,
     ...webFrameworkDevDependencies,
+    ...typescriptDevDependencies,
   ]
   const hasDependencies = dependencies.length
   const hasDevDependencies = devDependencies.length
