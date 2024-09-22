@@ -69,8 +69,8 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
         bundlerDevDependencies.push('@types/webpack', 'ts-loader')
       }
       /**
-       * html-webpack-plugin
-       * {@link https://github.com/jantimon/html-webpack-plugin#html-webpack-plugin}
+       * copy-webpack-plugin
+       * {@link https://github.com/webpack-contrib/copy-webpack-plugin#copy-webpack-plugin}
        *
        * mini-css-extract-plugin
        * {@link https://github.com/webpack-contrib/mini-css-extract-plugin#mini-css-extract-plugin}
@@ -79,7 +79,7 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
        * {@link https://github.com/GoogleChrome/workbox#welcome-to-workbox}
        */
       if (!hasThree) {
-        bundlerDevDependencies.push('html-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin')
+        bundlerDevDependencies.push('copy-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin')
       }
       /**
        * sass-loader
