@@ -21,14 +21,13 @@ elemCopyBtn?.addEventListener('click', () => void copyToClipboard(elemCode?.text
 const handleEvent = (e: MouseEvent | Event) => {
   const target = e.target
   if (isHtmlButtonElement(target)) {
-    const value = target.value
+    const { value } = target
     isTab(value) && handleTab(target, value, options)
 
     return
   }
   if (isHtmlInputElement(target)) {
-    const value = target.value
-    const isChecked = target.checked
+    const { value, checked: isChecked } = target
     isOption(value) && handleOptions(value, isChecked, options)
   }
 }
