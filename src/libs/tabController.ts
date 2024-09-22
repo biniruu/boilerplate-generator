@@ -12,9 +12,10 @@ export const handleTab = (target: HTMLButtonElement, value: Tab, options: Select
   isTab(value) && provideConfig(value, options)
 }
 
+export const getCurrentTablinkElems = () => document.querySelectorAll<HTMLButtonElement>('.tablink')
+
 export const getActivatedTab = () => {
-  const elemTablinks = document.querySelectorAll<HTMLButtonElement>('.tablink')
-  const elemCurrentTab = Array.from(elemTablinks).find(tab => tab.classList.contains('active'))
+  const elemCurrentTab = Array.from(getCurrentTablinkElems()).find(tab => tab.classList.contains('active'))
 
   return elemCurrentTab
 }

@@ -2,6 +2,8 @@ import dynamicTabList from '@data/dynamicTabList'
 import { getButtonElem } from '@utils/getElements'
 import type { DynamicTabValueList } from '_types'
 
+import { getCurrentTablinkElems } from './tabController'
+
 // <Always showed>
 //
 // .gitignore
@@ -135,6 +137,9 @@ const addAdditionalTabs = (tab: DynamicTabValueList) =>
 const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs')
 const fragment = document.querySelector<HTMLTemplateElement>('#tab')
 export const createTab = (tab: DynamicTabValueList) => {
+  if (hasSameTabElem(tab)) {
+    return
+  }
   const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablink')
   if (instance) {
     instance.textContent = dynamicTabList[tab]
@@ -143,5 +148,8 @@ export const createTab = (tab: DynamicTabValueList) => {
     dynamicTabsElem?.appendChild(instance)
   }
 }
+
+const hasSameTabElem = (tab: DynamicTabValueList) =>
+  Array.from(getCurrentTablinkElems()).some(elem => elem.value === tab)
 
 export default toggleTabs
