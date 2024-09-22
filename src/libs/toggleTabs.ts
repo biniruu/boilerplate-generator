@@ -132,9 +132,9 @@ const addNewTabs = (tab: DynamicTabValueList) => {
 const addAdditionalTabs = (tab: DynamicTabValueList) =>
   lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList)
 
+const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs')
+const fragment = document.querySelector<HTMLTemplateElement>('#tab')
 export const createTab = (tab: DynamicTabValueList) => {
-  const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs')
-  const fragment = document.querySelector<HTMLTemplateElement>('#tab')
   const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablink')
   if (instance) {
     instance.textContent = dynamicTabList[tab]
