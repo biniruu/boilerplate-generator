@@ -18,25 +18,11 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
       host: 'localhost',
       port: 8000,
       static: {
-        /**
-         * @example
-         *
-         * ```js
-         * directory: path.join(__dirname, 'public'),
-         * ```
-         */
         directory: 'replace directory',
       },
       watchFiles: [`src/**/*.${extension}`, 'public/*.html'],
     },
     entry: `./src/index.${extension}`,
-    /**
-     * @example
-     *
-     * ```js
-     * mode: isProduction ? 'production' : 'development',
-     * ```
-     */
     mode: 'replace mode',
     module: {
       rules,
@@ -46,56 +32,20 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
       /**
        * [terser-webpack-plugin]{@link https://github.com/webpack-contrib/terser-webpack-plugin?tab=readme-ov-file#terser-webpack-plugin}
        * @desc minify JavaScript code
-       *
-       * @example
-       *
-       * ```js
-       * minimizer: [
-       *  new HtmlMinimizerPlugin({
-       *    minify: HtmlMinimizerPlugin.swcMinify,
-       *    minimizerOptions: {},
-       *  }),
-       *  new TerserPlugin(),
-       *],
-       * ```
        */
       minimizer: ['replace HtmlMinimizerPlugin', 'replace TerserPlugin'],
       mergeDuplicateChunks: true,
     },
     output: {
       filename: 'index.js',
-      /**
-       * @example
-       *
-       * ```js
-       * path: path.resolve(__dirname, 'dist'),
-       * ```
-       */
       path: 'replace output path',
     },
     /**
      * [plugins]{@link https://webpack.js.org/configuration/plugins}
-     *
-     * @example
-     *
-     * ```js
-     * plugins: [
-     *   new HtmlWebpackPlugin({
-     *     template: './public/index.html',
-     *   }),
-     * ],
-     * ```
      */
     plugins: ['replace CopyWebpackPlugin'],
     resolve: {
       alias: {
-        /**
-         * @example
-         *
-         * ```js
-         * '@': path.resolve(__dirname, 'src'),
-         * ```
-         */
         '@': 'replace alias src',
       },
       extensions: ['.jsx', '.js', ...tsExtensions],
