@@ -5,6 +5,8 @@
 
 import path from 'path'
 
+// eslint-disable-next-line import/default
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
@@ -55,7 +57,7 @@ const config: Configuration = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: 'asset',
+        type: 'asset/resource',
       },
     ],
   },
@@ -80,6 +82,17 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'public'),
+          to: path.resolve(__dirname, 'dist'),
+          globOptions: {
+            ignore: ['**/index.html'],
+          },
+        },
+      ],
     }),
   ],
   resolve: {
