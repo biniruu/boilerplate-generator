@@ -8,7 +8,6 @@ import path from 'path'
 // eslint-disable-next-line import/default
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 import type { Configuration as WebpackConfiguration } from 'webpack'
@@ -42,6 +41,10 @@ const config: Configuration = {
    */
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        type: 'asset/resource',
+      },
       {
         test: /\.(ts|tsx)$/i,
         loader: 'ts-loader',
@@ -80,17 +83,14 @@ const config: Configuration = {
    * [plugins]{@link https://webpack.js.org/configuration/plugins}
    */
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, 'public'),
           to: path.resolve(__dirname, 'dist'),
-          globOptions: {
-            ignore: ['**/index.html'],
-          },
+          // globOptions: {
+          //   ignore: ['**/index.html'],
+          // },
         },
       ],
     }),
