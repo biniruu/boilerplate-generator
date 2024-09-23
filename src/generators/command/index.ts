@@ -1,3 +1,4 @@
+import getCertainConditions from '@utils/certainConditions'
 import convertToString from '@utils/convertToString'
 import type { SelectOptions } from '_types'
 
@@ -77,10 +78,32 @@ const generateCommand = (options: SelectOptions) => {
   
 yarn add -D ${convertToString(devDependencies, parseCommands)}`
   }
+  if (hasDependencies) {
+    return `yarn add ${convertToString(dependencies, parseCommands)}`
+  }
   if (hasDevDependencies) {
     return `yarn add -D ${convertToString(devDependencies, parseCommands)}`
   }
-  return ''
+
+  const {
+    hasGatsby,
+    hasWordpress,
+    hasTanstackQuery,
+    hasNextAuth,
+    hasJoi,
+    hasReactHookForm,
+    hasDotenv,
+    hasJsZip,
+    hasNpm,
+  } = getCertainConditions(options)
+  if (hasGatsby || hasWordpress) {
+    return `No commands available. Please see 'Getting Started' for more information.`
+  }
+  // TODO: Make these packages selectable
+  if (hasTanstackQuery || hasNextAuth || hasJoi || hasReactHookForm || hasDotenv || hasJsZip || hasNpm) {
+    return `No commands available. Please try selecting one of the JavaScript Libraries or other options.`
+  }
+  return 'No commands available'
 }
 
 export default generateCommand
