@@ -43,7 +43,7 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
     /**
      * [plugins]{@link https://webpack.js.org/configuration/plugins}
      */
-    plugins: ['replace CopyWebpackPlugin'],
+    plugins: ['replace plugins'],
     resolve: {
       alias: {
         '@': 'replace alias src',
@@ -56,6 +56,7 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
   
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 import type { Configuration as WebpackConfiguration } from 'webpack'
@@ -102,12 +103,18 @@ export default result`;
     .replace(`'replace TerserPlugin'`, `new TerserPlugin()`)
     .replace(`'replace output path'`, `path.resolve(__dirname, 'dist')`)
     .replace(
-      `'replace CopyWebpackPlugin'`,
-      `new CopyWebpackPlugin({
+      `'replace plugins'`,
+      `new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+    new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, 'public'),
           to: path.resolve(__dirname, 'dist'),
+          globOptions: {
+            ignore: ['**/index.html'],
+          },
         },
       ],
     }),`,

@@ -16,7 +16,7 @@ const config = {
     parser: 'replace tslintParser',
     parserOptions: {
       projectService: true, // It will automatically detect the tsconfig.json file like the 'project' option, which is true, but it doesn't treat the 'allowJs' option in tsconfig.json in the same way (https://typescript-eslint.io/packages/parser/#projectservice)
-      tsconfigRootDir: import.meta.dirname, // project에서 제공한 tsconfig의 상대 경로에 대한 루트 디렉토리 제공
+      tsconfigRootDir: 'replace import.meta.dirname', // project에서 제공한 tsconfig의 상대 경로에 대한 루트 디렉토리 제공
     },
   },
   plugins: {
@@ -85,4 +85,5 @@ const config = {
 export const typescriptConfig = convertToString(config)
   ?.replace(`'replace recommendedTypeChecked'`, `...tslintConfigs.recommendedTypeChecked`)
   .replace(`'replace tslintParser'`, `tslintParser`)
-  .replace(`'replace tslintPlugin'`, `tslintPlugin`);
+  .replace(`'replace tslintPlugin'`, `tslintPlugin`)
+  .replace(`'replace import.meta.dirname'`, `import.meta.dirname`);
