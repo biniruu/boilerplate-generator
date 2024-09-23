@@ -112,9 +112,7 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
   if (hasTanstackQuery) {
     dataManagementDependencies.push('@tanstack/query-core');
     dataManagementDevDependencies.push('@tanstack/react-query-devtools');
-    if (hasReact || hasNext) {
-      dataManagementDependencies.push('@tanstack/react-query');
-    }
+    (hasReact || hasNext) && dataManagementDependencies.push('@tanstack/react-query');
   }
 
   return {

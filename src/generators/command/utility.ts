@@ -81,9 +81,7 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
    */
   if (hasImmer) {
     utilityDependencies.push('immer');
-    if (hasReact || hasNext) {
-      utilityDependencies.push('use-immer');
-    }
+    (hasReact || hasNext) && utilityDependencies.push('use-immer');
   }
   /**
    * javascript-stringify (JavaScript Stringify)
@@ -113,9 +111,7 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
   if (hasLodash) {
     utilityDependencies.push('lodash-es');
     utilityDevDependencies.push('@types/lodash-es');
-    if (!hasNext && !hasReact && !hasNuxt && !hasWebpack) {
-      utilityDependencies.push('lodash');
-    }
+    !hasNext && !hasReact && !hasNuxt && !hasWebpack && utilityDependencies.push('lodash');
   }
   /**
    * markdownlint
