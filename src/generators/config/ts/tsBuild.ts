@@ -1,12 +1,12 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToJson from '@utils/convertToJson'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToJson from '@utils/convertToJson';
+import type { SelectOptions } from '_types';
 
 const getTsBuild = (configOptions: SelectOptions) => {
-  const { hasNext, hasJsLibs } = getCertainConditions(configOptions)
+  const { hasNext, hasJsLibs } = getCertainConditions(configOptions);
 
-  const jsxInclude = hasJsLibs ? ['**/src/**/*.tsx'] : []
-  const nextInclude = hasNext ? ['next-env.d.ts', '.next/types/**/*.ts'] : []
+  const jsxInclude = hasJsLibs ? ['**/src/**/*.tsx'] : [];
+  const nextInclude = hasNext ? ['next-env.d.ts', '.next/types/**/*.ts'] : [];
 
   const config = {
     compilerOptions: {
@@ -15,11 +15,11 @@ const getTsBuild = (configOptions: SelectOptions) => {
     },
     extends: './tsconfig.default.json',
     include: ['**/src/**/*.ts', ...jsxInclude, ...nextInclude],
-  }
+  };
 
-  const result = convertToJson(config)
+  const result = convertToJson(config);
 
-  return result
-}
+  return result;
+};
 
-export default getTsBuild
+export default getTsBuild;

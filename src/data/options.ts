@@ -1,8 +1,8 @@
-import type { SelectOptions } from '_types'
+import type { SelectOptions } from '_types';
 
-export const syntax = ['typescript', 'javascript'] as const
-export const jsLib = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress'] as const
-export const radioBtns = [...syntax, ...jsLib]
+export const syntax = ['typescript', 'javascript'] as const;
+export const jsLib = ['nothing', 'gatsby', 'next', 'nuxt', 'react', 'vue', 'wordpress'] as const;
+export const radioBtns = [...syntax, ...jsLib];
 
 // This variable is used to create the objOptions variable in this file, the conditions and the objConditions variables in data/conditions.ts, as well as the Option, SelectOptions, and Condition types in types/index.d.ts
 // And see utils/certainConditions.ts
@@ -57,10 +57,10 @@ export const options = [
   'vite',
   'webpack',
   ...radioBtns,
-] as const
+] as const;
 
 export const objOptions = options.reduce((acc, curr) => {
-  acc[curr] = false
+  acc[curr] = false;
 
-  return acc
-}, {} as SelectOptions)
+  return acc;
+}, {} as SelectOptions);

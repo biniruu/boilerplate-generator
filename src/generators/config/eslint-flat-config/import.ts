@@ -1,6 +1,6 @@
-import convertToString from '@utils/convertToString'
+import convertToString from '@utils/convertToString';
 
-export const importPluginImport = `import importPlugin, { configs as importConfigs } from 'eslint-plugin-import';`
+export const importPluginImport = `import importPlugin, { configs as importConfigs } from 'eslint-plugin-import';`;
 
 // const recommendedFlatConfig = 'importPlugin.flatConfigs.recommended' // https://github.com/import-js/eslint-plugin-import#eslint-plugin-import
 const config = {
@@ -68,7 +68,7 @@ const config = {
       node: true,
     },
   },
-}
+};
 
 export const importPluginConfig = convertToString(config)
   ?.replace(
@@ -77,7 +77,7 @@ export const importPluginConfig = convertToString(config)
     flatCompat.config(importConfigs.recommended, importConfigs.react, importConfigs.typescript),
     )`,
   )
-  .replace(`'replace fixupPluginRules'`, `fixupPluginRules(importPlugin)`)
+  .replace(`'replace fixupPluginRules'`, `fixupPluginRules(importPlugin)`);
 
 // TODO: Use this instead of the export above if eslint-plugin-import supports the eslint flat config
 // const result = convertToString(config)

@@ -1,11 +1,11 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getJsRuntimeCommands = (configOptions: SelectOptions) => {
   const { hasGatsby, hasNext, hasReact, hasTypescript, hasWebpack, hasVite, hasJsLibs } =
-    getCertainConditions(configOptions)
+    getCertainConditions(configOptions);
 
-  const jsRuntimeDevDependencies: string[] = []
+  const jsRuntimeDevDependencies: string[] = [];
 
   if (hasTypescript) {
     /**
@@ -21,22 +21,22 @@ const getJsRuntimeCommands = (configOptions: SelectOptions) => {
      * {@link https://github.com/wclr/ts-node-dev#readme}
      */
     if (!hasGatsby && !hasWebpack && !hasJsLibs) {
-      jsRuntimeDevDependencies.push('@types/node', 'tsconfig-paths', 'ts-node', 'ts-node-dev')
+      jsRuntimeDevDependencies.push('@types/node', 'tsconfig-paths', 'ts-node', 'ts-node-dev');
     }
     if (hasNext) {
-      jsRuntimeDevDependencies.push('@types/node', 'ts-node')
+      jsRuntimeDevDependencies.push('@types/node', 'ts-node');
     }
     if (hasReact && hasVite) {
-      jsRuntimeDevDependencies.push('@types/node', 'ts-node', 'ts-node-dev')
+      jsRuntimeDevDependencies.push('@types/node', 'ts-node', 'ts-node-dev');
     }
     if (hasWebpack) {
-      jsRuntimeDevDependencies.push('tsconfig-paths', 'ts-node', 'ts-node-dev')
+      jsRuntimeDevDependencies.push('tsconfig-paths', 'ts-node', 'ts-node-dev');
     }
   }
 
   return {
     jsRuntimeDevDependencies,
-  }
-}
+  };
+};
 
-export default getJsRuntimeCommands
+export default getJsRuntimeCommands;

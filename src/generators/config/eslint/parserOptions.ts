@@ -8,4 +8,4 @@
 export const parserOptions = {
   project: true,
   tsconfigRootDir: 'replace tsconfigRootDir',
-}
+};

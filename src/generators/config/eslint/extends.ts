@@ -1,5 +1,5 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 /**
  * Extends
@@ -41,36 +41,36 @@ import type { SelectOptions } from '_types'
  */
 const mergeExtends = (configOptions: SelectOptions) => {
   const { hasTypescript, hasNext, hasReact, hasStorybook, hasTanstackQuery, hasTailwind } =
-    getCertainConditions(configOptions)
+    getCertainConditions(configOptions);
 
-  let result = ['eslint:recommended', 'plugin:import/recommended']
+  let result = ['eslint:recommended', 'plugin:import/recommended'];
   const react = [
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
-  ]
+  ];
 
   if (hasTypescript) {
-    result = [...result, 'plugin:import/typescript', 'plugin:@typescript-eslint/recommended-type-checked']
+    result = [...result, 'plugin:import/typescript', 'plugin:@typescript-eslint/recommended-type-checked'];
   }
   if (hasNext) {
-    result = [...result, 'next/core-web-vitals', ...react]
+    result = [...result, 'next/core-web-vitals', ...react];
   }
   if (hasReact) {
-    result = [...result, ...react]
+    result = [...result, ...react];
   }
   if (hasStorybook) {
-    result = [...result, 'plugin:storybook/recommended']
+    result = [...result, 'plugin:storybook/recommended'];
   }
   if (hasTanstackQuery) {
-    result = [...result, 'plugin:@tanstack/eslint-plugin-query/recommended']
+    result = [...result, 'plugin:@tanstack/eslint-plugin-query/recommended'];
   }
   if (hasTailwind) {
-    result = [...result, 'plugin:tailwindcss/recommended']
+    result = [...result, 'plugin:tailwindcss/recommended'];
   }
 
-  return result
-}
+  return result;
+};
 
-export default mergeExtends
+export default mergeExtends;

@@ -1,17 +1,17 @@
-import generateNodemonConfig from '@generators/config/nodemon'
+import generateNodemonConfig from '@generators/config/nodemon';
 
-import { elemCode, options, setTextContent } from '../../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
 test('should return a nodemon configuration', () => {
-  setTextContent({ content: generateNodemonConfig(options) })
+  setTextContent({ content: generateNodemonConfig(options) });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});
 
 test('should return a nodemon configuration for TypeScript', () => {
-  options.typescript = true
+  options.typescript = true;
 
-  setTextContent({ content: generateNodemonConfig(options) })
+  setTextContent({ content: generateNodemonConfig(options) });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});

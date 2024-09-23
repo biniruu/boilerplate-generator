@@ -1,9 +1,9 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToJson from '@utils/convertToJson'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToJson from '@utils/convertToJson';
+import type { SelectOptions } from '_types';
 
 const getTsTest = (configOptions: SelectOptions) => {
-  const { hasNext } = getCertainConditions(configOptions)
+  const { hasNext } = getCertainConditions(configOptions);
 
   const config = {
     ...(hasNext && {
@@ -12,10 +12,10 @@ const getTsTest = (configOptions: SelectOptions) => {
       },
     }),
     extends: './tsconfig.json',
-  }
-  const result = convertToJson(config)
+  };
+  const result = convertToJson(config);
 
-  return result
-}
+  return result;
+};
 
-export default getTsTest
+export default getTsTest;

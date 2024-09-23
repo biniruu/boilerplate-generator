@@ -1,11 +1,11 @@
-import getTestCommands from '@generators/command/test'
-import { configOptions } from 'tests/configOptions.test'
+import getTestCommands from '@generators/command/test';
+import { configOptions } from 'tests/configOptions.test';
 
 test('should return an empty value when all options are false', () => {
-  const { testDevDependencies } = getTestCommands(configOptions)
+  const { testDevDependencies } = getTestCommands(configOptions);
 
-  expect(testDevDependencies).toBeEmpty()
-})
+  expect(testDevDependencies).toBeEmpty();
+});
 
 const dependencies = [
   '@testing-library/dom',
@@ -19,35 +19,39 @@ const dependencies = [
   'jest-watch-typeahead',
   'msw',
   'ts-jest',
-]
+];
 test('should return dependencies for Jest', () => {
-  configOptions.jest = true
+  configOptions.jest = true;
 
-  const { testDevDependencies } = getTestCommands(configOptions)
+  const { testDevDependencies } = getTestCommands(configOptions);
 
-  expect(testDevDependencies).toIncludeSameMembers(dependencies)
-})
+  expect(testDevDependencies).toIncludeSameMembers(dependencies);
+});
 
 test('should return dependencies for Jest with CSS Modules', () => {
-  configOptions.jest = true
-  configOptions.postcss = true
-  configOptions.tailwind = true
+  configOptions.jest = true;
+  configOptions.postcss = true;
+  configOptions.tailwind = true;
 
-  const { testDevDependencies } = getTestCommands(configOptions)
+  const { testDevDependencies } = getTestCommands(configOptions);
 
-  expect(testDevDependencies).toIncludeSameMembers(['identity-obj-proxy', ...dependencies])
-})
+  expect(testDevDependencies).toIncludeSameMembers(['identity-obj-proxy', ...dependencies]);
+});
 
 test('should return dependencies for Jest with CSS Modules and TypeScript', () => {
-  configOptions.jest = true
-  configOptions.postcss = true
-  configOptions.tailwind = true
-  configOptions.typescript = true
+  configOptions.jest = true;
+  configOptions.postcss = true;
+  configOptions.tailwind = true;
+  configOptions.typescript = true;
 
-  const { testDevDependencies } = getTestCommands(configOptions)
+  const { testDevDependencies } = getTestCommands(configOptions);
 
-  expect(testDevDependencies).toIncludeSameMembers(['identity-obj-proxy', '@types/identity-obj-proxy', ...dependencies])
-})
+  expect(testDevDependencies).toIncludeSameMembers([
+    'identity-obj-proxy',
+    '@types/identity-obj-proxy',
+    ...dependencies,
+  ]);
+});
 
 const dependenciesForReact = [
   '@testing-library/react',
@@ -55,31 +59,31 @@ const dependenciesForReact = [
   '@types/react-test-renderer',
   'react-test-renderer',
   ...dependencies,
-]
+];
 test('should return dependencies for Jest with React.js', () => {
-  configOptions.jest = true
-  configOptions.react = true
+  configOptions.jest = true;
+  configOptions.react = true;
 
-  const { testDevDependencies } = getTestCommands(configOptions)
+  const { testDevDependencies } = getTestCommands(configOptions);
 
-  expect(testDevDependencies).toIncludeSameMembers(dependenciesForReact)
-})
+  expect(testDevDependencies).toIncludeSameMembers(dependenciesForReact);
+});
 
 test('should return dependencies for Jest with Next.js', () => {
-  configOptions.jest = true
-  configOptions.next = true
+  configOptions.jest = true;
+  configOptions.next = true;
 
-  const { testDevDependencies } = getTestCommands(configOptions)
+  const { testDevDependencies } = getTestCommands(configOptions);
 
-  expect(testDevDependencies).toIncludeSameMembers(dependenciesForReact)
-})
+  expect(testDevDependencies).toIncludeSameMembers(dependenciesForReact);
+});
 
 test('should return dependencies for Jest with React.js and Storybook', () => {
-  configOptions.jest = true
-  configOptions.react = true
-  configOptions.storybook = true
+  configOptions.jest = true;
+  configOptions.react = true;
+  configOptions.storybook = true;
 
-  const { testDevDependencies } = getTestCommands(configOptions)
+  const { testDevDependencies } = getTestCommands(configOptions);
 
-  expect(testDevDependencies).toIncludeSameMembers(['@storybook/react', ...dependenciesForReact])
-})
+  expect(testDevDependencies).toIncludeSameMembers(['@storybook/react', ...dependenciesForReact]);
+});

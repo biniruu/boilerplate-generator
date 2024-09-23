@@ -1,9 +1,9 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToJson from '@utils/convertToJson'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToJson from '@utils/convertToJson';
+import type { SelectOptions } from '_types';
 
 const generateNodemonConfig = (configOptions: SelectOptions) => {
-  const { hasTypescript } = getCertainConditions(configOptions)
+  const { hasTypescript } = getCertainConditions(configOptions);
 
   const config = {
     env: {
@@ -19,11 +19,11 @@ const generateNodemonConfig = (configOptions: SelectOptions) => {
     ignore: ['.git', '.github', '.idea', '.vscode', 'node_modules'],
     verbose: true,
     watch: ['src'],
-  }
+  };
 
-  const result = convertToJson(config)
+  const result = convertToJson(config);
 
-  return result
-}
+  return result;
+};
 
-export default generateNodemonConfig
+export default generateNodemonConfig;

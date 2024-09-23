@@ -1,8 +1,8 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const mergeRules = (configOptions: SelectOptions) => {
-  const { hasReact, hasNext, hasTailwind, hasTypescript } = getCertainConditions(configOptions)
+  const { hasReact, hasNext, hasTailwind, hasTypescript } = getCertainConditions(configOptions);
 
   const result = {
     /**
@@ -305,9 +305,9 @@ const mergeRules = (configOptions: SelectOptions) => {
        */
       'tailwindcss/classnames-order': 'off',
     }),
-  }
+  };
 
-  return result
-}
+  return result;
+};
 
-export default mergeRules
+export default mergeRules;

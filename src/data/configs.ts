@@ -29,6 +29,6 @@ const configs = [
   'webpack',
   'stylelint-ignore',
   'prettier-ignore',
-] as const
+] as const;
 
-export default configs
+export default configs;

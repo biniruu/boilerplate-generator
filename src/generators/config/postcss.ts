@@ -1,9 +1,9 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToString from '@utils/convertToString'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToString from '@utils/convertToString';
+import type { SelectOptions } from '_types';
 
 const generatePostcssConfig = (configOptions: SelectOptions) => {
-  const { hasTailwind } = getCertainConditions(configOptions)
+  const { hasTailwind } = getCertainConditions(configOptions);
 
   const config = {
     syntax: 'postcss-syntax', //  automatically switch the required PostCSS syntax by file extension/source
@@ -20,9 +20,9 @@ const generatePostcssConfig = (configOptions: SelectOptions) => {
       ...(hasTailwind && { tailwindcss: {} }), // for using tailwindcss
       cssnano: { preset: 'default' }, // invoking CSS minification in production environment
     },
-  }
+  };
 
-  return `module.exports = ${convertToString(config)}`
-}
+  return `module.exports = ${convertToString(config)}`;
+};
 
-export default generatePostcssConfig
+export default generatePostcssConfig;

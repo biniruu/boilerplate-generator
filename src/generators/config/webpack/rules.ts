@@ -1,21 +1,21 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 interface Rule {
-  test: RegExp
-  type?: string
-  loader?: string
-  exclude?: string[]
-  use?: string[]
+  test: RegExp;
+  type?: string;
+  loader?: string;
+  exclude?: string[];
+  use?: string[];
 }
 
 /**
  * [rules]{@link https://webpack.js.org/loaders}
  */
 const getRules = (configOptions: SelectOptions) => {
-  const { hasPostcss, hasScss, hasTypescript } = getCertainConditions(configOptions)
+  const { hasPostcss, hasScss, hasTypescript } = getCertainConditions(configOptions);
 
-  const postcssLoader = hasPostcss ? ['postcss-loader'] : []
+  const postcssLoader = hasPostcss ? ['postcss-loader'] : [];
   const rules: Rule[] = [
     {
       test: /\.html$/i,
@@ -29,23 +29,23 @@ const getRules = (configOptions: SelectOptions) => {
       test: /\.css$/i,
       use: ['replace stylesHandler', 'css-loader', ...postcssLoader],
     },
-  ]
+  ];
 
   if (hasScss) {
     rules.push({
       test: /\.s[ac]ss$/i,
       use: ['replace stylesHandler', 'css-loader', ...postcssLoader, 'sass-loader'],
-    })
+    });
   }
   if (hasTypescript) {
     rules.push({
       test: /\.(ts|tsx)$/i,
       loader: 'ts-loader',
       exclude: ['/node_modules/'],
-    })
+    });
   }
 
-  return rules
-}
+  return rules;
+};
 
-export default getRules
+export default getRules;

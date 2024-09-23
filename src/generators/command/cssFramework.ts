@@ -1,11 +1,11 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getCssFrameworkCommands = (configOptions: SelectOptions) => {
   const { hasGatsby, hasPostcss, hasScss, hasStyledComponents, hasTailwind, hasTypescript, hasJsLibs } =
-    getCertainConditions(configOptions)
+    getCertainConditions(configOptions);
 
-  const cssFrameworkDevDependencies: string[] = []
+  const cssFrameworkDevDependencies: string[] = [];
 
   /**
    * postcss (PostCSS)
@@ -49,7 +49,7 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
    */
   if (hasPostcss) {
     if (hasGatsby) {
-      cssFrameworkDevDependencies.push('postcss-html')
+      cssFrameworkDevDependencies.push('postcss-html');
     } else {
       cssFrameworkDevDependencies.push(
         'cssnano',
@@ -60,15 +60,15 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
         'postcss-normalize',
         'postcss-preset-env',
         'postcss-syntax',
-      )
+      );
 
-      const postcss = hasJsLibs ? 'postcss-jsx' : 'postcss'
-      cssFrameworkDevDependencies.push(postcss)
+      const postcss = hasJsLibs ? 'postcss-jsx' : 'postcss';
+      cssFrameworkDevDependencies.push(postcss);
 
-      hasScss && cssFrameworkDevDependencies.push('postcss-scss')
-      hasStyledComponents && cssFrameworkDevDependencies.push('postcss-styled-syntax')
-      hasTailwind && cssFrameworkDevDependencies.push('@tailwindcss/nesting')
-      hasTypescript && cssFrameworkDevDependencies.push('@types/postcss-flexbugs-fixes', '@types/postcss-html')
+      hasScss && cssFrameworkDevDependencies.push('postcss-scss');
+      hasStyledComponents && cssFrameworkDevDependencies.push('postcss-styled-syntax');
+      hasTailwind && cssFrameworkDevDependencies.push('@tailwindcss/nesting');
+      hasTypescript && cssFrameworkDevDependencies.push('@types/postcss-flexbugs-fixes', '@types/postcss-html');
     }
   }
   /**
@@ -76,19 +76,19 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
    * {@link https://sass-lang.com}
    */
   if (hasScss && !hasPostcss) {
-    cssFrameworkDevDependencies.push('sass')
+    cssFrameworkDevDependencies.push('sass');
   }
   /**
    * tailwindcss (Tailwind CSS)
    * {@link https://tailwindcss.com}
    */
   if (hasTailwind && !hasPostcss) {
-    cssFrameworkDevDependencies.push('tailwindcss')
+    cssFrameworkDevDependencies.push('tailwindcss');
   }
 
   return {
     cssFrameworkDevDependencies,
-  }
-}
+  };
+};
 
-export default getCssFrameworkCommands
+export default getCssFrameworkCommands;

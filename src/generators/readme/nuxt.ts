@@ -14,6 +14,6 @@ Configure postcss in \`nuxt.config.ts\` instead of \`postcss.config.js\`.
 Building the project might take a long time when using modules from the Nuxt team and community. Unfortunately, I haven't found the solution. Refer to the Nuxt.js documentation for more information:
 
 - [Modules](https://nuxt.com/modules)
-- [Exploring Nuxt Modules](https://nuxt.com/docs/guide/concepts/modules#exploring-nuxt-modules)`
+- [Exploring Nuxt Modules](https://nuxt.com/docs/guide/concepts/modules#exploring-nuxt-modules)`;
 
-export default getNuxtDesc
+export default getNuxtDesc;

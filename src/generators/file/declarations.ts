@@ -7,9 +7,9 @@ const getDeclarationsFile = () => {
 declare module '*.module.css' {
   const classes: { [key: string]: string }
   export default classes
-}`
+}`;
 
-  return file
-}
+  return file;
+};
 
-export default getDeclarationsFile
+export default getDeclarationsFile;

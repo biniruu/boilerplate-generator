@@ -1,4 +1,4 @@
-import convertToJson from '@utils/convertToJson'
+import convertToJson from '@utils/convertToJson';
 
 const getTsNode = () => {
   const config = {
@@ -11,11 +11,11 @@ const getTsNode = () => {
       strict: true,
     },
     include: ['vite.config.ts'],
-  }
+  };
 
-  const result = convertToJson(config)
+  const result = convertToJson(config);
 
-  return result
-}
+  return result;
+};
 
-export default getTsNode
+export default getTsNode;

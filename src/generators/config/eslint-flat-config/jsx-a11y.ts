@@ -1,6 +1,6 @@
-import convertToString from '@utils/convertToString'
+import convertToString from '@utils/convertToString';
 
-export const jsxA11yImport = `import jsxA11y from 'eslint-plugin-jsx-a11y';`
+export const jsxA11yImport = `import jsxA11y from 'eslint-plugin-jsx-a11y';`;
 
 const config = {
   name: 'eslint-plugin-jsx-a11y', // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y#usage---flat-config-eslintconfigjs
@@ -40,9 +40,9 @@ const config = {
       },
     ],
   },
-}
+};
 
 export const jsxA11yConfig = convertToString(config)?.replace(
   `'replace-j11y-recommended': ''`,
   `...jsxA11y.flatConfigs.recommended.rules`,
-)
+);

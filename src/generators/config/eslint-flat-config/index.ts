@@ -1,22 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import getCertainConditions from '@utils/certainConditions'
-import convertToString from '@utils/convertToString'
-import { mergeConfigs, mergeImports } from '@utils/mergeText'
-import type { Config, SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToString from '@utils/convertToString';
+import { mergeConfigs, mergeImports } from '@utils/mergeText';
+import type { Config, SelectOptions } from '_types';
 
-import { importPluginConfig, importPluginImport } from './import'
-import { jestConfig, jestImports, testingLibraryImport, testingLibraryReactConfig } from './jest'
-import { jsxA11yConfig, jsxA11yImport } from './jsx-a11y'
-import { nextConfig } from './next'
-import { reactConfig, reactImport } from './react'
-import { storybookConfig } from './storybook'
-import { tailwindConfig, tailwindImport } from './tailwind'
-import { tanstackConfig, tanstackImport } from './tanstack-query'
-import { typescriptConfig, typescriptImport } from './typescript'
+import { importPluginConfig, importPluginImport } from './import';
+import { jestConfig, jestImports, testingLibraryImport, testingLibraryReactConfig } from './jest';
+import { jsxA11yConfig, jsxA11yImport } from './jsx-a11y';
+import { nextConfig } from './next';
+import { reactConfig, reactImport } from './react';
+import { storybookConfig } from './storybook';
+import { tailwindConfig, tailwindImport } from './tailwind';
+import { tanstackConfig, tanstackImport } from './tanstack-query';
+import { typescriptConfig, typescriptImport } from './typescript';
 
 const generateEslintFlatConfig = (configOptions: SelectOptions) => {
   const { hasJest, hasNext, hasNuxt, hasReact, hasStorybook, hasTailwind, hasTanstackQuery, hasTypescript } =
-    getCertainConditions(configOptions)
+    getCertainConditions(configOptions);
 
   const config: Config = {
     name: '@eslint/js',
@@ -89,9 +89,9 @@ const generateEslintFlatConfig = (configOptions: SelectOptions) => {
         },
       ],
     },
-  }
+  };
 
-  const getNext = hasNext ? `${nextConfig},\n` : ''
+  const getNext = hasNext ? `${nextConfig},\n` : '';
 
   const imports = mergeImports([
     importPluginImport,
@@ -102,7 +102,7 @@ const generateEslintFlatConfig = (configOptions: SelectOptions) => {
     (hasReact || hasNext) && hasJest ? testingLibraryImport : '',
     hasReact || hasNext || hasNuxt ? jsxA11yImport : '',
     hasTanstackQuery ? tanstackImport : '',
-  ])
+  ]);
 
   const configs = mergeConfigs([
     importPluginConfig ? importPluginConfig : '',
@@ -114,7 +114,7 @@ const generateEslintFlatConfig = (configOptions: SelectOptions) => {
     hasStorybook && storybookConfig ? storybookConfig : '',
     (hasReact || hasNext || hasNuxt) && jsxA11yConfig ? jsxA11yConfig : '',
     hasTanstackQuery && tanstackConfig ? tanstackConfig : '',
-  ])
+  ]);
 
   /**
    * About tslintConfig() function known as config() helper
@@ -140,7 +140,7 @@ ${getNext}${`${convertToString(config)},`}${`\n${configs}`}
     : `export default [
 ${getNext}${`${convertToString(config)},`}${`\n${configs}`}
 ]`
-}`
+}`;
 
   const result = code
     .replace(`'fixupConfigRules'`, `...fixupConfigRules(flatCompat.extends('next/core-web-vitals'))`)
@@ -154,9 +154,9 @@ ${getNext}${`${convertToString(config)},`}${`\n${configs}`}
       // ...globals.serviceworker,
     }`,
     )
-    .replace(`'replace-recommended-eslint-configs-rules': ''`, `...eslint.configs.recommended.rules`)
+    .replace(`'replace-recommended-eslint-configs-rules': ''`, `...eslint.configs.recommended.rules`);
 
-  return result
-}
+  return result;
+};
 
-export default generateEslintFlatConfig
+export default generateEslintFlatConfig;

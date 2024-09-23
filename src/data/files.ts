@@ -7,6 +7,6 @@ const files = [
   'tanstack-query-file',
   'type-guards-file',
   'typescript-file',
-] as const
+] as const;
 
-export default files
+export default files;

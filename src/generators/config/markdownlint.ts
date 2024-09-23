@@ -1,4 +1,4 @@
-import convertToJson from '@utils/convertToJson'
+import convertToJson from '@utils/convertToJson';
 
 const generateMarkdownlintConfig = () => {
   const config = {
@@ -6,11 +6,11 @@ const generateMarkdownlintConfig = () => {
     'no-inline-html': {
       allowed_elements: ['details', 'br', 'ins'],
     },
-  }
+  };
 
-  const result = convertToJson(config)
+  const result = convertToJson(config);
 
-  return result
-}
+  return result;
+};
 
-export default generateMarkdownlintConfig
+export default generateMarkdownlintConfig;

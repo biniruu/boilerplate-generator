@@ -1,34 +1,34 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getLayoutFile = (configOptions: SelectOptions) => {
-  const { hasSwr, hasTanstackQuery } = getCertainConditions(configOptions)
+  const { hasSwr, hasTanstackQuery } = getCertainConditions(configOptions);
 
   const reactQueryProvider = `
 import ReactQueryProvider from 'providers/reactQueryProvider'
-`
+`;
   const swrProvider = `  
 import SWRProvider from 'providers/swrProvider'
-`
+`;
 
   const importLibrary = () => {
     if (hasTanstackQuery) {
-      return reactQueryProvider
+      return reactQueryProvider;
     }
     if (hasSwr) {
-      return swrProvider
+      return swrProvider;
     }
-    return ''
-  }
+    return '';
+  };
   const children = () => {
     if (hasTanstackQuery) {
-      return `<ReactQueryProvider>{children}</ReactQueryProvider>`
+      return `<ReactQueryProvider>{children}</ReactQueryProvider>`;
     }
     if (hasSwr) {
-      return `<SWRProvider>{children}</SWRProvider>`
+      return `<SWRProvider>{children}</SWRProvider>`;
     }
-    return `{children}`
-  }
+    return `{children}`;
+  };
 
   const file = `import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
@@ -52,9 +52,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   )
 }
-`
+`;
 
-  return file
-}
+  return file;
+};
 
-export default getLayoutFile
+export default getLayoutFile;

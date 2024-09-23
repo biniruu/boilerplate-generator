@@ -3,25 +3,25 @@
  * {@link https://github.com/webpack/webpack-cli}
  */
 
-import path from 'path'
+import path from 'path';
 
 // eslint-disable-next-line import/default
-import CopyWebpackPlugin from 'copy-webpack-plugin'
-import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import TerserPlugin from 'terser-webpack-plugin'
-import type { Configuration as WebpackConfiguration } from 'webpack'
-import { SourceMapDevToolPlugin } from 'webpack'
-import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
-import WorkboxWebpackPlugin from 'workbox-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import type { Configuration as WebpackConfiguration } from 'webpack';
+import { SourceMapDevToolPlugin } from 'webpack';
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 
 interface Configuration extends WebpackConfiguration {
-  devServer?: WebpackDevServerConfiguration
+  devServer?: WebpackDevServerConfiguration;
 }
 
-const isProduction = process.env.NODE_ENV === 'production'
-const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
+const isProduction = process.env.NODE_ENV === 'production';
+const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
 const config: Configuration = {
   devServer: {
@@ -105,20 +105,20 @@ const config: Configuration = {
     },
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
-}
+};
 
 const result = () => {
   if (!config.plugins) {
-    throw new Error('config.plugins is not defined.')
+    throw new Error('config.plugins is not defined.');
   }
   if (isProduction) {
-    config.plugins.push(new MiniCssExtractPlugin(), new WorkboxWebpackPlugin.GenerateSW())
+    config.plugins.push(new MiniCssExtractPlugin(), new WorkboxWebpackPlugin.GenerateSW());
   }
   if (!isProduction) {
-    config.plugins.push(new SourceMapDevToolPlugin({}))
+    config.plugins.push(new SourceMapDevToolPlugin({}));
   }
 
-  return config
-}
+  return config;
+};
 
-export default result
+export default result;

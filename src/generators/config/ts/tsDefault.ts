@@ -1,6 +1,6 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToJson from '@utils/convertToJson'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToJson from '@utils/convertToJson';
+import type { SelectOptions } from '_types';
 
 const getTsDefault = (configOptions: SelectOptions) => {
   const {
@@ -14,22 +14,22 @@ const getTsDefault = (configOptions: SelectOptions) => {
     hasSocket,
     hasTsExtension,
     hasTypescript,
-  } = getCertainConditions(configOptions)
+  } = getCertainConditions(configOptions);
 
   const getJsx = () => {
     if (hasGatsby) {
-      return 'react'
+      return 'react';
     }
     if (hasReact) {
-      return 'react-jsx'
+      return 'react-jsx';
     }
     if (hasNext) {
-      return 'preserve'
+      return 'preserve';
     }
-  }
+  };
 
   // An extension of a file is '.ts'
-  const tsExtension = hasTsExtension ? ['*.config.ts'] : []
+  const tsExtension = hasTsExtension ? ['*.config.ts'] : [];
   const reactInclude = [
     '**/*.ts',
     './*.config.ts',
@@ -37,8 +37,8 @@ const getTsDefault = (configOptions: SelectOptions) => {
     './src/**/*.tsx',
     './tests/**/?(*.)+(spec|test).[tj]s?(x)',
     './dist/types/**/*.ts',
-  ]
-  const gatsbyInclude = ['src/**/*', 'gatsby-node.ts', 'gatsby-config.ts', 'plugins/**/*']
+  ];
+  const gatsbyInclude = ['src/**/*', 'gatsby-node.ts', 'gatsby-config.ts', 'plugins/**/*'];
 
   const config = {
     compilerOptions: {
@@ -170,11 +170,11 @@ const getTsDefault = (configOptions: SelectOptions) => {
           require: ['tsconfig-paths/register'],
         },
       }),
-  }
+  };
 
-  const result = convertToJson(config)
+  const result = convertToJson(config);
 
-  return result
-}
+  return result;
+};
 
-export default getTsDefault
+export default getTsDefault;

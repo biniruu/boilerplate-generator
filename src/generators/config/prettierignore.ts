@@ -1,8 +1,8 @@
 const generatePrettierIgnoreConfig = () => {
   const config = `node_modules/
-.gitignore`
+.gitignore`;
 
-  return config
-}
+  return config;
+};
 
-export default generatePrettierIgnoreConfig
+export default generatePrettierIgnoreConfig;

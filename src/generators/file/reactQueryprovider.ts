@@ -1,14 +1,14 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getReactQueryProviderFile = (configOptions: SelectOptions) => {
-  const { hasNext } = getCertainConditions(configOptions)
+  const { hasNext } = getCertainConditions(configOptions);
 
   const client =
     hasNext &&
     `'use client'
 
-`
+`;
 
   const file = `${client || ''}import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -25,9 +25,9 @@ function ReactQueryProvider({ children }: PropsWithChildren) {
   )
 }
 
-export default ReactQueryProvider`
+export default ReactQueryProvider`;
 
-  return file
-}
+  return file;
+};
 
-export default getReactQueryProviderFile
+export default getReactQueryProviderFile;

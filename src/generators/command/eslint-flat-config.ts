@@ -1,5 +1,5 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getEslintFlatConfigCommands = (configOptions: SelectOptions) => {
   const {
@@ -19,9 +19,9 @@ const getEslintFlatConfigCommands = (configOptions: SelectOptions) => {
     hasTypescript,
     hasWebpack,
     hasWordpress,
-  } = getCertainConditions(configOptions)
+  } = getCertainConditions(configOptions);
 
-  const eslintFlatConfigDevDependencies: string[] = []
+  const eslintFlatConfigDevDependencies: string[] = [];
 
   /**
    * @eslint/compat
@@ -82,59 +82,59 @@ const getEslintFlatConfigCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/webpack-contrib/eslint-webpack-plugin#eslint-webpack-plugin}
    */
   if (!hasEslintFlatConfig) {
-    return { eslintFlatConfigDevDependencies }
+    return { eslintFlatConfigDevDependencies };
   }
 
-  eslintFlatConfigDevDependencies.push('@eslint/compat')
+  eslintFlatConfigDevDependencies.push('@eslint/compat');
 
   if (!(hasGatsby || hasNext)) {
-    eslintFlatConfigDevDependencies.push('eslint')
+    eslintFlatConfigDevDependencies.push('eslint');
   }
   if (!(hasGatsby || hasWordpress)) {
-    eslintFlatConfigDevDependencies.push('eslint-plugin-import')
+    eslintFlatConfigDevDependencies.push('eslint-plugin-import');
   }
   if (hasJsLibs) {
-    eslintFlatConfigDevDependencies.push('eslint-plugin-jsx-a11y', 'eslint-plugin-testing-library')
+    eslintFlatConfigDevDependencies.push('eslint-plugin-jsx-a11y', 'eslint-plugin-testing-library');
   }
   if (hasNuxt) {
-    eslintFlatConfigDevDependencies.push('@nuxtjs/eslint-config-typescript', 'eslint-plugin-nuxt', 'vue-eslint-parser')
+    eslintFlatConfigDevDependencies.push('@nuxtjs/eslint-config-typescript', 'eslint-plugin-nuxt', 'vue-eslint-parser');
   }
   // For React.js that build with Vite
   if (hasReact || hasNext) {
-    eslintFlatConfigDevDependencies.push('eslint-plugin-react', 'eslint-plugin-react-refresh')
+    eslintFlatConfigDevDependencies.push('eslint-plugin-react', 'eslint-plugin-react-refresh');
   }
   if (!hasNext && !hasGatsby && !hasWordpress && (hasThree || hasTypescript)) {
-    eslintFlatConfigDevDependencies.push('eslint-import-resolver-typescript')
+    eslintFlatConfigDevDependencies.push('eslint-import-resolver-typescript');
   }
 
   // These packages need fundamental eslint packages
   if (hasGraphql) {
-    eslintFlatConfigDevDependencies.push('@graphql-eslint/eslint-plugin')
+    eslintFlatConfigDevDependencies.push('@graphql-eslint/eslint-plugin');
   }
   if (hasJest) {
     // If you don't want to install 'eslint-plugin-jest', you have to install those packages below manually
     // @typescript-eslint/types @typescript-eslint/typescript-estree @typescript-eslint/utils
-    eslintFlatConfigDevDependencies.push('eslint-plugin-jest', 'eslint-plugin-jest-dom')
+    eslintFlatConfigDevDependencies.push('eslint-plugin-jest', 'eslint-plugin-jest-dom');
   }
   if (hasPug) {
-    eslintFlatConfigDevDependencies.push('eslint-plugin-pug')
+    eslintFlatConfigDevDependencies.push('eslint-plugin-pug');
   }
   if (hasStorybook) {
-    eslintFlatConfigDevDependencies.push('eslint-plugin-storybook')
+    eslintFlatConfigDevDependencies.push('eslint-plugin-storybook');
   }
   if (hasTanstackQuery) {
-    eslintFlatConfigDevDependencies.push('@tanstack/eslint-plugin-query')
+    eslintFlatConfigDevDependencies.push('@tanstack/eslint-plugin-query');
   }
   if (hasTailwind) {
-    eslintFlatConfigDevDependencies.push('eslint-plugin-tailwindcss')
+    eslintFlatConfigDevDependencies.push('eslint-plugin-tailwindcss');
   }
   if (hasWebpack) {
-    eslintFlatConfigDevDependencies.push('eslint-webpack-plugin')
+    eslintFlatConfigDevDependencies.push('eslint-webpack-plugin');
   }
 
   return {
     eslintFlatConfigDevDependencies,
-  }
-}
+  };
+};
 
-export default getEslintFlatConfigCommands
+export default getEslintFlatConfigCommands;

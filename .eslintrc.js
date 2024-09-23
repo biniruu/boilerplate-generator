@@ -263,4 +263,4 @@ module.exports = {
       version: require('jest/package.json').version,
     },
   },
-}
+};

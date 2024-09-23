@@ -1,5 +1,5 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getEslintCommands = (configOptions: SelectOptions) => {
   const {
@@ -19,9 +19,9 @@ const getEslintCommands = (configOptions: SelectOptions) => {
     hasTypescript,
     hasWebpack,
     hasWordpress,
-  } = getCertainConditions(configOptions)
+  } = getCertainConditions(configOptions);
 
-  const eslintDevDependencies: string[] = []
+  const eslintDevDependencies: string[] = [];
 
   /**
    * @babel/eslint-parser
@@ -91,13 +91,13 @@ const getEslintCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/jestjs/jest#readme}
    */
   if (!hasEslint) {
-    return { eslintDevDependencies }
+    return { eslintDevDependencies };
   }
 
   if (!hasGatsby && !hasJsLibs && !hasThree && !hasWordpress) {
     // For VanillaJS
-    eslintDevDependencies.push('eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import')
-    !hasTypescript && eslintDevDependencies.push('@babel/core', '@babel/eslint-parser')
+    eslintDevDependencies.push('eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import');
+    !hasTypescript && eslintDevDependencies.push('@babel/core', '@babel/eslint-parser');
   }
   // Gatsby.js is ony for using TypeScript
   if (hasGatsby && hasTypescript) {
@@ -107,11 +107,11 @@ const getEslintCommands = (configOptions: SelectOptions) => {
       'eslint',
       'eslint-import-resolver-typescript',
       'eslint-plugin-import',
-    )
+    );
   }
   if (hasNext) {
-    eslintDevDependencies.push('eslint-plugin-react-refresh', 'eslint-plugin-testing-library')
-    hasTypescript && eslintDevDependencies.push('@typescript-eslint/eslint-plugin')
+    eslintDevDependencies.push('eslint-plugin-react-refresh', 'eslint-plugin-testing-library');
+    hasTypescript && eslintDevDependencies.push('@typescript-eslint/eslint-plugin');
   }
   if (hasNuxt) {
     eslintDevDependencies.push(
@@ -123,8 +123,9 @@ const getEslintCommands = (configOptions: SelectOptions) => {
       'eslint-plugin-nuxt',
       'eslint-plugin-testing-library',
       'vue-eslint-parser',
-    )
-    hasTypescript && eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
+    );
+    hasTypescript &&
+      eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript');
   }
   // For React.js that build with Vite
   if (hasReact) {
@@ -134,47 +135,48 @@ const getEslintCommands = (configOptions: SelectOptions) => {
       'eslint-plugin-react',
       'eslint-plugin-testing-library',
       'jest-resolve',
-    )
-    hasTypescript && eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript')
+    );
+    hasTypescript &&
+      eslintDevDependencies.push('@typescript-eslint/eslint-plugin', 'eslint-import-resolver-typescript');
   }
   if (!hasJsLibs && !hasGatsby && !hasWordpress && (hasThree || hasTypescript)) {
     eslintDevDependencies.push(
       '@typescript-eslint/eslint-plugin',
       '@typescript-eslint/parser',
       'eslint-import-resolver-typescript',
-    )
+    );
   }
   if (hasWordpress) {
-    eslintDevDependencies.push('eslint')
+    eslintDevDependencies.push('eslint');
   }
 
   // These packages need fundamental eslint packages
   if (hasGraphql) {
-    eslintDevDependencies.push('@graphql-eslint/eslint-plugin')
+    eslintDevDependencies.push('@graphql-eslint/eslint-plugin');
   }
   if (hasJest) {
     // If you don't want to install 'eslint-plugin-jest', you have to install those packages below manually
     // @typescript-eslint/types @typescript-eslint/typescript-estree @typescript-eslint/utils
-    eslintDevDependencies.push('eslint-plugin-jest', 'eslint-plugin-jest-dom')
+    eslintDevDependencies.push('eslint-plugin-jest', 'eslint-plugin-jest-dom');
   }
   if (hasPug) {
-    eslintDevDependencies.push('eslint-plugin-pug')
+    eslintDevDependencies.push('eslint-plugin-pug');
   }
   if (hasStorybook) {
-    eslintDevDependencies.push('eslint-plugin-storybook')
+    eslintDevDependencies.push('eslint-plugin-storybook');
   }
   // TanstackQuery is only for React.js or Next.js
   if (hasTanstackQuery && (hasReact || hasNext)) {
-    eslintDevDependencies.push('@tanstack/eslint-plugin-query')
+    eslintDevDependencies.push('@tanstack/eslint-plugin-query');
   }
   if (hasTailwind) {
-    eslintDevDependencies.push('eslint-plugin-tailwindcss')
+    eslintDevDependencies.push('eslint-plugin-tailwindcss');
   }
   if (hasWebpack) {
-    eslintDevDependencies.push('eslint-webpack-plugin')
+    eslintDevDependencies.push('eslint-webpack-plugin');
   }
 
-  return { eslintDevDependencies }
-}
+  return { eslintDevDependencies };
+};
 
-export default getEslintCommands
+export default getEslintCommands;

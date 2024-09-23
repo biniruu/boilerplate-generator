@@ -1,7 +1,7 @@
-import convertToString from '@utils/convertToString'
+import convertToString from '@utils/convertToString';
 
 export const reactImport = `import reactPlugin from 'eslint-plugin-react';
-import reactRefresh from 'eslint-plugin-react-refresh';`
+import reactRefresh from 'eslint-plugin-react-refresh';`;
 
 const configReact = {
   name: 'eslint-plugin-react', // https://github.com/jsx-eslint/eslint-plugin-react#configuration-new-eslintconfigjs
@@ -75,14 +75,14 @@ const configReact = {
     ],
     'react/static-property-placement': 'warn',
   },
-}
+};
 const configReactHooks = {
   name: 'eslint-plugin-react-hooks', // https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks#eslint-plugin-react-hooks
   extends: ['replace reactHooksPlugin'],
   rules: {
     'react-hooks/rules-of-hooks': 'error', // react hooks 공식 문서에서 제공하는 규칙을 준수하도록 강제. Roles of Hooks: https://legacy.reactjs.org/docs/hooks-rules.html
   },
-}
+};
 const configReactRefresh = {
   name: 'eslint-plugin-react-refresh', // https://github.com/ArnaudBarre/eslint-plugin-react-refresh#eslint-plugin-react-refresh-
   plugins: {
@@ -97,9 +97,9 @@ const configReactRefresh = {
       },
     ],
   },
-}
+};
 
-const config = { ...configReact, ...configReactHooks, ...configReactRefresh }
+const config = { ...configReact, ...configReactHooks, ...configReactRefresh };
 
 export const reactConfig = convertToString(config)
   ?.replace(`'replace-react-plugin-configs-recommended': ''`, `...reactPlugin.configs.flat.recommended`)
@@ -112,4 +112,4 @@ export const reactConfig = convertToString(config)
     `'replace reactHooksPlugin': ''`,
     `...fixupConfigRules(flatCompat.extends('plugin:react-hooks/recommended'))`,
   )
-  .replace(`'replace reactRefresh': ''`, 'reactRefresh')
+  .replace(`'replace reactRefresh': ''`, 'reactRefresh');

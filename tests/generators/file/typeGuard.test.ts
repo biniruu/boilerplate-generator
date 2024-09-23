@@ -1,9 +1,9 @@
-import getTypeGuardFile from '@generators/file/typeGuard'
+import getTypeGuardFile from '@generators/file/typeGuard';
 
-import { elemCode, setTextContent } from '../../setTextContent.test'
+import { elemCode, setTextContent } from '../../setTextContent.test';
 
 test('should return a typeGuards.ts file', () => {
-  setTextContent({ content: getTypeGuardFile() })
+  setTextContent({ content: getTypeGuardFile() });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});

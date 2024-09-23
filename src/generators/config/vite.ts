@@ -17,6 +17,6 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
   ],
-})`
+})`;
 
-export default generateViteConfig
+export default generateViteConfig;

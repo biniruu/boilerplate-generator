@@ -1,8 +1,8 @@
-import dynamicTabList from '@data/dynamicTabList'
-import { getButtonElem } from '@utils/getElements'
-import type { DynamicTabValueList } from '_types'
+import dynamicTabList from '@data/dynamicTabList';
+import { getButtonElem } from '@utils/getElements';
+import type { DynamicTabValueList } from '_types';
 
-import { getCurrentTablinkElems } from './tabController'
+import { getCurrentTablinkElems } from './tabController';
 
 // <Always showed>
 //
@@ -113,43 +113,43 @@ import { getCurrentTablinkElems } from './tabController'
 //
 // webpack.config.ts
 
-const lints = ['eslint', 'prettier', 'stylelint']
+const lints = ['eslint', 'prettier', 'stylelint'];
 
-const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => (isChecked ? addNewTabs(tab) : removeTabs(tab))
+const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => (isChecked ? addNewTabs(tab) : removeTabs(tab));
 
 const removeTabs = (tab: DynamicTabValueList) => {
-  const element = getButtonElem(`${tab}-tab`)
-  element && element.remove()
-  removeAdditionalTabs(tab)
-}
+  const element = getButtonElem(`${tab}-tab`);
+  element && element.remove();
+  removeAdditionalTabs(tab);
+};
 // When a lint tab is removed, remove the corresponding ignore tab as well
 const removeAdditionalTabs = (tab: DynamicTabValueList) =>
-  lints.includes(tab) && removeTabs(`${tab}-ignore` as DynamicTabValueList)
+  lints.includes(tab) && removeTabs(`${tab}-ignore` as DynamicTabValueList);
 
 const addNewTabs = (tab: DynamicTabValueList) => {
-  createTab(tab)
-  addAdditionalTabs(tab)
-}
+  createTab(tab);
+  addAdditionalTabs(tab);
+};
 // When a lint tab is created, create the corresponding ignore tab as well
 const addAdditionalTabs = (tab: DynamicTabValueList) =>
-  lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList)
+  lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList);
 
-const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs')
-const fragment = document.querySelector<HTMLTemplateElement>('#tab')
+const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs');
+const fragment = document.querySelector<HTMLTemplateElement>('#tab');
 export const createTab = (tab: DynamicTabValueList) => {
   if (hasSameTabElem(tab)) {
-    return
+    return;
   }
-  const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablink')
+  const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablink');
   if (instance) {
-    instance.textContent = dynamicTabList[tab]
-    instance.id = `${tab}-tab`
-    instance.value = tab
-    dynamicTabsElem?.appendChild(instance)
+    instance.textContent = dynamicTabList[tab];
+    instance.id = `${tab}-tab`;
+    instance.value = tab;
+    dynamicTabsElem?.appendChild(instance);
   }
-}
+};
 
 const hasSameTabElem = (tab: DynamicTabValueList) =>
-  Array.from(getCurrentTablinkElems()).some(elem => elem.value === tab)
+  Array.from(getCurrentTablinkElems()).some(elem => elem.value === tab);
 
-export default toggleTabs
+export default toggleTabs;

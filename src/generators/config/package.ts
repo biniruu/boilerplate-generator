@@ -1,6 +1,6 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToJson from '@utils/convertToJson'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToJson from '@utils/convertToJson';
+import type { SelectOptions } from '_types';
 
 const generatePackageConfig = (configOptions: SelectOptions) => {
   const {
@@ -15,7 +15,7 @@ const generatePackageConfig = (configOptions: SelectOptions) => {
     hasTypescript,
     hasWebpack,
     hasSocket,
-  } = getCertainConditions(configOptions)
+  } = getCertainConditions(configOptions);
 
   const gatsbyScripts = {
     develop: 'gatsby develop',
@@ -24,50 +24,50 @@ const generatePackageConfig = (configOptions: SelectOptions) => {
     serve: 'gatsby serve',
     clean: 'gatsby clean',
     typecheck: 'tsc --noEmit',
-  }
+  };
   const jestScripts = {
     test: 'jest',
     'test:update': 'jest -u',
     'test:watch': 'jest --watch',
-  }
+  };
   const nextScripts = {
     dev: 'next dev',
     build: 'next build',
     start: 'next start',
     lint: 'next lint',
-  }
+  };
   const nuxtScripts = {
     build: 'nuxt build',
     dev: 'nuxt dev',
     generate: 'nuxt generate',
     preview: 'nuxt preview',
     postinstall: 'nuxt prepare',
-  }
+  };
   const reactScripts = {
     dev: 'vite',
     build: 'tsc && NODE_ENV=development vite build --mode development',
     'build:prod': 'yarn lint && tsc && vite build',
     preview: 'vite preview',
-  }
+  };
   const storybookScripts = {
     storybook: 'storybook dev -p 6006',
     'build-storybook': 'storybook build',
-  }
+  };
   const tsScripts = {
     dev: 'nodemon',
     start: 'yarn compile & nodemon',
     compile: 'rm -r dist ; npx tsc --project tsconfig.build.json',
-  }
+  };
   const webpackScripts = {
     build: 'webpack --mode=production --node-env=production',
     'build:dev': 'webpack --mode=development',
     'build:prod': 'webpack --mode=production --node-env=production',
     watch: 'webpack --watch',
     serve: 'webpack serve',
-  }
+  };
   const serverScripts = {
     'dev:server': 'nodemon ./server/index.ts',
-  }
+  };
 
   const config = {
     name: 'my-site',
@@ -101,11 +101,11 @@ const generatePackageConfig = (configOptions: SelectOptions) => {
       'update-packages': 'yarn upgrade --latest && yarn sync-package-version',
       'sync-package-version': 'npx syncyarnlock -ks',
     },
-  }
+  };
 
-  const result = convertToJson(config)
+  const result = convertToJson(config);
 
-  return result
-}
+  return result;
+};
 
-export default generatePackageConfig
+export default generatePackageConfig;

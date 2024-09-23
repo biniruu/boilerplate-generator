@@ -1,9 +1,9 @@
 const getTailwindFile = () => {
   const file = `@tailwind base;
 @tailwind components;
-@tailwind utilities;`
+@tailwind utilities;`;
 
-  return file
-}
+  return file;
+};
 
-export default getTailwindFile
+export default getTailwindFile;

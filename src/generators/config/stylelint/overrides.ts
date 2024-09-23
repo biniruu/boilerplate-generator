@@ -1,5 +1,5 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 /**
  * @example
  *
@@ -17,8 +17,8 @@ import type { SelectOptions } from '_types'
  * ```
  */
 const getOverrides = (configOptions: SelectOptions) => {
-  const { hasPostcss, hasStyledComponents } = getCertainConditions(configOptions)
-  const result = []
+  const { hasPostcss, hasStyledComponents } = getCertainConditions(configOptions);
+  const result = [];
 
   /**
    * PostCSS
@@ -29,7 +29,7 @@ const getOverrides = (configOptions: SelectOptions) => {
     result.push({
       customSyntax: 'postcss-html',
       files: ['**/*.{html,jsx,tsx}'],
-    })
+    });
   }
   /**
    * PostCSS for styled-components
@@ -40,10 +40,10 @@ const getOverrides = (configOptions: SelectOptions) => {
     result.push({
       customSyntax: 'postcss-styled-syntax',
       files: ['**/*.{html,jsx,tsx}'],
-    })
+    });
   }
 
-  return result
-}
+  return result;
+};
 
-export default getOverrides
+export default getOverrides;

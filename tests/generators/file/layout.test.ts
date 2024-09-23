@@ -1,25 +1,25 @@
-import getLayoutFile from '@generators/file/layout'
+import getLayoutFile from '@generators/file/layout';
 
-import { elemCode, options, setTextContent } from '../../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
 test('should return a Layout.tsx file', () => {
-  setTextContent({ content: getLayoutFile(options) })
+  setTextContent({ content: getLayoutFile(options) });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});
 
 test('should return a Layout.tsx file including SWR', () => {
-  options.swr = true
+  options.swr = true;
 
-  setTextContent({ content: getLayoutFile(options) })
+  setTextContent({ content: getLayoutFile(options) });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});
 
 test('should return a Layout.tsx file including Tanstack Query', () => {
-  options.tanstackQuery = true
+  options.tanstackQuery = true;
 
-  setTextContent({ content: getLayoutFile(options) })
+  setTextContent({ content: getLayoutFile(options) });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});

@@ -1,5 +1,5 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 /**
  * @example
@@ -12,14 +12,14 @@ import type { SelectOptions } from '_types'
  * ```
  */
 const getPlugins = (configOptions: SelectOptions) => {
-  const { hasScss } = getCertainConditions(configOptions)
-  const result = ['stylelint-order']
+  const { hasScss } = getCertainConditions(configOptions);
+  const result = ['stylelint-order'];
 
   if (hasScss) {
-    result.push('stylelint-scss')
+    result.push('stylelint-scss');
   }
 
-  return result
-}
+  return result;
+};
 
-export default getPlugins
+export default getPlugins;

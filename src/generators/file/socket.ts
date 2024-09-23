@@ -20,9 +20,9 @@ export interface InterServerEvents {
 export interface SocketData {
   name: string
   age: number
-}`
+}`;
 
-  return file
-}
+  return file;
+};
 
-export default getSocketFile
+export default getSocketFile;

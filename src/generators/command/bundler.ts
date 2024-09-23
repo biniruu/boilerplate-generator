@@ -1,12 +1,12 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getBundlerCommands = (configOptions: SelectOptions) => {
   const { hasEsbuild, hasJest, hasNext, hasReact, hasScss, hasThree, hasTypescript, hasVite, hasWebpack } =
-    getCertainConditions(configOptions)
+    getCertainConditions(configOptions);
 
-  const bundlerDependencies: string[] = []
-  const bundlerDevDependencies: string[] = []
+  const bundlerDependencies: string[] = [];
+  const bundlerDevDependencies: string[] = [];
 
   /**
    * vite (Vite)
@@ -19,9 +19,9 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/aleclarson/vite-tsconfig-paths#readme}
    */
   if (hasVite) {
-    bundlerDevDependencies.push('vite-plugin-dts')
-    !hasReact && bundlerDependencies.push('vite')
-    hasTypescript && bundlerDevDependencies.push('vite-tsconfig-paths')
+    bundlerDevDependencies.push('vite-plugin-dts');
+    !hasReact && bundlerDependencies.push('vite');
+    hasTypescript && bundlerDevDependencies.push('vite-tsconfig-paths');
   }
   /**
    * source-map-loader
@@ -29,7 +29,7 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
    */
   if (hasWebpack) {
     if (hasNext) {
-      bundlerDevDependencies.push('source-map-loader')
+      bundlerDevDependencies.push('source-map-loader');
     } else {
       /**
        * @swc/html
@@ -60,13 +60,13 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
         'webpack-cli',
         'webpack-dev-server',
         'webpack-merge',
-      )
+      );
       /**
        * ts-loader (TypeScript loader for webpack)
        * {@link https://github.com/TypeStrong/ts-loader#typescript-loader-for-webpack}
        */
       if (hasTypescript) {
-        bundlerDevDependencies.push('@types/webpack', 'ts-loader')
+        bundlerDevDependencies.push('@types/webpack', 'ts-loader');
       }
       /**
        * copy-webpack-plugin
@@ -79,14 +79,14 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
        * {@link https://github.com/GoogleChrome/workbox#welcome-to-workbox}
        */
       if (!hasThree) {
-        bundlerDevDependencies.push('copy-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin')
+        bundlerDevDependencies.push('copy-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin');
       }
       /**
        * sass-loader
        * {@link https://github.com/webpack-contrib/sass-loader#sass-loader}
        */
       if (hasScss) {
-        bundlerDevDependencies.push('sass-loader')
+        bundlerDevDependencies.push('sass-loader');
       }
     }
   }
@@ -95,14 +95,14 @@ const getBundlerCommands = (configOptions: SelectOptions) => {
    * {@link https://esbuild.github.io}
    */
   if (hasEsbuild) {
-    bundlerDevDependencies.push('esbuild')
-    hasJest && bundlerDevDependencies.push('esbuild-jest')
+    bundlerDevDependencies.push('esbuild');
+    hasJest && bundlerDevDependencies.push('esbuild-jest');
   }
 
   return {
     bundlerDependencies,
     bundlerDevDependencies,
-  }
-}
+  };
+};
 
-export default getBundlerCommands
+export default getBundlerCommands;

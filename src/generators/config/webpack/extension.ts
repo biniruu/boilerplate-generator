@@ -1,10 +1,10 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getExtension = (configOptions: SelectOptions) => {
-  const { hasTypescript } = getCertainConditions(configOptions)
+  const { hasTypescript } = getCertainConditions(configOptions);
 
-  return hasTypescript ? 'ts' : 'js'
-}
+  return hasTypescript ? 'ts' : 'js';
+};
 
-export default getExtension
+export default getExtension;

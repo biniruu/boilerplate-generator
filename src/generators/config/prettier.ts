@@ -1,19 +1,19 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToString from '@utils/convertToString'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToString from '@utils/convertToString';
+import type { SelectOptions } from '_types';
 
 interface Config {
-  arrowParens: string
-  endOfLine: string
-  htmlWhitespaceSensitivity: string
-  plugins?: string[]
-  printWidth: number
-  semi?: boolean
-  singleQuote: boolean
-  tabWidth: number
-  tailwindConfig?: string
-  trailingComma: string
-  vueIndentScriptAndStyle?: boolean
+  arrowParens: string;
+  endOfLine: string;
+  htmlWhitespaceSensitivity: string;
+  plugins?: string[];
+  printWidth: number;
+  semi?: boolean;
+  singleQuote: boolean;
+  tabWidth: number;
+  tailwindConfig?: string;
+  trailingComma: string;
+  vueIndentScriptAndStyle?: boolean;
 }
 
 /**
@@ -33,7 +33,7 @@ interface Config {
  * vueIndentScriptAndStyle : vue 파일 내 script 태그와 style 태그에서 들여쓰기 반영
  */
 const generatePrettierConfig = (configOptions: SelectOptions) => {
-  const { hasTailwind, hasVue } = getCertainConditions(configOptions)
+  const { hasTailwind, hasVue } = getCertainConditions(configOptions);
 
   const config: Config = {
     arrowParens: 'avoid',
@@ -45,20 +45,20 @@ const generatePrettierConfig = (configOptions: SelectOptions) => {
     tabWidth: 2,
     // tailwindConfig: './tailwind.config.js',
     trailingComma: 'all',
-  }
+  };
 
   if (hasTailwind) {
     config.plugins = [
       'prettier-plugin-tailwindcss', // 항상 목록 마지막에 위치시킬 것
-    ]
+    ];
   }
   if (hasVue) {
-    config.vueIndentScriptAndStyle = true
+    config.vueIndentScriptAndStyle = true;
   }
 
-  const code = `module.exports = ${convertToString(config)}`
+  const code = `module.exports = ${convertToString(config)}`;
 
-  return code
-}
+  return code;
+};
 
-export default generatePrettierConfig
+export default generatePrettierConfig;

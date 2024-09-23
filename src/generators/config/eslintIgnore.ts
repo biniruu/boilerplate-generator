@@ -1,18 +1,18 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const generateEslintIgnoreConfig = (configOptions: SelectOptions) => {
-  const { hasReact, hasStorybook, hasTypescript, hasWordpress } = getCertainConditions(configOptions)
+  const { hasReact, hasStorybook, hasTypescript, hasWordpress } = getCertainConditions(configOptions);
 
   const storybook =
     hasStorybook &&
     `
 storybook-static/
-!.storybook`
+!.storybook`;
   const tsconfig =
     hasTypescript &&
     `
-**/tsconfig.json`
+**/tsconfig.json`;
   const tsconfigs =
     hasTypescript &&
     !hasReact &&
@@ -20,14 +20,14 @@ storybook-static/
     `
 **/tsconfig.build.json
 **/tsconfig.default.json
-**/tsconfig.test.json`
+**/tsconfig.test.json`;
 
   const config = `# files${tsconfig || ''}${tsconfigs || ''}
 
 # paths
-node_modules/${storybook || ''}`
+node_modules/${storybook || ''}`;
 
-  return config
-}
+  return config;
+};
 
-export default generateEslintIgnoreConfig
+export default generateEslintIgnoreConfig;

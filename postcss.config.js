@@ -36,4 +36,4 @@ module.exports = {
     // tailwindcss: {}, // for using tailwindcss
     cssnano: { preset: 'default' }, // invoking CSS minification in production environment
   },
-}
+};

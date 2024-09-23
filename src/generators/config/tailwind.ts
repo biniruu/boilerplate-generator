@@ -1,11 +1,11 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToString from '@utils/convertToString'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToString from '@utils/convertToString';
+import type { SelectOptions } from '_types';
 
 const generateTailwindConfig = (configOptions: SelectOptions) => {
-  const { hasTypescript } = getCertainConditions(configOptions)
-  const ts = hasTypescript ? 'ts,tsx' : ''
-  const comma = hasTypescript ? ',' : ''
+  const { hasTypescript } = getCertainConditions(configOptions);
+  const ts = hasTypescript ? 'ts,tsx' : '';
+  const comma = hasTypescript ? ',' : '';
 
   const config = {
     content: [
@@ -30,7 +30,7 @@ const generateTailwindConfig = (configOptions: SelectOptions) => {
       },
     },
     plugins: [],
-  }
+  };
 
   const code = hasTypescript
     ? `import type { Config } from 'tailwindcss'
@@ -40,16 +40,16 @@ const config: Config = ${convertToString(config)}
 export default config`
     : `/** @type {import('tailwindcss').Config} */
 
-module.exports = ${convertToString(config)}`
+module.exports = ${convertToString(config)}`;
 
   const result = code.replace(
     `'replace backgroundColor'`,
     `({ theme }) => ({
         ...theme('colors'),
       })`,
-  )
+  );
 
-  return result
-}
+  return result;
+};
 
-export default generateTailwindConfig
+export default generateTailwindConfig;

@@ -1,11 +1,11 @@
-import convertToString from '@utils/convertToString'
+import convertToString from '@utils/convertToString';
 
 export const typescriptImport = `import {
   config as tslintConfig,
   configs as tslintConfigs,
   parser as tslintParser,
   plugin as tslintPlugin,
-} from 'typescript-eslint';`
+} from 'typescript-eslint';`;
 
 const config = {
   name: 'typescript-eslint', // https://typescript-eslint.io/packages/typescript-eslint
@@ -80,9 +80,9 @@ const config = {
     '@typescript-eslint/restrict-plus-operands': 'warn',
     '@typescript-eslint/restrict-template-expressions': 'warn',
   },
-}
+};
 
 export const typescriptConfig = convertToString(config)
   ?.replace(`'replace recommendedTypeChecked'`, `...tslintConfigs.recommendedTypeChecked`)
   .replace(`'replace tslintParser'`, `tslintParser`)
-  .replace(`'replace tslintPlugin'`, `tslintPlugin`)
+  .replace(`'replace tslintPlugin'`, `tslintPlugin`);

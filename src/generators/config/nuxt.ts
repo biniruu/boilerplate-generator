@@ -1,4 +1,4 @@
-import convertToString from '@utils/convertToString'
+import convertToString from '@utils/convertToString';
 
 const generateNuxtConfig = () => {
   /**
@@ -31,11 +31,11 @@ const generateNuxtConfig = () => {
     typescript: {
       typeCheck: true, // typescript와 vue-tsc를 설치하면 dev server 빌드 과정에서 타입 체크 실행
     },
-  }
+  };
 
-  const result = `export default defineNuxtConfig(${convertToString(config)})`
+  const result = `export default defineNuxtConfig(${convertToString(config)})`;
 
-  return result
-}
+  return result;
+};
 
-export default generateNuxtConfig
+export default generateNuxtConfig;

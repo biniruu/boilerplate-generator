@@ -1,4 +1,4 @@
-import convertToString from '@utils/convertToString'
+import convertToString from '@utils/convertToString';
 
 const generateGatsbyConfig = () => {
   const config = {
@@ -40,15 +40,15 @@ const generateGatsbyConfig = () => {
         __key: 'pages',
       },
     ],
-  }
+  };
 
   const result = `import type { GatsbyConfig } from 'gatsby'
 
 const config: GatsbyConfig = ${convertToString(config)}
 
-export default config`
+export default config`;
 
-  return result
-}
+  return result;
+};
 
-export default generateGatsbyConfig
+export default generateGatsbyConfig;

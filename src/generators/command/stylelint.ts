@@ -1,10 +1,10 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getStylelintCommands = (configOptions: SelectOptions) => {
-  const { hasScss, hasStylelint } = getCertainConditions(configOptions)
+  const { hasScss, hasStylelint } = getCertainConditions(configOptions);
 
-  const stylelintDevDependencies: string[] = []
+  const stylelintDevDependencies: string[] = [];
 
   /**
    * stylelint (Stylelint)
@@ -23,13 +23,13 @@ const getStylelintCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/stylelint-scss/stylelint-scss#readme}
    */
   if (hasStylelint) {
-    stylelintDevDependencies.push('stylelint', 'stylelint-config-standard', 'stylelint-order')
-    hasScss && stylelintDevDependencies.push('stylelint-config-standard-scss', 'stylelint-scss')
+    stylelintDevDependencies.push('stylelint', 'stylelint-config-standard', 'stylelint-order');
+    hasScss && stylelintDevDependencies.push('stylelint-config-standard-scss', 'stylelint-scss');
   }
 
   return {
     stylelintDevDependencies,
-  }
-}
+  };
+};
 
-export default getStylelintCommands
+export default getStylelintCommands;

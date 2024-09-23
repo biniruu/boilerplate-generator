@@ -1,8 +1,8 @@
-import convertToString from '@utils/convertToString'
+import convertToString from '@utils/convertToString';
 
-export const tailwindImport = `import tailwind from 'eslint-plugin-tailwindcss';`
+export const tailwindImport = `import tailwind from 'eslint-plugin-tailwindcss';`;
 
-const recommendedFlatConfigs = `...tailwind.configs['flat/recommended'],`
+const recommendedFlatConfigs = `...tailwind.configs['flat/recommended'],`;
 const config = {
   name: 'eslint-plugin-tailwindcss', // https://github.com/francoismassart/eslint-plugin-tailwindcss#eslintconfigjs
   rules: {
@@ -30,15 +30,15 @@ const config = {
       classRegex: '^class(Name)?$', // can be modified to support custom attributes. E.g. "^tw$" for `twin.macro`
     },
   },
-}
+};
 
 const result = convertToString(config)?.replace(
   `'replace-tailwind-recommended-rules': ''`,
   `...tailwind.configs['flat/recommended'].rules`,
-)
+);
 
 if (!result) {
-  throw new Error('Failed to generate tailwind config')
+  throw new Error('Failed to generate tailwind config');
 }
 
-export const tailwindConfig = recommendedFlatConfigs.concat('\n', result)
+export const tailwindConfig = recommendedFlatConfigs.concat('\n', result);

@@ -9,9 +9,9 @@ const getPugFile = () => {
       title Noom
     body
       h1 It works!
-  `
+  `;
 
-  return file
-}
+  return file;
+};
 
-export default getPugFile
+export default getPugFile;

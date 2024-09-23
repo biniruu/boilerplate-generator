@@ -1,5 +1,5 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getDataManagementCommands = (configOptions: SelectOptions) => {
   const {
@@ -14,17 +14,17 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
     hasSwr,
     hasTanstackQuery,
     hasTypescript,
-  } = getCertainConditions(configOptions)
+  } = getCertainConditions(configOptions);
 
-  const dataManagementDependencies: string[] = []
-  const dataManagementDevDependencies: string[] = []
+  const dataManagementDependencies: string[] = [];
+  const dataManagementDevDependencies: string[] = [];
 
   /**
    * axios (AXIOS)
    * {@link https://axios-http.com}
    */
   if (hasAxios) {
-    dataManagementDependencies.push('axios')
+    dataManagementDependencies.push('axios');
   }
   /**
    * @apollo/client (Apollo Client)
@@ -56,8 +56,8 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
       'graphql-scalars',
       'reflect-metadata',
       'type-graphql',
-    )
-    dataManagementDevDependencies.push('@graphql-codegen/cli')
+    );
+    dataManagementDevDependencies.push('@graphql-codegen/cli');
   }
   /**
    * koa (Koa)
@@ -67,22 +67,22 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/koajs/router#koarouter}
    */
   if (hasKoa) {
-    dataManagementDependencies.push('koa', '@koa/router')
-    hasTypescript && dataManagementDevDependencies.push('@types/koa', '@types/koa__router')
+    dataManagementDependencies.push('koa', '@koa/router');
+    hasTypescript && dataManagementDevDependencies.push('@types/koa', '@types/koa__router');
   }
   /**
    * mongoose (Mongoose)
    * {@link https://mongoosejs.com}
    */
   if (hasMongoose) {
-    dataManagementDependencies.push('mongoose')
+    dataManagementDependencies.push('mongoose');
   }
   /**
    * redis (Node-Redis)
    * {@link https://redis.io}
    */
   if (hasRedis) {
-    dataManagementDependencies.push('redis')
+    dataManagementDependencies.push('redis');
   }
   /**
    * socket.io
@@ -92,14 +92,14 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
    * {@link https://socket.io/docs/v4/client-initialization/}
    */
   if (hasSocket) {
-    dataManagementDependencies.push('socket.io', 'socket.io-client')
+    dataManagementDependencies.push('socket.io', 'socket.io-client');
   }
   /**
    * swr (SWR)
    * {@link https://swr.vercel.app}
    */
   if (hasSwr) {
-    dataManagementDependencies.push('swr')
+    dataManagementDependencies.push('swr');
   }
   /**
    * Tanstack Query
@@ -110,17 +110,17 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
    * {@link https://tanstack.com/query/latest}
    */
   if (hasTanstackQuery) {
-    dataManagementDependencies.push('@tanstack/query-core')
-    dataManagementDevDependencies.push('@tanstack/react-query-devtools')
+    dataManagementDependencies.push('@tanstack/query-core');
+    dataManagementDevDependencies.push('@tanstack/react-query-devtools');
     if (hasReact || hasNext) {
-      dataManagementDependencies.push('@tanstack/react-query')
+      dataManagementDependencies.push('@tanstack/react-query');
     }
   }
 
   return {
     dataManagementDependencies,
     dataManagementDevDependencies,
-  }
-}
+  };
+};
 
-export default getDataManagementCommands
+export default getDataManagementCommands;

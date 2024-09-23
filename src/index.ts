@@ -1,53 +1,53 @@
-import { objOptions } from '@data/options'
-import { showReadme } from '@libs/editorController'
-import { handleOptions } from '@libs/optionController'
-import { handleTab } from '@libs/tabController'
-import copyToClipboard from '@utils/copyToClipboard'
-import { getButtonElem } from '@utils/getElements'
-import { isHtmlButtonElement, isHtmlInputElement, isOption } from '@utils/typeGuards'
-import './style.css'
+import { objOptions } from '@data/options';
+import { showReadme } from '@libs/editorController';
+import { handleOptions } from '@libs/optionController';
+import { handleTab } from '@libs/tabController';
+import copyToClipboard from '@utils/copyToClipboard';
+import { getButtonElem } from '@utils/getElements';
+import { isHtmlButtonElement, isHtmlInputElement, isOption } from '@utils/typeGuards';
+import './style.css';
 
-import { isTab } from './utils/typeGuards'
+import { isTab } from './utils/typeGuards';
 
-const options = { ...objOptions }
+const options = { ...objOptions };
 
-const elemCode = document.querySelector<HTMLElement>('#code')
+const elemCode = document.querySelector<HTMLElement>('#code');
 
 // Copy code to clipboard
-const elemCopyBtn = getButtonElem('btn-copy')
-elemCopyBtn?.addEventListener('click', () => void copyToClipboard(elemCode?.textContent ?? ''))
+const elemCopyBtn = getButtonElem('btn-copy');
+elemCopyBtn?.addEventListener('click', () => void copyToClipboard(elemCode?.textContent ?? ''));
 
 // Handle click inputs and tabs
 const handleEvent = (e: MouseEvent | Event) => {
-  const target = e.target
+  const target = e.target;
   if (isHtmlButtonElement(target)) {
-    const { value } = target
-    isTab(value) && handleTab(target, value, options)
+    const { value } = target;
+    isTab(value) && handleTab(target, value, options);
 
-    return
+    return;
   }
   if (isHtmlInputElement(target)) {
-    const { value, checked: isChecked } = target
-    isOption(value) && handleOptions(value, isChecked, options)
+    const { value, checked: isChecked } = target;
+    isOption(value) && handleOptions(value, isChecked, options);
   }
-}
+};
 
 // Use handleEvent as an event listeners
-const elemTabs = document.querySelector<HTMLDivElement>('#tabs-wrapper')
-elemTabs?.addEventListener('click', handleEvent, { passive: true })
-const form = document.querySelector<HTMLFormElement>('#options')
-form?.addEventListener('change', handleEvent, { passive: true })
+const elemTabs = document.querySelector<HTMLDivElement>('#tabs-wrapper');
+elemTabs?.addEventListener('click', handleEvent, { passive: true });
+const form = document.querySelector<HTMLFormElement>('#options');
+form?.addEventListener('change', handleEvent, { passive: true });
 
 // Init content
 const initContents = () => {
-  const syntax = document.querySelector<HTMLInputElement>('input[name=syntax]:checked')?.value
-  const jsLib = document.querySelector<HTMLInputElement>('input[name=js-lib]:checked')?.value
+  const syntax = document.querySelector<HTMLInputElement>('input[name=syntax]:checked')?.value;
+  const jsLib = document.querySelector<HTMLInputElement>('input[name=js-lib]:checked')?.value;
   if (syntax && isOption(syntax)) {
-    options[syntax] = true
+    options[syntax] = true;
   }
   if (jsLib && isOption(jsLib)) {
-    options[jsLib] = true
+    options[jsLib] = true;
   }
-  showReadme(options)
-}
-window.onload = initContents
+  showReadme(options);
+};
+window.onload = initContents;

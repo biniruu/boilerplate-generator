@@ -2,9 +2,9 @@ const getTypeGuardFile = () => {
   const file = `const isHtmlInputElement = (element: unknown): element is HTMLInputElement => element instanceof HTMLInputElement
 const isHtmlButtonElement = (element: unknown): element is HTMLButtonElement => element instanceof HTMLButtonElement
 
-export { isHtmlButtonElement, isHtmlInputElement }`
+export { isHtmlButtonElement, isHtmlInputElement }`;
 
-  return file
-}
+  return file;
+};
 
-export default getTypeGuardFile
+export default getTypeGuardFile;

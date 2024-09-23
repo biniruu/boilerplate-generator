@@ -1,78 +1,78 @@
-import getWebFrameworkCommands from '@generators/command/webFramework'
-import { configOptions } from 'tests/configOptions.test'
+import getWebFrameworkCommands from '@generators/command/webFramework';
+import { configOptions } from 'tests/configOptions.test';
 
 test('should return empty arrays when all options are false', () => {
-  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions)
+  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions);
 
-  expect(webFrameworkDependencies).toBeEmpty()
-  expect(webFrameworkDevDependencies).toBeEmpty()
-})
+  expect(webFrameworkDependencies).toBeEmpty();
+  expect(webFrameworkDevDependencies).toBeEmpty();
+});
 
 test('should return dependencies for Express.js', () => {
-  configOptions.express = true
+  configOptions.express = true;
 
-  const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions)
+  const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions);
 
-  expect(webFrameworkDependencies).toIncludeSameMembers(['body-parser', 'cors', 'express'])
-})
+  expect(webFrameworkDependencies).toIncludeSameMembers(['body-parser', 'cors', 'express']);
+});
 
 test('should return dependencies for Express.js with TypeScript', () => {
-  configOptions.express = true
-  configOptions.typescript = true
+  configOptions.express = true;
+  configOptions.typescript = true;
 
-  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions)
+  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions);
 
-  expect(webFrameworkDependencies).toIncludeSameMembers(['body-parser', 'cors', 'express'])
-  expect(webFrameworkDevDependencies).toIncludeSameMembers(['@types/body-parser', '@types/cors', '@types/express'])
-})
+  expect(webFrameworkDependencies).toIncludeSameMembers(['body-parser', 'cors', 'express']);
+  expect(webFrameworkDevDependencies).toIncludeSameMembers(['@types/body-parser', '@types/cors', '@types/express']);
+});
 
 test('should return dependencies for Next.js', () => {
-  configOptions.next = true
+  configOptions.next = true;
 
-  const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions)
+  const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions);
 
-  expect(webFrameworkDependencies).toEqual(['react-refresh'])
-})
+  expect(webFrameworkDependencies).toEqual(['react-refresh']);
+});
 
 test('should return dependencies for React.js', () => {
-  configOptions.react = true
+  configOptions.react = true;
 
-  const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions)
+  const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions);
 
-  expect(webFrameworkDependencies).toIncludeSameMembers(['react-refresh', 'react-router-dom'])
-})
+  expect(webFrameworkDependencies).toIncludeSameMembers(['react-refresh', 'react-router-dom']);
+});
 
 test('should return dependencies for Nuxt.js', () => {
-  configOptions.nuxt = true
+  configOptions.nuxt = true;
 
-  const { webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions)
+  const { webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions);
 
-  expect(webFrameworkDevDependencies).toEqual(['volar-service-vetur'])
-})
+  expect(webFrameworkDevDependencies).toEqual(['volar-service-vetur']);
+});
 
 test('should return dependencies for Nuxt.js with TypeScript', () => {
-  configOptions.nuxt = true
-  configOptions.typescript = true
+  configOptions.nuxt = true;
+  configOptions.typescript = true;
 
-  const { webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions)
+  const { webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions);
 
-  expect(webFrameworkDevDependencies).toIncludeSameMembers(['volar-service-vetur', 'vue-tsc'])
-})
+  expect(webFrameworkDevDependencies).toIncludeSameMembers(['volar-service-vetur', 'vue-tsc']);
+});
 
 test('should return dependencies for three.js', () => {
-  configOptions.three = true
+  configOptions.three = true;
 
-  const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions)
+  const { webFrameworkDependencies } = getWebFrameworkCommands(configOptions);
 
-  expect(webFrameworkDependencies).toEqual(['three'])
-})
+  expect(webFrameworkDependencies).toEqual(['three']);
+});
 
 test('should return dependencies for three.js with TypeScript', () => {
-  configOptions.three = true
-  configOptions.typescript = true
+  configOptions.three = true;
+  configOptions.typescript = true;
 
-  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions)
+  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(configOptions);
 
-  expect(webFrameworkDependencies).toEqual(['three'])
-  expect(webFrameworkDevDependencies).toEqual(['@types/three'])
-})
+  expect(webFrameworkDependencies).toEqual(['three']);
+  expect(webFrameworkDevDependencies).toEqual(['@types/three']);
+});

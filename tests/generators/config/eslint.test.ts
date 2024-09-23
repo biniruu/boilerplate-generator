@@ -1,51 +1,51 @@
-import generateEslintConfig from '@generators/config/eslint'
+import generateEslintConfig from '@generators/config/eslint';
 
-import { elemCode, options, setTextContent } from '../../setTextContent.test'
+import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
 test('should generate an ESLint configuration for VanillaScript', () => {
-  setTextContent({ generateConfig: generateEslintConfig })
+  setTextContent({ generateConfig: generateEslintConfig });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});
 
 test('should generate an ESLint configuration for TypeScript', () => {
-  options.typescript = true
+  options.typescript = true;
 
-  setTextContent({ generateConfig: generateEslintConfig })
+  setTextContent({ generateConfig: generateEslintConfig });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});
 
 test('should generate an ESLint configuration for React.js with TypeScript', () => {
-  options.react = true
-  options.typescript = true
+  options.react = true;
+  options.typescript = true;
 
-  setTextContent({ generateConfig: generateEslintConfig })
+  setTextContent({ generateConfig: generateEslintConfig });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});
 
 test('should generate an ESLint configuration for React.js without TypeScript', () => {
-  options.react = true
+  options.react = true;
 
-  setTextContent({ generateConfig: generateEslintConfig })
+  setTextContent({ generateConfig: generateEslintConfig });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});
 
 test('should generate an ESLint configuration for Next.js with TypeScript', () => {
-  options.next = true
-  options.typescript = true
+  options.next = true;
+  options.typescript = true;
 
-  setTextContent({ generateConfig: generateEslintConfig })
+  setTextContent({ generateConfig: generateEslintConfig });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});
 
 test('should generate an ESLint configuration for Next.js without TypeScript', () => {
-  options.next = true
+  options.next = true;
 
-  setTextContent({ generateConfig: generateEslintConfig })
+  setTextContent({ generateConfig: generateEslintConfig });
 
-  expect(elemCode?.textContent).toMatchSnapshot()
-})
+  expect(elemCode?.textContent).toMatchSnapshot();
+});

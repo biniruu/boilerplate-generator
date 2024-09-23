@@ -3,9 +3,9 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { JestConfigWithTsJest } from 'ts-jest'
+import type { JestConfigWithTsJest } from 'ts-jest';
 
-import 'jest-extended'
+import 'jest-extended';
 
 /**
  * @property {String[]} moduleDirectories - root directories of the files you will test
@@ -227,6 +227,6 @@ const jestConfig: JestConfigWithTsJest = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-}
+};
 
-export default jestConfig
+export default jestConfig;

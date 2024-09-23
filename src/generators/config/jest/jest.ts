@@ -1,13 +1,13 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToString from '@utils/convertToString'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToString from '@utils/convertToString';
+import type { SelectOptions } from '_types';
 
 const getOptions = (configOptions: SelectOptions) => {
-  const { hasNext, hasTypescript, hasVue, hasJestHtmlReporters } = getCertainConditions(configOptions)
+  const { hasNext, hasTypescript, hasVue, hasJestHtmlReporters } = getCertainConditions(configOptions);
 
-  const htmlReporters = hasJestHtmlReporters ? ['jest-html-reporters'] : []
-  const next = hasNext ? ['./.next/'] : []
-  const js = !hasTypescript && { '^.+\\.(js|jsx)$': 'babel-jest' }
+  const htmlReporters = hasJestHtmlReporters ? ['jest-html-reporters'] : [];
+  const next = hasNext ? ['./.next/'] : [];
+  const js = !hasTypescript && { '^.+\\.(js|jsx)$': 'babel-jest' };
   const ts = hasTypescript && {
     '^.+\\.(ts|tsx)$': [
       'ts-jest',
@@ -15,19 +15,19 @@ const getOptions = (configOptions: SelectOptions) => {
         tsconfig: './tsconfig.test.json',
       },
     ],
-  }
-  const vue = hasVue && { '^.+\\.vue$': 'vue-jest' }
+  };
+  const vue = hasVue && { '^.+\\.vue$': 'vue-jest' };
 
-  return { htmlReporters, next, js, ts, vue }
-}
+  return { htmlReporters, next, js, ts, vue };
+};
 
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
 const getJestConfig = (configOptions: SelectOptions) => {
-  const { htmlReporters, next, js, ts, vue } = getOptions(configOptions)
-  const { hasTypescript, hasLodash } = getCertainConditions(configOptions)
+  const { htmlReporters, next, js, ts, vue } = getOptions(configOptions);
+  const { hasTypescript, hasLodash } = getCertainConditions(configOptions);
 
   /**
    * @property {string[]} moduleDirectories - root directories of the files you will test
@@ -251,7 +251,7 @@ const getJestConfig = (configOptions: SelectOptions) => {
 
     // Whether to use watchman for file crawling
     // watchman: true,
-  }
+  };
 
   const result = hasTypescript
     ? `import type { JestConfigWithTsJest } from 'ts-jest'
@@ -263,9 +263,9 @@ const jestConfig: JestConfigWithTsJest = ${convertToString(config)}
 export default jestConfig`
     : `/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
     
-module.exports = ${convertToString(config)}`
+module.exports = ${convertToString(config)}`;
 
-  return result
-}
+  return result;
+};
 
-export default getJestConfig
+export default getJestConfig;

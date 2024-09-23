@@ -1,13 +1,13 @@
-import convertToJson from '@utils/convertToJson'
+import convertToJson from '@utils/convertToJson';
 
 const generatePugConfig = () => {
   const pugLint = {
     disallowAttributeTemplateString: true,
-  }
+  };
 
-  const result = convertToJson(pugLint)
+  const result = convertToJson(pugLint);
 
-  return result
-}
+  return result;
+};
 
-export default generatePugConfig
+export default generatePugConfig;

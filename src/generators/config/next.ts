@@ -1,29 +1,29 @@
-import getCertainConditions from '@utils/certainConditions'
-import convertToString from '@utils/convertToString'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import convertToString from '@utils/convertToString';
+import type { SelectOptions } from '_types';
 
 interface Config {
   compiler?: {
-    styledComponents: boolean
-  }
-  distDir: string
+    styledComponents: boolean;
+  };
+  distDir: string;
   images: {
     remotePatterns: {
-      protocol: string
-      hostname: string
-    }[]
-  }
-  reactStrictMode: boolean
+      protocol: string;
+      hostname: string;
+    }[];
+  };
+  reactStrictMode: boolean;
   rewrites?: () => Promise<
     {
-      source: string
-      destination: string
+      source: string;
+      destination: string;
     }[]
-  >
-  trailingSlash?: boolean
+  >;
+  trailingSlash?: boolean;
   typescript?: {
-    tsconfigPath: string
-  }
+    tsconfigPath: string;
+  };
 }
 
 /** @type {import('next').NextConfig} */
@@ -36,7 +36,7 @@ interface Config {
  * @property {string} destination - external path you need to connect
  */
 const generateNextConfig = (configOptions: SelectOptions) => {
-  const { hasTypescript, hasStyledComponents } = getCertainConditions(configOptions)
+  const { hasTypescript, hasStyledComponents } = getCertainConditions(configOptions);
 
   const config: Config = {
     ...(hasStyledComponents && {
@@ -63,7 +63,7 @@ const generateNextConfig = (configOptions: SelectOptions) => {
     //   ]
     // },
     // trailingSlash: true,
-  }
+  };
 
   if (hasTypescript) {
     /**
@@ -77,7 +77,7 @@ const generateNextConfig = (configOptions: SelectOptions) => {
      */
     config.typescript = {
       tsconfigPath: 'replace tsconfigPath',
-    }
+    };
   }
 
   const code = `/** @type {import('next').NextConfig} */
@@ -86,10 +86,10 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 const nextConfig = ${convertToString(config)}
 
-module.exports = nextConfig`
-  const result = code.replace(`'replace tsconfigPath'`, `isProduction ? 'tsconfig.build.json' : 'tsconfig.json'`)
+module.exports = nextConfig`;
+  const result = code.replace(`'replace tsconfigPath'`, `isProduction ? 'tsconfig.build.json' : 'tsconfig.json'`);
 
-  return result
-}
+  return result;
+};
 
-export default generateNextConfig
+export default generateNextConfig;

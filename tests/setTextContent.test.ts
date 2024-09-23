@@ -1,32 +1,32 @@
-import { objOptions } from '@data/options'
-import type { SelectOptions } from '_types'
+import { objOptions } from '@data/options';
+import type { SelectOptions } from '_types';
 
-export let options = { ...objOptions }
+export let options = { ...objOptions };
 
 interface Params {
-  generateConfig?: ((param: SelectOptions) => string) | (() => string)
-  content?: string
+  generateConfig?: ((param: SelectOptions) => string) | (() => string);
+  content?: string;
 }
 
 export const setTextContent = ({ generateConfig, content }: Params) => {
   if (!elemCode) {
-    throw new Error('elemCode is not defined')
+    throw new Error('elemCode is not defined');
   }
   if (generateConfig) {
-    elemCode.textContent = generateConfig(options)
+    elemCode.textContent = generateConfig(options);
 
-    return
+    return;
   }
   if (content) {
-    elemCode.textContent = content
+    elemCode.textContent = content;
   }
-}
+};
 
-export let elemCode: HTMLElement | null
+export let elemCode: HTMLElement | null;
 
 beforeEach(() => {
-  document.body.innerHTML = `<code id="code" />`
-  elemCode = document.querySelector<HTMLElement>('#code')
+  document.body.innerHTML = `<code id="code" />`;
+  elemCode = document.querySelector<HTMLElement>('#code');
 
-  options = { ...objOptions }
-})
+  options = { ...objOptions };
+});

@@ -1,10 +1,10 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getCompilerCommands = (configOptions: SelectOptions) => {
-  const { hasBabel, hasWordpress } = getCertainConditions(configOptions)
+  const { hasBabel, hasWordpress } = getCertainConditions(configOptions);
 
-  const compilerDevDependencies: string[] = []
+  const compilerDevDependencies: string[] = [];
 
   /**
    * Babel
@@ -25,19 +25,19 @@ const getCompilerCommands = (configOptions: SelectOptions) => {
    * {@link https://babel.dev/docs/babel-preset-env}
    */
   if (hasBabel) {
-    compilerDevDependencies.push('@babel/core')
+    compilerDevDependencies.push('@babel/core');
     !hasWordpress &&
       compilerDevDependencies.push(
         '@babel/node',
         '@babel/plugin-transform-modules-commonjs',
         '@babel/plugin-transform-runtime',
         '@babel/preset-env',
-      )
+      );
   }
 
   return {
     compilerDevDependencies,
-  }
-}
+  };
+};
 
-export default getCompilerCommands
+export default getCompilerCommands;

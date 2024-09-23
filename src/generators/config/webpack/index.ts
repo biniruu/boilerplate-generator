@@ -1,14 +1,14 @@
-import getExtension from '@generators/config/webpack/extension'
-import getRules from '@generators/config/webpack/rules'
-import getCertainConditions from '@utils/certainConditions'
-import convertToString from '@utils/convertToString'
-import type { SelectOptions } from '_types'
+import getExtension from '@generators/config/webpack/extension';
+import getRules from '@generators/config/webpack/rules';
+import getCertainConditions from '@utils/certainConditions';
+import convertToString from '@utils/convertToString';
+import type { SelectOptions } from '_types';
 
 const generateWebpackConfig = (configOptions: SelectOptions) => {
-  const extension = getExtension(configOptions)
-  const rules = getRules(configOptions)
-  const { hasTypescript } = getCertainConditions(configOptions)
-  const tsExtensions = hasTypescript ? ['.tsx', '.ts'] : []
+  const extension = getExtension(configOptions);
+  const rules = getRules(configOptions);
+  const { hasTypescript } = getCertainConditions(configOptions);
+  const tsExtensions = hasTypescript ? ['.tsx', '.ts'] : [];
 
   const config = {
     devServer: {
@@ -50,7 +50,7 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
       },
       extensions: ['.jsx', '.js', ...tsExtensions],
     },
-  }
+  };
 
   const code = `import path from 'path'
   
@@ -86,7 +86,7 @@ const result = () => {
   return config
 }
 
-export default result`
+export default result`;
 
   const result = code
     .replace(`'replace mode'`, `isProduction ? 'production' : 'development'`)
@@ -112,9 +112,9 @@ export default result`
       ],
     }),`,
     )
-    .replace(`'replace alias src'`, `path.resolve(__dirname, 'src')`)
+    .replace(`'replace alias src'`, `path.resolve(__dirname, 'src')`);
 
-  return result
-}
+  return result;
+};
 
-export default generateWebpackConfig
+export default generateWebpackConfig;

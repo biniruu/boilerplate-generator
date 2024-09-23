@@ -1,5 +1,5 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 /**
  * @example
@@ -19,8 +19,8 @@ import type { SelectOptions } from '_types'
  * ```
  */
 const mergeOverrides = (configOptions: SelectOptions) => {
-  const { hasJest, hasTypescript } = getCertainConditions(configOptions)
-  const result = []
+  const { hasJest, hasTypescript } = getCertainConditions(configOptions);
+  const result = [];
 
   /**
    * Jest
@@ -40,7 +40,7 @@ const mergeOverrides = (configOptions: SelectOptions) => {
       extends: ['plugin:jest/recommended', 'plugin:jest-dom/recommended', 'plugin:testing-library/react'],
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
       // rules: {},
-    })
+    });
   }
   /**
    * Specifying TSConfigs
@@ -52,10 +52,10 @@ const mergeOverrides = (configOptions: SelectOptions) => {
     result.push({
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
       files: ['*.js', '*.cjs', '*.config.js', '*.config.ts', '*.test.js', '*.test.ts', '*.spec.js', '*.spec.ts'],
-    })
+    });
   }
 
-  return result
-}
+  return result;
+};
 
-export default mergeOverrides
+export default mergeOverrides;

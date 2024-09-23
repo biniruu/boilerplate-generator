@@ -1,8 +1,8 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const mergeSettings = (configOptions: SelectOptions) => {
-  const { hasJest, hasReact } = getCertainConditions(configOptions)
+  const { hasJest, hasReact } = getCertainConditions(configOptions);
 
   const result = {
     /**
@@ -43,9 +43,9 @@ const mergeSettings = (configOptions: SelectOptions) => {
         }),
       },
     }),
-  }
+  };
 
-  return result
-}
+  return result;
+};
 
-export default mergeSettings
+export default mergeSettings;

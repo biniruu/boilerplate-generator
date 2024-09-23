@@ -34,6 +34,6 @@ const dynamicTabList = {
   'socket-file': 'socket.d.ts',
   'stylelint-ignore': '.stylelintignore',
   'prettier-ignore': '.prettierignore',
-}
+};
 
-export default dynamicTabList
+export default dynamicTabList;

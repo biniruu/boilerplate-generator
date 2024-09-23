@@ -1,11 +1,11 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getTestCommands = (configOptions: SelectOptions) => {
   const { hasCssModule, hasJest, hasNext, hasNuxt, hasReact, hasStorybook, hasTypescript, hasVue, hasWebpack } =
-    getCertainConditions(configOptions)
+    getCertainConditions(configOptions);
 
-  const testDevDependencies: string[] = []
+  const testDevDependencies: string[] = [];
 
   if (hasJest) {
     /**
@@ -53,14 +53,14 @@ const getTestCommands = (configOptions: SelectOptions) => {
       'jest-watch-typeahead',
       'msw',
       'ts-jest',
-    )
+    );
     /**
      * identity-obj-proxy
      * {@link https://github.com/keyz/identity-obj-proxy#readme}
      */
     if (hasCssModule) {
-      testDevDependencies.push('identity-obj-proxy')
-      hasTypescript && testDevDependencies.push('@types/identity-obj-proxy')
+      testDevDependencies.push('identity-obj-proxy');
+      hasTypescript && testDevDependencies.push('@types/identity-obj-proxy');
     }
     /**
      * @testing-library/react (React Testing Library)
@@ -78,8 +78,8 @@ const getTestCommands = (configOptions: SelectOptions) => {
         '@testing-library/react-hooks',
         '@types/react-test-renderer',
         'react-test-renderer',
-      )
-      hasStorybook && testDevDependencies.push('@storybook/react')
+      );
+      hasStorybook && testDevDependencies.push('@storybook/react');
     }
     /**
      * @testing-library/vue (Vue Testing Library)
@@ -89,7 +89,7 @@ const getTestCommands = (configOptions: SelectOptions) => {
      * {@link https://github.com/vuejs/vue-jest#readme}
      */
     if (hasNuxt || hasVue) {
-      testDevDependencies.push('@testing-library/vue', '@vue/vue3-jest')
+      testDevDependencies.push('@testing-library/vue', '@vue/vue3-jest');
     }
     /**
      * @storybook/addon-a11y (Accessibility testing)
@@ -120,14 +120,14 @@ const getTestCommands = (configOptions: SelectOptions) => {
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
         '@storybook/addon-links',
-      )
-      hasWebpack && testDevDependencies.push('@storybook/builder-webpack5', '@storybook/manager-webpack5')
+      );
+      hasWebpack && testDevDependencies.push('@storybook/builder-webpack5', '@storybook/manager-webpack5');
     }
   }
 
   return {
     testDevDependencies,
-  }
-}
+  };
+};
 
-export default getTestCommands
+export default getTestCommands;

@@ -1,13 +1,13 @@
-import type { SelectOptions } from '_types'
+import type { SelectOptions } from '_types';
 
-import getJestConfig from './jest'
-import getJestSetup from './jestSetup'
+import getJestConfig from './jest';
+import getJestSetup from './jestSetup';
 
 const generateJestConfigs = (configOptions: SelectOptions) => {
-  const jestConfig = getJestConfig(configOptions)
-  const jestSetup = getJestSetup()
+  const jestConfig = getJestConfig(configOptions);
+  const jestSetup = getJestSetup();
 
-  return { jestConfig, jestSetup }
-}
+  return { jestConfig, jestSetup };
+};
 
-export default generateJestConfigs
+export default generateJestConfigs;

@@ -1,16 +1,16 @@
-import getStateManagementCommands from '@generators/command/stateManagement'
-import { configOptions } from 'tests/configOptions.test'
+import getStateManagementCommands from '@generators/command/stateManagement';
+import { configOptions } from 'tests/configOptions.test';
 
 test('should return an empty array when all options are false', () => {
-  const { stateManagementDependencies } = getStateManagementCommands(configOptions)
+  const { stateManagementDependencies } = getStateManagementCommands(configOptions);
 
-  expect(stateManagementDependencies).toBeEmpty()
-})
+  expect(stateManagementDependencies).toBeEmpty();
+});
 
 test('should return dependencies for Recoil', () => {
-  configOptions.recoil = true
+  configOptions.recoil = true;
 
-  const { stateManagementDependencies } = getStateManagementCommands(configOptions)
+  const { stateManagementDependencies } = getStateManagementCommands(configOptions);
 
-  expect(stateManagementDependencies).toEqual(['recoil'])
-})
+  expect(stateManagementDependencies).toEqual(['recoil']);
+});

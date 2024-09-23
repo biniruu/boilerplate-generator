@@ -1,12 +1,12 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getWebFrameworkCommands = (configOptions: SelectOptions) => {
   const { hasExpress, hasNext, hasNuxt, hasReact, hasThree, hasTypescript, hasVue } =
-    getCertainConditions(configOptions)
+    getCertainConditions(configOptions);
 
-  const webFrameworkDependencies: string[] = []
-  const webFrameworkDevDependencies: string[] = []
+  const webFrameworkDependencies: string[] = [];
+  const webFrameworkDevDependencies: string[] = [];
 
   /**
    * body-parser
@@ -19,22 +19,22 @@ const getWebFrameworkCommands = (configOptions: SelectOptions) => {
    * {@link https://expressjs.com}
    */
   if (hasExpress) {
-    webFrameworkDependencies.push('body-parser', 'cors', 'express')
-    hasTypescript && webFrameworkDevDependencies.push('@types/body-parser', '@types/cors', '@types/express')
+    webFrameworkDependencies.push('body-parser', 'cors', 'express');
+    hasTypescript && webFrameworkDevDependencies.push('@types/body-parser', '@types/cors', '@types/express');
   }
   /**
    * react-router-dom (React Router DOM)
    * {@link https://reactrouter.com/en/main}
    */
   if (hasReact) {
-    webFrameworkDependencies.push('react-router-dom')
+    webFrameworkDependencies.push('react-router-dom');
   }
   /**
    * react-refresh
    * {@link https://www.npmjs.com/package/react-refresh}
    */
   if (hasNext || hasReact) {
-    webFrameworkDependencies.push('react-refresh')
+    webFrameworkDependencies.push('react-refresh');
   }
   /**
    * volar-service-vetur
@@ -45,22 +45,22 @@ const getWebFrameworkCommands = (configOptions: SelectOptions) => {
    * {@link https://github.com/vuejs/language-tools#readme}
    */
   if (hasNuxt || hasVue) {
-    webFrameworkDevDependencies.push('volar-service-vetur')
-    hasTypescript && webFrameworkDevDependencies.push('vue-tsc')
+    webFrameworkDevDependencies.push('volar-service-vetur');
+    hasTypescript && webFrameworkDevDependencies.push('vue-tsc');
   }
   /**
    * three (three.js)
    * {@link https://threejs.org}
    */
   if (hasThree) {
-    webFrameworkDependencies.push('three')
-    hasTypescript && webFrameworkDevDependencies.push('@types/three')
+    webFrameworkDependencies.push('three');
+    hasTypescript && webFrameworkDevDependencies.push('@types/three');
   }
 
   return {
     webFrameworkDependencies,
     webFrameworkDevDependencies,
-  }
-}
+  };
+};
 
-export default getWebFrameworkCommands
+export default getWebFrameworkCommands;

@@ -1,4 +1,4 @@
-import convertToString from '@utils/convertToString'
+import convertToString from '@utils/convertToString';
 
 const generateBabelConfig = () => {
   const config = {
@@ -8,14 +8,14 @@ const generateBabelConfig = () => {
       },
     },
     presets: ['@babel/preset-env'],
-  }
+  };
 
-  const result = convertToString(config)
+  const result = convertToString(config);
   if (!result) {
-    throw new Error('Babel config is not defined.')
+    throw new Error('Babel config is not defined.');
   }
 
-  return result
-}
+  return result;
+};
 
-export default generateBabelConfig
+export default generateBabelConfig;

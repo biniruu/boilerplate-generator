@@ -23,6 +23,6 @@ The gatsby-config.ts is configured based on the following options.
 • Add Markdown and MDX support
 \`\`\`
 
-If you don't want to configure the options yourself, use the command \`gatsby new [folder name]\`. Refer to the [Gatsby.js documentation](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-1/#create-a-gatsby-site) to set up the basic settings for Gatsby.`
+If you don't want to configure the options yourself, use the command \`gatsby new [folder name]\`. Refer to the [Gatsby.js documentation](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-1/#create-a-gatsby-site) to set up the basic settings for Gatsby.`;
 
-export default getGatsbyDesc
+export default getGatsbyDesc;

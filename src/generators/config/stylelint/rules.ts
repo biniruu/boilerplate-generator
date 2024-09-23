@@ -1,8 +1,8 @@
-import getCertainConditions from '@utils/certainConditions'
-import type { SelectOptions } from '_types'
+import getCertainConditions from '@utils/certainConditions';
+import type { SelectOptions } from '_types';
 
 const getRules = (configOptions: SelectOptions) => {
-  const { hasScss } = getCertainConditions(configOptions)
+  const { hasScss } = getCertainConditions(configOptions);
 
   const result = {
     /**
@@ -141,9 +141,9 @@ const getRules = (configOptions: SelectOptions) => {
      * order/properties-alphabetical-order : 속성을 알파벳 순으로 정렬
      */
     'order/properties-alphabetical-order': true,
-  }
+  };
 
-  return result
-}
+  return result;
+};
 
-export default getRules
+export default getRules;
