@@ -2,7 +2,7 @@ import getCertainConditions from '@utils/certainConditions'
 import type { SelectOptions } from '_types'
 
 const getAuthenticationCommands = (configOptions: SelectOptions) => {
-  const { hasBcrypt, hasNext, hasNextAuth, hasTypescript } = getCertainConditions(configOptions)
+  const { hasBcrypt, hasNextAuth, hasTypescript } = getCertainConditions(configOptions)
 
   const authenticationDependencies: string[] = []
   const authenticationDevDependencies: string[] = []
@@ -19,7 +19,7 @@ const getAuthenticationCommands = (configOptions: SelectOptions) => {
    * next-auth (NextAuth.js)
    * {@link https://next-auth.js.org}
    */
-  if (hasNextAuth && hasNext) {
+  if (hasNextAuth) {
     authenticationDependencies.push('next-auth')
   }
 

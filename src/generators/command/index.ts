@@ -17,6 +17,7 @@ import getStylelintCommands from './stylelint'
 import getTestCommands from './test'
 import getTypescriptCommands from './typescript'
 import getUtilityCommands from './utility'
+import getValidationCommands from './validation'
 import getWebFrameworkCommands from './webFramework'
 
 const parseCommands = (commands: string[]) => {
@@ -42,6 +43,7 @@ const generateCommand = (options: SelectOptions) => {
   const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(options)
   const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(options)
   const { typescriptDevDependencies } = getTypescriptCommands(options)
+  const { validationDependencies } = getValidationCommands(options)
 
   const dependencies = [
     ...authenticationDependencies,
@@ -52,6 +54,7 @@ const generateCommand = (options: SelectOptions) => {
     ...stateManagementDependencies,
     ...utilityDependencies,
     ...webFrameworkDependencies,
+    ...validationDependencies,
   ]
   const devDependencies = [
     ...authenticationDevDependencies,
@@ -85,22 +88,12 @@ yarn add -D ${convertToString(devDependencies, parseCommands)}`
     return `yarn add -D ${convertToString(devDependencies, parseCommands)}`
   }
 
-  const {
-    hasGatsby,
-    hasWordpress,
-    hasTanstackQuery,
-    hasNextAuth,
-    hasJoi,
-    hasReactHookForm,
-    hasDotenv,
-    hasJsZip,
-    hasNpm,
-  } = getCertainConditions(options)
+  const { hasGatsby, hasWordpress, hasDotenv } = getCertainConditions(options)
   if (hasGatsby || hasWordpress) {
     return `No commands available. Please see 'Getting Started' for more information.`
   }
   // TODO: Make these packages selectable
-  if (hasTanstackQuery || hasNextAuth || hasJoi || hasReactHookForm || hasDotenv || hasJsZip || hasNpm) {
+  if (hasDotenv) {
     return `No commands available. Please try selecting one of the JavaScript Libraries or other options.`
   }
   return 'No commands available'
