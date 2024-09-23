@@ -9,10 +9,11 @@ test('should return empty arrays when all options are false', () => {
 });
 
 test('should return dependencies for bcrypt.js', () => {
-  configOptions.bcrypt = true;
-  configOptions.typescript = true;
-
-  const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(configOptions);
+  const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands({
+    ...configOptions,
+    bcrypt: true,
+    typescript: true,
+  });
 
   const dependencies = ['bcryptjs'];
   expect(authenticationDependencies).toIncludeSameMembers(dependencies);
@@ -22,10 +23,7 @@ test('should return dependencies for bcrypt.js', () => {
 });
 
 test('should return dependencies for NextAuth.js', () => {
-  configOptions.next = true;
-  configOptions.nextAuth = true;
-
-  const { authenticationDependencies } = getAuthenticationCommands(configOptions);
+  const { authenticationDependencies } = getAuthenticationCommands({ ...configOptions, next: true, nextAuth: true });
 
   const dependencies = ['next-auth'];
   expect(authenticationDependencies).toIncludeSameMembers(dependencies);

@@ -49,11 +49,20 @@ test('should return dependencies for Vite with React.js and TypeScript', () => {
 const devDependenciesWithoutThree = ['html-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin'];
 
 test('should return dependencies for Webpack', () => {
-  configOptions.webpack = true;
+  const { bundlerDevDependencies } = getBundlerCommands({ ...configOptions, webpack: true });
 
-  const { bundlerDevDependencies } = getBundlerCommands(configOptions);
-
-  expect(bundlerDevDependencies).toIncludeAllMembers(devDependenciesWithoutThree);
+  expect(bundlerDevDependencies).toIncludeAllMembers([
+    '@swc/html',
+    'source-map-loader',
+    'style-loader',
+    'webpack',
+    'webpack-cli',
+    'webpack-dev-server',
+    'webpack-merge',
+    'copy-webpack-plugin',
+    'mini-css-extract-plugin',
+    'workbox-webpack-plugin',
+  ]);
 });
 
 test('should return dependencies for Webpack with Three.js', () => {
