@@ -33,7 +33,6 @@ const config: Configuration = {
     static: {
       directory: path.join(__dirname, 'public'),
     },
-    watchFiles: ['src/**/*.ts', 'public/*.html'],
   },
   entry: './src/index.ts',
   mode: isProduction ? 'production' : 'development',
