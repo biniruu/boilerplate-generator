@@ -20,7 +20,6 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
       static: {
         directory: 'replace directory',
       },
-      watchFiles: [`src/**/*.${extension}`, 'public/*.html'],
     },
     entry: `./src/index.${extension}`,
     mode: 'replace mode',
