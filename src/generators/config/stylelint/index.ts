@@ -12,7 +12,7 @@ import getRules from './rules';
  * {@link https://stylelint.io}
  */
 const generateStylelintConfig = (configOptions: SelectOptions) => {
-  const { hasPostcss } = getCertainConditions(configOptions);
+  const { hasPostcss, hasNuxt } = getCertainConditions(configOptions);
 
   const config = {
     extends: getExtends(configOptions),
@@ -20,7 +20,7 @@ const generateStylelintConfig = (configOptions: SelectOptions) => {
     plugins: getPlugins(configOptions),
     rules: getRules(configOptions),
   };
-  const result = `module.exports = ${convertToString(config)}`;
+  const result = hasNuxt ? `export default ${convertToString(config)}` : `module.exports = ${convertToString(config)}`;
 
   return result;
 };
