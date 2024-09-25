@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "rm -r dist ; webpack --mode=production --node-env=production ; gh-pages -d dist",
+    "build:prod": "rm -r dist ; webpack --mode=production --node-env=production",
     "build:dev": "rm -r dist ; webpack --mode=development --node-env=development",
     "test": "jest",
     "test:update": "jest -u",
