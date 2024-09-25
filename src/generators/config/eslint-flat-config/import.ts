@@ -74,7 +74,7 @@ export const importPluginConfig = convertToString(config)
   ?.replace(
     `'replace fixupConfigRules'`,
     `...fixupConfigRules(
-    flatCompat.config(importConfigs.recommended, importConfigs.react, importConfigs.typescript),
+      flatCompat.config(importConfigs.recommended, importConfigs.react, importConfigs.typescript),
     )`,
   )
   .replace(`'replace fixupPluginRules'`, `fixupPluginRules(importPlugin)`);

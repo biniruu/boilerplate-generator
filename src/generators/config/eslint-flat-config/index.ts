@@ -104,6 +104,7 @@ const generateEslintFlatConfig = (configOptions: SelectOptions) => {
     hasTanstackQuery ? tanstackImport : '',
   ]);
 
+  const jsxA11y = jsxA11yConfig(configOptions);
   const configs = mergeConfigs([
     importPluginConfig ? importPluginConfig : '',
     hasTypescript && typescriptConfig ? typescriptConfig : '',
@@ -112,7 +113,8 @@ const generateEslintFlatConfig = (configOptions: SelectOptions) => {
     hasJest && jestConfig ? jestConfig : '',
     (hasReact || hasNext) && hasJest && testingLibraryReactConfig ? testingLibraryReactConfig : '',
     hasStorybook && storybookConfig ? storybookConfig : '',
-    (hasReact || hasNext || hasNuxt) && jsxA11yConfig ? jsxA11yConfig : '',
+    hasNuxt ? 'jsxA11y.flatConfigs.recommended' : '',
+    (hasReact || hasNext || hasNuxt) && jsxA11y ? jsxA11y : '',
     hasTanstackQuery && tanstackConfig ? tanstackConfig : '',
   ]);
 
@@ -130,7 +132,7 @@ const generateEslintFlatConfig = (configOptions: SelectOptions) => {
   const code = `import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
-import globals from 'globals';${`\n${imports}`}
+import globals from 'globals';${`\n${imports}`}${hasTypescript ? `\n\nconst flatCompat = new FlatCompat();` : ''}
 
 ${
   hasTypescript
