@@ -52,11 +52,11 @@ const generatePrettierConfig = (configOptions: SelectOptions) => {
       'prettier-plugin-tailwindcss', // 항상 목록 마지막에 위치시킬 것
     ];
   }
-  if (hasVue) {
+  if (hasVue || hasNuxt) {
     config.vueIndentScriptAndStyle = true;
   }
 
-  const code = `module.exports = ${convertToString(config)}`;
+  const code = hasNuxt ? `export default ${convertToString(config)}` : `module.exports = ${convertToString(config)}`;
 
   return code;
 };
