@@ -75,14 +75,14 @@ const getCssFrameworkCommands = (configOptions: SelectOptions) => {
    * sass (Sass)
    * {@link https://sass-lang.com}
    */
-  if (hasScss && !hasPostcss) {
+  if (hasScss) {
     cssFrameworkDevDependencies.push('sass');
   }
   /**
    * tailwindcss (Tailwind CSS)
    * {@link https://tailwindcss.com}
    */
-  if (hasTailwind && !hasPostcss) {
+  if (hasTailwind) {
     cssFrameworkDevDependencies.push('tailwindcss');
   }
 

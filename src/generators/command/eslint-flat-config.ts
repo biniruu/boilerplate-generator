@@ -87,11 +87,14 @@ const getEslintFlatConfigCommands = (configOptions: SelectOptions) => {
 
   eslintFlatConfigDevDependencies.push('@eslint/compat');
 
+  if (hasTypescript && !hasNext) {
+    eslintFlatConfigDevDependencies.push('typescript-eslint');
+  }
   if (!(hasGatsby || hasNext)) {
     eslintFlatConfigDevDependencies.push('eslint');
   }
   if (!(hasGatsby || hasWordpress)) {
-    eslintFlatConfigDevDependencies.push('eslint-plugin-import');
+    eslintFlatConfigDevDependencies.push('eslint-plugin-import', '@eslint/eslintrc');
   }
   if (hasJsLibs) {
     eslintFlatConfigDevDependencies.push('eslint-plugin-jsx-a11y', 'eslint-plugin-testing-library');
