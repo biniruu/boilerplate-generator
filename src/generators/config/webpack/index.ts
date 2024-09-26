@@ -51,26 +51,24 @@ const generateWebpackConfig = (configOptions: SelectOptions) => {
     },
   };
 
+  const iConfiguration = `interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration
+}`;
+
   const code = `import path from 'path'
   
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import TerserPlugin from 'terser-webpack-plugin'
-import type { Configuration as WebpackConfiguration } from 'webpack'
-import { SourceMapDevToolPlugin } from 'webpack'
-import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
-import WorkboxWebpackPlugin from 'workbox-webpack-plugin'
-
-interface Configuration extends WebpackConfiguration {
-  devServer?: WebpackDevServerConfiguration
-}
+import TerserPlugin from 'terser-webpack-plugin'${hasTypescript ? `\nimport type { Configuration as WebpackConfiguration } from 'webpack'` : ''}
+import { SourceMapDevToolPlugin } from 'webpack'${hasTypescript ? `\nimport type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'` : ''}
+import WorkboxWebpackPlugin from 'workbox-webpack-plugin'${hasTypescript ? `\n\n${iConfiguration}` : ''}
 
 const isProduction = process.env.NODE_ENV === 'production'
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
 
-const config: Configuration = ${convertToString(config)}
+const config${hasTypescript ? ': Configuration' : ''} = ${convertToString(config)}
 
 const result = () => {
   if (!config.plugins) {
