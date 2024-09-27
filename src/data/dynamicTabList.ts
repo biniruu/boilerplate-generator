@@ -14,8 +14,8 @@ const dynamicTabList = {
   jest: {
     value: 'jest.config',
     ext: {
-      javascript: '.js',
-      typescript: '.ts',
+      js: '.js',
+      ts: '.ts',
     },
   },
   postcss: {
@@ -24,8 +24,8 @@ const dynamicTabList = {
   webpack: {
     value: 'webpack.config',
     ext: {
-      javascript: '.js',
-      typescript: '.ts',
+      js: '.js',
+      ts: '.ts',
     },
   },
   vite: {
@@ -37,11 +37,11 @@ const dynamicTabList = {
   tailwind: {
     value: 'tailwind.config',
     ext: {
-      javascript: '.js',
-      typescript: '.ts',
+      js: '.js',
+      ts: '.ts',
     },
   },
-  typescript: {
+  ts: {
     value: 'tsconfig.json',
   },
   babel: {
@@ -74,8 +74,8 @@ const dynamicTabList = {
   'tanstack-query-file': {
     value: 'reactQueryProvider',
     ext: {
-      javascript: '.jsx',
-      typescript: '.tsx',
+      js: '.jsx',
+      ts: '.tsx',
     },
   },
   'type-guards-file': {
@@ -84,8 +84,8 @@ const dynamicTabList = {
   'jest-setup': {
     value: 'jest.setup',
     ext: {
-      javascript: '.js',
-      typescript: '.ts',
+      js: '.js',
+      ts: '.ts',
     },
   },
   'ts-default': {
@@ -112,7 +112,7 @@ const dynamicTabList = {
   'tailwind-file': {
     value: 'style.css',
   },
-  'typescript-file': {
+  'ts-file': {
     value: 'declarations.d.ts',
   },
   'socket-file': {
