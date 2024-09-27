@@ -13,6 +13,7 @@ export const setState = (newState: State) => {
 };
 
 const toggleOptionState = (option: JsLib) => {
+  // TODO: Add other radio button options
   switch (option) {
     case 'react':
       controlReact();
