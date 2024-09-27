@@ -1,6 +1,6 @@
 import getBundlerCommands from '@generators/command/bundler';
 import stateManager from '@store/state';
-import { options } from 'tests/configOptions.test';
+import { options } from 'tests/options.test';
 
 test('should return empty arrays when all options are false', () => {
   const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands();

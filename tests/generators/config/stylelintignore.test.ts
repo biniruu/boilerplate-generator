@@ -1,6 +1,6 @@
 import generateStylelintIgnoreConfig from '@generators/config/stylelintignore';
 import stateManager from '@store/state';
-import { setHasJsLibs } from 'tests/configOptions.test';
+import { setHasJsLibs } from 'tests/options.test';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 

@@ -1,6 +1,6 @@
 import getTestCommands from '@generators/command/test';
 import stateManager from '@store/state';
-import { options } from 'tests/configOptions.test';
+import { options } from 'tests/options.test';
 
 test('should return an empty value when all options are false', () => {
   const { testDevDependencies } = getTestCommands();

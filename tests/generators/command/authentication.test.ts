@@ -1,6 +1,6 @@
 import getAuthenticationCommands from '@generators/command/authentication';
 import stateManager from '@store/state';
-import { options } from 'tests/configOptions.test';
+import { options } from 'tests/options.test';
 
 test('should return empty arrays when all options are false', () => {
   const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands();

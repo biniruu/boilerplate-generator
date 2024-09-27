@@ -1,6 +1,6 @@
 import getCssFrameworkCommands from '@generators/command/cssFramework';
 import stateManager from '@store/state';
-import { options, setHasJsLibs } from 'tests/configOptions.test';
+import { options, setHasJsLibs } from 'tests/options.test';
 
 it('should return an empty array when all options are false', () => {
   const { cssFrameworkDevDependencies } = getCssFrameworkCommands();

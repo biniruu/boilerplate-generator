@@ -1,6 +1,6 @@
 import getValidationCommands from '@generators/command/validation';
 import stateManager from '@store/state';
-import { options } from 'tests/configOptions.test';
+import { options } from 'tests/options.test';
 
 test('should return an empty array when all options are false', () => {
   const { validationDependencies } = getValidationCommands();
