@@ -112,6 +112,7 @@ const jestConfig: JestConfigWithTsJest = {
     '@libs/(.*)': '<rootDir>/src/libs/$1',
     '_types/(.*)': '<rootDir>/src/types/$1',
     '@utils/(.*)': '<rootDir>/src/utils/$1',
+    '@store/(.*)': '<rootDir>/src/store/$1',
     'tests/(.*)': '<rootDir>/tests/$1',
     'lodash-es': 'lodash',
   },

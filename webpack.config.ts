@@ -100,6 +100,7 @@ const config: Configuration = {
       '@generators': path.resolve(__dirname, 'src/generators'),
       '@libs': path.resolve(__dirname, 'src/libs'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@store': path.resolve(__dirname, 'src/store'),
       _types: path.resolve(__dirname, 'src/types'),
     },
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
