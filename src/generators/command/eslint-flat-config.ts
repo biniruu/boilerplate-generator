@@ -1,7 +1,6 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getEslintFlatConfigCommands = (configOptions: SelectOptions) => {
+const getEslintFlatConfigCommands = () => {
   const {
     hasEslintFlatConfig,
     hasGatsby,
@@ -19,7 +18,7 @@ const getEslintFlatConfigCommands = (configOptions: SelectOptions) => {
     hasTypescript,
     hasWebpack,
     hasWordpress,
-  } = getCertainConditions(configOptions);
+  } = getCertainConditions();
 
   const eslintFlatConfigDevDependencies: string[] = [];
 

@@ -1,14 +1,12 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
 import getGatsbyDesc from './getsby';
 import getNuxtDesc from './nuxt';
 import getStorybookDesc from './storybook';
 import getWebpackDesc from './webpack';
 
-const generateReadme = (configOptions: SelectOptions) => {
-  const { hasTypescript, hasNext, hasNuxt, hasReact, hasWebpack, hasStorybook, hasGatsby } =
-    getCertainConditions(configOptions);
+const generateReadme = () => {
+  const { hasTypescript, hasNext, hasNuxt, hasReact, hasWebpack, hasStorybook, hasGatsby } = getCertainConditions();
 
   const desc = () => {
     let desc = '';

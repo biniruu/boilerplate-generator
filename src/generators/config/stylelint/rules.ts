@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getRules = (configOptions: SelectOptions) => {
-  const { hasScss } = getCertainConditions(configOptions);
+const getRules = () => {
+  const { hasScss } = getCertainConditions();
 
   const result = {
     /**

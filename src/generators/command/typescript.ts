@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getTypescriptCommands = (configOptions: SelectOptions) => {
-  const { hasTypescript, hasJsLibs, hasGatsby, hasWordpress } = getCertainConditions(configOptions);
+const getTypescriptCommands = () => {
+  const { hasTypescript, hasJsLibs, hasGatsby, hasWordpress } = getCertainConditions();
 
   const typescriptDevDependencies: string[] = [];
   const libsContainTs = hasJsLibs || hasGatsby || hasWordpress;

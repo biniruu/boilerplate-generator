@@ -1,5 +1,5 @@
 import configs from '@data/configs';
-import type { ConfigTab, ObjConfigTab, SelectOptions } from '_types';
+import type { ConfigTab, ObjConfigTab } from '_types';
 
 import generateBabelConfig from './babel';
 import generateEslintConfig from './eslint';
@@ -26,36 +26,36 @@ import generateViteConfig from './vite';
 import generateVolarConfig from './volar';
 import generateWebpackConfig from './webpack';
 
-const generateConfig = (tab: ConfigTab, options: SelectOptions) => {
+const generateConfig = (tab: ConfigTab) => {
   const values = [
     generateBabelConfig(),
-    generateEslintConfig(options),
-    generateEslintIgnoreConfig(options),
-    generateEslintFlatConfig(options),
+    generateEslintConfig(),
+    generateEslintIgnoreConfig(),
+    generateEslintFlatConfig(),
     generateGatsbyConfig(),
-    generateGitIgnore(options),
-    generateJestConfigs(options).jestConfig,
-    generateJestConfigs(options).jestSetup,
-    generatePrettierConfig(options),
-    generatePostcssConfig(options),
+    generateGitIgnore(),
+    generateJestConfigs().jestConfig,
+    generateJestConfigs().jestSetup,
+    generatePrettierConfig(),
+    generatePostcssConfig(),
     generatePugConfig(),
-    generateStylelintConfig(options),
+    generateStylelintConfig(),
     generateMarkdownlintConfig(),
-    generateNextConfig(options),
-    generateNodemonConfig(options),
+    generateNextConfig(),
+    generateNodemonConfig(),
     generateNpmConfig(),
     generateNuxtConfig(),
-    generatePackageConfig(options),
-    generateTailwindConfig(options),
-    generateTypescriptConfigs(options).tsBuild,
-    generateTypescriptConfigs(options).tsDefault,
-    generateTypescriptConfigs(options).tsNode,
-    generateTypescriptConfigs(options).tsTest,
-    generateTypescriptConfigs(options).tsConfig,
+    generatePackageConfig(),
+    generateTailwindConfig(),
+    generateTypescriptConfigs().tsBuild,
+    generateTypescriptConfigs().tsDefault,
+    generateTypescriptConfigs().tsNode,
+    generateTypescriptConfigs().tsTest,
+    generateTypescriptConfigs().tsConfig,
     generateViteConfig(),
     generateVolarConfig(),
-    generateWebpackConfig(options),
-    generateStylelintIgnoreConfig(options),
+    generateWebpackConfig(),
+    generateStylelintIgnoreConfig(),
     generatePrettierIgnoreConfig(),
   ];
 

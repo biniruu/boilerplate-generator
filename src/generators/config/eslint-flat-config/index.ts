@@ -2,7 +2,7 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToString from '@utils/convertToString';
 import { mergeConfigs, mergeImports } from '@utils/mergeText';
-import type { Config, SelectOptions } from '_types';
+import type { Config } from '_types';
 
 import { importPluginConfig, importPluginImport } from './import';
 import { jestConfig, jestImports, testingLibraryImport, testingLibraryReactConfig } from './jest';
@@ -14,9 +14,9 @@ import { tailwindConfig, tailwindImport } from './tailwind';
 import { tanstackConfig, tanstackImport } from './tanstack-query';
 import { typescriptConfig, typescriptImport } from './typescript';
 
-const generateEslintFlatConfig = (configOptions: SelectOptions) => {
+const generateEslintFlatConfig = () => {
   const { hasJest, hasNext, hasNuxt, hasReact, hasStorybook, hasTailwind, hasTanstackQuery, hasTypescript } =
-    getCertainConditions(configOptions);
+    getCertainConditions();
 
   const config: Config = {
     name: '@eslint/js',
@@ -104,7 +104,7 @@ const generateEslintFlatConfig = (configOptions: SelectOptions) => {
     hasTanstackQuery ? tanstackImport : '',
   ]);
 
-  const jsxA11y = jsxA11yConfig(configOptions);
+  const jsxA11y = jsxA11yConfig();
   const configs = mergeConfigs([
     importPluginConfig ? importPluginConfig : '',
     hasTypescript && typescriptConfig ? typescriptConfig : '',

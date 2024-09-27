@@ -1,9 +1,8 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getCssFrameworkCommands = (configOptions: SelectOptions) => {
+const getCssFrameworkCommands = () => {
   const { hasGatsby, hasPostcss, hasScss, hasStyledComponents, hasTailwind, hasTypescript, hasJsLibs } =
-    getCertainConditions(configOptions);
+    getCertainConditions();
 
   const cssFrameworkDevDependencies: string[] = [];
 

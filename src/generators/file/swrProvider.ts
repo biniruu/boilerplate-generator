@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getSwrProviderFile = (configOptions: SelectOptions) => {
-  const { hasNext } = getCertainConditions(configOptions);
+const getSwrProviderFile = () => {
+  const { hasNext } = getCertainConditions();
 
   const client =
     hasNext &&

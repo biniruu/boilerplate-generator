@@ -1,5 +1,4 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
 import getTsBuild from './tsBuild';
 import getTsConfig from './tsConfig';
@@ -9,16 +8,16 @@ import getTsTest from './tsTest';
 
 const tsNode = getTsNode();
 
-const generateTypescriptConfigs = (configOptions: SelectOptions) => {
-  const { hasGatsby, hasReact } = getCertainConditions(configOptions);
+const generateTypescriptConfigs = () => {
+  const { hasGatsby, hasReact } = getCertainConditions();
   const hasDefaultConfig = !hasGatsby || !hasReact;
 
-  const tsDefaultConfig = getTsDefault(configOptions);
+  const tsDefaultConfig = getTsDefault();
 
-  const tsBuild = getTsBuild(configOptions);
-  const tsConfig = hasDefaultConfig ? getTsConfig(configOptions) : tsDefaultConfig;
+  const tsBuild = getTsBuild();
+  const tsConfig = hasDefaultConfig ? getTsConfig() : tsDefaultConfig;
   const tsDefault = tsDefaultConfig;
-  const tsTest = getTsTest(configOptions);
+  const tsTest = getTsTest();
 
   // These will become individual files:
   // tsBuild - tsconfig.build.json

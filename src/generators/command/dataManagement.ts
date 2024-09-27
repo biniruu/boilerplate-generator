@@ -1,7 +1,6 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getDataManagementCommands = (configOptions: SelectOptions) => {
+const getDataManagementCommands = () => {
   const {
     hasAxios,
     hasGraphql,
@@ -14,7 +13,7 @@ const getDataManagementCommands = (configOptions: SelectOptions) => {
     hasSwr,
     hasTanstackQuery,
     hasTypescript,
-  } = getCertainConditions(configOptions);
+  } = getCertainConditions();
 
   const dataManagementDependencies: string[] = [];
   const dataManagementDevDependencies: string[] = [];

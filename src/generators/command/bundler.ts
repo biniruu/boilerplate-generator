@@ -1,9 +1,8 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getBundlerCommands = (configOptions: SelectOptions) => {
+const getBundlerCommands = () => {
   const { hasEsbuild, hasJest, hasNext, hasReact, hasScss, hasThree, hasTypescript, hasVite, hasWebpack } =
-    getCertainConditions(configOptions);
+    getCertainConditions();
 
   const bundlerDependencies: string[] = [];
   const bundlerDevDependencies: string[] = [];

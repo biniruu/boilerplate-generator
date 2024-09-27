@@ -1,5 +1,4 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
 interface Rule {
   test: RegExp;
@@ -12,8 +11,8 @@ interface Rule {
 /**
  * [rules]{@link https://webpack.js.org/loaders}
  */
-const getRules = (configOptions: SelectOptions) => {
-  const { hasPostcss, hasScss, hasTypescript } = getCertainConditions(configOptions);
+const getRules = () => {
+  const { hasPostcss, hasScss, hasTypescript } = getCertainConditions();
 
   const postcssLoader = hasPostcss ? ['postcss-loader'] : [];
   const rules: Rule[] = [

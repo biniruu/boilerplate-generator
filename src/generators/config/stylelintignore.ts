@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const generateStylelintIgnoreConfig = (configOptions: SelectOptions) => {
-  const { hasJest, hasJsLibs, hasTypescript, hasWordpress } = getCertainConditions(configOptions);
+const generateStylelintIgnoreConfig = () => {
+  const { hasJest, hasJsLibs, hasTypescript, hasWordpress } = getCertainConditions();
 
   const jest =
     hasJest && !hasTypescript

@@ -1,5 +1,4 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 /**
  * @example
  *
@@ -16,8 +15,8 @@ import type { SelectOptions } from '_types';
  * ],
  * ```
  */
-const getOverrides = (configOptions: SelectOptions) => {
-  const { hasPostcss, hasStyledComponents } = getCertainConditions(configOptions);
+const getOverrides = () => {
+  const { hasPostcss, hasStyledComponents } = getCertainConditions();
   const result = [];
 
   /**

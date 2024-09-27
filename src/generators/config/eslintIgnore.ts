@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const generateEslintIgnoreConfig = (configOptions: SelectOptions) => {
-  const { hasReact, hasStorybook, hasTypescript, hasWordpress } = getCertainConditions(configOptions);
+const generateEslintIgnoreConfig = () => {
+  const { hasReact, hasStorybook, hasTypescript, hasWordpress } = getCertainConditions();
 
   const storybook =
     hasStorybook &&

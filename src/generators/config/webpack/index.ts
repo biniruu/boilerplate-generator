@@ -2,12 +2,11 @@ import getExtension from '@generators/config/webpack/extension';
 import getRules from '@generators/config/webpack/rules';
 import getCertainConditions from '@utils/certainConditions';
 import convertToString from '@utils/convertToString';
-import type { SelectOptions } from '_types';
 
-const generateWebpackConfig = (configOptions: SelectOptions) => {
-  const extension = getExtension(configOptions);
-  const rules = getRules(configOptions);
-  const { hasTypescript } = getCertainConditions(configOptions);
+const generateWebpackConfig = () => {
+  const extension = getExtension();
+  const rules = getRules();
+  const { hasTypescript } = getCertainConditions();
   const tsExtensions = hasTypescript ? ['.tsx', '.ts'] : [];
 
   const config = {

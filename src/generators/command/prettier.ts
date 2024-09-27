@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getPrettierCommands = (configOptions: SelectOptions) => {
-  const { hasPrettier, hasPug, hasTailwind } = getCertainConditions(configOptions);
+const getPrettierCommands = () => {
+  const { hasPrettier, hasPug, hasTailwind } = getCertainConditions();
 
   const prettierDevDependencies: string[] = [];
 

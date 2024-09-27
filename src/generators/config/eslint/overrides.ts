@@ -1,5 +1,4 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
 /**
  * @example
@@ -18,8 +17,8 @@ import type { SelectOptions } from '_types';
  * ]
  * ```
  */
-const mergeOverrides = (configOptions: SelectOptions) => {
-  const { hasJest, hasTypescript } = getCertainConditions(configOptions);
+const mergeOverrides = () => {
+  const { hasJest, hasTypescript } = getCertainConditions();
   const result = [];
 
   /**

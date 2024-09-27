@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getLayoutFile = (configOptions: SelectOptions) => {
-  const { hasSwr, hasTanstackQuery } = getCertainConditions(configOptions);
+const getLayoutFile = () => {
+  const { hasSwr, hasTanstackQuery } = getCertainConditions();
 
   const reactQueryProvider = `
 import ReactQueryProvider from 'providers/reactQueryProvider'

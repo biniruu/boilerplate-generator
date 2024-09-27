@@ -1,9 +1,8 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToString from '@utils/convertToString';
-import type { SelectOptions } from '_types';
 
-const getOptions = (configOptions: SelectOptions) => {
-  const { hasNext, hasTypescript, hasVue, hasJestHtmlReporters } = getCertainConditions(configOptions);
+const getOptions = () => {
+  const { hasNext, hasTypescript, hasVue, hasJestHtmlReporters } = getCertainConditions();
 
   const htmlReporters = hasJestHtmlReporters ? ['jest-html-reporters'] : [];
   const next = hasNext ? ['./.next/'] : [];
@@ -25,9 +24,9 @@ const getOptions = (configOptions: SelectOptions) => {
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
-const getJestConfig = (configOptions: SelectOptions) => {
-  const { htmlReporters, next, js, ts, vue } = getOptions(configOptions);
-  const { hasTypescript, hasLodash } = getCertainConditions(configOptions);
+const getJestConfig = () => {
+  const { htmlReporters, next, js, ts, vue } = getOptions();
+  const { hasTypescript, hasLodash } = getCertainConditions();
 
   /**
    * @property {string[]} moduleDirectories - root directories of the files you will test

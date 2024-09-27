@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const mergeSettings = (configOptions: SelectOptions) => {
-  const { hasJest, hasReact } = getCertainConditions(configOptions);
+const mergeSettings = () => {
+  const { hasJest, hasReact } = getCertainConditions();
 
   const result = {
     /**

@@ -1,7 +1,6 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getUtilityCommands = (configOptions: SelectOptions) => {
+const getUtilityCommands = () => {
   const {
     hasCopyToClipboard,
     hasDayjs,
@@ -24,7 +23,7 @@ const getUtilityCommands = (configOptions: SelectOptions) => {
     hasReactSyntaxHighlighter,
     hasTypescript,
     hasWebpack,
-  } = getCertainConditions(configOptions);
+  } = getCertainConditions();
 
   const utilityDependencies: string[] = [];
   const utilityDevDependencies: string[] = [];

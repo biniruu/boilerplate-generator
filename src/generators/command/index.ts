@@ -1,6 +1,5 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToString from '@utils/convertToString';
-import type { SelectOptions } from '_types';
 
 import getAuthenticationCommands from './authentication';
 import getBundlerCommands from './bundler';
@@ -26,24 +25,24 @@ const parseCommands = (commands: string[]) => {
   return parsedCommands;
 };
 
-const generateCommand = (options: SelectOptions) => {
-  const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands(options);
-  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(options);
-  const { compilerDevDependencies } = getCompilerCommands(options);
-  const { cssFrameworkDevDependencies } = getCssFrameworkCommands(options);
-  const { cssInJsDependencies, cssInJsDevDependencies } = getCssInJsCommands(options);
-  const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands(options);
-  const { eslintDevDependencies } = getEslintCommands(options);
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands(options);
-  const { htmlTemplateDependencies, htmlTemplateDevDependencies } = getHtmlTemplateCommands(options);
-  const { prettierDevDependencies } = getPrettierCommands(options);
-  const { stateManagementDependencies } = getStateManagementCommands(options);
-  const { stylelintDevDependencies } = getStylelintCommands(options);
-  const { testDevDependencies } = getTestCommands(options);
-  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands(options);
-  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands(options);
-  const { typescriptDevDependencies } = getTypescriptCommands(options);
-  const { validationDependencies } = getValidationCommands(options);
+const generateCommand = () => {
+  const { authenticationDependencies, authenticationDevDependencies } = getAuthenticationCommands();
+  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands();
+  const { compilerDevDependencies } = getCompilerCommands();
+  const { cssFrameworkDevDependencies } = getCssFrameworkCommands();
+  const { cssInJsDependencies, cssInJsDevDependencies } = getCssInJsCommands();
+  const { dataManagementDependencies, dataManagementDevDependencies } = getDataManagementCommands();
+  const { eslintDevDependencies } = getEslintCommands();
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
+  const { htmlTemplateDependencies, htmlTemplateDevDependencies } = getHtmlTemplateCommands();
+  const { prettierDevDependencies } = getPrettierCommands();
+  const { stateManagementDependencies } = getStateManagementCommands();
+  const { stylelintDevDependencies } = getStylelintCommands();
+  const { testDevDependencies } = getTestCommands();
+  const { utilityDependencies, utilityDevDependencies } = getUtilityCommands();
+  const { webFrameworkDependencies, webFrameworkDevDependencies } = getWebFrameworkCommands();
+  const { typescriptDevDependencies } = getTypescriptCommands();
+  const { validationDependencies } = getValidationCommands();
 
   const dependencies = [
     ...authenticationDependencies,
@@ -88,7 +87,7 @@ yarn add -D ${convertToString(devDependencies, parseCommands)}`;
     return `yarn add -D ${convertToString(devDependencies, parseCommands)}`;
   }
 
-  const { hasGatsby, hasWordpress, hasDotenv } = getCertainConditions(options);
+  const { hasGatsby, hasWordpress, hasDotenv } = getCertainConditions();
   if (hasGatsby || hasWordpress) {
     return `No commands available. Please see 'Getting Started' for more information.`;
   }

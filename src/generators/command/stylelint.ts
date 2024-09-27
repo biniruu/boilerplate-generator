@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getStylelintCommands = (configOptions: SelectOptions) => {
-  const { hasScss, hasStylelint } = getCertainConditions(configOptions);
+const getStylelintCommands = () => {
+  const { hasScss, hasStylelint } = getCertainConditions();
 
   const stylelintDevDependencies: string[] = [];
 

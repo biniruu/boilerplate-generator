@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToJson from '@utils/convertToJson';
-import type { SelectOptions } from '_types';
 
-const getTsDefault = (configOptions: SelectOptions) => {
+const getTsDefault = () => {
   const {
     hasExpress,
     hasGatsby,
@@ -14,7 +13,7 @@ const getTsDefault = (configOptions: SelectOptions) => {
     hasSocket,
     hasTsExtension,
     hasTypescript,
-  } = getCertainConditions(configOptions);
+  } = getCertainConditions();
 
   const getJsx = () => {
     if (hasGatsby) {

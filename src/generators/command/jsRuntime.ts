@@ -1,9 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getJsRuntimeCommands = (configOptions: SelectOptions) => {
-  const { hasGatsby, hasNext, hasReact, hasTypescript, hasWebpack, hasVite, hasJsLibs } =
-    getCertainConditions(configOptions);
+const getJsRuntimeCommands = () => {
+  const { hasGatsby, hasNext, hasReact, hasTypescript, hasWebpack, hasVite, hasJsLibs } = getCertainConditions();
 
   const jsRuntimeDevDependencies: string[] = [];
 

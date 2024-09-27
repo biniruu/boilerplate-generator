@@ -4,43 +4,43 @@ import generateFile from '@generators/file';
 import generateReadme from '@generators/readme';
 import { getButtonElem } from '@utils/getElements';
 import { isConfig, isFile, isTab } from '@utils/typeGuards';
-import type { SelectOptions, Tab } from '_types';
+import type { Tab } from '_types';
 
 import { getActivatedTab } from './tabController';
 
-export const switchTab = (tab: Tab, options: SelectOptions) => {
+export const switchTab = (tab: Tab) => {
   if (isConfig(tab)) {
-    return generateConfig(tab, options);
+    return generateConfig(tab);
   }
   if (isFile(tab)) {
-    return generateFile(tab, options);
+    return generateFile(tab);
   }
   if (tab === 'terminal') {
-    return generateCommand(options);
+    return generateCommand();
   }
   if (tab === 'readme') {
-    return generateReadme(options);
+    return generateReadme();
   }
   return '';
 };
 
-export const reloadEditor = (options: SelectOptions) => {
+export const reloadEditor = () => {
   const elemCurrentTab = getActivatedTab();
   const value = elemCurrentTab?.value;
   if (value && isTab(value)) {
-    provideConfig(value, options);
+    provideConfig(value);
   }
 };
 
 // Show code and commands to the code windows
-export const provideConfig = (tab: Tab, options: SelectOptions) => {
+export const provideConfig = (tab: Tab) => {
   const elemCode = document.querySelector<HTMLElement>('#code');
   if (elemCode) {
-    elemCode.textContent = switchTab(tab, options);
+    elemCode.textContent = switchTab(tab);
   }
 };
 
-export const showReadme = (options: SelectOptions) => {
+export const showReadme = () => {
   getButtonElem('readme-tab')?.click();
-  provideConfig('readme', options);
+  provideConfig('readme');
 };

@@ -1,5 +1,4 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
 /**
  * Extends
@@ -39,9 +38,8 @@ import type { SelectOptions } from '_types';
  * ]
  * ```
  */
-const mergeExtends = (configOptions: SelectOptions) => {
-  const { hasTypescript, hasNext, hasReact, hasStorybook, hasTanstackQuery, hasTailwind } =
-    getCertainConditions(configOptions);
+const mergeExtends = () => {
+  const { hasTypescript, hasNext, hasReact, hasStorybook, hasTanstackQuery, hasTailwind } = getCertainConditions();
 
   let result = ['eslint:recommended', 'plugin:import/recommended'];
   const react = [

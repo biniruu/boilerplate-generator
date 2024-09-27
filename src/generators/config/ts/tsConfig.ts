@@ -1,14 +1,13 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToJson from '@utils/convertToJson';
-import type { SelectOptions } from '_types';
 
 const nuxtConfig = {
   compilerOptions: {},
   extends: './.nuxt/tsconfig.json',
 };
 
-const getTsConfig = (configOptions: SelectOptions) => {
-  const { hasGatsby, hasJest, hasNext, hasNuxt, hasJsLibs, hasTsExtension } = getCertainConditions(configOptions);
+const getTsConfig = () => {
+  const { hasGatsby, hasJest, hasNext, hasNuxt, hasJsLibs, hasTsExtension } = getCertainConditions();
 
   const gatsbyInclude = hasGatsby ? ['gatsby-config.ts'] : [];
   const jestJsxInclude = hasJsLibs ? ['**/tests/**/*.spec.tsx', '**/tests/**/*.test.tsx'] : [];

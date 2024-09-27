@@ -1,9 +1,8 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToJson from '@utils/convertToJson';
-import type { SelectOptions } from '_types';
 
-const generateNodemonConfig = (configOptions: SelectOptions) => {
-  const { hasTypescript } = getCertainConditions(configOptions);
+const generateNodemonConfig = () => {
+  const { hasTypescript } = getCertainConditions();
 
   const config = {
     env: {

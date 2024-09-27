@@ -1,6 +1,5 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToString from '@utils/convertToString';
-import type { SelectOptions } from '_types';
 
 interface Config {
   arrowParens: string;
@@ -32,8 +31,8 @@ interface Config {
  * trailingComma
  * vueIndentScriptAndStyle : vue 파일 내 script 태그와 style 태그에서 들여쓰기 반영
  */
-const generatePrettierConfig = (configOptions: SelectOptions) => {
-  const { hasTailwind, hasVue, hasNuxt } = getCertainConditions(configOptions);
+const generatePrettierConfig = () => {
+  const { hasTailwind, hasVue, hasNuxt } = getCertainConditions();
 
   const config: Config = {
     arrowParens: 'avoid',

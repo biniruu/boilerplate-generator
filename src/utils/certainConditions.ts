@@ -1,13 +1,14 @@
 import { conditions, objConditions as objConditionData } from '@data/conditions';
-import { options } from '@data/options';
-import type { SelectOptions } from '_types';
+import { options as optionsData } from '@data/options';
+import stateManager from '@store/state';
 
-const getCertainConditions = (configOptions: SelectOptions) => {
+const getCertainConditions = () => {
+  const options = stateManager.getState();
   // convert options that from data/options.ts to conditions
   // for example: react -> hasReact
   const objConditions = conditions.reduce((acc, curr, idx) => {
-    const matchedOptionWithCondition = options[idx];
-    const valueOfMatchedOption = configOptions[matchedOptionWithCondition];
+    const matchedOptionWithCondition = optionsData[idx];
+    const valueOfMatchedOption = options[matchedOptionWithCondition];
     objConditionData[curr] = valueOfMatchedOption;
 
     return acc;

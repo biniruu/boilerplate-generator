@@ -1,8 +1,7 @@
-import type { SelectOptions } from '_types';
+import getCertainConditions from '@utils/certainConditions';
 
-const getValidationCommands = (configOptions: SelectOptions) => {
-  const hasJoi = configOptions.joi;
-  const hasReactHookForm = configOptions.reactHookForm;
+const getValidationCommands = () => {
+  const { hasJoi, hasReactHookForm } = getCertainConditions();
 
   const validationDependencies: string[] = [];
 

@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getCompilerCommands = (configOptions: SelectOptions) => {
-  const { hasBabel, hasWordpress } = getCertainConditions(configOptions);
+const getCompilerCommands = () => {
+  const { hasBabel, hasWordpress } = getCertainConditions();
 
   const compilerDevDependencies: string[] = [];
 

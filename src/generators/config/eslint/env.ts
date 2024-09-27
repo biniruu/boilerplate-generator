@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getEnv = (configOptions: SelectOptions) => {
-  const { hasJest } = getCertainConditions(configOptions);
+const getEnv = () => {
+  const { hasJest } = getCertainConditions();
 
   const env = {
     browser: true,

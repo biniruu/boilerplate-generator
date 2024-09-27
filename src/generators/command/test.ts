@@ -1,9 +1,8 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getTestCommands = (configOptions: SelectOptions) => {
+const getTestCommands = () => {
   const { hasCssModule, hasJest, hasNext, hasNuxt, hasReact, hasStorybook, hasTypescript, hasVue, hasWebpack } =
-    getCertainConditions(configOptions);
+    getCertainConditions();
 
   const testDevDependencies: string[] = [];
 

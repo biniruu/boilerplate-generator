@@ -1,6 +1,5 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToString from '@utils/convertToString';
-import type { SelectOptions } from '_types';
 
 import getEnv from './env';
 import mergeExtends from './extends';
@@ -14,19 +13,19 @@ import mergeSettings from './settings';
 // 현재 설정 파일이 root임을 명시하는 옵션. true로 설정하면 상위 설정 파일 찾기를 여기서 멈춘다.
 const root = true;
 
-const generateEslintConfig = (configOptions: SelectOptions) => {
-  const { hasNext, hasReact, hasTypescript } = getCertainConditions(configOptions);
+const generateEslintConfig = () => {
+  const { hasNext, hasReact, hasTypescript } = getCertainConditions();
 
   const config = {
-    env: getEnv(configOptions),
-    extends: mergeExtends(configOptions),
-    overrides: mergeOverrides(configOptions),
-    parser: mergeParser(configOptions),
+    env: getEnv(),
+    extends: mergeExtends(),
+    overrides: mergeOverrides(),
+    parser: mergeParser(),
     ...(hasTypescript && { parserOptions }),
     ...((hasReact || hasNext) && { plugins }),
     root,
-    rules: mergeRules(configOptions),
-    settings: mergeSettings(configOptions),
+    rules: mergeRules(),
+    settings: mergeSettings(),
   };
   const code = `module.exports = ${convertToString(config)}`;
   const result = code

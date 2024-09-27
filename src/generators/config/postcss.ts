@@ -1,9 +1,8 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToString from '@utils/convertToString';
-import type { SelectOptions } from '_types';
 
-const generatePostcssConfig = (configOptions: SelectOptions) => {
-  const { hasTailwind } = getCertainConditions(configOptions);
+const generatePostcssConfig = () => {
+  const { hasTailwind } = getCertainConditions();
 
   const config = {
     syntax: 'postcss-syntax', //  automatically switch the required PostCSS syntax by file extension/source

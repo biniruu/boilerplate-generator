@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getReactQueryProviderFile = (configOptions: SelectOptions) => {
-  const { hasNext } = getCertainConditions(configOptions);
+const getReactQueryProviderFile = () => {
+  const { hasNext } = getCertainConditions();
 
   const client =
     hasNext &&

@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToJson from '@utils/convertToJson';
-import type { SelectOptions } from '_types';
 
-const generatePackageConfig = (configOptions: SelectOptions) => {
+const generatePackageConfig = () => {
   const {
     hasExpress,
     hasJsLibs,
@@ -15,7 +14,7 @@ const generatePackageConfig = (configOptions: SelectOptions) => {
     hasTypescript,
     hasWebpack,
     hasSocket,
-  } = getCertainConditions(configOptions);
+  } = getCertainConditions();
 
   const gatsbyScripts = {
     develop: 'gatsby develop',

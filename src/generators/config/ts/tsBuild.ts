@@ -1,9 +1,8 @@
 import getCertainConditions from '@utils/certainConditions';
 import convertToJson from '@utils/convertToJson';
-import type { SelectOptions } from '_types';
 
-const getTsBuild = (configOptions: SelectOptions) => {
-  const { hasNext, hasJsLibs } = getCertainConditions(configOptions);
+const getTsBuild = () => {
+  const { hasNext, hasJsLibs } = getCertainConditions();
 
   const jsxInclude = hasJsLibs ? ['**/src/**/*.tsx'] : [];
   const nextInclude = hasNext ? ['next-env.d.ts', '.next/types/**/*.ts'] : [];

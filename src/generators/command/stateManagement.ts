@@ -1,8 +1,7 @@
 import getCertainConditions from '@utils/certainConditions';
-import type { SelectOptions } from '_types';
 
-const getStateManagementCommands = (configOptions: SelectOptions) => {
-  const { hasRecoil } = getCertainConditions(configOptions);
+const getStateManagementCommands = () => {
+  const { hasRecoil } = getCertainConditions();
 
   const stateManagementDependencies: string[] = [];
 
