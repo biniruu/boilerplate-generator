@@ -1,4 +1,5 @@
 import dynamicTabList from '@data/dynamicTabList';
+import stateManager from '@store/state';
 import { getButtonElem } from '@utils/getElements';
 import type { DynamicTabValueList } from '_types';
 
@@ -142,15 +143,24 @@ export const createTab = (tab: DynamicTabValueList) => {
   const fragment = document.querySelector<HTMLTemplateElement>('#tab');
   const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablink');
   if (instance) {
-    // TODO: Make sure the file has it's own extension
-    instance.textContent = dynamicTabList[tab].value;
+    instance.textContent = makeFileName(tab);
     instance.id = `${tab}-tab`;
     instance.value = tab;
     dynamicTabsElem?.appendChild(instance);
   }
 };
-
 const hasSameTabElem = (tab: DynamicTabValueList) =>
   Array.from(getCurrentTablinkElems()).some(elem => elem.value === tab);
+const makeFileName = (tab: DynamicTabValueList) => {
+  const currentTab = dynamicTabList[tab];
+  const { value } = currentTab;
+
+  if ('ext' in currentTab) {
+    const { js, ts } = currentTab.ext;
+
+    return `${value}${stateManager.getState().typescript ? ts : js}`;
+  }
+  return value;
+};
 
 export default toggleTabs;
