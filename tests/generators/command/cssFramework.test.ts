@@ -73,6 +73,7 @@ describe('When PostCSS is selected', () => {
     expect(cssFrameworkDevDependencies).toIncludeSameMembers([
       'postcss',
       'postcss-scss',
+      'sass',
       ...devDependenciesWithoutGatsby,
     ]);
   });

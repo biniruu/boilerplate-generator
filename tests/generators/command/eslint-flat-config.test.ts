@@ -8,7 +8,7 @@ test('should return an empty array when all options are false', () => {
   expect(eslintFlatConfigDevDependencies).toBeEmpty();
 });
 
-const dependenciesWithoutEslint = ['@eslint/compat', 'eslint-plugin-import'];
+const dependenciesWithoutEslint = ['@eslint/compat', 'eslint-plugin-import', '@eslint/eslintrc'];
 const dependencies = [...dependenciesWithoutEslint, 'eslint'];
 
 test('should return dependencies for ESLint with Gatsby.js', () => {
@@ -66,6 +66,7 @@ test('should return dependencies for ESLint with React.js and TypeScript', () =>
     'eslint-plugin-react',
     'eslint-plugin-react-refresh',
     'eslint-import-resolver-typescript',
+    'typescript-eslint',
   ]);
 });
 

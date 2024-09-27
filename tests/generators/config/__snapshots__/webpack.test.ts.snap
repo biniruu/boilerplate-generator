@@ -8,19 +8,13 @@ import HtmlMinimizerPlugin from 'html-minimizer-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
-import type { Configuration as WebpackConfiguration } from 'webpack'
 import { SourceMapDevToolPlugin } from 'webpack'
-import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
 import WorkboxWebpackPlugin from 'workbox-webpack-plugin'
-
-interface Configuration extends WebpackConfiguration {
-  devServer?: WebpackDevServerConfiguration
-}
 
 const isProduction = process.env.NODE_ENV === 'production'
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader'
 
-const config: Configuration = {
+const config = {
   devServer: {
     compress: true,
     open: true,
@@ -34,10 +28,6 @@ const config: Configuration = {
   mode: isProduction ? 'production' : 'development',
   module: {
     rules: [
-      {
-        test: /\\.html$/i,
-        type: 'asset/resource'
-      },
       {
         test: /\\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: 'asset/resource'
@@ -144,10 +134,6 @@ const config: Configuration = {
   mode: isProduction ? 'production' : 'development',
   module: {
     rules: [
-      {
-        test: /\\.html$/i,
-        type: 'asset/resource'
-      },
       {
         test: /\\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: 'asset/resource'

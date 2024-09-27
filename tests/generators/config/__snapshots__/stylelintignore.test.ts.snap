@@ -33,10 +33,6 @@ exports[`should return a .stylelintignore file with JavaScript Libraries 1`] = `
 **/*.png
 **/*.txt
 **/*.log
-**/*.test.js
-**/*.spec.js
-**/*.test.jsx
-**/*.spec.jsx
 
 # paths
 node_modules/"
@@ -56,12 +52,6 @@ exports[`should return a .stylelintignore file with JavaScript Libraries and Typ
 **/*.png
 **/*.txt
 **/*.log
-**/*.test.ts
-**/*.spec.ts
-**/*.test.tsx
-**/*.test.tsx
-**/*.ts
-**/*.config.ts
 
 # paths
 node_modules/"

@@ -15,7 +15,7 @@ test('should create a tab element using a template element with given data throu
   const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs');
   const createdTab = dynamicTabsElem && dynamicTabsElem.querySelector<HTMLButtonElement>('#eslint-tab');
   expect(createdTab).not.toBeNull();
-  expect(createdTab && createdTab.textContent).toBe(dynamicTabList[tab]);
+  expect(createdTab && createdTab.textContent).toBe(dynamicTabList[tab].value);
   expect(createdTab && createdTab.id).toBe(`${tab}-tab`);
   expect(createdTab && createdTab.value).toBe(tab);
 });

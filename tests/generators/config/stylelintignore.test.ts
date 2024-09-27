@@ -32,10 +32,6 @@ test('should return a .stylelintignore file with Jest and TypeScript', () => {
 });
 
 test('should return a .stylelintignore file with JavaScript Libraries', () => {
-  stateManager.setState({
-    ...options,
-    jest: true,
-  });
   setHasJsLibs(options);
   setTextContent({ content: generateStylelintIgnoreConfig() });
 
@@ -45,7 +41,6 @@ test('should return a .stylelintignore file with JavaScript Libraries', () => {
 test('should return a .stylelintignore file with JavaScript Libraries and TypeScript', () => {
   stateManager.setState({
     ...options,
-    jest: true,
     typescript: true,
   });
   setHasJsLibs(options);
