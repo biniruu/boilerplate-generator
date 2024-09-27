@@ -12,20 +12,20 @@ class StateManager<T> {
     return this.state;
   }
 
-  setState(newState: T): void {
+  setState(newState: T) {
     this.state = newState;
     this.notifyListeners();
   }
 
-  subscribe(listener: Listener): void {
+  subscribe(listener: Listener) {
     this.listeners.push(listener);
   }
 
-  unsubscribe(listener: Listener): void {
+  unsubscribe(listener: Listener) {
     this.listeners = this.listeners.filter(l => l !== listener);
   }
 
-  private notifyListeners(): void {
+  private notifyListeners() {
     this.listeners.forEach(listener => listener());
   }
 }
