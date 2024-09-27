@@ -1,17 +1,20 @@
 import getReactQueryProviderFile from '@generators/file/reactQueryProvider';
+import stateManager from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
 test('should return a reactQueryProvider.tsx file', () => {
-  setTextContent({ content: getReactQueryProviderFile(options) });
+  setTextContent({ content: getReactQueryProviderFile() });
 
   expect(elemCode?.textContent).toMatchSnapshot();
 });
 
 test('should return a reactQueryProvider.tsx file including Next.js', () => {
-  options.next = true;
-
-  setTextContent({ content: getReactQueryProviderFile(options) });
+  stateManager.setState({
+    ...options,
+    next: true,
+  });
+  setTextContent({ content: getReactQueryProviderFile() });
 
   expect(elemCode?.textContent).toMatchSnapshot();
 });

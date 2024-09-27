@@ -1,8 +1,9 @@
 import getEslintFlatConfigCommands from '@generators/command/eslint-flat-config';
-import { configOptions } from 'tests/configOptions.test';
+import stateManager from '@store/state';
+import { options } from 'tests/configOptions.test';
 
 test('should return an empty array when all options are false', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands(configOptions);
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toBeEmpty();
 });
@@ -11,31 +12,34 @@ const dependenciesWithoutEslint = ['@eslint/compat', 'eslint-plugin-import'];
 const dependencies = [...dependenciesWithoutEslint, 'eslint'];
 
 test('should return dependencies for ESLint with Gatsby.js', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     gatsby: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers(['@eslint/compat']);
 });
 
 test('should return dependencies for ESLint with Wordpress', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     wordpress: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers(['@eslint/compat', 'eslint']);
 });
 
 test('should return dependencies for ESLint with React.js', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     react: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([
     ...dependencies,
@@ -47,12 +51,13 @@ test('should return dependencies for ESLint with React.js', () => {
 });
 
 test('should return dependencies for ESLint with React.js and TypeScript', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     react: true,
     typescript: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([
     ...dependencies,
@@ -65,11 +70,12 @@ test('should return dependencies for ESLint with React.js and TypeScript', () =>
 });
 
 test('should return dependencies for ESLint with Next.js', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     next: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([
     ...dependenciesWithoutEslint,
@@ -81,12 +87,13 @@ test('should return dependencies for ESLint with Next.js', () => {
 });
 
 test('should return dependencies for ESLint with Next.js and TypeScript', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     next: true,
     typescript: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([
     ...dependenciesWithoutEslint,
@@ -98,11 +105,12 @@ test('should return dependencies for ESLint with Next.js and TypeScript', () => 
 });
 
 test('should return dependencies for ESLint with Nuxt.js', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     nuxt: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([
     ...dependencies,
@@ -115,21 +123,23 @@ test('should return dependencies for ESLint with Nuxt.js', () => {
 });
 
 test('should return dependencies for ESLint with GraphQL', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     graphql: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([...dependencies, '@graphql-eslint/eslint-plugin']);
 });
 
 test('should return dependencies for ESLint with Jest', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     jest: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([
     ...dependencies,
@@ -139,51 +149,56 @@ test('should return dependencies for ESLint with Jest', () => {
 });
 
 test('should return dependencies for ESLint with Pug', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     pug: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([...dependencies, 'eslint-plugin-pug']);
 });
 
 test('should return dependencies for ESLint with Storybook', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     storybook: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([...dependencies, 'eslint-plugin-storybook']);
 });
 
 test('should return dependencies for ESLint with TanstackQuery', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     tanstackQuery: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([...dependencies, '@tanstack/eslint-plugin-query']);
 });
 
 test('should return dependencies for ESLint with Tailwind CSS', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     tailwind: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([...dependencies, 'eslint-plugin-tailwindcss']);
 });
 
 test('should return dependencies for ESLint with Webpack', () => {
-  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     eslintFlatConfig: true,
     webpack: true,
   });
+  const { eslintFlatConfigDevDependencies } = getEslintFlatConfigCommands();
 
   expect(eslintFlatConfigDevDependencies).toIncludeSameMembers([...dependencies, 'eslint-webpack-plugin']);
 });

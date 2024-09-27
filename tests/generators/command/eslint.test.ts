@@ -1,8 +1,9 @@
 import getEslintCommands from '@generators/command/eslint';
-import { configOptions } from 'tests/configOptions.test';
+import stateManager from '@store/state';
+import { options } from 'tests/configOptions.test';
 
 test('should return an empty array when all options are false', () => {
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toBeEmpty();
 });
@@ -10,9 +11,11 @@ test('should return an empty array when all options are false', () => {
 const dependencies = ['eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import'];
 const dependenciesForJavascript = ['@babel/core', '@babel/eslint-parser', ...dependencies];
 test('should return dependencies for ESLint', () => {
-  configOptions.eslint = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForJavascript);
 });
@@ -24,20 +27,24 @@ const dependenciesForTypescript = [
   ...dependencies,
 ];
 test('should return dependencies for ESLint with TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForTypescript);
 });
 
 test('should return dependencies for ESLint with Gatsby.js with TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.gatsby = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    gatsby: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers([
     '@typescript-eslint/eslint-plugin',
@@ -51,20 +58,24 @@ test('should return dependencies for ESLint with Gatsby.js with TypeScript', () 
 const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library'];
 const dependenciesForNextWithTypescript = ['@typescript-eslint/eslint-plugin', ...dependenciesForNext];
 test('should return dependencies for ESLint with Next.js and should exclude TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.next = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    next: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNext);
 });
 
 test('should return dependencies for ESLint with Next.js and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.next = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    next: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNextWithTypescript);
 });
@@ -82,20 +93,24 @@ const dependenciesForReactWithTypescript = [
   ...dependenciesForReact,
 ];
 test('should return dependencies for ESLint with React.js and should exclude TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.react = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    react: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForReact);
 });
 
 test('should return dependencies for ESLint with React.js and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.react = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    react: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForReactWithTypescript);
 });
@@ -116,59 +131,71 @@ const dependenciesForNuxtWithTypescript = [
   ...dependenciesForNuxt,
 ];
 test('should return dependencies for ESLint with Nuxt.js and should exclude TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.nuxt = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    nuxt: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNuxt);
 });
 
 test('should return dependencies for ESLint with Nuxt.js and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.nuxt = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    nuxt: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(dependenciesForNuxtWithTypescript);
 });
 
 test('should return dependencies for ESLint with WordPress', () => {
-  configOptions.eslint = true;
-  configOptions.wordpress = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    wordpress: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toEqual(['eslint']);
 });
 
 test('should return dependencies for ESLint with GraphQL.js', () => {
-  configOptions.eslint = true;
-  configOptions.graphql = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    graphql: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['@graphql-eslint/eslint-plugin', ...dependenciesForJavascript]);
 });
 
 test('should return dependencies for ESLint with GraphQL.js and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.graphql = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    graphql: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['@graphql-eslint/eslint-plugin', ...dependenciesForTypescript]);
 });
 
 test('should return dependencies for ESLint with Next.js, GraphQL.js and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.next = true;
-  configOptions.graphql = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    next: true,
+    graphql: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers([
     '@graphql-eslint/eslint-plugin',
@@ -178,10 +205,12 @@ test('should return dependencies for ESLint with Next.js, GraphQL.js and TypeScr
 });
 
 test('should return dependencies for ESLint with Jest', () => {
-  configOptions.eslint = true;
-  configOptions.jest = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    jest: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers([
     'eslint-plugin-jest',
@@ -191,11 +220,13 @@ test('should return dependencies for ESLint with Jest', () => {
 });
 
 test('should return dependencies for ESLint with Jest and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.jest = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    jest: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers([
     'eslint-plugin-jest',
@@ -205,12 +236,14 @@ test('should return dependencies for ESLint with Jest and TypeScript', () => {
 });
 
 test('should return dependencies for ESLint with React.js, Jest and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.jest = true;
-  configOptions.react = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    jest: true,
+    react: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers([
     'eslint-plugin-jest',
@@ -222,60 +255,72 @@ test('should return dependencies for ESLint with React.js, Jest and TypeScript',
 });
 
 test('should return dependencies for ESLint with Pug', () => {
-  configOptions.eslint = true;
-  configOptions.pug = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    pug: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-pug', ...dependenciesForJavascript]);
 });
 
 test('should return dependencies for ESLint with Pug and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.pug = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    pug: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-pug', ...dependenciesForTypescript]);
 });
 
 test('should return dependencies for ESLint with Storybook', () => {
-  configOptions.eslint = true;
-  configOptions.storybook = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    storybook: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-storybook', ...dependenciesForJavascript]);
 });
 
 test('should return dependencies for ESLint with Storybook and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.storybook = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    storybook: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-storybook', ...dependenciesForTypescript]);
 });
 
 test('should return dependencies for ESLint with React.js and TanstackQuery', () => {
-  configOptions.eslint = true;
-  configOptions.react = true;
-  configOptions.tanstackQuery = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    react: true,
+    tanstackQuery: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['@tanstack/eslint-plugin-query', ...dependenciesForReact]);
 });
 
 test('should return dependencies for ESLint with React.js, TanstackQuery and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.react = true;
-  configOptions.tanstackQuery = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    react: true,
+    tanstackQuery: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers([
     '@tanstack/eslint-plugin-query',
@@ -284,22 +329,26 @@ test('should return dependencies for ESLint with React.js, TanstackQuery and Typ
 });
 
 test('should return dependencies for ESLint with Next.js and TanstackQuery', () => {
-  configOptions.eslint = true;
-  configOptions.next = true;
-  configOptions.tanstackQuery = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    next: true,
+    tanstackQuery: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['@tanstack/eslint-plugin-query', ...dependenciesForNext]);
 });
 
 test('should return dependencies for ESLint with Next.js, TanstackQuery and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.next = true;
-  configOptions.tanstackQuery = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    next: true,
+    tanstackQuery: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers([
     '@tanstack/eslint-plugin-query',
@@ -308,41 +357,49 @@ test('should return dependencies for ESLint with Next.js, TanstackQuery and Type
 });
 
 test('should return dependencies for ESLint with Tailwind CSS', () => {
-  configOptions.eslint = true;
-  configOptions.tailwind = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    tailwind: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForJavascript]);
 });
 
 test('should return dependencies for ESLint with Tailwind CSS and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.tailwind = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    tailwind: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForTypescript]);
 });
 
 test('should return dependencies for ESLint with Next.js and Tailwind CSS', () => {
-  configOptions.eslint = true;
-  configOptions.next = true;
-  configOptions.tailwind = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    next: true,
+    tailwind: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-plugin-tailwindcss', ...dependenciesForNext]);
 });
 
 test('should return dependencies for ESLint with Next.js, Tailwind CSS and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.next = true;
-  configOptions.tailwind = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    next: true,
+    tailwind: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers([
     'eslint-plugin-tailwindcss',
@@ -351,41 +408,49 @@ test('should return dependencies for ESLint with Next.js, Tailwind CSS and TypeS
 });
 
 test('should return dependencies for ESLint with Webpack', () => {
-  configOptions.eslint = true;
-  configOptions.webpack = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    webpack: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForJavascript]);
 });
 
 test('should return dependencies for ESLint with Webpack and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.webpack = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    webpack: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForTypescript]);
 });
 
 test('should return dependencies for ESLint with Nuxt.js and Webpack', () => {
-  configOptions.eslint = true;
-  configOptions.nuxt = true;
-  configOptions.webpack = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    nuxt: true,
+    webpack: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForNuxt]);
 });
 
 test('should return dependencies for ESLint with Nuxt.js, Webpack and TypeScript', () => {
-  configOptions.eslint = true;
-  configOptions.nuxt = true;
-  configOptions.webpack = true;
-  configOptions.typescript = true;
-
-  const { eslintDevDependencies } = getEslintCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    eslint: true,
+    nuxt: true,
+    webpack: true,
+    typescript: true,
+  });
+  const { eslintDevDependencies } = getEslintCommands();
 
   expect(eslintDevDependencies).toIncludeSameMembers(['eslint-webpack-plugin', ...dependenciesForNuxtWithTypescript]);
 });

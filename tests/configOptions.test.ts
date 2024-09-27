@@ -1,14 +1,15 @@
 import { objOptions } from '@data/options';
+import stateManager from '@store/state';
 import type { SelectOptions } from '_types';
 
-export let configOptions: SelectOptions;
+export const options = stateManager.getState();
 
 const jsLibs = ['next', 'nuxt', 'react', 'vue'];
 export const setHasJsLibs = (selectOptions?: SelectOptions) => {
-  const options = selectOptions || configOptions;
-  jsLibs.forEach(item => (options[item as keyof typeof options] = true));
+  const currentOptions = selectOptions || options;
+  jsLibs.forEach(item => (currentOptions[item as keyof typeof currentOptions] = true));
 };
 
 beforeEach(() => {
-  configOptions = { ...objOptions };
+  stateManager.setState(objOptions);
 });

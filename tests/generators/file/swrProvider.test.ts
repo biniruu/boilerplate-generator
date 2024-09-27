@@ -1,9 +1,9 @@
 import getSwrProviderFile from '@generators/file/swrProvider';
 
-import { elemCode, options, setTextContent } from '../../setTextContent.test';
+import { elemCode, setTextContent } from '../../setTextContent.test';
 
 test('should return a swrProvider.tsx file', () => {
-  setTextContent({ content: getSwrProviderFile(options) });
+  setTextContent({ content: getSwrProviderFile() });
 
   expect(elemCode?.textContent).toMatchSnapshot();
 });

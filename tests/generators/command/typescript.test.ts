@@ -1,56 +1,62 @@
 import getTypescriptCommands from '@generators/command/typescript';
-import { configOptions } from 'tests/configOptions.test';
+import stateManager from '@store/state';
+import { options } from 'tests/configOptions.test';
 
 test('should return empty arrays when all options are false', () => {
-  const { typescriptDevDependencies } = getTypescriptCommands(configOptions);
+  const { typescriptDevDependencies } = getTypescriptCommands();
 
   expect(typescriptDevDependencies).toBeEmpty();
 });
 
 test('should return empty arrays when one of JS Libraries is selected', () => {
-  const { typescriptDevDependencies } = getTypescriptCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     next: true,
     typescript: true,
   });
+  const { typescriptDevDependencies } = getTypescriptCommands();
 
   expect(typescriptDevDependencies).toBeEmpty();
 });
 
 test('should return empty arrays when Gatsby.js is selected', () => {
-  const { typescriptDevDependencies } = getTypescriptCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     gatsby: true,
     typescript: true,
   });
+  const { typescriptDevDependencies } = getTypescriptCommands();
 
   expect(typescriptDevDependencies).toBeEmpty();
 });
 
 test('should return empty arrays when Wordpress is selected', () => {
-  const { typescriptDevDependencies } = getTypescriptCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     wordpress: true,
     typescript: true,
   });
+  const { typescriptDevDependencies } = getTypescriptCommands();
 
   expect(typescriptDevDependencies).toBeEmpty();
 });
 
 test('should return empty arrays when TypeScript is not selected', () => {
-  const { typescriptDevDependencies } = getTypescriptCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     javascript: true,
   });
+  const { typescriptDevDependencies } = getTypescriptCommands();
 
   expect(typescriptDevDependencies).toBeEmpty();
 });
 
 test('should return dependencies for TypeScript', () => {
-  const { typescriptDevDependencies } = getTypescriptCommands({
-    ...configOptions,
+  stateManager.setState({
+    ...options,
     typescript: true,
   });
+  const { typescriptDevDependencies } = getTypescriptCommands();
 
   expect(typescriptDevDependencies).toEqual(['typescript']);
 });

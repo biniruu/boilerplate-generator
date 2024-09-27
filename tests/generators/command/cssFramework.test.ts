@@ -1,18 +1,21 @@
 import getCssFrameworkCommands from '@generators/command/cssFramework';
-import { configOptions, setHasJsLibs } from 'tests/configOptions.test';
+import stateManager from '@store/state';
+import { options, setHasJsLibs } from 'tests/configOptions.test';
 
 it('should return an empty array when all options are false', () => {
-  const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions);
+  const { cssFrameworkDevDependencies } = getCssFrameworkCommands();
 
   expect(cssFrameworkDevDependencies).toBeEmpty();
 });
 
 describe('When PostCSS is selected', () => {
   it('should return dependencies for PostCSS with Gatsby.js', () => {
-    configOptions.postcss = true;
-    configOptions.gatsby = true;
-
-    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions);
+    stateManager.setState({
+      ...options,
+      postcss: true,
+      gatsby: true,
+    });
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands();
 
     expect(cssFrameworkDevDependencies).toEqual(['postcss-html']);
   });
@@ -29,35 +32,43 @@ describe('When PostCSS is selected', () => {
   ];
 
   it('should return dependencies for PostCSS without Gatsby.js and JavaScript Libraries', () => {
-    configOptions.postcss = true;
-
-    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions);
+    stateManager.setState({
+      ...options,
+      postcss: true,
+    });
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands();
 
     expect(cssFrameworkDevDependencies).toIncludeSameMembers(['postcss', ...devDependenciesWithoutGatsby]);
   });
 
   it('should return dependencies for PostCSS with JavaScript Libraries but should exclude Gatsby.js', () => {
-    configOptions.postcss = true;
-
-    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions);
+    stateManager.setState({
+      ...options,
+      postcss: true,
+    });
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands();
 
     expect(cssFrameworkDevDependencies).toIncludeSameMembers(['postcss', ...devDependenciesWithoutGatsby]);
   });
 
   it('should return dependencies for PostCSS without JavaScript Libraries but should exclude Gatsby.js', () => {
-    configOptions.postcss = true;
+    stateManager.setState({
+      ...options,
+      postcss: true,
+    });
     setHasJsLibs();
-
-    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions);
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands();
 
     expect(cssFrameworkDevDependencies).toIncludeSameMembers(['postcss-jsx', ...devDependenciesWithoutGatsby]);
   });
 
   it('should return dependencies for PostCSS with SCSS but should exclude Gatsby.js and JavaScript Libraries', () => {
-    configOptions.postcss = true;
-    configOptions.scss = true;
-
-    const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions);
+    stateManager.setState({
+      ...options,
+      postcss: true,
+      scss: true,
+    });
+    const { cssFrameworkDevDependencies } = getCssFrameworkCommands();
 
     expect(cssFrameworkDevDependencies).toIncludeSameMembers([
       'postcss',
@@ -68,17 +79,21 @@ describe('When PostCSS is selected', () => {
 });
 
 test('should return dependencies for SCSS', () => {
-  configOptions.scss = true;
-
-  const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    scss: true,
+  });
+  const { cssFrameworkDevDependencies } = getCssFrameworkCommands();
 
   expect(cssFrameworkDevDependencies).toEqual(['sass']);
 });
 
 test('should return dependencies for Tailwind CSS', () => {
-  configOptions.tailwind = true;
-
-  const { cssFrameworkDevDependencies } = getCssFrameworkCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    tailwind: true,
+  });
+  const { cssFrameworkDevDependencies } = getCssFrameworkCommands();
 
   expect(cssFrameworkDevDependencies).toEqual(['tailwindcss']);
 });

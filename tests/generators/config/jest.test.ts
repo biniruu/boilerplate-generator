@@ -1,5 +1,6 @@
 import getJestConfig from '@generators/config/jest/jest';
 import getJestSetup from '@generators/config/jest/jestSetup';
+import stateManager from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -11,7 +12,10 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with TypeScript', () => {
-    options.typescript = true;
+    stateManager.setState({
+      ...options,
+      typescript: true,
+    });
 
     setTextContent({ generateConfig: getJestConfig });
 
@@ -19,7 +23,10 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Lodash', () => {
-    options.lodash = true;
+    stateManager.setState({
+      ...options,
+      lodash: true,
+    });
 
     setTextContent({ generateConfig: getJestConfig });
 
@@ -27,7 +34,10 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Next.js', () => {
-    options.next = true;
+    stateManager.setState({
+      ...options,
+      next: true,
+    });
 
     setTextContent({ generateConfig: getJestConfig });
 
@@ -35,8 +45,11 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Next.js and TypeScript', () => {
-    options.next = true;
-    options.typescript = true;
+    stateManager.setState({
+      ...options,
+      next: true,
+      typescript: true,
+    });
 
     setTextContent({ generateConfig: getJestConfig });
 
@@ -44,7 +57,10 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Vue.js', () => {
-    options.next = true;
+    stateManager.setState({
+      ...options,
+      next: true,
+    });
 
     setTextContent({ generateConfig: getJestConfig });
 
@@ -52,7 +68,10 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Jest HTML Reporters', () => {
-    options.jestHtmlReporters = true;
+    stateManager.setState({
+      ...options,
+      jestHtmlReporters: true,
+    });
 
     setTextContent({ generateConfig: getJestConfig });
 

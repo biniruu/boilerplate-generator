@@ -1,17 +1,20 @@
 import getBundlerCommands from '@generators/command/bundler';
-import { configOptions } from 'tests/configOptions.test';
+import stateManager from '@store/state';
+import { options } from 'tests/configOptions.test';
 
 test('should return empty arrays when all options are false', () => {
-  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions);
+  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands();
 
   expect(bundlerDependencies).toBeEmpty();
   expect(bundlerDevDependencies).toBeEmpty();
 });
 
 test('should return dependencies for Vite', () => {
-  configOptions.vite = true;
-
-  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    vite: true,
+  });
+  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands();
 
   const dependencies = ['vite'];
   expect(bundlerDependencies).toIncludeSameMembers(dependencies);
@@ -21,10 +24,12 @@ test('should return dependencies for Vite', () => {
 });
 
 test('should return dependencies for Vite with TypeScript', () => {
-  configOptions.vite = true;
-  configOptions.typescript = true;
-
-  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    vite: true,
+    typescript: true,
+  });
+  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands();
 
   const dependencies = ['vite'];
   expect(bundlerDependencies).toIncludeSameMembers(dependencies);
@@ -34,11 +39,13 @@ test('should return dependencies for Vite with TypeScript', () => {
 });
 
 test('should return dependencies for Vite with React.js and TypeScript', () => {
-  configOptions.vite = true;
-  configOptions.react = true;
-  configOptions.typescript = true;
-
-  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    vite: true,
+    react: true,
+    typescript: true,
+  });
+  const { bundlerDependencies, bundlerDevDependencies } = getBundlerCommands();
 
   expect(bundlerDependencies).toBeEmpty();
 
@@ -49,7 +56,11 @@ test('should return dependencies for Vite with React.js and TypeScript', () => {
 const devDependenciesWithoutThree = ['html-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin'];
 
 test('should return dependencies for Webpack', () => {
-  const { bundlerDevDependencies } = getBundlerCommands({ ...configOptions, webpack: true });
+  stateManager.setState({
+    ...options,
+    webpack: true,
+  });
+  const { bundlerDevDependencies } = getBundlerCommands();
 
   expect(bundlerDevDependencies).toIncludeAllMembers([
     '@swc/html',
@@ -66,68 +77,83 @@ test('should return dependencies for Webpack', () => {
 });
 
 test('should return dependencies for Webpack with Three.js', () => {
-  configOptions.webpack = true;
-  configOptions.three = true;
-
-  const { bundlerDevDependencies } = getBundlerCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    webpack: true,
+    three: true,
+  });
+  const { bundlerDevDependencies } = getBundlerCommands();
 
   expect(bundlerDevDependencies).not.toIncludeAllMembers(devDependenciesWithoutThree);
 });
 
 test('should return dependencies for Webpack with Next.js', () => {
-  configOptions.webpack = true;
-  configOptions.next = true;
-
-  const { bundlerDevDependencies } = getBundlerCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    webpack: true,
+    next: true,
+  });
+  const { bundlerDevDependencies } = getBundlerCommands();
 
   const devDependencies = ['source-map-loader'];
   expect(bundlerDevDependencies).toEqual(devDependencies);
 });
 
 test('should return dependencies for Webpack with SCSS', () => {
-  configOptions.webpack = true;
-  configOptions.scss = true;
-
-  const { bundlerDevDependencies } = getBundlerCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    webpack: true,
+    scss: true,
+  });
+  const { bundlerDevDependencies } = getBundlerCommands();
 
   expect(bundlerDevDependencies).toContain('sass-loader');
 });
 
 test('should return dependencies for Webpack with TypeScript', () => {
-  configOptions.webpack = true;
-  configOptions.typescript = true;
-
-  const { bundlerDevDependencies } = getBundlerCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    webpack: true,
+    typescript: true,
+  });
+  const { bundlerDevDependencies } = getBundlerCommands();
 
   const devDependencies = ['@types/webpack', 'ts-loader'];
   expect(bundlerDevDependencies).toIncludeAllMembers(devDependencies);
 });
 
 test('should return dependencies for Webpack with TypeScript and SCSS', () => {
-  configOptions.webpack = true;
-  configOptions.typescript = true;
-  configOptions.scss = true;
-
-  const { bundlerDevDependencies } = getBundlerCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    webpack: true,
+    typescript: true,
+    scss: true,
+  });
+  const { bundlerDevDependencies } = getBundlerCommands();
 
   const devDependencies = ['@types/webpack', 'ts-loader', 'sass-loader'];
   expect(bundlerDevDependencies).toIncludeAllMembers(devDependencies);
 });
 
 test('should return dependencies for esbuild', () => {
-  configOptions.esbuild = true;
-
-  const { bundlerDevDependencies } = getBundlerCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    esbuild: true,
+  });
+  const { bundlerDevDependencies } = getBundlerCommands();
 
   const devDependencies = ['esbuild'];
   expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies);
 });
 
 test('should return dependencies for esbuild with Jest', () => {
-  configOptions.esbuild = true;
-  configOptions.jest = true;
+  stateManager.setState({
+    ...options,
+    esbuild: true,
+    jest: true,
+  });
 
-  const { bundlerDevDependencies } = getBundlerCommands(configOptions);
+  const { bundlerDevDependencies } = getBundlerCommands();
 
   const devDependencies = ['esbuild', 'esbuild-jest'];
   expect(bundlerDevDependencies).toIncludeSameMembers(devDependencies);

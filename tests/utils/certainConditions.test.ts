@@ -1,4 +1,3 @@
-import { objOptions } from '@data/options';
 import getCertainConditions from '@utils/certainConditions';
 
 test('should convert received options from a parameter to conditions', () => {
@@ -9,7 +8,7 @@ test('should convert received options from a parameter to conditions', () => {
     hasTypescript: false,
     hasTsExtension: false,
   };
-  const result = getCertainConditions(objOptions);
+  const result = getCertainConditions();
 
   expect(result).toMatchObject(conditions);
 });

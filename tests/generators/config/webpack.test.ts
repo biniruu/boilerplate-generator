@@ -1,17 +1,21 @@
 import generateWebpackConfig from '@generators/config/webpack';
+import stateManager from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
 test('should return a Webpack configuration', () => {
-  setTextContent({ content: generateWebpackConfig(options) });
+  setTextContent({ content: generateWebpackConfig() });
 
   expect(elemCode?.textContent).toMatchSnapshot();
 });
 
 test('should return a Webpack configuration with TypeScript', () => {
-  options.typescript = true;
+  stateManager.setState({
+    ...options,
+    typescript: true,
+  });
 
-  setTextContent({ content: generateWebpackConfig(options) });
+  setTextContent({ content: generateWebpackConfig() });
 
   expect(elemCode?.textContent).toMatchSnapshot();
 });

@@ -1,8 +1,9 @@
 import getTestCommands from '@generators/command/test';
-import { configOptions } from 'tests/configOptions.test';
+import stateManager from '@store/state';
+import { options } from 'tests/configOptions.test';
 
 test('should return an empty value when all options are false', () => {
-  const { testDevDependencies } = getTestCommands(configOptions);
+  const { testDevDependencies } = getTestCommands();
 
   expect(testDevDependencies).toBeEmpty();
 });
@@ -21,30 +22,36 @@ const dependencies = [
   'ts-jest',
 ];
 test('should return dependencies for Jest', () => {
-  configOptions.jest = true;
-
-  const { testDevDependencies } = getTestCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    jest: true,
+  });
+  const { testDevDependencies } = getTestCommands();
 
   expect(testDevDependencies).toIncludeSameMembers(dependencies);
 });
 
 test('should return dependencies for Jest with CSS Modules', () => {
-  configOptions.jest = true;
-  configOptions.postcss = true;
-  configOptions.tailwind = true;
-
-  const { testDevDependencies } = getTestCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    jest: true,
+    postcss: true,
+    tailwind: true,
+  });
+  const { testDevDependencies } = getTestCommands();
 
   expect(testDevDependencies).toIncludeSameMembers(['identity-obj-proxy', ...dependencies]);
 });
 
 test('should return dependencies for Jest with CSS Modules and TypeScript', () => {
-  configOptions.jest = true;
-  configOptions.postcss = true;
-  configOptions.tailwind = true;
-  configOptions.typescript = true;
-
-  const { testDevDependencies } = getTestCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    jest: true,
+    postcss: true,
+    tailwind: true,
+    typescript: true,
+  });
+  const { testDevDependencies } = getTestCommands();
 
   expect(testDevDependencies).toIncludeSameMembers([
     'identity-obj-proxy',
@@ -61,29 +68,35 @@ const dependenciesForReact = [
   ...dependencies,
 ];
 test('should return dependencies for Jest with React.js', () => {
-  configOptions.jest = true;
-  configOptions.react = true;
-
-  const { testDevDependencies } = getTestCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    jest: true,
+    react: true,
+  });
+  const { testDevDependencies } = getTestCommands();
 
   expect(testDevDependencies).toIncludeSameMembers(dependenciesForReact);
 });
 
 test('should return dependencies for Jest with Next.js', () => {
-  configOptions.jest = true;
-  configOptions.next = true;
-
-  const { testDevDependencies } = getTestCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    jest: true,
+    next: true,
+  });
+  const { testDevDependencies } = getTestCommands();
 
   expect(testDevDependencies).toIncludeSameMembers(dependenciesForReact);
 });
 
 test('should return dependencies for Jest with React.js and Storybook', () => {
-  configOptions.jest = true;
-  configOptions.react = true;
-  configOptions.storybook = true;
-
-  const { testDevDependencies } = getTestCommands(configOptions);
+  stateManager.setState({
+    ...options,
+    jest: true,
+    react: true,
+    storybook: true,
+  });
+  const { testDevDependencies } = getTestCommands();
 
   expect(testDevDependencies).toIncludeSameMembers(['@storybook/react', ...dependenciesForReact]);
 });

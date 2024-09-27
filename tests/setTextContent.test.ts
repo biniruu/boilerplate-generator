@@ -1,7 +1,8 @@
 import { objOptions } from '@data/options';
+import stateManager from '@store/state';
 import type { SelectOptions } from '_types';
 
-export let options = { ...objOptions };
+export const options = stateManager.getState();
 
 interface Params {
   generateConfig?: ((param: SelectOptions) => string) | (() => string);
@@ -28,5 +29,5 @@ beforeEach(() => {
   document.body.innerHTML = `<code id="code" />`;
   elemCode = document.querySelector<HTMLElement>('#code');
 
-  options = { ...objOptions };
+  stateManager.setState(objOptions);
 });
