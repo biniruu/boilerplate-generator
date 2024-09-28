@@ -1,5 +1,5 @@
 import getStateManagementCommands from '@generators/command/stateManagement';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return an empty array when all options are false', () => {
@@ -9,7 +9,7 @@ test('should return an empty array when all options are false', () => {
 });
 
 test('should return dependencies for Recoil', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     recoil: true,
   });

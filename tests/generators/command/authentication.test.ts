@@ -1,5 +1,5 @@
 import getAuthenticationCommands from '@generators/command/authentication';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return empty arrays when all options are false', () => {
@@ -10,7 +10,7 @@ test('should return empty arrays when all options are false', () => {
 });
 
 test('should return dependencies for bcrypt.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     bcrypt: true,
     typescript: true,
@@ -25,7 +25,7 @@ test('should return dependencies for bcrypt.js', () => {
 });
 
 test('should return dependencies for NextAuth.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
     nextAuth: true,

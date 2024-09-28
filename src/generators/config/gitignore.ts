@@ -1,4 +1,4 @@
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import type { Option } from '_types';
 
 type Template = (typeof templateList)[number];
@@ -6,7 +6,7 @@ type Template = (typeof templateList)[number];
 const templateList = ['gatsby', 'nextjs', 'nuxtjs', 'react', 'sass', 'storybookjs', 'vuejs', 'wordpress'] as const;
 
 const generateGitIgnore = () => {
-  const options = stateManager.getState();
+  const options = stateOptions.getState();
   // A template is a path used to retrieve the corresponding gitignore code
   const templates: Template[] = [];
   for (const option in options) {

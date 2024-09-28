@@ -1,7 +1,7 @@
 import { showReadme } from '@libs/editorController';
 import { handleOptions } from '@libs/optionController';
 import { handleTab } from '@libs/tabController';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import copyToClipboard from '@utils/copyToClipboard';
 import { getButtonElem } from '@utils/getElements';
 import { isHtmlButtonElement, isHtmlInputElement, isOption } from '@utils/typeGuards';
@@ -9,7 +9,7 @@ import { isHtmlButtonElement, isHtmlInputElement, isOption } from '@utils/typeGu
 import './style.css';
 import { isTab } from './utils/typeGuards';
 
-const options = stateManager.getState();
+const options = stateOptions.getState();
 
 const elemCode = document.querySelector<HTMLElement>('#code');
 
@@ -30,7 +30,7 @@ const handleEvent = (e: MouseEvent | Event) => {
     const { value, checked: isChecked } = target;
     isOption(value) && handleOptions(value, isChecked);
     // Update the value in store
-    stateManager.setState({ ...options, [value]: !options[value as keyof typeof options] });
+    stateOptions.setState({ ...options, [value]: !options[value as keyof typeof options] });
   }
 };
 

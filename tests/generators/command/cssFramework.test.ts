@@ -1,5 +1,5 @@
 import getCssFrameworkCommands from '@generators/command/cssFramework';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options, setHasJsLibs } from 'tests/options.test';
 
 it('should return an empty array when all options are false', () => {
@@ -10,7 +10,7 @@ it('should return an empty array when all options are false', () => {
 
 describe('When PostCSS is selected', () => {
   it('should return dependencies for PostCSS with Gatsby.js', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       postcss: true,
       gatsby: true,
@@ -32,7 +32,7 @@ describe('When PostCSS is selected', () => {
   ];
 
   it('should return dependencies for PostCSS without Gatsby.js and JavaScript Libraries', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       postcss: true,
     });
@@ -42,7 +42,7 @@ describe('When PostCSS is selected', () => {
   });
 
   it('should return dependencies for PostCSS with JavaScript Libraries but should exclude Gatsby.js', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       postcss: true,
     });
@@ -52,7 +52,7 @@ describe('When PostCSS is selected', () => {
   });
 
   it('should return dependencies for PostCSS without JavaScript Libraries but should exclude Gatsby.js', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       postcss: true,
     });
@@ -63,7 +63,7 @@ describe('When PostCSS is selected', () => {
   });
 
   it('should return dependencies for PostCSS with SCSS but should exclude Gatsby.js and JavaScript Libraries', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       postcss: true,
       scss: true,
@@ -80,7 +80,7 @@ describe('When PostCSS is selected', () => {
 });
 
 test('should return dependencies for SCSS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     scss: true,
   });
@@ -90,7 +90,7 @@ test('should return dependencies for SCSS', () => {
 });
 
 test('should return dependencies for Tailwind CSS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     tailwind: true,
   });

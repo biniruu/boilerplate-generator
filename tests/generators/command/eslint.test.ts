@@ -1,5 +1,5 @@
 import getEslintCommands from '@generators/command/eslint';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return an empty array when all options are false', () => {
@@ -11,7 +11,7 @@ test('should return an empty array when all options are false', () => {
 const dependencies = ['eslint', 'eslint-plugin-jsx-a11y', 'eslint-plugin-import'];
 const dependenciesForJavascript = ['@babel/core', '@babel/eslint-parser', ...dependencies];
 test('should return dependencies for ESLint', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
   });
@@ -27,7 +27,7 @@ const dependenciesForTypescript = [
   ...dependencies,
 ];
 test('should return dependencies for ESLint with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     typescript: true,
@@ -38,7 +38,7 @@ test('should return dependencies for ESLint with TypeScript', () => {
 });
 
 test('should return dependencies for ESLint with Gatsby.js with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     gatsby: true,
@@ -58,7 +58,7 @@ test('should return dependencies for ESLint with Gatsby.js with TypeScript', () 
 const dependenciesForNext = ['eslint-plugin-react-refresh', 'eslint-plugin-testing-library'];
 const dependenciesForNextWithTypescript = ['@typescript-eslint/eslint-plugin', ...dependenciesForNext];
 test('should return dependencies for ESLint with Next.js and should exclude TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     next: true,
@@ -69,7 +69,7 @@ test('should return dependencies for ESLint with Next.js and should exclude Type
 });
 
 test('should return dependencies for ESLint with Next.js and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     next: true,
@@ -93,7 +93,7 @@ const dependenciesForReactWithTypescript = [
   ...dependenciesForReact,
 ];
 test('should return dependencies for ESLint with React.js and should exclude TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     react: true,
@@ -104,7 +104,7 @@ test('should return dependencies for ESLint with React.js and should exclude Typ
 });
 
 test('should return dependencies for ESLint with React.js and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     react: true,
@@ -131,7 +131,7 @@ const dependenciesForNuxtWithTypescript = [
   ...dependenciesForNuxt,
 ];
 test('should return dependencies for ESLint with Nuxt.js and should exclude TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     nuxt: true,
@@ -142,7 +142,7 @@ test('should return dependencies for ESLint with Nuxt.js and should exclude Type
 });
 
 test('should return dependencies for ESLint with Nuxt.js and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     nuxt: true,
@@ -154,7 +154,7 @@ test('should return dependencies for ESLint with Nuxt.js and TypeScript', () => 
 });
 
 test('should return dependencies for ESLint with WordPress', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     wordpress: true,
@@ -165,7 +165,7 @@ test('should return dependencies for ESLint with WordPress', () => {
 });
 
 test('should return dependencies for ESLint with GraphQL.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     graphql: true,
@@ -176,7 +176,7 @@ test('should return dependencies for ESLint with GraphQL.js', () => {
 });
 
 test('should return dependencies for ESLint with GraphQL.js and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     graphql: true,
@@ -188,7 +188,7 @@ test('should return dependencies for ESLint with GraphQL.js and TypeScript', () 
 });
 
 test('should return dependencies for ESLint with Next.js, GraphQL.js and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     next: true,
@@ -205,7 +205,7 @@ test('should return dependencies for ESLint with Next.js, GraphQL.js and TypeScr
 });
 
 test('should return dependencies for ESLint with Jest', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     jest: true,
@@ -220,7 +220,7 @@ test('should return dependencies for ESLint with Jest', () => {
 });
 
 test('should return dependencies for ESLint with Jest and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     jest: true,
@@ -236,7 +236,7 @@ test('should return dependencies for ESLint with Jest and TypeScript', () => {
 });
 
 test('should return dependencies for ESLint with React.js, Jest and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     jest: true,
@@ -255,7 +255,7 @@ test('should return dependencies for ESLint with React.js, Jest and TypeScript',
 });
 
 test('should return dependencies for ESLint with Pug', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     pug: true,
@@ -266,7 +266,7 @@ test('should return dependencies for ESLint with Pug', () => {
 });
 
 test('should return dependencies for ESLint with Pug and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     pug: true,
@@ -278,7 +278,7 @@ test('should return dependencies for ESLint with Pug and TypeScript', () => {
 });
 
 test('should return dependencies for ESLint with Storybook', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     storybook: true,
@@ -289,7 +289,7 @@ test('should return dependencies for ESLint with Storybook', () => {
 });
 
 test('should return dependencies for ESLint with Storybook and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     storybook: true,
@@ -301,7 +301,7 @@ test('should return dependencies for ESLint with Storybook and TypeScript', () =
 });
 
 test('should return dependencies for ESLint with React.js and TanstackQuery', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     react: true,
@@ -313,7 +313,7 @@ test('should return dependencies for ESLint with React.js and TanstackQuery', ()
 });
 
 test('should return dependencies for ESLint with React.js, TanstackQuery and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     react: true,
@@ -329,7 +329,7 @@ test('should return dependencies for ESLint with React.js, TanstackQuery and Typ
 });
 
 test('should return dependencies for ESLint with Next.js and TanstackQuery', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     next: true,
@@ -341,7 +341,7 @@ test('should return dependencies for ESLint with Next.js and TanstackQuery', () 
 });
 
 test('should return dependencies for ESLint with Next.js, TanstackQuery and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     next: true,
@@ -357,7 +357,7 @@ test('should return dependencies for ESLint with Next.js, TanstackQuery and Type
 });
 
 test('should return dependencies for ESLint with Tailwind CSS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     tailwind: true,
@@ -368,7 +368,7 @@ test('should return dependencies for ESLint with Tailwind CSS', () => {
 });
 
 test('should return dependencies for ESLint with Tailwind CSS and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     tailwind: true,
@@ -380,7 +380,7 @@ test('should return dependencies for ESLint with Tailwind CSS and TypeScript', (
 });
 
 test('should return dependencies for ESLint with Next.js and Tailwind CSS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     next: true,
@@ -392,7 +392,7 @@ test('should return dependencies for ESLint with Next.js and Tailwind CSS', () =
 });
 
 test('should return dependencies for ESLint with Next.js, Tailwind CSS and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     next: true,
@@ -408,7 +408,7 @@ test('should return dependencies for ESLint with Next.js, Tailwind CSS and TypeS
 });
 
 test('should return dependencies for ESLint with Webpack', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     webpack: true,
@@ -419,7 +419,7 @@ test('should return dependencies for ESLint with Webpack', () => {
 });
 
 test('should return dependencies for ESLint with Webpack and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     webpack: true,
@@ -431,7 +431,7 @@ test('should return dependencies for ESLint with Webpack and TypeScript', () => 
 });
 
 test('should return dependencies for ESLint with Nuxt.js and Webpack', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     nuxt: true,
@@ -443,7 +443,7 @@ test('should return dependencies for ESLint with Nuxt.js and Webpack', () => {
 });
 
 test('should return dependencies for ESLint with Nuxt.js, Webpack and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslint: true,
     nuxt: true,

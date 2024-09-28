@@ -1,5 +1,5 @@
 import getTypescriptCommands from '@generators/command/typescript';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return empty arrays when all options are false', () => {
@@ -9,7 +9,7 @@ test('should return empty arrays when all options are false', () => {
 });
 
 test('should return empty arrays when one of JS Libraries is selected', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
     typescript: true,
@@ -20,7 +20,7 @@ test('should return empty arrays when one of JS Libraries is selected', () => {
 });
 
 test('should return empty arrays when Gatsby.js is selected', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     gatsby: true,
     typescript: true,
@@ -31,7 +31,7 @@ test('should return empty arrays when Gatsby.js is selected', () => {
 });
 
 test('should return empty arrays when Wordpress is selected', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     wordpress: true,
     typescript: true,
@@ -42,7 +42,7 @@ test('should return empty arrays when Wordpress is selected', () => {
 });
 
 test('should return empty arrays when TypeScript is not selected', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     javascript: true,
   });
@@ -52,7 +52,7 @@ test('should return empty arrays when TypeScript is not selected', () => {
 });
 
 test('should return dependencies for TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
   });

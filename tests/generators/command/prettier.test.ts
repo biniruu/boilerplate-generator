@@ -1,5 +1,5 @@
 import getPrettierCommands from '@generators/command/prettier';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return an empty array when all options are false', () => {
@@ -9,7 +9,7 @@ test('should return an empty array when all options are false', () => {
 });
 
 test('should return dependencies for Prettier', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     prettier: true,
   });
@@ -19,7 +19,7 @@ test('should return dependencies for Prettier', () => {
 });
 
 test('should return dependencies for Prettier with Pug', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     prettier: true,
     pug: true,
@@ -30,7 +30,7 @@ test('should return dependencies for Prettier with Pug', () => {
 });
 
 test('should return dependencies for Prettier with Tailwind', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     prettier: true,
     tailwind: true,

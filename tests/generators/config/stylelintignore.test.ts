@@ -1,5 +1,5 @@
 import generateStylelintIgnoreConfig from '@generators/config/stylelintignore';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { setHasJsLibs } from 'tests/options.test';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
@@ -11,7 +11,7 @@ test('should return a .stylelintignore file', () => {
 });
 
 test('should return a .stylelintignore file with Jest', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jest: true,
   });
@@ -21,7 +21,7 @@ test('should return a .stylelintignore file with Jest', () => {
 });
 
 test('should return a .stylelintignore file with Jest and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jest: true,
     typescript: true,
@@ -39,7 +39,7 @@ test('should return a .stylelintignore file with JavaScript Libraries', () => {
 });
 
 test('should return a .stylelintignore file with JavaScript Libraries and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
   });
@@ -50,7 +50,7 @@ test('should return a .stylelintignore file with JavaScript Libraries and TypeSc
 });
 
 test('should return a .stylelintignore file with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
   });
@@ -60,7 +60,7 @@ test('should return a .stylelintignore file with TypeScript', () => {
 });
 
 test('should return a .stylelintignore file with Wordpress', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     wordpress: true,
   });

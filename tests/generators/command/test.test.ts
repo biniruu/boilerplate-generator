@@ -1,5 +1,5 @@
 import getTestCommands from '@generators/command/test';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return an empty value when all options are false', () => {
@@ -22,7 +22,7 @@ const dependencies = [
   'ts-jest',
 ];
 test('should return dependencies for Jest', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jest: true,
   });
@@ -32,7 +32,7 @@ test('should return dependencies for Jest', () => {
 });
 
 test('should return dependencies for Jest with CSS Modules', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jest: true,
     postcss: true,
@@ -44,7 +44,7 @@ test('should return dependencies for Jest with CSS Modules', () => {
 });
 
 test('should return dependencies for Jest with CSS Modules and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jest: true,
     postcss: true,
@@ -68,7 +68,7 @@ const dependenciesForReact = [
   ...dependencies,
 ];
 test('should return dependencies for Jest with React.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jest: true,
     react: true,
@@ -79,7 +79,7 @@ test('should return dependencies for Jest with React.js', () => {
 });
 
 test('should return dependencies for Jest with Next.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jest: true,
     next: true,
@@ -90,7 +90,7 @@ test('should return dependencies for Jest with Next.js', () => {
 });
 
 test('should return dependencies for Jest with React.js and Storybook', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jest: true,
     react: true,

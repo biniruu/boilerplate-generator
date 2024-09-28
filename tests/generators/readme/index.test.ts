@@ -1,5 +1,5 @@
 import generateReadme from '@generators/readme';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -10,7 +10,7 @@ test('should return a README.md file', () => {
 });
 
 test('should return a README.md file for Next.js project', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
   });
@@ -20,7 +20,7 @@ test('should return a README.md file for Next.js project', () => {
 });
 
 test('should return a README.md file for Next.js project with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
     typescript: true,
@@ -31,7 +31,7 @@ test('should return a README.md file for Next.js project with TypeScript', () =>
 });
 
 test('should return a README.md file for React.js project', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     react: true,
   });
@@ -41,7 +41,7 @@ test('should return a README.md file for React.js project', () => {
 });
 
 test('should return a README.md file for Nuxt.js project', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     nuxt: true,
   });
@@ -51,7 +51,7 @@ test('should return a README.md file for Nuxt.js project', () => {
 });
 
 test('should return a README.md file for Webpack project', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     webpack: true,
   });
@@ -61,7 +61,7 @@ test('should return a README.md file for Webpack project', () => {
 });
 
 test('should return a README.md file for Nuxt.js project with Webpack', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     nuxt: true,
     webpack: true,
@@ -72,7 +72,7 @@ test('should return a README.md file for Nuxt.js project with Webpack', () => {
 });
 
 test('should return a README.md file for Gatsby.js project', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     gatsby: true,
   });

@@ -1,5 +1,5 @@
 import getUtilityCommands from '@generators/command/utility';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return empty arrays when all options are false', () => {
@@ -10,7 +10,7 @@ test('should return empty arrays when all options are false', () => {
 });
 
 test('should return dependencies for Copy to Clipboard', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     copyToClipboard: true,
   });
@@ -20,7 +20,7 @@ test('should return dependencies for Copy to Clipboard', () => {
 });
 
 test('should return dependencies for Day.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     dayjs: true,
   });
@@ -30,7 +30,7 @@ test('should return dependencies for Day.js', () => {
 });
 
 test('should return dependencies for Dotenv with Nuxt.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     dotenv: true,
     nuxt: true,
@@ -41,7 +41,7 @@ test('should return dependencies for Dotenv with Nuxt.js', () => {
 });
 
 test('should return dependencies for Dotenv with React.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     dotenv: true,
     react: true,
@@ -52,7 +52,7 @@ test('should return dependencies for Dotenv with React.js', () => {
 });
 
 test('should return dependencies for File Saver', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     fileSaver: true,
   });
@@ -62,7 +62,7 @@ test('should return dependencies for File Saver', () => {
 });
 
 test('should return dependencies for File Saver with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     fileSaver: true,
     typescript: true,
@@ -74,7 +74,7 @@ test('should return dependencies for File Saver with TypeScript', () => {
 });
 
 test('should return dependencies for Husky', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     husky: true,
   });
@@ -84,7 +84,7 @@ test('should return dependencies for Husky', () => {
 });
 
 test('should return dependencies for Immer', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     immer: true,
   });
@@ -94,7 +94,7 @@ test('should return dependencies for Immer', () => {
 });
 
 test('should return dependencies for Immer With React.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     immer: true,
     react: true,
@@ -105,7 +105,7 @@ test('should return dependencies for Immer With React.js', () => {
 });
 
 test('should return dependencies for JavaScript Stringify', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     javascriptStringify: true,
   });
@@ -115,7 +115,7 @@ test('should return dependencies for JavaScript Stringify', () => {
 });
 
 test('should return dependencies for jsdiff', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jsdiff: true,
   });
@@ -125,7 +125,7 @@ test('should return dependencies for jsdiff', () => {
 });
 
 test('should return dependencies for Lodash', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     lodash: true,
   });
@@ -136,7 +136,7 @@ test('should return dependencies for Lodash', () => {
 });
 
 test('should return dependencies for Lodash with React.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     lodash: true,
     react: true,
@@ -148,7 +148,7 @@ test('should return dependencies for Lodash with React.js', () => {
 });
 
 test('should return dependencies for markdownlint', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     markdownlint: true,
   });
@@ -158,7 +158,7 @@ test('should return dependencies for markdownlint', () => {
 });
 
 test('should return dependencies for nodemon', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     nodemon: true,
   });
@@ -168,7 +168,7 @@ test('should return dependencies for nodemon', () => {
 });
 
 test('should return dependencies for Prism', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     prism: true,
   });
@@ -178,7 +178,7 @@ test('should return dependencies for Prism', () => {
 });
 
 test('should return dependencies for React Infinite Scroller', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     reactInfiniteScroller: true,
   });
@@ -188,7 +188,7 @@ test('should return dependencies for React Infinite Scroller', () => {
 });
 
 test('should return dependencies for React Joyride', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     reactJoyride: true,
   });
@@ -198,7 +198,7 @@ test('should return dependencies for React Joyride', () => {
 });
 
 test('should return dependencies for React Joyride with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     reactJoyride: true,
     typescript: true,
@@ -210,7 +210,7 @@ test('should return dependencies for React Joyride with TypeScript', () => {
 });
 
 test('should return dependencies for React Syntax Highlighter', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     reactSyntaxHighlighter: true,
   });
@@ -220,7 +220,7 @@ test('should return dependencies for React Syntax Highlighter', () => {
 });
 
 test('should return dependencies for React Syntax Highlighter with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     reactSyntaxHighlighter: true,
     typescript: true,

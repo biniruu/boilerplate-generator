@@ -1,5 +1,5 @@
 import generateNextConfig from '@generators/config/next';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -10,7 +10,7 @@ test('should return a Next.js configuration', () => {
 });
 
 test('should return a Next.js configuration with Styled Components', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     styledComponents: true,
   });
@@ -20,7 +20,7 @@ test('should return a Next.js configuration with Styled Components', () => {
 });
 
 test('should return a Next.js with TypeScript configuration', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
   });
@@ -30,7 +30,7 @@ test('should return a Next.js with TypeScript configuration', () => {
 });
 
 test('should return a Next.js configuration with Styled Components and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     styledComponents: true,
     typescript: true,

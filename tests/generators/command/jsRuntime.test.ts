@@ -1,5 +1,5 @@
 import getJsRuntimeCommands from '@generators/command/jsRuntime';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return an empty array when all options are false', () => {
@@ -9,7 +9,7 @@ test('should return an empty array when all options are false', () => {
 });
 
 test('should return dependencies for Node.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
   });
@@ -19,7 +19,7 @@ test('should return dependencies for Node.js', () => {
 });
 
 test('should return dependencies for Node.js with Next.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
     next: true,
@@ -30,7 +30,7 @@ test('should return dependencies for Node.js with Next.js', () => {
 });
 
 test('should return dependencies for Node.js with React.js and Vite', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
     react: true,
@@ -42,7 +42,7 @@ test('should return dependencies for Node.js with React.js and Vite', () => {
 });
 
 test('should return dependencies for Webpack', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
     webpack: true,

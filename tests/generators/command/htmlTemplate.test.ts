@@ -1,5 +1,5 @@
 import getHtmlTemplateCommands from '@generators/command/htmlTemplate';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return empty arrays when all options are false', () => {
@@ -10,7 +10,7 @@ test('should return empty arrays when all options are false', () => {
 });
 
 test('should return dependencies for EJS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     ejs: true,
   });
@@ -21,7 +21,7 @@ test('should return dependencies for EJS', () => {
 });
 
 test('should return dependencies for EJS with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     ejs: true,
     typescript: true,
@@ -33,7 +33,7 @@ test('should return dependencies for EJS with TypeScript', () => {
 });
 
 test('should return dependencies for Pug', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     pug: true,
   });

@@ -1,5 +1,5 @@
 import { jsLib, radioBtns, syntax } from '@data/options';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { isDynamicTabValue, isOption } from '@utils/typeGuards';
 import type { DynamicTabValueList, JsLib, Option, SelectOptions } from '_types';
 
@@ -13,13 +13,13 @@ let precedentValue: JsLib;
 const isJsLib = (value: string): value is JsLib => jsLib.some(item => item === value);
 export const handleOptions = (value: Option, isChecked: boolean) => {
   if (isOption(value)) {
-    const options = stateManager.getState();
+    const options = stateOptions.getState();
     // (options[value] = !options[value]) means that togging checkbox
     if (radioBtns.includes(value as (typeof radioBtns)[number])) {
       handleRadioBtns(value, options);
     } else {
       options[value] = !options[value];
-      stateManager.setState(options);
+      stateOptions.setState(options);
     }
     reloadEditor();
   }
@@ -43,5 +43,5 @@ const handleRadioBtns = (value: string, options: SelectOptions) => {
   target.forEach(item => (options[item] = false));
   // Select new one
   options[value as Option] = true;
-  stateManager.setState(options);
+  stateOptions.setState(options);
 };

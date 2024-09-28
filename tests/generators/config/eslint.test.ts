@@ -1,5 +1,5 @@
 import generateEslintConfig from '@generators/config/eslint';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -10,7 +10,7 @@ test('should generate an ESLint configuration for VanillaScript', () => {
 });
 
 test('should generate an ESLint configuration for TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
   });
@@ -21,7 +21,7 @@ test('should generate an ESLint configuration for TypeScript', () => {
 });
 
 test('should generate an ESLint configuration for React.js with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     react: true,
     typescript: true,
@@ -33,7 +33,7 @@ test('should generate an ESLint configuration for React.js with TypeScript', () 
 });
 
 test('should generate an ESLint configuration for React.js without TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     react: true,
   });
@@ -44,7 +44,7 @@ test('should generate an ESLint configuration for React.js without TypeScript', 
 });
 
 test('should generate an ESLint configuration for Next.js with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
     typescript: true,
@@ -56,7 +56,7 @@ test('should generate an ESLint configuration for Next.js with TypeScript', () =
 });
 
 test('should generate an ESLint configuration for Next.js without TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
   });

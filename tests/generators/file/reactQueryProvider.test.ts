@@ -1,5 +1,5 @@
 import getReactQueryProviderFile from '@generators/file/reactQueryProvider';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -10,7 +10,7 @@ test('should return a reactQueryProvider.tsx file', () => {
 });
 
 test('should return a reactQueryProvider.tsx file including Next.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
   });

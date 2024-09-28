@@ -1,5 +1,5 @@
 import generatePackageConfig from '@generators/config/package';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -10,7 +10,7 @@ test('should return a configuration for package.json', () => {
 });
 
 test('should return a configuration for package.json with Gatsby.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     gatsby: true,
   });
@@ -20,7 +20,7 @@ test('should return a configuration for package.json with Gatsby.js', () => {
 });
 
 test('should return a configuration for package.json with Express.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     express: true,
   });
@@ -30,7 +30,7 @@ test('should return a configuration for package.json with Express.js', () => {
 });
 
 test('should return a configuration for package.json with Jest', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     jest: true,
   });
@@ -40,7 +40,7 @@ test('should return a configuration for package.json with Jest', () => {
 });
 
 test('should return a configuration for package.json with Next.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
   });
@@ -50,7 +50,7 @@ test('should return a configuration for package.json with Next.js', () => {
 });
 
 test('should return a configuration for package.json with React.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     react: true,
   });
@@ -60,7 +60,7 @@ test('should return a configuration for package.json with React.js', () => {
 });
 
 test('should return a configuration for package.json with Storybook', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     storybook: true,
   });
@@ -70,7 +70,7 @@ test('should return a configuration for package.json with Storybook', () => {
 });
 
 test('should return a configuration for package.json with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
   });
@@ -80,7 +80,7 @@ test('should return a configuration for package.json with TypeScript', () => {
 });
 
 test('should return a configuration for package.json with Webpack', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     webpack: true,
   });
@@ -90,7 +90,7 @@ test('should return a configuration for package.json with Webpack', () => {
 });
 
 test('should return a configuration for package.json with Next.js, TypeScript and Storybook', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
     typescript: true,

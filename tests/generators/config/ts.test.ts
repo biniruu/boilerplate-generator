@@ -3,7 +3,7 @@ import getTsConfig from '@generators/config/ts/tsConfig';
 import getTsDefault from '@generators/config/ts/tsDefault';
 import getTsNode from '@generators/config/ts/tsNode';
 import getTsTest from '@generators/config/ts/tsTest';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -32,7 +32,7 @@ test('should return tsconfig.json', () => {
 });
 
 test('should return tsconfig.json when React.js is selected', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     react: true,
   });

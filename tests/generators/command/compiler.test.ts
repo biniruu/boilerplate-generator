@@ -1,5 +1,5 @@
 import getCompilerCommands from '@generators/command/compiler';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return an empty array when all options are false', () => {
@@ -16,7 +16,7 @@ const devDependenciesWithoutWordpress = [
 ];
 
 test('should return dependencies for Babel', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     babel: true,
   });
@@ -26,7 +26,7 @@ test('should return dependencies for Babel', () => {
 });
 
 test('should return dependencies for Babel with Wordpress', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     babel: true,
     wordpress: true,

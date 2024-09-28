@@ -26,6 +26,5 @@ declare module '@store/state' {
     private notifyListeners(): void;
   }
 
-  const stateManager: StateManager<SelectOptions>;
-  export default stateManager;
+  export const stateOptions: StateManager<SelectOptions>;
 }

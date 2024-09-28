@@ -1,5 +1,5 @@
 import getDataManagementCommands from '@generators/command/dataManagement';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return empty arrays when all options are false', () => {
@@ -10,7 +10,7 @@ test('should return empty arrays when all options are false', () => {
 });
 
 test('should return dependencies for AXIOS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     axios: true,
   });
@@ -20,7 +20,7 @@ test('should return dependencies for AXIOS', () => {
 });
 
 test('should return dependencies for GraphQL.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     graphql: true,
   });
@@ -38,7 +38,7 @@ test('should return dependencies for GraphQL.js', () => {
 });
 
 test('should return dependencies for Koa', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     koa: true,
   });
@@ -48,7 +48,7 @@ test('should return dependencies for Koa', () => {
 });
 
 test('should return dependencies for Koa with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     koa: true,
     typescript: true,
@@ -60,7 +60,7 @@ test('should return dependencies for Koa with TypeScript', () => {
 });
 
 test('should return dependencies for Node-Redis', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     redis: true,
   });
@@ -70,7 +70,7 @@ test('should return dependencies for Node-Redis', () => {
 });
 
 test('should return dependencies for socket.io with socket.io-client', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     socket: true,
   });
@@ -80,7 +80,7 @@ test('should return dependencies for socket.io with socket.io-client', () => {
 });
 
 test('should return dependencies for SWR', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     swr: true,
   });
@@ -90,7 +90,7 @@ test('should return dependencies for SWR', () => {
 });
 
 test('should return dependencies for Tanstack Query with React.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     tanstackQuery: true,
     react: true,
@@ -102,7 +102,7 @@ test('should return dependencies for Tanstack Query with React.js', () => {
 });
 
 test('should return dependencies for Tanstack Query with Next.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     tanstackQuery: true,
     next: true,

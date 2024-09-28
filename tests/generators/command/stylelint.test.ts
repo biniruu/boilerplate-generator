@@ -1,5 +1,5 @@
 import getStylelintCommands from '@generators/command/stylelint';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return an empty array when all options are false', () => {
@@ -10,7 +10,7 @@ test('should return an empty array when all options are false', () => {
 
 const dependencies = ['stylelint', 'stylelint-config-standard', 'stylelint-order'];
 test('should return dependencies for Stylelint', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     stylelint: true,
   });
@@ -20,7 +20,7 @@ test('should return dependencies for Stylelint', () => {
 });
 
 test('should return dependencies for Stylelint with SCSS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     stylelint: true,
     scss: true,

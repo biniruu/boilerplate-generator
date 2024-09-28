@@ -1,5 +1,5 @@
 import generatePrettierConfig from '@generators/config/prettier';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -10,7 +10,7 @@ test('should return a configuration for Prettier', () => {
 });
 
 test('should return a configuration for Prettier with Tailwind CSS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     tailwind: true,
   });
@@ -20,7 +20,7 @@ test('should return a configuration for Prettier with Tailwind CSS', () => {
 });
 
 test('should return a configuration for Prettier with Vue.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     vue: true,
   });
@@ -30,7 +30,7 @@ test('should return a configuration for Prettier with Vue.js', () => {
 });
 
 test('should return a configuration for Prettier with Tailwind CSS and Vue.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     tailwind: true,
     vue: true,

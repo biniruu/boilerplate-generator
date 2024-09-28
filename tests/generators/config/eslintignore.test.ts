@@ -1,5 +1,5 @@
 import generateEslintIgnoreConfig from '@generators/config/eslintIgnore';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -10,7 +10,7 @@ test('should return .eslintignore', () => {
 });
 
 test('should return an .eslintignore configuration for Storybook', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     storybook: true,
   });
@@ -20,7 +20,7 @@ test('should return an .eslintignore configuration for Storybook', () => {
 });
 
 test('should return an .eslintignore configuration for TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
   });
@@ -30,7 +30,7 @@ test('should return an .eslintignore configuration for TypeScript', () => {
 });
 
 test('should return an .eslintignore configuration for Wordpress', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     wordpress: true,
   });
@@ -40,7 +40,7 @@ test('should return an .eslintignore configuration for Wordpress', () => {
 });
 
 test('should return an .eslintignore configuration for all options', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     typescript: true,
     storybook: true,

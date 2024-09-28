@@ -1,5 +1,5 @@
 import getEslintFlatConfigCommands from '@generators/command/eslint-flat-config';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return an empty array when all options are false', () => {
@@ -12,7 +12,7 @@ const dependenciesWithoutEslint = ['@eslint/compat', 'eslint-plugin-import', '@e
 const dependencies = [...dependenciesWithoutEslint, 'eslint'];
 
 test('should return dependencies for ESLint with Gatsby.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     gatsby: true,
@@ -23,7 +23,7 @@ test('should return dependencies for ESLint with Gatsby.js', () => {
 });
 
 test('should return dependencies for ESLint with Wordpress', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     wordpress: true,
@@ -34,7 +34,7 @@ test('should return dependencies for ESLint with Wordpress', () => {
 });
 
 test('should return dependencies for ESLint with React.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     react: true,
@@ -51,7 +51,7 @@ test('should return dependencies for ESLint with React.js', () => {
 });
 
 test('should return dependencies for ESLint with React.js and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     react: true,
@@ -71,7 +71,7 @@ test('should return dependencies for ESLint with React.js and TypeScript', () =>
 });
 
 test('should return dependencies for ESLint with Next.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     next: true,
@@ -88,7 +88,7 @@ test('should return dependencies for ESLint with Next.js', () => {
 });
 
 test('should return dependencies for ESLint with Next.js and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     next: true,
@@ -106,7 +106,7 @@ test('should return dependencies for ESLint with Next.js and TypeScript', () => 
 });
 
 test('should return dependencies for ESLint with Nuxt.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     nuxt: true,
@@ -124,7 +124,7 @@ test('should return dependencies for ESLint with Nuxt.js', () => {
 });
 
 test('should return dependencies for ESLint with GraphQL', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     graphql: true,
@@ -135,7 +135,7 @@ test('should return dependencies for ESLint with GraphQL', () => {
 });
 
 test('should return dependencies for ESLint with Jest', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     jest: true,
@@ -150,7 +150,7 @@ test('should return dependencies for ESLint with Jest', () => {
 });
 
 test('should return dependencies for ESLint with Pug', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     pug: true,
@@ -161,7 +161,7 @@ test('should return dependencies for ESLint with Pug', () => {
 });
 
 test('should return dependencies for ESLint with Storybook', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     storybook: true,
@@ -172,7 +172,7 @@ test('should return dependencies for ESLint with Storybook', () => {
 });
 
 test('should return dependencies for ESLint with TanstackQuery', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     tanstackQuery: true,
@@ -183,7 +183,7 @@ test('should return dependencies for ESLint with TanstackQuery', () => {
 });
 
 test('should return dependencies for ESLint with Tailwind CSS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     tailwind: true,
@@ -194,7 +194,7 @@ test('should return dependencies for ESLint with Tailwind CSS', () => {
 });
 
 test('should return dependencies for ESLint with Webpack', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     eslintFlatConfig: true,
     webpack: true,

@@ -1,5 +1,5 @@
 import dynamicTabList from '@data/dynamicTabList';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { getButtonElem } from '@utils/getElements';
 import type { DynamicTabValueList } from '_types';
 
@@ -158,7 +158,7 @@ const makeFileName = (tab: DynamicTabValueList) => {
   if ('ext' in currentTab) {
     const { js, ts } = currentTab.ext;
 
-    return `${value}${stateManager.getState().typescript ? ts : js}`;
+    return `${value}${stateOptions.getState().typescript ? ts : js}`;
   }
   return value;
 };

@@ -1,5 +1,5 @@
 import getLayoutFile from '@generators/file/layout';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -10,7 +10,7 @@ test('should return a Layout.tsx file', () => {
 });
 
 test('should return a Layout.tsx file including SWR', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     swr: true,
   });
@@ -20,7 +20,7 @@ test('should return a Layout.tsx file including SWR', () => {
 });
 
 test('should return a Layout.tsx file including Tanstack Query', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     tanstackQuery: true,
   });

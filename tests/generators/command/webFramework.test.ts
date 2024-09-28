@@ -1,5 +1,5 @@
 import getWebFrameworkCommands from '@generators/command/webFramework';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return empty arrays when all options are false', () => {
@@ -10,7 +10,7 @@ test('should return empty arrays when all options are false', () => {
 });
 
 test('should return dependencies for Express.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     express: true,
   });
@@ -20,7 +20,7 @@ test('should return dependencies for Express.js', () => {
 });
 
 test('should return dependencies for Express.js with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     express: true,
     typescript: true,
@@ -32,7 +32,7 @@ test('should return dependencies for Express.js with TypeScript', () => {
 });
 
 test('should return dependencies for Next.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     next: true,
   });
@@ -42,7 +42,7 @@ test('should return dependencies for Next.js', () => {
 });
 
 test('should return dependencies for React.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     react: true,
   });
@@ -52,7 +52,7 @@ test('should return dependencies for React.js', () => {
 });
 
 test('should return dependencies for Nuxt.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     nuxt: true,
   });
@@ -62,7 +62,7 @@ test('should return dependencies for Nuxt.js', () => {
 });
 
 test('should return dependencies for Nuxt.js with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     nuxt: true,
     typescript: true,
@@ -73,7 +73,7 @@ test('should return dependencies for Nuxt.js with TypeScript', () => {
 });
 
 test('should return dependencies for three.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     three: true,
   });
@@ -83,7 +83,7 @@ test('should return dependencies for three.js', () => {
 });
 
 test('should return dependencies for three.js with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     three: true,
     typescript: true,

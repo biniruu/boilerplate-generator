@@ -1,5 +1,5 @@
 import getBundlerCommands from '@generators/command/bundler';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 import { options } from 'tests/options.test';
 
 test('should return empty arrays when all options are false', () => {
@@ -10,7 +10,7 @@ test('should return empty arrays when all options are false', () => {
 });
 
 test('should return dependencies for Vite', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     vite: true,
   });
@@ -24,7 +24,7 @@ test('should return dependencies for Vite', () => {
 });
 
 test('should return dependencies for Vite with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     vite: true,
     typescript: true,
@@ -39,7 +39,7 @@ test('should return dependencies for Vite with TypeScript', () => {
 });
 
 test('should return dependencies for Vite with React.js and TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     vite: true,
     react: true,
@@ -56,7 +56,7 @@ test('should return dependencies for Vite with React.js and TypeScript', () => {
 const devDependenciesWithoutThree = ['html-webpack-plugin', 'mini-css-extract-plugin', 'workbox-webpack-plugin'];
 
 test('should return dependencies for Webpack', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     webpack: true,
   });
@@ -77,7 +77,7 @@ test('should return dependencies for Webpack', () => {
 });
 
 test('should return dependencies for Webpack with Three.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     webpack: true,
     three: true,
@@ -88,7 +88,7 @@ test('should return dependencies for Webpack with Three.js', () => {
 });
 
 test('should return dependencies for Webpack with Next.js', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     webpack: true,
     next: true,
@@ -100,7 +100,7 @@ test('should return dependencies for Webpack with Next.js', () => {
 });
 
 test('should return dependencies for Webpack with SCSS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     webpack: true,
     scss: true,
@@ -111,7 +111,7 @@ test('should return dependencies for Webpack with SCSS', () => {
 });
 
 test('should return dependencies for Webpack with TypeScript', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     webpack: true,
     typescript: true,
@@ -123,7 +123,7 @@ test('should return dependencies for Webpack with TypeScript', () => {
 });
 
 test('should return dependencies for Webpack with TypeScript and SCSS', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     webpack: true,
     typescript: true,
@@ -136,7 +136,7 @@ test('should return dependencies for Webpack with TypeScript and SCSS', () => {
 });
 
 test('should return dependencies for esbuild', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     esbuild: true,
   });
@@ -147,7 +147,7 @@ test('should return dependencies for esbuild', () => {
 });
 
 test('should return dependencies for esbuild with Jest', () => {
-  stateManager.setState({
+  stateOptions.setState({
     ...options,
     esbuild: true,
     jest: true,

@@ -1,9 +1,9 @@
 import { conditions, objConditions as objConditionData } from '@data/conditions';
 import { options as optionsData } from '@data/options';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 const getCertainConditions = () => {
-  const options = stateManager.getState();
+  const options = stateOptions.getState();
   // convert options that from data/options.ts to conditions
   // for example: react -> hasReact
   const objConditions = conditions.reduce((acc, curr, idx) => {

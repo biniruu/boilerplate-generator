@@ -1,6 +1,6 @@
 import getJestConfig from '@generators/config/jest/jest';
 import getJestSetup from '@generators/config/jest/jestSetup';
-import stateManager from '@store/state';
+import { stateOptions } from '@store/state';
 
 import { elemCode, options, setTextContent } from '../../setTextContent.test';
 
@@ -12,7 +12,7 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with TypeScript', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       typescript: true,
     });
@@ -23,7 +23,7 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Lodash', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       lodash: true,
     });
@@ -34,7 +34,7 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Next.js', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       next: true,
     });
@@ -45,7 +45,7 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Next.js and TypeScript', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       next: true,
       typescript: true,
@@ -57,7 +57,7 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Vue.js', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       next: true,
     });
@@ -68,7 +68,7 @@ describe('For jest.config.ts', () => {
   });
 
   it('should return the configuration with Jest HTML Reporters', () => {
-    stateManager.setState({
+    stateOptions.setState({
       ...options,
       jestHtmlReporters: true,
     });

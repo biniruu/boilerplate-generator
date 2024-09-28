@@ -3,7 +3,6 @@ import type { SelectOptions } from '_types';
 
 import StateManager from './stateManager';
 
-const initialState: SelectOptions = { ...objOptions };
-const stateManager = new StateManager<SelectOptions>(initialState);
+const initialOptionsState = { ...objOptions };
 
-export default stateManager;
+export const stateOptions = new StateManager<SelectOptions>(initialOptionsState);
