@@ -41,7 +41,7 @@ const dynamicTabList = {
       ts: '.ts',
     },
   },
-  ts: {
+  typescript: {
     value: 'tsconfig.json',
   },
   babel: {
