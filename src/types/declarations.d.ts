@@ -9,7 +9,7 @@ declare module '*.module.css' {
 }
 
 declare module '@store/state' {
-  import type { SelectOptions } from '_types';
+  import type { DynamicTabValueList, SelectOptions } from '_types';
 
   type Listener = () => void;
 
@@ -27,4 +27,5 @@ declare module '@store/state' {
   }
 
   export const stateOptions: StateManager<SelectOptions>;
+  export const stateTabs: StateManager<DynamicTabValueList>;
 }
