@@ -1,5 +1,5 @@
 import dynamicTabList from '@data/dynamicTabList';
-import { stateOptions } from '@store/state';
+import { stateOptions, stateTabs } from '@store/state';
 import { getButtonElem } from '@utils/getElements';
 import type { DynamicTabValueList } from '_types';
 
@@ -139,6 +139,10 @@ export const createTab = (tab: DynamicTabValueList) => {
   if (hasSameTabElem(tab)) {
     return;
   }
+
+  // Update the tab state
+  stateTabs.setState(tab);
+
   const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs');
   const fragment = document.querySelector<HTMLTemplateElement>('#tab');
   const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablink');
