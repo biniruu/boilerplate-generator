@@ -68,6 +68,9 @@ const dynamicTabList = {
   volar: {
     value: 'volar.config.cjs',
   },
+  javascript: {
+    value: '',
+  },
   'next-layout-file': {
     value: 'layout.tsx',
   },

@@ -116,7 +116,19 @@ import { getCurrentTablinkElems } from './tabController';
 
 const lints = ['eslint', 'prettier', 'stylelint'];
 
-const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => (isChecked ? addNewTabs(tab) : removeTabs(tab));
+const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => {
+  if (tab === 'javascript') {
+    removeTabs('typescript');
+
+    return;
+  }
+  if (tab === 'typescript') {
+    addNewTabs(tab);
+
+    return;
+  }
+  isChecked ? addNewTabs(tab) : removeTabs(tab);
+};
 
 const removeTabs = (tab: DynamicTabValueList) => {
   const element = getButtonElem(tab);
@@ -124,16 +136,45 @@ const removeTabs = (tab: DynamicTabValueList) => {
   removeAdditionalTabs(tab);
 };
 // When a lint tab is removed, remove the corresponding ignore tab as well
-const removeAdditionalTabs = (tab: DynamicTabValueList) =>
+const removeAdditionalTabs = (tab: DynamicTabValueList) => {
+  if (tab === 'typescript') {
+    toggleTsTabs('remove');
+
+    return;
+  }
   lints.includes(tab) && removeTabs(`${tab}-ignore` as DynamicTabValueList);
+};
 
 const addNewTabs = (tab: DynamicTabValueList) => {
   createTab(tab);
   addAdditionalTabs(tab);
 };
 // When a lint tab is created, create the corresponding ignore tab as well
-const addAdditionalTabs = (tab: DynamicTabValueList) =>
+const addAdditionalTabs = (tab: DynamicTabValueList) => {
+  if (tab === 'typescript') {
+    toggleTsTabs('add');
+
+    return;
+  }
   lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList);
+};
+
+const toggleTsTabs = (action: 'add' | 'remove') => {
+  if (action === 'add') {
+    createTab('ts-default' as DynamicTabValueList);
+    createTab('ts-build' as DynamicTabValueList);
+    // TODO: Add if statement for typescript-node
+    // createTab('ts-test' as DynamicTabValueList);
+    // createTab(`${tab}-node` as DynamicTabValueList);
+
+    return;
+  }
+  removeTabs('ts-default' as DynamicTabValueList);
+  removeTabs('ts-build' as DynamicTabValueList);
+  // TODO: Add if statement for typescript-node
+  // removeTabs('ts-test' as DynamicTabValueList);
+  // removeTabs(`${tab}-node` as DynamicTabValueList);
+};
 
 export const createTab = (tab: DynamicTabValueList) => {
   const tabName = generateTabName(tab);
