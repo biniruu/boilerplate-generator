@@ -116,6 +116,7 @@ import { getCurrentTablinkElems } from './tabController';
 
 const lints = ['eslint', 'prettier', 'stylelint'];
 
+// TODO: Update tsconfig file toggling process when switching between TypeScript and JavaScript options
 const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => {
   if (tab === 'javascript') {
     removeTabs('typescript');
