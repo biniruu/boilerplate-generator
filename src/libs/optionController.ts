@@ -10,7 +10,6 @@ import toggleTabs from './toggleTabs';
 
 let precedentValue: JsLib;
 
-const isJsLib = (value: string): value is JsLib => jsLib.some(item => item === value);
 export const handleOptions = (value: Option, isChecked: boolean) => {
   if (isOption(value)) {
     const options = stateOptions.getState();
@@ -37,6 +36,7 @@ export const handleOptions = (value: Option, isChecked: boolean) => {
     showReadme();
   }
 };
+const isJsLib = (value: string): value is JsLib => jsLib.some(item => item === value);
 const handleRadioBtns = (value: string, options: SelectOptions) => {
   // Reset inputs in 'Syntax' and 'JavaScript library' categories
   const target = syntax.includes(value as (typeof syntax)[number]) ? syntax : jsLib;

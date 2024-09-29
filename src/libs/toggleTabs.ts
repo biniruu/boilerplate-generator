@@ -119,7 +119,7 @@ const lints = ['eslint', 'prettier', 'stylelint'];
 const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => (isChecked ? addNewTabs(tab) : removeTabs(tab));
 
 const removeTabs = (tab: DynamicTabValueList) => {
-  const element = getButtonElem(`${tab}-tab`);
+  const element = getButtonElem(tab);
   element && element.remove();
   removeAdditionalTabs(tab);
 };
@@ -136,7 +136,8 @@ const addAdditionalTabs = (tab: DynamicTabValueList) =>
   lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList);
 
 export const createTab = (tab: DynamicTabValueList) => {
-  if (hasSameTabElem(tab)) {
+  const tabName = generateTabName(tab);
+  if (!tabName || hasSameTabElem(tab)) {
     return;
   }
 
@@ -147,7 +148,7 @@ export const createTab = (tab: DynamicTabValueList) => {
   const fragment = document.querySelector<HTMLTemplateElement>('#tab');
   const instance = fragment && document.importNode(fragment.content, true).querySelector<HTMLButtonElement>('.tablink');
   if (instance) {
-    instance.textContent = makeFileName(tab);
+    instance.textContent = tabName;
     instance.id = `${tab}-tab`;
     instance.value = tab;
     dynamicTabsElem?.appendChild(instance);
@@ -155,8 +156,25 @@ export const createTab = (tab: DynamicTabValueList) => {
 };
 const hasSameTabElem = (tab: DynamicTabValueList) =>
   Array.from(getCurrentTablinkElems()).some(elem => elem.value === tab);
-const makeFileName = (tab: DynamicTabValueList) => {
+
+export const updateTabName = () => {
+  const elemOptions = document.querySelectorAll<HTMLInputElement>('input:checked');
+  elemOptions.forEach(elemOptions => {
+    const { value } = elemOptions;
+    const tabName = generateTabName(value as DynamicTabValueList);
+    const elemTab = getButtonElem(value);
+    if (tabName && elemTab) {
+      elemTab.textContent = tabName;
+    }
+  });
+};
+stateOptions.subscribe(updateTabName);
+
+const generateTabName = (tab: DynamicTabValueList) => {
   const currentTab = dynamicTabList[tab];
+  if (!currentTab) {
+    return;
+  }
   const { value } = currentTab;
 
   if ('ext' in currentTab) {
