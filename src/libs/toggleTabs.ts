@@ -148,7 +148,7 @@ const removeAdditionalTabs = (tab: DynamicTabValueList) => {
 };
 
 const addNewTabs = (tab: DynamicTabValueList) => {
-  createTab(tab);
+  createTabs(tab);
   addAdditionalTabs(tab);
 };
 const addAdditionalTabs = (tab: DynamicTabValueList) => {
@@ -157,21 +157,21 @@ const addAdditionalTabs = (tab: DynamicTabValueList) => {
       toggleTsTabs('add');
       break;
     case 'jest':
-      createTab('jest-setup');
+      createTabs('jest-setup');
       break;
     default:
       // When a lint tab is created, create the corresponding ignore tab as well
-      lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList);
+      lints.includes(tab) && createTabs(`${tab}-ignore` as DynamicTabValueList);
   }
 };
 
 const toggleTsTabs = (action: 'add' | 'remove') => {
   const tabs = ['ts-default', 'ts-build'] as const;
   // TODO: Add an if statement for typescript-node: 'ts-test' and `${tab}-node`
-  tabs.forEach(tab => (action === 'add' ? createTab(tab) : removeTabs(tab)));
+  tabs.forEach(tab => (action === 'add' ? createTabs(tab) : removeTabs(tab)));
 };
 
-export const createTab = (tab: DynamicTabValueList) => {
+export const createTabs = (tab: DynamicTabValueList) => {
   const tabName = generateTabName(tab);
   if (!tabName || hasSameTabElem(tab)) {
     return;
