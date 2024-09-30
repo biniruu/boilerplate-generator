@@ -131,18 +131,24 @@ const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => {
   isChecked ? addNewTabs(tab) : removeTabs(tab);
 };
 
+// TODO: Add jest.setup.ts process
 const removeTabs = (tab: DynamicTabValueList) => {
   const element = getButtonElem(tab);
   element && element.remove();
   removeAdditionalTabs(tab);
 };
-// When a lint tab is removed, remove the corresponding ignore tab as well
 const removeAdditionalTabs = (tab: DynamicTabValueList) => {
   if (tab === 'typescript') {
     toggleTsTabs('remove');
 
     return;
   }
+  if (tab === 'jest') {
+    removeTabs('jest-setup');
+
+    return;
+  }
+  // When a lint tab is removed, remove the corresponding ignore tab as well
   lints.includes(tab) && removeTabs(`${tab}-ignore` as DynamicTabValueList);
 };
 
@@ -150,13 +156,18 @@ const addNewTabs = (tab: DynamicTabValueList) => {
   createTab(tab);
   addAdditionalTabs(tab);
 };
-// When a lint tab is created, create the corresponding ignore tab as well
 const addAdditionalTabs = (tab: DynamicTabValueList) => {
   if (tab === 'typescript') {
     toggleTsTabs('add');
 
     return;
   }
+  if (tab === 'jest') {
+    createTab('jest-setup');
+
+    return;
+  }
+  // When a lint tab is created, create the corresponding ignore tab as well
   lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList);
 };
 
