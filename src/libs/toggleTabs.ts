@@ -121,9 +121,9 @@ const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => {
   if (tab === 'javascript') {
     removeTabs('typescript');
   } else if (tab === 'typescript') {
-    addNewTabs(tab);
+    addTabs(tab);
   } else {
-    isChecked ? addNewTabs(tab) : removeTabs(tab);
+    isChecked ? addTabs(tab) : removeTabs(tab);
   }
 };
 const toggleTsTabs = (action: 'add' | 'remove') => {
@@ -152,7 +152,7 @@ const removeAdditionalTabs = (tab: DynamicTabValueList) => {
   }
 };
 
-const addNewTabs = (tab: DynamicTabValueList) => {
+const addTabs = (tab: DynamicTabValueList) => {
   createTabs(tab);
   addAdditionalTabs(tab);
 };

@@ -1,5 +1,5 @@
 import dynamicTabList from '@data/dynamicTabList';
-import { createTab } from '@libs/toggleTabs';
+import { createTabs } from '@libs/toggleTabs';
 
 test('should create a tab element using a template element with given data through the parameter', async () => {
   // Insert elements into the DOM for testing
@@ -10,7 +10,7 @@ test('should create a tab element using a template element with given data throu
       <div id="dynamic-tabs"></div>`;
 
   const tab = 'eslint';
-  await createTab(tab);
+  await createTabs(tab);
 
   const dynamicTabsElem = document.querySelector<HTMLDivElement>('#dynamic-tabs');
   const createdTab = dynamicTabsElem && dynamicTabsElem.querySelector<HTMLButtonElement>('#eslint-tab');
