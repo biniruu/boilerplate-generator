@@ -173,18 +173,18 @@ const addAdditionalTabs = (tab: DynamicTabValueList) => {
 
 const toggleTsTabs = (action: 'add' | 'remove') => {
   if (action === 'add') {
-    createTab('ts-default' as DynamicTabValueList);
-    createTab('ts-build' as DynamicTabValueList);
+    createTab('ts-default');
+    createTab('ts-build');
     // TODO: Add if statement for typescript-node
-    // createTab('ts-test' as DynamicTabValueList);
+    // createTab('ts-test');
     // createTab(`${tab}-node` as DynamicTabValueList);
 
     return;
   }
-  removeTabs('ts-default' as DynamicTabValueList);
-  removeTabs('ts-build' as DynamicTabValueList);
+  removeTabs('ts-default');
+  removeTabs('ts-build');
   // TODO: Add if statement for typescript-node
-  // removeTabs('ts-test' as DynamicTabValueList);
+  // removeTabs('ts-test');
   // removeTabs(`${tab}-node` as DynamicTabValueList);
 };
 
