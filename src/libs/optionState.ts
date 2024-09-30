@@ -13,6 +13,7 @@ export const setState = (newState: State) => {
   state = { ...state, ...newState };
 };
 
+// FIXME: Match these items with corresponding elements' ids (e.g. nextAuth -> next-auth)
 const optionsForNuxt = [
   'immer',
   'nextAuth',
@@ -62,9 +63,16 @@ const controlNuxt = (toggle: 'on' | 'off') => {
   // TODO: Make sure that Tanstack Query will be compatible with Nuxt.js
   optionsForNuxt.forEach(option => {
     const elem = getOptionElem(option);
-    if (elem) {
-      toggle === 'on' ? setDisabled(elem) : setEnabled(elem);
+    if (!elem) {
+      return;
     }
+    if (toggle === 'on') {
+      isChecked(elem) && toggleChecked(elem);
+      setDisabled(elem);
+
+      return;
+    }
+    setEnabled(elem);
   });
 };
 
