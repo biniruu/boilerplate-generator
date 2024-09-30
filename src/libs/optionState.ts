@@ -81,6 +81,5 @@ const setEnabled = (element: HTMLInputElement) => element.removeAttribute('disab
 const setDisabled = (element: HTMLInputElement) => element.setAttribute('disabled', '');
 
 const isChecked = (element: HTMLInputElement) => element.checked;
-const isDisabled = (element: HTMLInputElement) => element.disabled === true;
 
 export default toggleOptionState;
