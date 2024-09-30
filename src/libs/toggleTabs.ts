@@ -126,6 +126,11 @@ const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => {
     isChecked ? addNewTabs(tab) : removeTabs(tab);
   }
 };
+const toggleTsTabs = (action: 'add' | 'remove') => {
+  const tabs = ['ts-default', 'ts-build'] as const;
+  // TODO: Add an if statement for typescript-node: 'ts-test' and `${tab}-node`
+  tabs.forEach(tab => (action === 'add' ? createTabs(tab) : removeTabs(tab)));
+};
 
 // TODO: Add jest.setup.ts process
 const removeTabs = (tab: DynamicTabValueList) => {
@@ -164,13 +169,6 @@ const addAdditionalTabs = (tab: DynamicTabValueList) => {
       lints.includes(tab) && createTabs(`${tab}-ignore` as DynamicTabValueList);
   }
 };
-
-const toggleTsTabs = (action: 'add' | 'remove') => {
-  const tabs = ['ts-default', 'ts-build'] as const;
-  // TODO: Add an if statement for typescript-node: 'ts-test' and `${tab}-node`
-  tabs.forEach(tab => (action === 'add' ? createTabs(tab) : removeTabs(tab)));
-};
-
 export const createTabs = (tab: DynamicTabValueList) => {
   const tabName = generateTabName(tab);
   if (!tabName || hasSameTabElem(tab)) {
