@@ -20,16 +20,31 @@ const generateNuxtConfig = () => {
       // Add plugin names as key and arguments as value
       // Install them before as dependencies with npm or yarn
       plugins: {
+        /**
+         * Default options by nuxi
+         *
+         * autoprefixer: {},
+         * 'postcss-nested': {},
+         * 'postcss-responsive-type': {},
+         * 'postcss-hexrgba': {},
+         * tailwindcss: {},
+         */
         // Disable a plugin by passing false as value
-        autoprefixer: {},
-        'postcss-nested': {},
-        'postcss-responsive-type': {},
-        'postcss-hexrgba': {},
+        '@tailwindcss/nesting': {},
+        'postcss-preset-env': {
+          autoprefixer: {},
+          features: {
+            'nesting-rules': false,
+          },
+        },
         tailwindcss: {},
+        cssnano: {
+          preset: 'default',
+        },
       },
     },
     typescript: {
-      typeCheck: true, // typescript와 vue-tsc를 설치하면 dev server 빌드 과정에서 타입 체크 실행
+      typeCheck: true, // invoke type checking during the build process if TypeScript and vue-tsc are installed. (TypeScript and vue-tsc are installed by default when setting up the dev env using nuxi.)
     },
   };
 
