@@ -120,15 +120,11 @@ const lints = ['eslint', 'prettier', 'stylelint'];
 const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => {
   if (tab === 'javascript') {
     removeTabs('typescript');
-
-    return;
-  }
-  if (tab === 'typescript') {
+  } else if (tab === 'typescript') {
     addNewTabs(tab);
-
-    return;
+  } else {
+    isChecked ? addNewTabs(tab) : removeTabs(tab);
   }
-  isChecked ? addNewTabs(tab) : removeTabs(tab);
 };
 
 // TODO: Add jest.setup.ts process
@@ -138,18 +134,17 @@ const removeTabs = (tab: DynamicTabValueList) => {
   removeAdditionalTabs(tab);
 };
 const removeAdditionalTabs = (tab: DynamicTabValueList) => {
-  if (tab === 'typescript') {
-    toggleTsTabs('remove');
-
-    return;
+  switch (tab) {
+    case 'typescript':
+      toggleTsTabs('remove');
+      break;
+    case 'jest':
+      removeTabs('jest-setup');
+      break;
+    default:
+      // When a lint tab is removed, remove the corresponding ignore tab as well
+      lints.includes(tab) && removeTabs(`${tab}-ignore` as DynamicTabValueList);
   }
-  if (tab === 'jest') {
-    removeTabs('jest-setup');
-
-    return;
-  }
-  // When a lint tab is removed, remove the corresponding ignore tab as well
-  lints.includes(tab) && removeTabs(`${tab}-ignore` as DynamicTabValueList);
 };
 
 const addNewTabs = (tab: DynamicTabValueList) => {
@@ -157,35 +152,23 @@ const addNewTabs = (tab: DynamicTabValueList) => {
   addAdditionalTabs(tab);
 };
 const addAdditionalTabs = (tab: DynamicTabValueList) => {
-  if (tab === 'typescript') {
-    toggleTsTabs('add');
-
-    return;
+  switch (tab) {
+    case 'typescript':
+      toggleTsTabs('add');
+      break;
+    case 'jest':
+      createTab('jest-setup');
+      break;
+    default:
+      // When a lint tab is created, create the corresponding ignore tab as well
+      lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList);
   }
-  if (tab === 'jest') {
-    createTab('jest-setup');
-
-    return;
-  }
-  // When a lint tab is created, create the corresponding ignore tab as well
-  lints.includes(tab) && createTab(`${tab}-ignore` as DynamicTabValueList);
 };
 
 const toggleTsTabs = (action: 'add' | 'remove') => {
-  if (action === 'add') {
-    createTab('ts-default');
-    createTab('ts-build');
-    // TODO: Add if statement for typescript-node
-    // createTab('ts-test');
-    // createTab(`${tab}-node` as DynamicTabValueList);
-
-    return;
-  }
-  removeTabs('ts-default');
-  removeTabs('ts-build');
-  // TODO: Add if statement for typescript-node
-  // removeTabs('ts-test');
-  // removeTabs(`${tab}-node` as DynamicTabValueList);
+  const tabs = ['ts-default', 'ts-build'] as const;
+  // TODO: Add an if statement for typescript-node: 'ts-test' and `${tab}-node`
+  tabs.forEach(tab => (action === 'add' ? createTab(tab) : removeTabs(tab)));
 };
 
 export const createTab = (tab: DynamicTabValueList) => {
