@@ -30,7 +30,7 @@ const toggleOptionState = (option: JsLib) => {
   // TODO: Add other radio button options
   switch (option) {
     case 'react':
-      controlReact();
+      controlReact('on');
       break;
     case 'nuxt':
       controlNuxt('on');
@@ -39,24 +39,24 @@ const toggleOptionState = (option: JsLib) => {
       console.error('Option not found');
   }
   // TODO: Ensure that the 'vite' option remains checked if it was already checked before this function is invoked
-  state.precedingOption === 'react' && controlVite();
+  state.precedingOption === 'react' && controlReact('off');
   state.precedingOption === 'nuxt' && controlNuxt('off');
   setState({ precedingOption: option });
 };
 
-const controlReact = () => {
+const controlReact = (toggle: 'on' | 'off') => {
   const elemVite = getOptionElem('vite');
-  if (elemVite) {
+  if (!elemVite) {
+    return;
+  }
+  if (toggle === 'on') {
     !isChecked(elemVite) && toggleChecked(elemVite);
-    toggleDisabled(elemVite);
+    setDisabled(elemVite);
+
+    return;
   }
-};
-const controlVite = () => {
-  const elemVite = getOptionElem('vite');
-  if (elemVite) {
-    toggleDisabled(elemVite);
-    toggleChecked(elemVite);
-  }
+  toggleChecked(elemVite);
+  setEnabled(elemVite);
 };
 const controlNuxt = (toggle: 'on' | 'off') => {
   // TODO: Make sure that Tanstack Query will be compatible with Nuxt.js
@@ -69,9 +69,6 @@ const controlNuxt = (toggle: 'on' | 'off') => {
 };
 
 const toggleChecked = (element: HTMLInputElement) => element?.click();
-const toggleDisabled = (element: HTMLInputElement) => {
-  isDisabled(element) ? setEnabled(element) : setDisabled(element);
-};
 const setEnabled = (element: HTMLInputElement) => element.removeAttribute('disabled');
 const setDisabled = (element: HTMLInputElement) => element.setAttribute('disabled', '');
 
