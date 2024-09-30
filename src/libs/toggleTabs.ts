@@ -116,7 +116,6 @@ import { getCurrentTablinkElems } from './tabController';
 
 const lints = ['eslint', 'prettier', 'stylelint'];
 
-// TODO: Update tsconfig file toggling process when switching between TypeScript and JavaScript options
 const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => {
   if (tab === 'javascript') {
     removeTabs('typescript');
@@ -132,7 +131,6 @@ const toggleTsTabs = (action: 'add' | 'remove') => {
   tabs.forEach(tab => (action === 'add' ? createTabs(tab) : removeTabs(tab)));
 };
 
-// TODO: Add jest.setup.ts process
 const removeTabs = (tab: DynamicTabValueList) => {
   const element = getButtonElem(tab);
   element && element.remove();
