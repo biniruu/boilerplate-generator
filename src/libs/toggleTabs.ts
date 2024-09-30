@@ -192,15 +192,16 @@ const hasSameTabElem = (tab: DynamicTabValueList) =>
   Array.from(getCurrentTablinkElems()).some(elem => elem.value === tab);
 
 export const updateTabName = () => {
-  const elemOptions = document.querySelectorAll<HTMLInputElement>('input:checked');
-  elemOptions.forEach(elemOptions => {
-    const { value } = elemOptions;
-    const tabName = generateTabName(value as DynamicTabValueList);
-    const elemTab = getButtonElem(value);
-    if (tabName && elemTab) {
-      elemTab.textContent = tabName;
-    }
-  });
+  const elemTabsWrapper = document.querySelector<HTMLDivElement>('#dynamic-tabs');
+  const elemTabs = elemTabsWrapper && elemTabsWrapper.querySelectorAll<HTMLButtonElement>('.tablink');
+  elemTabs &&
+    elemTabs.forEach(elemTab => {
+      const { value } = elemTab;
+      const tabName = generateTabName(value as DynamicTabValueList);
+      if (tabName) {
+        elemTab.textContent = tabName;
+      }
+    });
 };
 stateOptions.subscribe(updateTabName);
 
