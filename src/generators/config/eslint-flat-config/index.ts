@@ -70,7 +70,7 @@ const generateEslintFlatConfig = () => {
           allow: ['warn', 'error'],
         },
       ],
-      'no-debugger': process.env.NODE_ENV === 'development' ? 'warn' : 'error',
+      'no-debugger': 'replace no-debugger',
       'no-duplicate-imports': 'off',
       'no-nested-ternary': 'warn',
       'no-new-object': 'warn',
@@ -89,6 +89,22 @@ const generateEslintFlatConfig = () => {
         },
       ],
     },
+  };
+
+  const getDirectories = () => {
+    const directories = ['**/build/**', '**/dist/**'];
+
+    if (hasNext) {
+      return [...directories, '**/.next/**'];
+    }
+    if (hasNuxt) {
+      return [...directories, '**/.nuxt/**'];
+    }
+    return directories;
+  };
+
+  const ignores = {
+    ignores: getDirectories(),
   };
 
   const getNext = hasNext ? `${nextConfig},\n` : '';
@@ -137,10 +153,10 @@ import globals from 'globals';${`\n${imports}`}${hasTypescript ? `\n\nconst flat
 ${
   hasTypescript
     ? `export default tslintConfig(
-${getNext}${`${convertToString(config)},`}${`\n${configs}`}
+${convertToString(ignores)},${`\n${getNext}`}${convertToString(config)},${`\n${configs}`}
 )`
     : `export default [
-${getNext}${`${convertToString(config)},`}${`\n${configs}`}
+${convertToString(ignores)},${`\n${getNext}`}${convertToString(config)},${`\n${configs}`}
 ]`
 }`;
 
@@ -156,7 +172,8 @@ ${getNext}${`${convertToString(config)},`}${`\n${configs}`}
       // ...globals.serviceworker,
     }`,
     )
-    .replace(`'replace-recommended-eslint-configs-rules': ''`, `...eslint.configs.recommended.rules`);
+    .replace(`'replace-recommended-eslint-configs-rules': ''`, `...eslint.configs.recommended.rules`)
+    .replace(`'replace no-debugger'`, `process.env.NODE_ENV === 'development' ? 'warn' : 'error'`);
 
   return result;
 };

@@ -82,8 +82,35 @@ const config = {
   },
 };
 
-export const typescriptConfig = convertToString(config)
+const configIgnore = {
+  name: 'typescript-eslint-disable-type-checked', // https://typescript-eslint.io/getting-started/typed-linting/
+  'replace disableTypeChecked': '',
+  files: [
+    '**/*.js',
+    '**/*.cjs',
+    '**/*.mjs',
+    '**/*.config.js',
+    '**/*.config.cjs',
+    '**/*.config.mjs',
+    '**/*.config.ts',
+    '**/*.config.cts',
+    '**/*.config.mts',
+    '**/*.test.js',
+    '**/*.test.ts',
+    '**/*.spec.js',
+    '**/*.spec.ts',
+  ],
+};
+
+const tsConfig = convertToString(config)
   ?.replace(`'replace recommendedTypeChecked'`, `...tslintConfigs.recommendedTypeChecked`)
   .replace(`'replace tslintParser'`, `tslintParser`)
   .replace(`'replace tslintPlugin'`, `tslintPlugin`)
   .replace(`'replace import.meta.dirname'`, `import.meta.dirname`);
+const tsConfigIgnore = convertToString(configIgnore)?.replace(
+  `'replace disableTypeChecked': ''`,
+  '...tslintConfigs.disableTypeChecked',
+);
+
+export const typescriptConfig = `${tsConfig},
+${tsConfigIgnore}`;
