@@ -24,7 +24,6 @@ const optionsForNuxt = [
   'swr',
   'tanstackQuery',
   'vite',
-  'postcss',
 ] as const;
 
 const toggleOptionState = (option: JsLib) => {
