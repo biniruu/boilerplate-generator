@@ -102,7 +102,6 @@ const generateEslintFlatConfig = () => {
     }
     return directories;
   };
-
   const ignores = {
     ignores: getDirectories(),
   };

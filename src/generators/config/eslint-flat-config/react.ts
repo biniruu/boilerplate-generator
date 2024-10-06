@@ -99,9 +99,11 @@ const configReactRefresh = {
   },
 };
 
-const config = { ...configReact, ...configReactHooks, ...configReactRefresh };
+const config = `${convertToString(configReact)},
+${convertToString(configReactHooks)},
+${convertToString(configReactRefresh)}`;
 
-export const reactConfig = convertToString(config)
+export const reactConfig = config
   ?.replace(`'replace-react-plugin-configs-recommended': ''`, `...reactPlugin.configs.flat.recommended`)
   .replace(
     `'replace-react-plugin-configs-recommended-language-option': ''`,
