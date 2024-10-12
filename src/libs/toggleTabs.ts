@@ -210,6 +210,7 @@ const generateTabName = (tab: DynamicTabValueList) => {
   }
   const { value } = currentTab;
 
+  // Set a file extension according to syntax
   if ('ext' in currentTab) {
     const { js, ts } = currentTab.ext;
 
