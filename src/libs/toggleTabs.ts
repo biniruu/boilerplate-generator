@@ -125,9 +125,9 @@ const toggleTabs = (tab: DynamicTabValueList, isChecked: boolean) => {
     isChecked ? addTabs(tab) : removeTabs(tab);
   }
 };
+// TODO: Handle ts-node
 const toggleTsTabs = (action: 'add' | 'remove') => {
   const tabs = ['ts-default', 'ts-build'] as const;
-  // TODO: Add an if statement for typescript-node: 'ts-test' and `${tab}-node`
   tabs.forEach(tab => (action === 'add' ? createTabs(tab) : removeTabs(tab)));
 };
 
@@ -143,6 +143,7 @@ const removeAdditionalTabs = (tab: DynamicTabValueList) => {
       break;
     case 'jest':
       removeTabs('jest-setup');
+      removeTabs('ts-test');
       break;
     default:
       // When a lint tab is removed, remove the corresponding ignore tab as well
@@ -161,6 +162,7 @@ const addAdditionalTabs = (tab: DynamicTabValueList) => {
       break;
     case 'jest':
       createTabs('jest-setup');
+      createTabs('ts-test');
       break;
     default:
       // When a lint tab is created, create the corresponding ignore tab as well
