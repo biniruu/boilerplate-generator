@@ -4,8 +4,7 @@
   "description": "Serve settings and files to initialise the development environment.",
   "main": "src/index.ts",
   "scripts": {
-    "deploy": "rm -r dist ; webpack --mode=production --node-env=production ; gh-pages -d dist",
-    "build": "rm -r dist ; webpack --mode=production --node-env=production",
+    "build": "rm -r dist ; webpack --mode=production --node-env=production ; gh-pages -d dist",
     "build:dev": "rm -r dist ; webpack --mode=development --node-env=development",
     "test": "jest",
     "test:update": "jest -u",
