@@ -1,6 +1,4 @@
-```
-⚠️ This project is currently in progress.
-```
+> ⚠️ This project is currently in progress.
 
 # Boilerplate Generator
 
@@ -10,6 +8,7 @@ Build a recommended development environment with a few clicks.
 
 ## To-do
 
+- [] Add Google Analytics
 - [] Fix issues
 - [] Add tooltips to options
 - [] Implement creating and downloading files
