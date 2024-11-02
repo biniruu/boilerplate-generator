@@ -37,3 +37,7 @@ Add dependencies and devDependencies from a new command file to `generators/comm
 1. Add a tab to `index.html`
 1. Add a value of the tab to `data/files.ts`
 1. Update process of togging tabs in `libs/toggleTabs.ts` if it is needed
+
+## References
+
+- [Create App](https://createapp.dev/)
