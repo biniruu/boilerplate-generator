@@ -1,6 +1,6 @@
 import getCertainConditions from '@utils/certainConditions';
 
-import getGatsbyDesc from './getsby';
+import getGatsbyDesc from './gatsby';
 import getNuxtDesc from './nuxt';
 import getStorybookDesc from './storybook';
 import getWebpackDesc from './webpack';
