@@ -6,7 +6,7 @@ import getStorybookDesc from './storybook';
 import getWebpackDesc from './webpack';
 
 const generateReadme = () => {
-  const { hasTypescript, hasNext, hasNuxt, hasReact, hasWebpack, hasStorybook, hasGatsby } = getCertainConditions();
+  const { hasTypescript, hasNext, hasNuxt, hasReact, hasWebpack, hasStorybook, hasGatsby, hasVue } = getCertainConditions();
 
   const desc = () => {
     let desc = '';
@@ -35,6 +35,9 @@ const generateReadme = () => {
     }
     if (hasNuxt) {
       return 'npx nuxi@latest init <project-name>';
+    }
+    if (hasVue) {
+      return 'yarn create vue <my-app-name>';
     }
   };
 
